@@ -199,6 +199,176 @@ button {
 
 .nav-link.active .nav-slash {
   opacity: 1;
+  transform: translateY(0);
+}
+
+/* ===== Navbar Dropdown ===== */
+.nav-dropdown-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  height: 100%; /* Ensure hover target is full height of navbar */
+}
+
+.nav-dropdown-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-family: inherit;
+  font-size: inherit;
+  color: inherit;
+  padding: 0;
+  display: flex;
+  align-items: center;
+}
+
+.nav-dropdown-menu {
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%) translateY(20px);
+  width: 750px;
+  background: #151515;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.6);
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s var(--ease-smooth);
+  z-index: 1001;
+  display: flex;
+  overflow: hidden; /* For chamfered corners or background containment */
+}
+
+.nav-dropdown-wrapper:hover .nav-dropdown-menu {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(-50%) translateY(10px);
+}
+
+.mega-menu-left {
+  width: 40%;
+  padding: 40px;
+  background: #111111;
+  display: flex;
+  flex-direction: column;
+}
+
+.mega-menu-label {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.75rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.6);
+  margin-bottom: 30px;
+}
+
+.mega-links {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.mega-link {
+  color: #ffffff;
+  text-decoration: none;
+  font-size: 1.1rem;
+  font-weight: 500;
+  position: relative;
+  width: fit-content;
+  transition: color 0.3s;
+}
+
+.mega-link::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -4px;
+  width: 0;
+  height: 2px;
+  background: #ffffff;
+  transition: width 0.3s var(--ease-smooth);
+}
+
+.mega-link:hover {
+  color: #ffffff;
+}
+
+.mega-link:hover::after {
+  width: 100%;
+}
+
+.mega-menu-right {
+  width: 60%;
+  padding: 40px;
+  background: #1a1a1a;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+.mega-content {
+  flex: 1;
+}
+
+.mega-title {
+  font-family: var(--font-heading);
+  font-size: 1.5rem;
+  font-weight: 500;
+  line-height: 1.4;
+  margin-bottom: 16px;
+  color: #ffffff;
+}
+
+.mega-desc {
+  font-size: 0.95rem;
+  color: rgba(255, 255, 255, 0.6);
+  line-height: 1.6;
+}
+
+.btn-arrow.mega-contact-btn {
+  align-self: flex-end;
+  margin-top: 30px;
+  transform: scale(0.9);
+  transform-origin: bottom right;
+}
+
+.btn-arrow.mega-contact-btn:hover {
+  transform: scale(0.9) translateY(-1px);
+}
+
+.btn-arrow.mega-contact-btn:active {
+  transform: scale(0.9) translateY(0);
+}
+
+/* Light mode overrides for dropdown */
+.navbar.light-mode .nav-dropdown-menu {
+  background: #ffffff;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.1);
+}
+.navbar.light-mode .mega-menu-left {
+  background: #ffffff;
+}
+.navbar.light-mode .mega-menu-label {
+  color: rgba(0, 0, 0, 0.5);
+}
+.navbar.light-mode .mega-link {
+  color: #0a0a0a;
+}
+.navbar.light-mode .mega-link::after {
+  background: #0a0a0a;
+}
+.navbar.light-mode .mega-menu-right {
+  background: #fafafa;
+}
+.navbar.light-mode .mega-title {
+  color: #0a0a0a;
+}
+.navbar.light-mode .mega-desc {
+  color: rgba(0, 0, 0, 0.6);
 }
 
 /* ===== Arrow Button (Contact + Let's Auto) ===== */

@@ -63,6 +63,42 @@ function initMobileMenu() {
 }
 
 /**
+ * Navbar Dropdown dynamic content
+ */
+function initDropdowns() {
+  const links = document.querySelectorAll('.mega-link');
+  const titleEl = document.querySelector('.mega-title');
+  const descEl = document.querySelector('.mega-desc');
+
+  if (!links.length || !titleEl || !descEl) return;
+
+  // Store the default content
+  const defaultTitle = titleEl.textContent;
+  const defaultDesc = descEl.textContent;
+
+  links.forEach(link => {
+    link.addEventListener('mouseenter', () => {
+      const title = link.getAttribute('data-title');
+      const desc = link.getAttribute('data-desc');
+      if (title) titleEl.textContent = title;
+      if (desc) descEl.textContent = desc;
+    });
+
+    // Optionally revert to default when leaving the links container
+    // or just leave the last hovered state active.
+    // Leaving it active is usually smoother for mega menus.
+  });
+  
+  const megaMenuLeft = document.querySelector('.mega-menu-left');
+  if (megaMenuLeft) {
+    megaMenuLeft.addEventListener('mouseleave', () => {
+      titleEl.textContent = defaultTitle;
+      descEl.textContent = defaultDesc;
+    });
+  }
+}
+
+/**
  * Navbar background on scroll and dynamic color adapting based on section background.
  */
 function initNavScroll() {
@@ -176,6 +212,7 @@ function initProcessAccordion() {
 document.addEventListener('DOMContentLoaded', () => {
   initWordAnimation();
   initMobileMenu();
+  initDropdowns();
   initNavScroll();
   initEntranceAnimations();
   initDarkTabs();
