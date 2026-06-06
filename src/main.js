@@ -98,10 +98,41 @@ function initEntranceAnimations() {
   });
 }
 
+/**
+ * Dark theme tab switching — shows/hides content cards.
+ */
+function initDarkTabs() {
+  const tabsContainer = document.getElementById('darkTabs');
+  if (!tabsContainer) return;
+
+  const tabs = tabsContainer.querySelectorAll('.dark-tab');
+  const cards = document.querySelectorAll('.dark-card');
+
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      const target = tab.dataset.tab;
+
+      // Update active tab
+      tabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+
+      // Update active card
+      cards.forEach(card => {
+        card.classList.remove('active');
+        if (card.dataset.card === target) {
+          card.classList.add('active');
+        }
+      });
+    });
+  });
+}
+
 // ===== Initialize everything =====
 document.addEventListener('DOMContentLoaded', () => {
   initWordAnimation();
   initMobileMenu();
   initNavScroll();
   initEntranceAnimations();
+  initDarkTabs();
 });
+
