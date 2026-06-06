@@ -216,7 +216,6 @@ button {
   cursor: pointer;
   font-family: inherit;
   font-size: inherit;
-  color: inherit;
   padding: 0;
   display: flex;
   align-items: center;
@@ -686,7 +685,529 @@ button {
   }
 }
 
-/* ===== Responsive ===== */
+/* ===== Contact Page ===== */
+.contact-page {
+  padding: 160px 0 100px; /* Offset for navbar */
+  min-height: 100vh;
+}
+
+.contact-container {
+  max-width: var(--container-max);
+  margin: 0 auto;
+  padding: 0 var(--container-padding);
+}
+
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1fr 400px;
+  gap: 80px;
+  align-items: flex-start;
+}
+
+.contact-heading {
+  font-family: var(--font-heading);
+  font-size: 3rem;
+  font-weight: 500;
+  margin-bottom: 12px;
+}
+
+.contact-subheading {
+  font-size: 1.1rem;
+  color: var(--text-secondary);
+  margin-bottom: 48px;
+}
+
+.a2b-form {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.form-row {
+  display: flex;
+  gap: 24px;
+}
+
+.form-row .form-group {
+  flex: 1;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.form-group label {
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--text-secondary);
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+  width: 100%;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-medium);
+  border-radius: 8px;
+  padding: 16px;
+  color: var(--text-primary);
+  font-family: var(--font-body);
+  font-size: 1rem;
+  transition: all 0.3s var(--ease-out);
+}
+
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+  color: var(--text-muted);
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: 0 0 0 4px var(--accent-subtle);
+  background: var(--bg-elevated);
+}
+
+.custom-select-wrapper {
+  position: relative;
+}
+
+.custom-select-wrapper select {
+  appearance: none;
+  -webkit-appearance: none;
+  cursor: pointer;
+}
+
+.custom-select-wrapper .select-icon {
+  position: absolute;
+  right: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--text-secondary);
+  pointer-events: none;
+  font-size: 0.9rem;
+}
+
+.contact-submit-btn {
+  margin-top: 16px;
+  align-self: flex-start;
+}
+
+.contact-info-side {
+  display: flex;
+  flex-direction: column;
+  gap: 60px;
+  padding-left: 40px;
+  border-left: 1px solid var(--border-subtle);
+}
+
+.info-label {
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--text-secondary);
+  margin-bottom: 24px;
+}
+
+.expectations-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.expectations-list li {
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+}
+
+.expect-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  background: var(--accent-subtle);
+  color: var(--accent);
+  border-radius: 50%;
+  font-size: 0.8rem;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.expect-text strong {
+  display: block;
+  font-size: 1.05rem;
+  margin-bottom: 4px;
+}
+
+.expect-text p {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  line-height: 1.5;
+}
+
+.direct-contact-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.direct-contact-list li {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: var(--text-secondary);
+}
+
+.direct-contact-list li i {
+  color: var(--accent);
+  font-size: 1.1rem;
+  width: 20px;
+  text-align: center;
+}
+
+.direct-contact-list li a {
+  color: var(--text-secondary);
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.direct-contact-list li a:hover {
+  color: var(--accent);
+}
+
+/* ===== Light Mode Navbar (For Case Study Page) ===== */
+.light-nav {
+  background: #fafafa !important;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05) !important;
+}
+
+.light-nav .nav-container {
+  background: #fafafa !important;
+}
+
+.light-nav.scrolled .nav-container {
+  background: rgba(250, 250, 250, 0.95) !important;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1) !important;
+}
+
+.light-nav .nav-link {
+  color: #555 !important;
+}
+
+.light-nav .nav-link:hover,
+.light-nav .nav-link.active {
+  color: #000 !important;
+}
+
+.light-nav .nav-logo-text {
+  color: #000 !important;
+}
+
+.light-nav .nav-logo-img {
+  filter: invert(1) !important; /* Turns the white logo black */
+}
+
+.light-nav .nav-hamburger span {
+  background: #000 !important;
+}
+
+.light-nav .nav-dropdown-menu {
+  background: #fff !important;
+  border: 1px solid rgba(0, 0, 0, 0.1) !important;
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.1) !important;
+}
+.light-nav .mega-menu-left, .light-nav .mega-menu-right {
+  background: #fff !important;
+  color: #000 !important;
+}
+.light-nav .mega-link {
+  color: #444 !important;
+}
+.light-nav .mega-link:hover {
+  color: #000 !important;
+}
+/* Invert the CTA button in the light navbar */
+.light-nav .btn-arrow .btn-label {
+  background: #000;
+  color: #fff;
+}
+.light-nav .btn-arrow .btn-icon {
+  background: #111;
+  color: var(--accent);
+}
+.light-nav .btn-arrow:hover .btn-icon {
+  background: var(--accent);
+  color: #000;
+}
+
+/* ===== Case Study Page (Light Mode Redesign) ===== */
+.case-study-page {
+  padding-top: 140px;
+  min-height: 100vh;
+  background-color: #fafafa;
+  color: #111;
+}
+
+.cs-container {
+  max-width: var(--container-max);
+  margin: 0 auto;
+  padding: 0 var(--container-padding);
+}
+
+/* Header Section */
+.cs-header-section {
+  padding: 60px 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  padding-bottom: 80px;
+}
+
+.cs-header-content {
+  max-width: 800px;
+}
+
+.cs-title-massive {
+  font-family: var(--font-body);
+  font-size: 6rem;
+  font-weight: 300;
+  line-height: 1;
+  margin-bottom: 32px;
+  color: #000;
+  letter-spacing: -2.5px;
+}
+
+.cs-header-desc {
+  font-family: var(--font-body);
+  font-size: 1.15rem;
+  font-weight: 300;
+  color: #444;
+  line-height: 1.6;
+}
+
+.cs-header-actions {
+  display: flex;
+  gap: 16px;
+}
+
+/* Override .btn-arrow for the light page to be black */
+.cs-header-actions .btn-arrow .btn-label {
+  background: #000;
+  color: #fff;
+}
+.cs-header-actions .btn-arrow .btn-icon {
+  background: #111;
+  color: var(--accent);
+}
+.cs-header-actions .btn-arrow:hover .btn-icon {
+  background: var(--accent);
+  color: #000;
+}
+
+/* Filter Bar Wide */
+.cs-filter-bar-wide {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 30px 0;
+  margin-bottom: 60px;
+}
+
+.filter-label, .filter-total {
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: #666;
+}
+
+.filter-buttons {
+  display: flex;
+  gap: 12px;
+}
+
+.filter-btn {
+  background: transparent;
+  border: 1px solid #ccc;
+  color: #444;
+  padding: 8px 20px;
+  border-radius: 40px;
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: all 0.3s var(--ease-out);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.filter-btn .count {
+  font-size: 0.75rem;
+  opacity: 0.5;
+}
+
+.filter-btn:hover {
+  border-color: #000;
+  color: #000;
+}
+
+.filter-btn.active {
+  background: #000;
+  color: #fff;
+  border-color: #000;
+}
+.filter-btn.active .count {
+  color: #fff;
+}
+
+/* Horizontal List Cards */
+.cs-list {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  padding-bottom: 120px;
+}
+
+.cs-row-card {
+  display: grid;
+  grid-template-columns: 300px 1fr 300px;
+  gap: 60px;
+  padding: 60px;
+  border-radius: 4px;
+  transition: transform 0.3s;
+}
+
+.cs-row-card.hidden {
+  display: none;
+}
+
+.cs-row-card:hover {
+  transform: translateY(-4px);
+}
+
+/* Alternating Card Colors */
+/* 1st, 3rd, 5th -> Black Background */
+.cs-row-card:nth-child(odd) {
+  background: #000;
+  color: #fff;
+}
+.cs-row-card:nth-child(odd) .cs-client-name,
+.cs-row-card:nth-child(odd) .cs-project-title,
+.cs-row-card:nth-child(odd) .cs-read-link {
+  color: #fff;
+}
+.cs-row-card:nth-child(odd) .cs-tag,
+.cs-row-card:nth-child(odd) .cs-project-text,
+.cs-row-card:nth-child(odd) .cs-metric-label {
+  color: rgba(255, 255, 255, 0.6);
+}
+
+/* 2nd, 4th, 6th -> Off-White Background */
+.cs-row-card:nth-child(even) {
+  background: #f1efe9; /* Slight beige/white to match the screenshot */
+  color: #000;
+}
+.cs-row-card:nth-child(even) .cs-client-name,
+.cs-row-card:nth-child(even) .cs-project-title,
+.cs-row-card:nth-child(even) .cs-read-link {
+  color: #000;
+}
+.cs-row-card:nth-child(even) .cs-tag,
+.cs-row-card:nth-child(even) .cs-project-text,
+.cs-row-card:nth-child(even) .cs-metric-label {
+  color: rgba(0, 0, 0, 0.6);
+}
+
+.cs-col-client {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.cs-tag {
+  font-family: var(--font-body);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.cs-client-name {
+  font-family: var(--font-body);
+  font-size: 2rem;
+  font-weight: 300;
+}
+
+.cs-col-desc {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  max-width: 600px;
+}
+
+.cs-project-title {
+  font-family: var(--font-body);
+  font-size: 2.5rem;
+  font-weight: 300;
+  line-height: 1.1;
+  letter-spacing: -1px;
+}
+
+.cs-project-text {
+  font-family: var(--font-body);
+  font-size: 1rem;
+  font-weight: 300;
+  line-height: 1.6;
+}
+
+.cs-col-metric {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
+}
+
+.cs-massive-metric {
+  font-family: var(--font-body);
+  font-size: 4rem;
+  font-weight: 300;
+  color: var(--accent); /* Back to signature neon green */
+  line-height: 1;
+  letter-spacing: -2px;
+}
+
+.cs-metric-label {
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  margin-bottom: auto;
+}
+
+.cs-read-link {
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-decoration: none;
+  margin-top: 24px;
+  transition: opacity 0.3s;
+}
+
+.cs-read-link:hover {
+  opacity: 0.7;
+}
+
+/* ===== Responsive Utilities ===== */
 
 /* Tablet */
 @media (max-width: 1024px) {

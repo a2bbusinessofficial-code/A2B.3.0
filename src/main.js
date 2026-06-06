@@ -208,6 +208,40 @@ function initProcessAccordion() {
   });
 }
 
+/**
+ * Case Study Filtering
+ */
+function initCaseStudyFilters() {
+  const filterBtns = document.querySelectorAll('.filter-btn');
+  const cards = document.querySelectorAll('.cs-row-card');
+
+  if (!filterBtns.length || !cards.length) return;
+
+  filterBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      // Update active state
+      filterBtns.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+
+      const filterValue = btn.getAttribute('data-filter');
+
+      // Show/Hide cards based on filter
+      cards.forEach(card => {
+        if (filterValue === 'all') {
+          card.classList.remove('hidden');
+        } else {
+          const industry = card.getAttribute('data-industry');
+          if (industry === filterValue) {
+            card.classList.remove('hidden');
+          } else {
+            card.classList.add('hidden');
+          }
+        }
+      });
+    });
+  });
+}
+
 // ===== Initialize everything =====
 document.addEventListener('DOMContentLoaded', () => {
   initWordAnimation();
@@ -217,5 +251,5 @@ document.addEventListener('DOMContentLoaded', () => {
   initEntranceAnimations();
   initDarkTabs();
   initProcessAccordion();
+  initCaseStudyFilters();
 });
-
