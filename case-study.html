@@ -13,7 +13,7 @@
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700;800;900&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="/src/style.css" />
   </head>
   <body>
@@ -31,9 +31,9 @@
           <!-- Navigation Links -->
           <div class="nav-links" id="navLinks">
             <a href="/" class="nav-link">Home <span class="nav-slash"></span></a>
-            <a href="/product" class="nav-link">Product <span class="nav-slash"></span></a>
-            <a href="/service" class="nav-link">Service <span class="nav-slash"></span></a>
-            <a href="/case-study" class="nav-link active">Case Study <span class="nav-slash"></span></a>
+            <a href="/product.html" class="nav-link">Product <span class="nav-slash"></span></a>
+            <a href="/service.html" class="nav-link">Service <span class="nav-slash"></span></a>
+            <a href="/case-study.html" class="nav-link active">Case Study <span class="nav-slash"></span></a>
             <div class="nav-dropdown-wrapper" id="resourcesDropdown">
               <button class="nav-link nav-dropdown-btn">Resources <span class="nav-slash"></span></button>
               <div class="nav-dropdown-menu mega-menu">
@@ -54,7 +54,7 @@
                     <h3 class="mega-title">“We partner with brands to move the world through tech, design and strategy.”</h3>
                     <p class="mega-desc">Dive into our field notes, video walkthroughs, and frameworks on AI-native operations to build a smarter future.</p>
                   </div>
-                  <a href="/contact" class="btn-arrow mega-contact-btn">
+                  <a href="/contact.html" class="btn-arrow mega-contact-btn">
                     <span class="btn-label">Contact Us</span>
                     <span class="btn-icon">
                       <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
@@ -63,11 +63,11 @@
                 </div>
               </div>
             </div>
-            <a href="/about" class="nav-link">About <span class="nav-slash"></span></a>
+            <a href="/about.html" class="nav-link">About <span class="nav-slash"></span></a>
           </div>
 
           <!-- Contact CTA Button -->
-          <a href="/contact" class="btn-arrow nav-cta" id="navCta">
+          <a href="/contact.html" class="btn-arrow nav-cta" id="navCta">
             <span class="btn-label">Contact</span>
             <span class="btn-icon">
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
@@ -91,7 +91,7 @@
             <p class="cs-header-desc">Production AI systems shipped across e-commerce, healthcare, legal, financial services, and logistics. Real businesses, real numbers, real operators willing to talk to you about what changed.</p>
           </div>
           <div class="cs-header-actions">
-            <a href="/contact" class="btn-arrow" style="margin-right: 12px;">
+            <a href="/contact.html" class="btn-arrow" style="margin-right: 12px;">
               <span class="btn-label">Get in touch</span>
               <span class="btn-icon">
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
@@ -110,13 +110,16 @@
         <div class="cs-filter-bar-wide cs-container" id="work">
           <span class="filter-label">FILTER BY INDUSTRY</span>
           <div class="filter-buttons">
-            <button class="filter-btn active" data-filter="all">All <span class="count">4</span></button>
-            <button class="filter-btn" data-filter="ecommerce">E-commerce <span class="count">1</span></button>
-            <button class="filter-btn" data-filter="finance">Finance <span class="count">1</span></button>
+            <button class="filter-btn active" data-filter="all">All <span class="count">7</span></button>
+            <button class="filter-btn" data-filter="religious">Religious & Education <span class="count">1</span></button>
             <button class="filter-btn" data-filter="healthcare">Healthcare <span class="count">1</span></button>
-            <button class="filter-btn" data-filter="logistics">Logistics <span class="count">1</span></button>
+            <button class="filter-btn" data-filter="creative">Creative & Design <span class="count">1</span></button>
+            <button class="filter-btn" data-filter="media">Media & Content <span class="count">1</span></button>
+            <button class="filter-btn" data-filter="enterprise">Enterprise <span class="count">1</span></button>
+            <button class="filter-btn" data-filter="visual">Visual Brand <span class="count">1</span></button>
+            <button class="filter-btn" data-filter="marketing">Marketing & SEO <span class="count">1</span></button>
           </div>
-          <span class="filter-total">4 STUDIES</span>
+          <span class="filter-total">7 STUDIES</span>
         </div>
 
         <!-- Case Study List -->
@@ -124,70 +127,121 @@
           <div class="cs-list" id="caseStudyGrid">
             
             <!-- Card 1 -->
-            <div class="cs-row-card" data-industry="ecommerce">
+            <div class="cs-row-card" data-industry="religious">
               <div class="cs-col-client">
-                <span class="cs-tag">E-commerce & DTC</span>
-                <h3 class="cs-client-name">4AM Media</h3>
+                <span class="cs-tag">Religious & Educational Content</span>
+                <h3 class="cs-client-name">Sacred Text Publishing</h3>
               </div>
               <div class="cs-col-desc">
-                <h2 class="cs-project-title">High-volume support, turned into a revenue engine.</h2>
-                <p class="cs-project-text">A multi-brand DTC operator was burning analyst hours on refund tickets. We replaced the queue with a system that recovers revenue instead.</p>
+                <h2 class="cs-project-title">AI-Powered Religious Content Video Generator.</h2>
+                <p class="cs-project-text">Transforming the complete 1,500-page Sri Guru Granth Sahib into engaging social media videos using intelligent OCR and custom Python video generation.</p>
               </div>
               <div class="cs-col-metric">
-                <div class="cs-massive-metric">$200K/mo</div>
-                <div class="cs-metric-label">Recovered revenue</div>
-                <a href="/case-studies/template.html" class="cs-read-link">Read the case study &rarr;</a>
+                <div class="cs-massive-metric">100x</div>
+                <div class="cs-metric-label">Faster processing</div>
+                <a href="/case-studies/sacred-text-publishing.html" class="cs-read-link">Read the case study &rarr;</a>
               </div>
             </div>
 
             <!-- Card 2 -->
             <div class="cs-row-card" data-industry="healthcare">
               <div class="cs-col-client">
-                <span class="cs-tag">Healthcare & Dental</span>
-                <h3 class="cs-client-name">SanctifAI Dental</h3>
+                <span class="cs-tag">Healthcare & Medical Services</span>
+                <h3 class="cs-client-name">Multi-Hospital Network</h3>
               </div>
               <div class="cs-col-desc">
-                <h2 class="cs-project-title">End-to-end claims processing, replacing manual billing.</h2>
-                <p class="cs-project-text">Dental practices spend hours every week reconciling claims, ERAs, and denials. We built a system that handles it overnight, with audit trails.</p>
+                <h2 class="cs-project-title">AI-Powered WhatsApp Medical Consultation Automation.</h2>
+                <p class="cs-project-text">A multilingual, multimodal WhatsApp system handling 200+ daily patient inquiries automatically with zero staff involvement.</p>
               </div>
               <div class="cs-col-metric">
-                <div class="cs-massive-metric">50%+</div>
-                <div class="cs-metric-label">Clearinghouse cost cut</div>
-                <a href="/case-studies/template.html" class="cs-read-link">Read the case study &rarr;</a>
+                <div class="cs-massive-metric">24/7</div>
+                <div class="cs-metric-label">Automated intake</div>
+                <a href="/case-studies/medical-consultation.html" class="cs-read-link">Read the case study &rarr;</a>
               </div>
             </div>
 
             <!-- Card 3 -->
-            <div class="cs-row-card" data-industry="finance">
+            <div class="cs-row-card" data-industry="creative">
               <div class="cs-col-client">
-                <span class="cs-tag">Financial Services</span>
-                <h3 class="cs-client-name">FinEdge Partners</h3>
+                <span class="cs-tag">Creative & Brand Design</span>
+                <h3 class="cs-client-name">Premium Creative Agency</h3>
               </div>
               <div class="cs-col-desc">
-                <h2 class="cs-project-title">Real-time fraud detection without the false positives.</h2>
-                <p class="cs-project-text">Implemented an LLM pipeline capable of analyzing thousands of high-velocity transactions per second, eliminating manual review bottlenecks.</p>
+                <h2 class="cs-project-title">AI-Powered Brand-Style Image Generation System.</h2>
+                <p class="cs-project-text">Automated style extraction and multi-model image generation delivering 100% consistent brand-style images on demand.</p>
               </div>
               <div class="cs-col-metric">
-                <div class="cs-massive-metric">99.9%</div>
-                <div class="cs-metric-label">Detection Rate</div>
-                <a href="/case-studies/template.html" class="cs-read-link">Read the case study &rarr;</a>
+                <div class="cs-massive-metric">1000+</div>
+                <div class="cs-metric-label">Images/day possible</div>
+                <a href="/case-studies/image-generation.html" class="cs-read-link">Read the case study &rarr;</a>
               </div>
             </div>
 
             <!-- Card 4 -->
-            <div class="cs-row-card" data-industry="logistics">
+            <div class="cs-row-card" data-industry="media">
               <div class="cs-col-client">
-                <span class="cs-tag">Industrial Logistics</span>
-                <h3 class="cs-client-name">AeroFreight</h3>
+                <span class="cs-tag">Media & Content Automation</span>
+                <h3 class="cs-client-name">Social Media Brand</h3>
               </div>
               <div class="cs-col-desc">
-                <h2 class="cs-project-title">Autonomous fleet routing scaling delivery operations.</h2>
-                <p class="cs-project-text">A deep reinforcement learning model that continuously optimizes cross-country freight delivery paths accounting for weather and traffic.</p>
+                <h2 class="cs-project-title">Reddit-to-YouTube Automation.</h2>
+                <p class="cs-project-text">Converts a single Telegram message with a Reddit link into a ready-to-publish YouTube video with AI script, voice-over, and avatar.</p>
               </div>
               <div class="cs-col-metric">
-                <div class="cs-massive-metric">15%</div>
-                <div class="cs-metric-label">Fuel Cost Reduction</div>
-                <a href="/case-studies/template.html" class="cs-read-link">Read the case study &rarr;</a>
+                <div class="cs-massive-metric">Zero</div>
+                <div class="cs-metric-label">Manual steps</div>
+                <a href="/case-studies/reddit-youtube.html" class="cs-read-link">Read the case study &rarr;</a>
+              </div>
+            </div>
+
+            <!-- Card 5 -->
+            <div class="cs-row-card" data-industry="enterprise">
+              <div class="cs-col-client">
+                <span class="cs-tag">Enterprise Knowledge Management</span>
+                <h3 class="cs-client-name">Enterprise Integration</h3>
+              </div>
+              <div class="cs-col-desc">
+                <h2 class="cs-project-title">Multimodal AI Intake and Knowledge Agent.</h2>
+                <p class="cs-project-text">Transforms WhatsApp messages (text, audio, images, documents) into indexed, queryable knowledge with context-aware AI answers.</p>
+              </div>
+              <div class="cs-col-metric">
+                <div class="cs-massive-metric">80%+</div>
+                <div class="cs-metric-label">Faster response time</div>
+                <a href="/case-studies/knowledge-agent.html" class="cs-read-link">Read the case study &rarr;</a>
+              </div>
+            </div>
+
+            <!-- Card 6 -->
+            <div class="cs-row-card" data-industry="visual">
+              <div class="cs-col-client">
+                <span class="cs-tag">Visual Brand Intelligence</span>
+                <h3 class="cs-client-name">Enterprise Visual OS</h3>
+              </div>
+              <div class="cs-col-desc">
+                <h2 class="cs-project-title">AI-Powered Image Generation & Compliance Suite.</h2>
+                <p class="cs-project-text">A massive, modular n8n ecosystem that acts as a Virtual Creative Director, ensuring final outputs are perfectly brand-compliant.</p>
+              </div>
+              <div class="cs-col-metric">
+                <div class="cs-massive-metric">100%</div>
+                <div class="cs-metric-label">Accuracy on physics</div>
+                <a href="/case-studies/visual-brand-intelligence.html" class="cs-read-link">Read the case study &rarr;</a>
+              </div>
+            </div>
+
+            <!-- Card 7 -->
+            <div class="cs-row-card" data-industry="marketing">
+              <div class="cs-col-client">
+                <span class="cs-tag">Digital Marketing & SEO</span>
+                <h3 class="cs-client-name">Freelance SEO Consultant</h3>
+              </div>
+              <div class="cs-col-desc">
+                <h2 class="cs-project-title">Automated SEO Reporting System.</h2>
+                <p class="cs-project-text">An end-to-end automated system using n8n that compiles data from GSC and GA4 into professional weekly SEO PDF reports.</p>
+              </div>
+              <div class="cs-col-metric">
+                <div class="cs-massive-metric">99%</div>
+                <div class="cs-metric-label">Time Saved</div>
+                <a href="/case-studies/seo-reporting.html" class="cs-read-link">Read the case study &rarr;</a>
               </div>
             </div>
 

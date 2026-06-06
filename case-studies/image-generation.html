@@ -1,0 +1,235 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="A2B Case Study - AI-Powered Brand-Style Image Generation System for Premium Creative Agency" />
+    <title>Brand-Style Image Generation — A2B AI Technologies</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+    
+    <link rel="stylesheet" href="/src/style.css" />
+  </head>
+  <body>
+    <div id="app">
+
+      <!-- ========== NAVBAR ========== -->
+      <nav class="navbar" id="navbar">
+        <div class="nav-container">
+          <a href="/" class="nav-logo" aria-label="A2B Home">
+            <img src="/assets/logos/a2blogowhite.png" alt="A2B Logo" class="nav-logo-img" width="42" height="42" />
+            <span class="nav-logo-text">A2B</span>
+          </a>
+          <div class="nav-links" id="navLinks">
+            <a href="/" class="nav-link">Home <span class="nav-slash"></span></a>
+            <a href="/product.html" class="nav-link">Product <span class="nav-slash"></span></a>
+            <a href="/service.html" class="nav-link">Service <span class="nav-slash"></span></a>
+            <a href="/case-study.html" class="nav-link active">Case Study <span class="nav-slash"></span></a>
+            <div class="nav-dropdown-wrapper" id="resourcesDropdown">
+              <button class="nav-link nav-dropdown-btn">Resources <span class="nav-slash"></span></button>
+              <div class="nav-dropdown-menu mega-menu">
+                <div class="mega-menu-left">
+                  <div class="mega-menu-label">
+                    <svg width="12" height="12" viewBox="0 0 44 44" fill="var(--accent)" xmlns="http://www.w3.org/2000/svg">
+                      <polygon points="22,1 43,11 43,33 22,43 1,33 1,11" />
+                    </svg>
+                    RESOURCES
+                  </div>
+                  <div class="mega-links">
+                    <a href="/blog" class="mega-link" data-title="Field notes & Breakdowns" data-desc="Read our latest articles on agentic workflows, enterprise AI strategy, and building autonomous systems.">Blog</a>
+                    <a href="/youtube" class="mega-link" data-title="Walkthroughs & Live Builds" data-desc="Watch our engineers build live, break down complex AI agents, and give product deep-dives on our channel.">YouTube</a>
+                  </div>
+                </div>
+                <div class="mega-menu-right">
+                  <div class="mega-content">
+                    <h3 class="mega-title">"We partner with brands to move the world through tech, design and strategy."</h3>
+                    <p class="mega-desc">Dive into our field notes, video walkthroughs, and frameworks on AI-native operations to build a smarter future.</p>
+                  </div>
+                  <a href="/contact.html" class="btn-arrow mega-contact-btn">
+                    <span class="btn-label">Contact Us</span>
+                    <span class="btn-icon">
+                      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                    </span>
+                  </a>
+                </div>
+              </div>
+            </div>
+            <a href="/about.html" class="nav-link">About <span class="nav-slash"></span></a>
+          </div>
+          <a href="/contact.html" class="btn-arrow nav-cta" id="navCta">
+            <span class="btn-label">Contact</span>
+            <span class="btn-icon">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </span>
+          </a>
+          <button class="nav-hamburger" id="navHamburger" aria-label="Toggle Menu">
+            <span></span><span></span><span></span>
+          </button>
+        </div>
+      </nav>
+
+      <!-- ========== CASE STUDY DETAIL CONTENT ========== -->
+      <main class="case-study-detail-page" style="padding: 160px 0 100px; min-height: 100vh;">
+        <div class="container" style="max-width: 900px; margin: 0 auto; padding: 0 24px;">
+          
+          <a href="/case-study.html" style="color: var(--accent); text-decoration: none; font-size: 0.9rem; margin-bottom: 24px; display: inline-block;">
+            <i class="fa-solid fa-arrow-left" style="margin-right: 8px;"></i> Back to Case Studies
+          </a>
+
+          <h1 style="font-family: var(--font-heading); font-size: 3.5rem; margin-bottom: 24px;">AI-Powered Brand-Style Image Generation System</h1>
+          
+          <div style="display: flex; gap: 40px; margin-bottom: 60px; border-top: 1px solid rgba(255,255,255,0.1); border-bottom: 1px solid rgba(255,255,255,0.1); padding: 24px 0; flex-wrap: wrap;">
+            <div>
+              <strong style="color: var(--text-secondary); font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px;">Industry</strong>
+              <p style="font-size: 1.1rem; margin-top: 8px;">Creative & Brand Design</p>
+            </div>
+            <div>
+              <strong style="color: var(--text-secondary); font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px;">Client</strong>
+              <p style="font-size: 1.1rem; margin-top: 8px;">Premium Creative Agency</p>
+            </div>
+            <div>
+              <strong style="color: var(--text-secondary); font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px;">Tech Stack</strong>
+              <p style="font-size: 1.1rem; margin-top: 8px;">n8n, Gemini AI, Supabase, Multi-Model APIs</p>
+            </div>
+          </div>
+
+          <div class="cs-content" style="line-height: 1.8; font-size: 1.1rem; color: rgba(255,255,255,0.8);">
+
+            <h2 style="font-family: var(--font-heading); font-size: 2rem; color: #fff; margin: 40px 0 20px;">The Challenge</h2>
+            <p style="margin-bottom: 20px;">A fast-growing creative brand needed a way to generate unlimited on-brand images without manually crafting style prompts for every request. Their design team had built a signature visual identity across 15+ reference images but replicating that same cinematography, lighting language, and texture identity was inconsistent and time-consuming.</p>
+            <p style="margin-bottom: 20px;">They wanted a solution that could learn the brand's style, store it, and automatically apply it to any new user-generated prompt—all while maintaining aesthetic consistency, camera logic, and the brand's "old-money, luxury, retro" vibe.</p>
+
+            <h2 style="font-family: var(--font-heading); font-size: 2rem; color: #fff; margin: 40px 0 20px;">The Solution</h2>
+            <p style="margin-bottom: 20px;">Our team built a fully automated style-extraction and image-generation engine powered by n8n, Gemini AI, Supabase, and multi-model image generation APIs, delivering 100% consistent brand-style images on demand.</p>
+
+            <img src="/assets/casestudy/imagegeneration/image_er.jpg" alt="System Architecture & Data Flow" style="width: 100%; border-radius: 12px; margin: 40px 0;" />
+            <p style="text-align: center; font-size: 0.9rem; color: var(--text-secondary); margin-top: -30px; margin-bottom: 40px;">System Architecture & Data Flow</p>
+
+            <h3 style="font-family: var(--font-heading); font-size: 1.5rem; color: #fff; margin: 30px 0 15px;">Phase 1: Perfect Style Extraction</h3>
+            <p style="margin-bottom: 10px;"><strong>Trigger:</strong> System ingests 15+ reference images and performs deep cinematic style extraction using Gemini's multimodal capabilities.</p>
+            
+            <p style="margin-bottom: 10px;"><strong>High-precision camera logic breakdown:</strong> Lens compression, framing rhythm, angle behavior, bloom, contrast physics.</p>
+            <p style="margin-bottom: 10px;"><strong>Lighting identity analysis:</strong> Warm sunset hues, side-lit highlights, retro glow falloff.</p>
+            <p style="margin-bottom: 10px;"><strong>Texture & material fingerprinting:</strong> Wood varnish details, fabric tension, micro-scratches, oil-sheen physics.</p>
+            <p style="margin-bottom: 20px;"><strong>Imperfection pattern capture:</strong> Analog dust, chromatic fringe, bloom leaks, atmospheric haze.</p>
+            <p style="margin-bottom: 20px;"><strong>Brand Visual DNA Library:</strong> Each extracted style is stored in Supabase as structured text linked to the image filename, creating a permanent repository of the brand's aesthetic DNA.</p>
+
+            <h3 style="font-family: var(--font-heading); font-size: 1.5rem; color: #fff; margin: 30px 0 15px;">Phase 2: Object Recognition for Context Matching</h3>
+            <p style="margin-bottom: 10px;"><strong>Trigger:</strong> When a user submits a prompt, the system automatically scans the entire stored dataset.</p>
+            <p style="margin-bottom: 10px;"><strong>Semantic Content Analysis:</strong> Finds the closest matching reference image and extracts its semantic content.</p>
+            <p style="margin-bottom: 10px;"><strong>Best-Aligned Style Selection:</strong> Returns the best-aligned style description ensuring every new output matches the correct style segment, not a random generic one.</p>
+            <p style="margin-bottom: 10px;"><strong>Intelligent Matching Technology:</strong> The model uses:</p>
+            <ul style="margin-bottom: 20px; list-style-type: disc; margin-left: 20px;">
+              <li>Gemini semantic vision analysis</li>
+              <li>Supabase database lookup</li>
+              <li>A reasoning layer that selects the single best reference match (not multiple)</li>
+            </ul>
+
+            <h3 style="font-family: var(--font-heading); font-size: 1.5rem; color: #fff; margin: 30px 0 15px;">Phase 3: Final Image Generation Engine</h3>
+            <p style="margin-bottom: 10px;"><strong>Trigger:</strong> Once the system has compiled user prompt, matching style, aesthetic motifs, imperfection profile, camera DNA, and lighting rules.</p>
+            <p style="margin-bottom: 10px;"><strong>Alpha-Prompt Engineering:</strong> The system merges all elements into a single Alpha-Prompt, built by an advanced prompt-engineering agent inside n8n.</p>
+            <p style="margin-bottom: 10px;"><strong>Multi-Model Generation:</strong> The Alpha-Prompt is sent simultaneously to multiple models:</p>
+            <ul style="margin-bottom: 20px; list-style-type: disc; margin-left: 20px;">
+              <li>Google Gemini 2.5 Flash Image</li>
+              <li>Imagen 4</li>
+              <li>Nano Banana Pro</li>
+              <li>Ideogram V3</li>
+              <li>Grok Imagine</li>
+            </ul>
+            <p style="margin-bottom: 10px;"><strong>Consistent Brand Identity:</strong> Each model returns a variation with the same brand identity preserved.</p>
+            <p style="margin-bottom: 20px;"><strong>Automated Asset Delivery:</strong> The best output(s) are uploaded to Google Drive, ready for delivery.</p>
+
+            <img src="/assets/casestudy/imagegeneration/image_n8n.jpg" alt="n8n Workflow Implementation" style="width: 100%; border-radius: 12px; margin: 40px 0;" />
+            <p style="text-align: center; font-size: 0.9rem; color: var(--text-secondary); margin-top: -30px; margin-bottom: 40px;">n8n Workflow Implementation</p>
+
+            <h2 style="font-family: var(--font-heading); font-size: 2rem; color: #fff; margin: 40px 0 20px;">Return on Investment</h2>
+            <p style="margin-bottom: 20px;">This system transforms a brand's scattered visual identity into a centralized, automated engine capable of generating endless on-brand images with perfect cinematic consistency.</p>
+            
+            <p style="margin-bottom: 10px;"><strong>Quantifiable Impact:</strong></p>
+            <ul style="margin-bottom: 20px; list-style-type: disc; margin-left: 20px;">
+              <li><strong>Zero Manual Effort:</strong> Style extraction and camera logic are handled completely automatically</li>
+              <li><strong>Perfect Consistency:</strong> Every output carries the same "old-money, generational wealth, retro luxury" aesthetic</li>
+              <li><strong>Unlimited Scalability:</strong> Teams can generate 1000+ images/day with zero additional cost or design effort</li>
+              <li><strong>Unified Brand Language:</strong> Style extraction and motif consistency ensure the brand's entire catalog looks handcrafted by one creative director</li>
+              <li><strong>Multi-Model Robustness:</strong> If one model fails or delays, parallel pipelines guarantee delivery</li>
+            </ul>
+
+            <blockquote style="border-left: 4px solid var(--accent); padding-left: 20px; margin: 40px 0; font-style: italic; color: #fff;">
+              <p style="margin-bottom: 10px;">"This system transforms brand image generation from a bottleneck into an infinite-capacity automation engine, preserving creative vision while enabling unlimited production at zero additional cost."</p>
+              <footer style="font-size: 0.9rem; color: var(--text-secondary);">— Creative Direction Team</footer>
+            </blockquote>
+
+            <p style="margin-bottom: 20px; font-weight: 600;">This system eliminates guesswork, reduces design load to zero, and guarantees the brand's aesthetic DNA is preserved across every asset—no matter who uses the tool.</p>
+
+          </div>
+        </div>
+      </main>
+
+      <!-- ========== FOOTER ========== -->
+      <footer class="site-footer" id="footer">
+        <div class="footer-container">
+          <div class="footer-inner">
+            <div class="footer-top-right">
+              <div class="footer-socials">
+                <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a>
+                <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                <a href="#" class="social-link"><i class="fab fa-youtube"></i></a>
+              </div>
+            </div>
+            <div class="footer-content">
+              <div class="footer-cta">
+                <div class="footer-logo-hex">
+                  <img src="/assets/logos/a2blogowhite.png" alt="A2B Logo" />
+                </div>
+                <h2 class="footer-title">A2B AI Technologies™</h2>
+                <p class="footer-desc">An elite AI agency helping you build a smarter future through Agentic Coding, AI Workflows, and Enterprise Automation.</p>
+                <a href="/contact.html" class="btn-arrow footer-btn">
+                  <span class="btn-label">Start Your AI Journey</span>
+                  <div class="btn-icon">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <path d="M5 12h14M12 5l7 7-7 7"/>
+                    </svg>
+                  </div>
+                </a>
+                <hr class="footer-divider" />
+                <div class="footer-contact-info">
+                  <a href="mailto:a2b.business.official@gmail.com" class="footer-email">a2b.business.official@gmail.com</a>
+                  <p class="footer-location">Trivandrum · Kerala · India</p>
+                </div>
+              </div>
+              <div class="footer-links-wrapper">
+                <div class="footer-link-col">
+                  <h4 class="footer-col-title">Services</h4>
+                  <a href="#">AI Strategy</a>
+                  <a href="#">Agentic Coding</a>
+                </div>
+                <div class="footer-link-col">
+                  <h4 class="footer-col-title">Useful Links</h4>
+                  <a href="/contact.html">Contact Us</a>
+                  <a href="/case-study.html">Case Studies</a>
+                </div>
+                <div class="footer-link-col">
+                  <h4 class="footer-col-title">Company</h4>
+                  <a href="/about.html">About</a>
+                </div>
+              </div>
+            </div>
+            <div class="footer-bottom">
+              <div class="footer-copyright">
+                ©2026 A2B AI Technologies
+              </div>
+            </div>
+          </div>
+        </div>
+      </footer>
+
+    </div>
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>

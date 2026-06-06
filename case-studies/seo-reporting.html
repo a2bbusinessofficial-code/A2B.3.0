@@ -1,0 +1,227 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="A2B Case Study - Automated SEO Reporting System for Freelance Consultant" />
+    <title>Automated SEO Reporting System — A2B AI Technologies</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+    
+    <link rel="stylesheet" href="/src/style.css" />
+  </head>
+  <body>
+    <div id="app">
+
+      <!-- ========== NAVBAR ========== -->
+      <nav class="navbar" id="navbar">
+        <div class="nav-container">
+          <a href="/" class="nav-logo" aria-label="A2B Home">
+            <img src="/assets/logos/a2blogowhite.png" alt="A2B Logo" class="nav-logo-img" width="42" height="42" />
+            <span class="nav-logo-text">A2B</span>
+          </a>
+          <div class="nav-links" id="navLinks">
+            <a href="/" class="nav-link">Home <span class="nav-slash"></span></a>
+            <a href="/product.html" class="nav-link">Product <span class="nav-slash"></span></a>
+            <a href="/service.html" class="nav-link">Service <span class="nav-slash"></span></a>
+            <a href="/case-study.html" class="nav-link active">Case Study <span class="nav-slash"></span></a>
+            <div class="nav-dropdown-wrapper" id="resourcesDropdown">
+              <button class="nav-link nav-dropdown-btn">Resources <span class="nav-slash"></span></button>
+              <div class="nav-dropdown-menu mega-menu">
+                <div class="mega-menu-left">
+                  <div class="mega-menu-label">
+                    <svg width="12" height="12" viewBox="0 0 44 44" fill="var(--accent)" xmlns="http://www.w3.org/2000/svg">
+                      <polygon points="22,1 43,11 43,33 22,43 1,33 1,11" />
+                    </svg>
+                    RESOURCES
+                  </div>
+                  <div class="mega-links">
+                    <a href="/blog" class="mega-link" data-title="Field notes & Breakdowns" data-desc="Read our latest articles on agentic workflows, enterprise AI strategy, and building autonomous systems.">Blog</a>
+                    <a href="/youtube" class="mega-link" data-title="Walkthroughs & Live Builds" data-desc="Watch our engineers build live, break down complex AI agents, and give product deep-dives on our channel.">YouTube</a>
+                  </div>
+                </div>
+                <div class="mega-menu-right">
+                  <div class="mega-content">
+                    <h3 class="mega-title">"We partner with brands to move the world through tech, design and strategy."</h3>
+                    <p class="mega-desc">Dive into our field notes, video walkthroughs, and frameworks on AI-native operations to build a smarter future.</p>
+                  </div>
+                  <a href="/contact.html" class="btn-arrow mega-contact-btn">
+                    <span class="btn-label">Contact Us</span>
+                    <span class="btn-icon">
+                      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                    </span>
+                  </a>
+                </div>
+              </div>
+            </div>
+            <a href="/about.html" class="nav-link">About <span class="nav-slash"></span></a>
+          </div>
+          <a href="/contact.html" class="btn-arrow nav-cta" id="navCta">
+            <span class="btn-label">Contact</span>
+            <span class="btn-icon">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </span>
+          </a>
+          <button class="nav-hamburger" id="navHamburger" aria-label="Toggle Menu">
+            <span></span><span></span><span></span>
+          </button>
+        </div>
+      </nav>
+
+      <!-- ========== CASE STUDY DETAIL CONTENT ========== -->
+      <main class="case-study-detail-page" style="padding: 160px 0 100px; min-height: 100vh;">
+        <div class="container" style="max-width: 900px; margin: 0 auto; padding: 0 24px;">
+          
+          <a href="/case-study.html" style="color: var(--accent); text-decoration: none; font-size: 0.9rem; margin-bottom: 24px; display: inline-block;">
+            <i class="fa-solid fa-arrow-left" style="margin-right: 8px;"></i> Back to Case Studies
+          </a>
+
+          <h1 style="font-family: var(--font-heading); font-size: 3.5rem; margin-bottom: 24px;">Automated SEO Reporting System</h1>
+          
+          <div style="display: flex; gap: 40px; margin-bottom: 60px; border-top: 1px solid rgba(255,255,255,0.1); border-bottom: 1px solid rgba(255,255,255,0.1); padding: 24px 0; flex-wrap: wrap;">
+            <div>
+              <strong style="color: var(--text-secondary); font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px;">Industry</strong>
+              <p style="font-size: 1.1rem; margin-top: 8px;">Digital Marketing & SEO</p>
+            </div>
+            <div>
+              <strong style="color: var(--text-secondary); font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px;">Client</strong>
+              <p style="font-size: 1.1rem; margin-top: 8px;">Freelance SEO Consultant</p>
+            </div>
+            <div>
+              <strong style="color: var(--text-secondary); font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px;">Tech Stack</strong>
+              <p style="font-size: 1.1rem; margin-top: 8px;">n8n, Google APIs, OpenAI GPT, PDFLayer, QuickChart.io</p>
+            </div>
+          </div>
+
+          <div class="cs-content" style="line-height: 1.8; font-size: 1.1rem; color: rgba(255,255,255,0.8);">
+
+            <h2 style="font-family: var(--font-heading); font-size: 2rem; color: #fff; margin: 40px 0 20px;">The Challenge</h2>
+            <p style="margin-bottom: 20px;">Melvin C V, a freelance digital marketing and n8n automation consultant based in Kochi, Kerala, faced a critical time-management challenge. For each of his clients, producing a single monthly SEO report consumed 2 to 3 full working days of manual effort.</p>
+            <p style="margin-bottom: 20px;">The process involved logging into Google Search Console and Google Analytics, exporting data, cross-referencing metrics across platforms with different date formats and export structures, building charts, calculating month-over-month comparisons, writing interpretive insights, formatting everything into a professional PDF, and finally reviewing and sending it to the client.</p>
+            <p style="margin-bottom: 20px;">For a consultant managing multiple clients, this meant reporting season consumed an unsustainable proportion of productive work hours — time that could have been invested in strategy, business development, or serving additional clients. The manual process also carried risks of human error in data entry, inconsistent report quality across months, and a hard scalability ceiling where more clients meant more days lost.</p>
+
+            <h2 style="font-family: var(--font-heading); font-size: 2rem; color: #fff; margin: 40px 0 20px;">The Solution</h2>
+            <p style="margin-bottom: 20px;">A2B designed and built a comprehensive, end-to-end automated SEO reporting system using n8n as the core workflow orchestration platform. The solution integrates Google Search Console, Google Analytics 4, an AI language model (OpenAI GPT), a PDF rendering service (PDFLayer), and Gmail delivery — all triggered automatically on a weekly schedule. The architecture was designed around three guiding principles: zero manual intervention after initial setup, consistent professional-grade output every time, and AI-powered intelligence that adds genuine analytical value beyond raw data. The result: a reporting process that previously consumed 2 to 3 working days was reduced to under 30 seconds.</p>
+
+            <img src="/assets/casestudy/seoreport/flow_seo.webp" alt="SEO Report Workflow Diagram: System Architecture & Data Flow" style="width: 100%; border-radius: 12px; margin: 40px 0;" />
+            <p style="text-align: center; font-size: 0.9rem; color: var(--text-secondary); margin-top: -30px; margin-bottom: 40px;">System Architecture & Data Flow</p>
+
+            <h3 style="font-family: var(--font-heading); font-size: 1.5rem; color: #fff; margin: 30px 0 15px;">Phase 1: Trigger & Parallel Data Collection</h3>
+            <p style="margin-bottom: 10px;"><strong>Trigger:</strong> n8n Scheduler fires every Monday at 8:00 AM automatically.</p>
+            
+            <p style="margin-bottom: 10px;"><strong>Dynamic Configuration:</strong> A Configuration node sets all required variables: site URL, current month's date range, and previous month's date range. Dynamic date calculation ensures the report always covers the correct comparison window without any manual intervention.</p>
+            <p style="margin-bottom: 10px;"><strong>10 Parallel API Streams:</strong> The configuration fans out to ten parallel API calls simultaneously: GSC Overview (current & previous month), GSC Date Breakdown, GSC Queries (current & previous), GSC Pages (current & previous), GSC Devices, GSC Countries, and Google Analytics 4 (sessions, engagement rate, channel breakdown).</p>
+            <p style="margin-bottom: 20px;"><strong>Data Normalisation & Merge:</strong> Each of the ten data streams passes through dedicated Split and Format nodes that extract, clean, and standardise the raw API response. All ten formatted streams are then merged into a single unified data payload via a 10-input Merge node.</p>
+
+            <h3 style="font-family: var(--font-heading); font-size: 1.5rem; color: #fff; margin: 30px 0 15px;">Phase 2: AI Analysis & Report Generation</h3>
+            <p style="margin-bottom: 10px;"><strong>Trigger:</strong> Merged data payload passed to AI engine and HTML renderer.</p>
+            
+            <p style="margin-bottom: 10px;"><strong>AI-Powered SEO Insights:</strong> The merged data is passed to OpenAI GPT with a carefully engineered system prompt instructing it to act as a data-driven SEO insights analyst. The model produces 5 to 8 specific, actionable insight bullet points referencing actual metrics, identifying trends, highlighting anomalies, and recommending concrete next steps.</p>
+            <p style="margin-bottom: 10px;"><strong>Professional HTML Report Assembly:</strong> A custom JavaScript code node assembles the complete HTML report: KPI cards with month-over-month comparisons, AI insights section, Google Analytics channel tables, interactive performance trend charts (via QuickChart.io), top pages and keywords tables, device breakdowns, and geographic data.</p>
+            <p style="margin-bottom: 20px;"><strong>PDF Conversion & Delivery:</strong> The HTML is converted to a polished PDF via PDFLayer's API, then automatically sent via Gmail. Melvin receives a ready-to-share, client-quality SEO performance report in his inbox every Monday morning — without touching a single keyboard shortcut.</p>
+
+            <h3 style="font-family: var(--font-heading); font-size: 1.5rem; color: #fff; margin: 30px 0 15px;">Phase 3: Report Output & Content Structure</h3>
+            <p style="margin-bottom: 10px;"><strong>Trigger:</strong> Final PDF generated with all sections compiled.</p>
+            
+            <p style="margin-bottom: 10px;"><strong>KPI Summary Cards:</strong> Four headline metrics — Clicks, Impressions, CTR, and Average Position — each displayed with month-over-month percentage change and directional arrows. Color-coded green/red indicators make performance status instantly legible.</p>
+            <p style="margin-bottom: 10px;"><strong>Performance Trend Charts:</strong> Two line charts — one for daily Impressions and one for daily Clicks — covering the full reporting period, rendered via QuickChart.io and embedded directly in the PDF.</p>
+            <p style="margin-bottom: 20px;"><strong>Top Pages, Keywords & Geography:</strong> Top 10 highest-traffic pages and search queries ranked by organic clicks with full performance metrics. Traffic breakdown by device type (mobile, desktop, tablet) and top 10 countries by organic click volume.</p>
+
+            <img src="/assets/casestudy/seoreport/n8n_seo.webp" alt="n8n Workflow Implementation" style="width: 100%; border-radius: 12px; margin: 40px 0;" />
+            <p style="text-align: center; font-size: 0.9rem; color: var(--text-secondary); margin-top: -30px; margin-bottom: 40px;">n8n Workflow Implementation</p>
+
+            <h2 style="font-family: var(--font-heading); font-size: 2rem; color: #fff; margin: 40px 0 20px;">Return on Investment</h2>
+            <p style="margin-bottom: 20px;">The results were immediate, measurable, and transformative. The workflow runs in production delivering professional SEO reports on schedule without a single manual step required.</p>
+            
+            <p style="margin-bottom: 10px;"><strong>Quantified Results:</strong></p>
+            <ul style="margin-bottom: 20px; list-style-type: disc; margin-left: 20px;">
+              <li><strong>Time per Report:</strong> 2–3 working days → Under 30 seconds</li>
+              <li><strong>Manual Steps Required:</strong> 7+ distinct steps → Zero</li>
+              <li><strong>Human Error Risk:</strong> High (manual data entry) → Eliminated</li>
+              <li><strong>Report Consistency:</strong> Variable quality → 100% consistent</li>
+              <li><strong>Reporting Frequency:</strong> Monthly (resource-limited) → Weekly (automated)</li>
+              <li><strong>AI Analysis:</strong> None → 5–8 actionable insights per report</li>
+              <li><strong>Scalability:</strong> Linear time increase per client → Negligible marginal cost</li>
+            </ul>
+
+            <p style="margin-bottom: 20px;"><strong>ROI Analysis:</strong> Manual reporting consumed approximately 10 working days per month (2.5 days × 4 weekly reports) — that's 50% of a full working month. After automation, the same output requires 2 minutes of total machine time per month. 10 working days of productive capacity are reclaimed every single month, enabling new client acquisition, service expansion, and business growth.</p>
+
+            <blockquote style="border-left: 4px solid var(--accent); padding-left: 20px; margin: 40px 0; font-style: italic; color: #fff;">
+              <p style="margin-bottom: 10px;">"Hi, I'm Melvin, a freelance digital marketing and n8n consultant based in Kochi, Kerala. I needed an AI automation workflow that could pull data from Google Search Console and Google Analytics to generate weekly SEO reports for my clients. I came across Rahul, CEO of A2B AI Technologies in Trivandrum, through Reddit. I quickly connected with him and explained my requirements. Rahul understood the project immediately, started work right away, and kept me updated with daily progress. I'm really impressed with his dedication, responsiveness, and attention to detail. Earlier, it used to take me 2 to 3 days to prepare a monthly SEO report. Now, it takes just minutes. That's a huge time saver. If you're looking to automate your workflows, I highly recommend Rahul. You won't be disappointed."</p>
+              <footer style="font-size: 0.9rem; color: var(--text-secondary);">— Melvin C V, Freelance SEO & n8n Automation Consultant, Kochi, Kerala</footer>
+            </blockquote>
+
+            <p style="margin-bottom: 20px; font-weight: 600;">This case study demonstrates what intelligent automation can achieve when applied to a well-defined, high-friction business problem. The automation didn't just save time — it changed the ceiling of what is achievable for a freelance consultant.</p>
+
+          </div>
+        </div>
+      </main>
+
+      <!-- ========== FOOTER ========== -->
+      <footer class="site-footer" id="footer">
+        <div class="footer-container">
+          <div class="footer-inner">
+            <div class="footer-top-right">
+              <div class="footer-socials">
+                <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a>
+                <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                <a href="#" class="social-link"><i class="fab fa-youtube"></i></a>
+              </div>
+            </div>
+            <div class="footer-content">
+              <div class="footer-cta">
+                <div class="footer-logo-hex">
+                  <img src="/assets/logos/a2blogowhite.png" alt="A2B Logo" />
+                </div>
+                <h2 class="footer-title">A2B AI Technologies™</h2>
+                <p class="footer-desc">An elite AI agency helping you build a smarter future through Agentic Coding, AI Workflows, and Enterprise Automation.</p>
+                <a href="/contact.html" class="btn-arrow footer-btn">
+                  <span class="btn-label">Start Your AI Journey</span>
+                  <div class="btn-icon">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <path d="M5 12h14M12 5l7 7-7 7"/>
+                    </svg>
+                  </div>
+                </a>
+                <hr class="footer-divider" />
+                <div class="footer-contact-info">
+                  <a href="mailto:a2b.business.official@gmail.com" class="footer-email">a2b.business.official@gmail.com</a>
+                  <p class="footer-location">Trivandrum · Kerala · India</p>
+                </div>
+              </div>
+              <div class="footer-links-wrapper">
+                <div class="footer-link-col">
+                  <h4 class="footer-col-title">Services</h4>
+                  <a href="#">AI Strategy</a>
+                  <a href="#">Agentic Coding</a>
+                </div>
+                <div class="footer-link-col">
+                  <h4 class="footer-col-title">Useful Links</h4>
+                  <a href="/contact.html">Contact Us</a>
+                  <a href="/case-study.html">Case Studies</a>
+                </div>
+                <div class="footer-link-col">
+                  <h4 class="footer-col-title">Company</h4>
+                  <a href="/about.html">About</a>
+                </div>
+              </div>
+            </div>
+            <div class="footer-bottom">
+              <div class="footer-copyright">
+                ©2026 A2B AI Technologies
+              </div>
+            </div>
+          </div>
+        </div>
+      </footer>
+
+    </div>
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>

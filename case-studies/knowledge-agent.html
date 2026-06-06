@@ -1,0 +1,215 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="A2B Case Study - Multimodal AI Intake and Knowledge Agent for Enterprise Integration" />
+    <title>Multimodal AI Knowledge Agent — A2B AI Technologies</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+    
+    <link rel="stylesheet" href="/src/style.css" />
+  </head>
+  <body>
+    <div id="app">
+
+      <!-- ========== NAVBAR ========== -->
+      <nav class="navbar" id="navbar">
+        <div class="nav-container">
+          <a href="/" class="nav-logo" aria-label="A2B Home">
+            <img src="/assets/logos/a2blogowhite.png" alt="A2B Logo" class="nav-logo-img" width="42" height="42" />
+            <span class="nav-logo-text">A2B</span>
+          </a>
+          <div class="nav-links" id="navLinks">
+            <a href="/" class="nav-link">Home <span class="nav-slash"></span></a>
+            <a href="/product.html" class="nav-link">Product <span class="nav-slash"></span></a>
+            <a href="/service.html" class="nav-link">Service <span class="nav-slash"></span></a>
+            <a href="/case-study.html" class="nav-link active">Case Study <span class="nav-slash"></span></a>
+            <div class="nav-dropdown-wrapper" id="resourcesDropdown">
+              <button class="nav-link nav-dropdown-btn">Resources <span class="nav-slash"></span></button>
+              <div class="nav-dropdown-menu mega-menu">
+                <div class="mega-menu-left">
+                  <div class="mega-menu-label">
+                    <svg width="12" height="12" viewBox="0 0 44 44" fill="var(--accent)" xmlns="http://www.w3.org/2000/svg">
+                      <polygon points="22,1 43,11 43,33 22,43 1,33 1,11" />
+                    </svg>
+                    RESOURCES
+                  </div>
+                  <div class="mega-links">
+                    <a href="/blog" class="mega-link" data-title="Field notes & Breakdowns" data-desc="Read our latest articles on agentic workflows, enterprise AI strategy, and building autonomous systems.">Blog</a>
+                    <a href="/youtube" class="mega-link" data-title="Walkthroughs & Live Builds" data-desc="Watch our engineers build live, break down complex AI agents, and give product deep-dives on our channel.">YouTube</a>
+                  </div>
+                </div>
+                <div class="mega-menu-right">
+                  <div class="mega-content">
+                    <h3 class="mega-title">"We partner with brands to move the world through tech, design and strategy."</h3>
+                    <p class="mega-desc">Dive into our field notes, video walkthroughs, and frameworks on AI-native operations to build a smarter future.</p>
+                  </div>
+                  <a href="/contact.html" class="btn-arrow mega-contact-btn">
+                    <span class="btn-label">Contact Us</span>
+                    <span class="btn-icon">
+                      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                    </span>
+                  </a>
+                </div>
+              </div>
+            </div>
+            <a href="/about.html" class="nav-link">About <span class="nav-slash"></span></a>
+          </div>
+          <a href="/contact.html" class="btn-arrow nav-cta" id="navCta">
+            <span class="btn-label">Contact</span>
+            <span class="btn-icon">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </span>
+          </a>
+          <button class="nav-hamburger" id="navHamburger" aria-label="Toggle Menu">
+            <span></span><span></span><span></span>
+          </button>
+        </div>
+      </nav>
+
+      <!-- ========== CASE STUDY DETAIL CONTENT ========== -->
+      <main class="case-study-detail-page" style="padding: 160px 0 100px; min-height: 100vh;">
+        <div class="container" style="max-width: 900px; margin: 0 auto; padding: 0 24px;">
+          
+          <a href="/case-study.html" style="color: var(--accent); text-decoration: none; font-size: 0.9rem; margin-bottom: 24px; display: inline-block;">
+            <i class="fa-solid fa-arrow-left" style="margin-right: 8px;"></i> Back to Case Studies
+          </a>
+
+          <h1 style="font-family: var(--font-heading); font-size: 3.5rem; margin-bottom: 24px;">Multimodal AI Intake and Knowledge Agent</h1>
+          
+          <div style="display: flex; gap: 40px; margin-bottom: 60px; border-top: 1px solid rgba(255,255,255,0.1); border-bottom: 1px solid rgba(255,255,255,0.1); padding: 24px 0; flex-wrap: wrap;">
+            <div>
+              <strong style="color: var(--text-secondary); font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px;">Industry</strong>
+              <p style="font-size: 1.1rem; margin-top: 8px;">Enterprise Knowledge Management</p>
+            </div>
+            <div>
+              <strong style="color: var(--text-secondary); font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px;">Client</strong>
+              <p style="font-size: 1.1rem; margin-top: 8px;">Enterprise Integration</p>
+            </div>
+            <div>
+              <strong style="color: var(--text-secondary); font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px;">Tech Stack</strong>
+              <p style="font-size: 1.1rem; margin-top: 8px;">n8n, OpenAI, MongoDB, Supabase, LangChain</p>
+            </div>
+          </div>
+
+          <div class="cs-content" style="line-height: 1.8; font-size: 1.1rem; color: rgba(255,255,255,0.8);">
+
+            <h2 style="font-family: var(--font-heading); font-size: 2rem; color: #fff; margin: 40px 0 20px;">The Challenge</h2>
+            <p style="margin-bottom: 20px;">Many teams receive customer questions and assets (voice notes, images, PDFs, spreadsheets) through messaging channels like WhatsApp, but lack an automated, consistent way to parse the content, extract structured information, index it for search, and answer follow-ups with context. Manual handling is slow, error-prone, and doesn't scale.</p>
+
+            <h2 style="font-family: var(--font-heading); font-size: 2rem; color: #fff; margin: 40px 0 20px;">The Solution</h2>
+            <p style="margin-bottom: 20px;">This n8n workflow automates end-to-end multimodal intake and retrieval: accepts messages from WhatsApp (text, audio, image, document), routes media by type, uses OpenAI multimodal APIs to transcribe audio and analyze images, extracts document content, normalises prompts, generates embeddings, and stores them in a vector index. A LangChain-style Knowledge Base Agent with short-term memory retrieves context and answers user queries via WhatsApp.</p>
+
+            <img src="/assets/casestudy/rag/RAG_ARC.jpg" alt="Multimodal Intake Architecture" style="width: 100%; border-radius: 12px; margin: 40px 0;" />
+            <p style="text-align: center; font-size: 0.9rem; color: var(--text-secondary); margin-top: -30px; margin-bottom: 40px;">Multimodal Intake Architecture</p>
+
+            <h3 style="font-family: var(--font-heading); font-size: 1.5rem; color: #fff; margin: 30px 0 15px;">Solution Overview: Multimodal Intake</h3>
+            <p style="margin-bottom: 10px;"><strong>Trigger:</strong> WhatsApp message ingestion with automatic media type detection and routing.</p>
+            
+            <p style="margin-bottom: 10px;"><strong>WhatsApp Trigger & Route Types:</strong> Receives webhook, inspects message type (text/audio/image/document), and routes to appropriate processing branch.</p>
+            <p style="margin-bottom: 10px;"><strong>Media Download Pipeline:</strong> Gets WhatsApp media URLs and downloads raw bytes for audio, images, and documents.</p>
+            <p style="margin-bottom: 10px;"><strong>Type-Specific Processing:</strong> OpenAI audio translate for voicemail, image analyze for visual content, and native extractors (PDF/XLS/XLSX) for documents.</p>
+            <p style="margin-bottom: 20px;"><strong>Unified Prompt Mapping:</strong> Standardizes all input types into a canonical JSON prompt sent to the Knowledge Base Agent.</p>
+
+            <h3 style="font-family: var(--font-heading); font-size: 1.5rem; color: #fff; margin: 30px 0 15px;">Key Components & Data Flow</h3>
+            <p style="margin-bottom: 10px;"><strong>Trigger:</strong> Structured extraction and embedding generation for vector storage.</p>
+            
+            <p style="margin-bottom: 10px;"><strong>Document Type Routing & Extraction:</strong> Switch node routes documents by mime type; specialized extractors handle PDF, XLS, XLSX, JSON, CSV with output mapped to unified JSON schema.</p>
+            <p style="margin-bottom: 10px;"><strong>Embeddings & Vector Storage:</strong> OpenAI embeddings are generated and stored in MongoDB Atlas vector collection (data_index) for semantic retrieval.</p>
+            <p style="margin-bottom: 10px;"><strong>Knowledge Base Agent (LangChain):</strong> Receives unified prompt, consults vector store via productDocs tool, references short-term memory buffer, and uses gpt-4o-mini to compose context-aware answers.</p>
+            <p style="margin-bottom: 20px;"><strong>Short-Term Memory (memoryBufferWindow):</strong> Conversation history keyed per WhatsApp user ID enables agent to reference recent messages within the session.</p>
+
+            <h3 style="font-family: var(--font-heading); font-size: 1.5rem; color: #fff; margin: 30px 0 15px;">Data Flow (Step-by-Step)</h3>
+            <p style="margin-bottom: 10px;"><strong>Trigger:</strong> End-to-end message processing from WhatsApp ingestion to response delivery.</p>
+            
+            <p style="margin-bottom: 10px;"><strong>Steps 1–3: Ingestion & Media Download:</strong> User sends WhatsApp message → Trigger + Route Types → Download media bytes if needed.</p>
+            <p style="margin-bottom: 10px;"><strong>Steps 4–6: Content Extraction:</strong> Audio → OpenAI translate → text; Image → analyze → description; Document → type-route → extractor → structured data.</p>
+            <p style="margin-bottom: 10px;"><strong>Step 7: Unified Prompt:</strong> All branches converge into single JSON: text (standardised), metadata (mime type, caption, sender ID).</p>
+            <p style="margin-bottom: 20px;"><strong>Steps 8–10: Retrieval & Response:</strong> Agent queries vector store (MongoDB), generates answer using gpt-4o-mini with memory context, sends WhatsApp reply.</p>
+
+            <img src="/assets/casestudy/rag/RAG.jpg" alt="End-to-End Data Processing Flow" style="width: 100%; border-radius: 12px; margin: 40px 0;" />
+            <p style="text-align: center; font-size: 0.9rem; color: var(--text-secondary); margin-top: -30px; margin-bottom: 40px;">End-to-End Data Processing Flow</p>
+
+            <h2 style="font-family: var(--font-heading); font-size: 2rem; color: #fff; margin: 40px 0 20px;">Return on Investment</h2>
+            <p style="margin-bottom: 20px;">Eliminates manual document parsing and Q&A triage. Enables field teams, support staff, and knowledge workers to submit assets via WhatsApp and receive instant, contextual answers. Searchable knowledge base built automatically from user submissions. Reduces support response time by 80%+ and enables 24/7 instant answer capability.</p>
+
+            <blockquote style="border-left: 4px solid var(--accent); padding-left: 20px; margin: 40px 0; font-style: italic; color: #fff;">
+              <p style="margin-bottom: 10px;">"A production-ready multimodal intake engine that transforms unstructured WhatsApp submissions into searchable, context-aware knowledge on demand."</p>
+              <footer style="font-size: 0.9rem; color: var(--text-secondary);">— Enterprise Integration Team</footer>
+            </blockquote>
+
+            <p style="margin-bottom: 20px; font-weight: 600;">Converts WhatsApp messages (text, audio, images, documents) into indexed, queryable knowledge with context-aware AI-powered answers.</p>
+
+          </div>
+        </div>
+      </main>
+
+      <!-- ========== FOOTER ========== -->
+      <footer class="site-footer" id="footer">
+        <div class="footer-container">
+          <div class="footer-inner">
+            <div class="footer-top-right">
+              <div class="footer-socials">
+                <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a>
+                <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                <a href="#" class="social-link"><i class="fab fa-youtube"></i></a>
+              </div>
+            </div>
+            <div class="footer-content">
+              <div class="footer-cta">
+                <div class="footer-logo-hex">
+                  <img src="/assets/logos/a2blogowhite.png" alt="A2B Logo" />
+                </div>
+                <h2 class="footer-title">A2B AI Technologies™</h2>
+                <p class="footer-desc">An elite AI agency helping you build a smarter future through Agentic Coding, AI Workflows, and Enterprise Automation.</p>
+                <a href="/contact.html" class="btn-arrow footer-btn">
+                  <span class="btn-label">Start Your AI Journey</span>
+                  <div class="btn-icon">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <path d="M5 12h14M12 5l7 7-7 7"/>
+                    </svg>
+                  </div>
+                </a>
+                <hr class="footer-divider" />
+                <div class="footer-contact-info">
+                  <a href="mailto:a2b.business.official@gmail.com" class="footer-email">a2b.business.official@gmail.com</a>
+                  <p class="footer-location">Trivandrum · Kerala · India</p>
+                </div>
+              </div>
+              <div class="footer-links-wrapper">
+                <div class="footer-link-col">
+                  <h4 class="footer-col-title">Services</h4>
+                  <a href="#">AI Strategy</a>
+                  <a href="#">Agentic Coding</a>
+                </div>
+                <div class="footer-link-col">
+                  <h4 class="footer-col-title">Useful Links</h4>
+                  <a href="/contact.html">Contact Us</a>
+                  <a href="/case-study.html">Case Studies</a>
+                </div>
+                <div class="footer-link-col">
+                  <h4 class="footer-col-title">Company</h4>
+                  <a href="/about.html">About</a>
+                </div>
+              </div>
+            </div>
+            <div class="footer-bottom">
+              <div class="footer-copyright">
+                ©2026 A2B AI Technologies
+              </div>
+            </div>
+          </div>
+        </div>
+      </footer>
+
+    </div>
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>
