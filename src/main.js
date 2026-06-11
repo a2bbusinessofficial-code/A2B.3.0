@@ -157,7 +157,7 @@ function initNavScroll() {
         }
 
         // Dynamic light/dark mode adapting
-        const lightSections = document.querySelectorAll('.how-we-work-section, .new-white-section');
+        const lightSections = document.querySelectorAll('.how-we-work-section, .home-cs-section, .home-testimonials-section');
         let isOverLightSection = false;
         const checkY = 40; // check color roughly halfway down the navbar
 
@@ -281,6 +281,206 @@ function initCaseStudyFilters() {
   });
 }
 
+// ===== Testimonial: independent video carousel (left) + written carousel (right) =====
+function initTestimonialCarousels() {
+  // ── Video panel ──
+  const vpanel = document.getElementById('tVideoPanel');
+  if (vpanel) {
+    const track   = vpanel.querySelector('.t-vp-track');
+    const cards   = Array.from(vpanel.querySelectorAll('.t-vp-card'));
+    const dotsEl  = vpanel.querySelector('.t-dots');
+    const prevBtn = vpanel.querySelector('.t-prev');
+    const nextBtn = vpanel.querySelector('.t-next');
+    const total   = cards.length;
+    let page      = 0;
+
+    if (dotsEl) {
+      dotsEl.innerHTML = '';
+      for (let i = 0; i < total; i++) {
+        const dot = document.createElement('span');
+        dot.className = 't-dot' + (i === 0 ? ' active' : '');
+        dot.addEventListener('click', () => goVP(i));
+        dotsEl.appendChild(dot);
+      }
+    }
+
+    function goVP(p) {
+      page = Math.max(0, Math.min(p, total - 1));
+      track.style.transform = `translateX(-${page * 100}%)`;
+      dotsEl && dotsEl.querySelectorAll('.t-dot').forEach((d, i) =>
+        d.classList.toggle('active', i === page));
+      if (prevBtn) prevBtn.disabled = page === 0;
+      if (nextBtn) nextBtn.disabled = page >= total - 1;
+    }
+
+    if (prevBtn) prevBtn.addEventListener('click', () => goVP(page - 1));
+    if (nextBtn) nextBtn.addEventListener('click', () => goVP(page + 1));
+    goVP(0);
+
+    // Play button logic
+    cards.forEach(card => {
+      const video   = card.querySelector('.t-cv-video');
+      const playBtn = card.querySelector('.t-play-btn');
+      if (!video || !playBtn) return;
+      playBtn.addEventListener('click', () => {
+        video.play();
+        playBtn.classList.add('playing');
+      });
+      video.addEventListener('pause', () => playBtn.classList.remove('playing'));
+      video.addEventListener('ended', () => playBtn.classList.remove('playing'));
+    });
+  }
+
+  // ── Written panel ──
+  const wpanel = document.getElementById('tWrittenPanel');
+  if (wpanel) {
+    const track   = wpanel.querySelector('.t-wp-track');
+    const cards   = Array.from(wpanel.querySelectorAll('.t-wp-card'));
+    const dotsEl  = wpanel.querySelector('.t-wp-dots');
+    const prevBtn = wpanel.querySelector('.t-wp-prev');
+    const nextBtn = wpanel.querySelector('.t-wp-next');
+    const total   = cards.length;
+    let page      = 0;
+
+    if (dotsEl) {
+      dotsEl.innerHTML = '';
+      for (let i = 0; i < total; i++) {
+        const dot = document.createElement('span');
+        dot.className = 't-dot' + (i === 0 ? ' active' : '');
+        dot.addEventListener('click', () => goWP(i));
+        dotsEl.appendChild(dot);
+      }
+    }
+
+    function goWP(p) {
+      page = Math.max(0, Math.min(p, total - 1));
+      track.style.transform = `translateX(-${page * 100}%)`;
+      dotsEl && dotsEl.querySelectorAll('.t-dot').forEach((d, i) =>
+        d.classList.toggle('active', i === page));
+      if (prevBtn) prevBtn.disabled = page === 0;
+      if (nextBtn) nextBtn.disabled = page >= total - 1;
+    }
+
+    if (prevBtn) prevBtn.addEventListener('click', () => goWP(page - 1));
+    if (nextBtn) nextBtn.addEventListener('click', () => goWP(page + 1));
+    goWP(0);
+  }
+}
+
+/**
+ * Contact form — saves to Supabase and sends email via Web3Forms simultaneously.
+ */
+async function initContactForm() {
+  const form = document.getElementById('contactFormV2');
+  if (!form) return;
+
+  const { supabase } = await import('./supabase.js');
+  const submitBtn = document.getElementById('contactSubmitBtn');
+  const labelEl = submitBtn.querySelector('.btn-label');
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+
+    const fd = new FormData(form);
+    const data = Object.fromEntries(fd.entries());
+
+    labelEl.textContent = 'Sending…';
+    submitBtn.disabled = true;
+
+    // Build a readable subject line for the email
+    const subject = `New Contact: ${data.first_name} ${data.last_name} — ${data.company_name}`;
+
+    // 1. Save to Supabase — success is gated on this
+    const { error: dbError } = await supabase
+      .from('form_submissions')
+      .insert({ source: 'contact_form', data });
+
+    if (dbError) {
+      console.error('Supabase error:', dbError);
+      labelEl.textContent = 'Error — try again';
+      submitBtn.disabled = false;
+      return;
+    }
+
+    // 2. Fire Web3Forms in the background (non-blocking)
+    fetch('https://api.web3forms.com/submit', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+      body: JSON.stringify({
+        access_key: import.meta.env.VITE_WEB3FORMS_ACCESS_KEY,
+        subject,
+        from_name: `${data.first_name} ${data.last_name}`,
+        ...data,
+      }),
+    }).catch(err => console.error('Web3Forms error:', err));
+
+    labelEl.textContent = 'Sent!';
+    form.reset();
+    setTimeout(() => {
+      labelEl.textContent = "Let's Talk";
+      submitBtn.disabled = false;
+    }, 3000);
+  });
+}
+
+/**
+ * Free Consultancy — circular rotating-text button.
+ * Peeks from the bottom-right corner; fully reveals on hover.
+ * Clicking links to the contact page.
+ */
+function initFreeConsultationButton() {
+  if (window.location.pathname.includes('contact')) return;
+
+  const circle = document.createElement('a');
+  circle.href = '/contact.html';
+  circle.className = 'fcb-circle';
+  circle.setAttribute('aria-label', 'Book your free consultancy');
+
+  // Unique ID so multiple pages don't clash on the same textPath
+  const pathId = 'fcbTextPath';
+
+  circle.innerHTML = `
+    <svg class="fcb-ring" viewBox="0 0 200 200" aria-hidden="true">
+      <defs>
+        <path id="${pathId}"
+          d="M 100,100 m -72,0 a 72,72 0 1,1 144,0 a 72,72 0 1,1 -144,0"/>
+      </defs>
+      <text class="fcb-ring-text">
+        <textPath href="#${pathId}">
+          FREE CONSULTANCY &bull; FREE CONSULTANCY &bull;
+        </textPath>
+      </text>
+    </svg>
+    <span class="fcb-circle-inner" aria-hidden="true">
+      <svg class="fcb-arrow-svg" viewBox="0 0 24 24" fill="none"
+        stroke="currentColor" stroke-width="2.5"
+        stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M5 12h14M12 5l7 7-7 7"/>
+      </svg>
+    </span>
+  `;
+
+  document.body.appendChild(circle);
+}
+
+/**
+ * Hero Lottie animation — loads and plays heroanimation.json in the right column.
+ */
+async function initHeroAnimation() {
+  const container = document.getElementById('heroAnimation');
+  if (!container) return;
+
+  const lottie = (await import('lottie-web')).default;
+
+  lottie.loadAnimation({
+    container,
+    renderer: 'svg',
+    loop: true,
+    autoplay: true,
+    path: '/assets/hero/herotreeanime.json',
+  });
+}
+
 // ===== Initialize everything =====
 document.addEventListener('DOMContentLoaded', () => {
   initWordAnimation();
@@ -292,4 +492,8 @@ document.addEventListener('DOMContentLoaded', () => {
   initDarkTabs();
   initProcessAccordion();
   initCaseStudyFilters();
+  initTestimonialCarousels();
+  initContactForm();
+  initFreeConsultationButton();
+  initHeroAnimation();
 });

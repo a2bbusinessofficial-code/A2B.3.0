@@ -1,0 +1,938 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <style>html,body{background:#0a0a0a;margin:0;padding:0;}body{visibility:hidden;}</style>
+    <link rel="icon" type="image/x-icon" href="/assets/favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="About A2B — the team, the mission, and the conviction behind everything we build." />
+    <title>About | A2B AI Technologies</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="/src/style.css" />
+
+    <style>
+    /* ── About page: center the hero ── */
+    .hero { justify-content: center; }
+    .hero-content {
+      text-align: center;
+      max-width: 860px;
+      margin: 0 auto;
+    }
+    .hero-pills   { justify-content: center; }
+    .hero-actions { justify-content: center; }
+
+    /* ── Hero tagline script line ── */
+    .hero-tagline-script {
+      font-family: 'Dancing Script', cursive;
+      font-size: clamp(1.2rem, 2vw, 1.6rem);
+      color: #00c853;
+      margin: 20px 0 0;
+      opacity: 0.9;
+    }
+
+    /* ── Story section layout ── */
+    .story-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 80px 60px 120px;
+    }
+    .story-label {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 2.5px;
+      color: #0a0a0a;
+      text-transform: uppercase;
+      margin-bottom: 52px;
+    }
+    .story-heading {
+      font-family: 'Inter', sans-serif;
+      font-size: clamp(2.2rem, 3.5vw, 3.4rem);
+      font-weight: 400;
+      color: #0a0a0a;
+      line-height: 1.12;
+      letter-spacing: -1px;
+      margin: 0 0 40px;
+      max-width: 600px;
+    }
+    .story-body {
+      max-width: 680px;
+    }
+    .story-para {
+      font-family: 'Inter', sans-serif;
+      font-weight: 300;
+      font-size: 1.1rem;
+      line-height: 1.85;
+      color: #555;
+      margin: 0 0 22px;
+    }
+    .story-accent {
+      color: #00c853;
+      font-family: 'Dancing Script', cursive;
+      font-size: 1.15em;
+    }
+    .story-callout {
+      font-family: 'Inter', sans-serif;
+      font-weight: 400;
+      font-size: 1.2rem;
+      color: #0a0a0a;
+      line-height: 1.55;
+      margin: 12px 0 0;
+      padding-left: 20px;
+      border-left: 3px solid #00c853;
+    }
+    @media (max-width: 768px) {
+      .story-container { padding: 60px 24px 80px; }
+    }
+
+    /* ── Timeline (inside white section) ── */
+    /* ── Journey section (dark, folder-tab after white) ── */
+    .about-journey-section {
+      background: #0a0a0a;
+      position: relative;
+      z-index: 6;
+      margin-top: 0;
+      padding: 100px 0 100px;
+    }
+    .journey-container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 60px;
+    }
+    .journey-label {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 2.5px;
+      color: #ffffff;
+      text-transform: uppercase;
+      margin-bottom: 64px;
+    }
+    .journey-track {
+      position: relative;
+    }
+    /* Line: dim track + animated green fill */
+    .journey-line {
+      position: absolute;
+      top: 50%;
+      left: 0;
+      right: 0;
+      height: 2px;
+      transform: translateY(-50%);
+      z-index: 0;
+      background: rgba(255, 255, 255, 0.1);
+      overflow: visible;
+    }
+    .journey-line-fill {
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 74%;
+      background: #00c853;
+      transform: scaleX(0);
+      transform-origin: left center;
+      transition: transform 2.8s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .journey-line-fill.in-view {
+      transform: scaleX(1);
+    }
+    .journey-items {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: relative;
+      z-index: 1;
+    }
+    .journey-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 18px;
+    }
+    .journey-year {
+      font-family: 'Inter', sans-serif;
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 1.5px;
+      color: #555;
+      text-transform: uppercase;
+    }
+    .journey-dot {
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+      background: #222;
+      border: 2px solid #444;
+    }
+    .journey-event {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.95rem;
+      font-weight: 400;
+      color: #555;
+      text-align: center;
+      max-width: 140px;
+    }
+    .journey-item.done .journey-dot {
+      background: #00c853;
+      border-color: #00c853;
+      box-shadow: 0 0 0 6px rgba(0, 200, 83, 0.15);
+    }
+    .journey-item.done .journey-year { color: #00c853; }
+    .journey-item.done .journey-event { color: #ffffff; font-weight: 500; }
+    .journey-item.future .journey-dot {
+      background: transparent;
+      border-color: rgba(255, 255, 255, 0.2);
+      border-style: dashed;
+    }
+    .journey-item.future .journey-year,
+    .journey-item.future .journey-event { color: #444; }
+    @media (max-width: 768px) {
+      .journey-container { padding: 0 24px; }
+      .journey-items { flex-direction: column; gap: 40px; align-items: flex-start; }
+      .journey-line {
+        top: 0; bottom: 0; left: 8px; right: auto;
+        width: 2px; height: 100%; transform: none;
+        background: linear-gradient(to bottom, #00c853 0%, #00c853 75%, rgba(255,255,255,0.12) 75%);
+      }
+      .journey-item { flex-direction: row; gap: 24px; }
+      .journey-event { text-align: left; }
+    }
+
+    /* ── Mission section (white, after dark journey) ── */
+    .about-mission-section {
+      background: #ffffff;
+      position: relative;
+      z-index: 7;
+      margin-top: 0;
+      padding-top: 80px;
+    }
+    .mission-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 80px 60px 120px;
+    }
+    .mission-label {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 2.5px;
+      color: #0a0a0a;
+      text-transform: uppercase;
+      margin-bottom: 52px;
+    }
+    .mission-heading {
+      font-family: 'Inter', sans-serif;
+      font-size: clamp(2rem, 3.2vw, 3.2rem);
+      font-weight: 400;
+      color: #0a0a0a;
+      line-height: 1.15;
+      letter-spacing: -1px;
+      margin: 0 0 52px;
+      max-width: 55%;
+    }
+    .mission-paras {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 28px 60px;
+      margin-bottom: 52px;
+    }
+    .mission-para {
+      font-family: 'Inter', sans-serif;
+      font-weight: 300;
+      font-size: 1.05rem;
+      line-height: 1.85;
+      color: #555;
+      margin: 0;
+    }
+    .mission-callout-big {
+      font-family: 'Inter', sans-serif;
+      font-size: clamp(0.5rem, 1.8vw, 1.8rem);
+      font-weight: 200;
+      color: #0a0a0a;
+      line-height: 1.3;
+      margin: 0 0 20px;
+      padding-left: 24px;
+      border-left: 4px solid #00c853;
+    }
+    .mission-closing {
+      font-family: 'Inter', sans-serif;
+      font-weight: 300;
+      font-size: 1.05rem;
+      line-height: 1.85;
+      color: #888;
+      margin: 0;
+      font-style: italic;
+    }
+    @media (max-width: 768px) {
+      .mission-container { padding: 60px 24px 80px; }
+      .mission-heading { max-width: 100%; }
+      .mission-paras { grid-template-columns: 1fr; }
+    }
+
+    /* ── Team section (white, after mission) ── */
+    .about-team-section {
+      background: #ffffff;
+      position: relative;
+      z-index: 8;
+      margin-top: 0;
+      padding: 100px 0 120px;
+    }
+    .team-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 60px;
+    }
+    .team-header {
+      margin-bottom: 72px;
+    }
+    .team-label {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 2.5px;
+      color: #0a0a0a;
+      text-transform: uppercase;
+      margin-bottom: 28px;
+    }
+    .team-heading {
+      font-family: 'Inter', sans-serif;
+      font-size: clamp(2rem, 3.2vw, 3rem);
+      font-weight: 400;
+      color: #0a0a0a;
+      line-height: 1.15;
+      letter-spacing: -1px;
+      margin: 0 0 20px;
+    }
+    .team-sub {
+      font-family: 'Inter', sans-serif;
+      font-weight: 300;
+      font-size: 1.05rem;
+      line-height: 1.8;
+      color: #666;
+      max-width: 600px;
+      margin: 0;
+    }
+    .team-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 24px;
+    }
+    .team-card {
+      background: #f5f5f2;
+      border: 1px solid #e8e8e8;
+      clip-path: polygon(0 0, calc(100% - 20px) 0, 100% 20px, 100% 100%, 0 100%);
+      overflow: hidden;
+      transition: transform 0.3s ease, border-color 0.3s ease;
+    }
+    .team-card:hover {
+      transform: translateY(-4px);
+      border-color: #00c853;
+    }
+    .team-photo-wrap {
+      width: 100%;
+      overflow: hidden;
+      background: #ffffff;
+    }
+    .team-photo {
+      width: 100%;
+      height: auto;
+      display: block;
+      transition: transform 0.4s ease;
+    }
+    .team-card:hover .team-photo {
+      transform: scale(1.03);
+    }
+    .team-info {
+      padding: 20px 20px 24px;
+    }
+    .team-name {
+      font-family: 'Inter', sans-serif;
+      font-size: 1rem;
+      font-weight: 500;
+      color: #0a0a0a;
+      margin: 0 0 6px;
+      letter-spacing: 0;
+    }
+    .team-role {
+      font-family: 'Inter', sans-serif;
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: #00c853;
+      margin: 0;
+    }
+    @media (max-width: 900px) {
+      .team-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 480px) {
+      .team-grid { grid-template-columns: 1fr; }
+      .team-container { padding: 0 24px; }
+    }
+
+    /* ── Vision section (dark, after white team) ── */
+    .about-vision-section {
+      background: #0a0a0a;
+      position: relative;
+      z-index: 9;
+      margin-top: -60px;
+      clip-path: polygon(0 0, 47% 0, 53% 60px, 100% 60px, 100% 100%, 0 100%);
+      padding: 130px 0 140px;
+    }
+    .vision-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 60px;
+    }
+    .vision-label {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 2.5px;
+      color: #ffffff;
+      text-transform: uppercase;
+      margin-bottom: 40px;
+    }
+    .vision-top {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: end;
+      margin-bottom: 60px;
+    }
+    .vision-heading {
+      font-family: 'Inter', sans-serif;
+      font-size: clamp(2.2rem, 3.5vw, 3.6rem);
+      font-weight: 400;
+      color: #ffffff;
+      line-height: 1.1;
+      letter-spacing: -1px;
+      margin: 0;
+    }
+    .vision-intro {
+      font-family: 'Inter', sans-serif;
+      font-weight: 300;
+      font-size: 1.1rem;
+      line-height: 1.8;
+      color: #aaa;
+      margin: 0;
+    }
+    .vision-paras {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 32px 60px;
+      margin-bottom: 60px;
+      padding-top: 48px;
+      border-top: 1px solid #1e1e1e;
+    }
+    .vision-para {
+      font-family: 'Inter', sans-serif;
+      font-weight: 300;
+      font-size: 1rem;
+      line-height: 1.85;
+      color: #666;
+      margin: 0;
+    }
+    .vision-callout {
+      font-family: 'Inter', sans-serif;
+      font-size: clamp(0.5rem, 1.3vw, 1.1rem);
+      font-weight: 200;
+      color: #ffffff;
+      line-height: 1.5;
+      margin: 0;
+      padding-left: 24px;
+      border-left: 3px solid #00c853;
+    }
+    @media (max-width: 768px) {
+      .vision-container { padding: 0 24px; }
+      .vision-top { grid-template-columns: 1fr; gap: 24px; }
+      .vision-paras { grid-template-columns: 1fr; }
+    }
+
+    /* ── CTA section (white, after dark vision) ── */
+    .about-cta-section {
+      background: #ffffff;
+      position: relative;
+      z-index: 10;
+      margin-top: -60px;
+      clip-path: polygon(0 60px, 47% 60px, 53% 0, 100% 0, 100% 100%, 0 100%);
+      padding: 120px 0 100px;
+    }
+    .about-cta-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 60px;
+    }
+    .about-cta-inner .home-cta-card {
+      margin-top: 0;
+    }
+    @media (max-width: 768px) {
+      .about-cta-inner { padding: 0 24px; }
+    }
+
+    /* ── White content section ── */
+    .about-content {
+      background: #ffffff;
+      min-height: 80vh;
+      position: relative;
+      z-index: 5;
+      margin-top: -60px;
+      clip-path: polygon(0 60px, 47% 60px, 53% 0, 100% 0, 100% 100%, 0 100%);
+      padding-top: 80px;
+    }
+    </style>
+  </head>
+
+  <body>
+    <div id="app">
+
+      <!-- ========== NAVBAR ========== -->
+      <nav class="navbar" id="navbar">
+        <div class="nav-container">
+
+          <a href="/" class="nav-logo" aria-label="A2B Home">
+            <img src="/assets/logos/a2blogowhite.png" alt="A2B Logo" class="nav-logo-img" width="42" height="42" />
+            <span class="nav-logo-text">A2B</span>
+          </a>
+
+          <div class="nav-links" id="navLinks">
+            <a href="/" class="nav-link">Home <span class="nav-slash"></span></a>
+            <a href="/product.html" class="nav-link">Product <span class="nav-slash"></span></a>
+            <div class="nav-dropdown-wrapper" id="servicesDropdown">
+              <button class="nav-link nav-dropdown-btn">Service <span class="nav-slash"></span></button>
+              <div class="nav-dropdown-menu mega-menu svc-mega-menu">
+                <div class="mega-menu-left svc-mega-left">
+                  <div class="mega-menu-label">
+                    <svg width="12" height="12" viewBox="0 0 44 44" fill="var(--accent)" xmlns="http://www.w3.org/2000/svg"><polygon points="22,1 43,11 43,33 22,43 1,33 1,11"/></svg>
+                    SERVICES
+                  </div>
+                  <div class="mega-links svc-links">
+                    <a href="/services/ai-automation.html" class="mega-link svc-link" data-title="AI Automation" data-desc="Intelligent process automation that eliminates manual work, connects your systems, and ships measurable ROI in weeks." data-subs="Document Intelligence,Workflow Automation,Data Pipeline Automation,Cross-System Integration">AI Automation</a>
+                    <a href="/services/ai-agents.html" class="mega-link svc-link" data-title="AI Agents" data-desc="Autonomous agentic systems that think, plan, and execute multi-step tasks without human intervention." data-subs="Task Agents,Multi-Agent Systems,Agentic Coding,Task Orchestration">AI Agents</a>
+                    <a href="/services/custom-ai.html" class="mega-link svc-link" data-title="Custom AI" data-desc="Fine-tuned models, RAG pipelines, and purpose-built AI that knows your domain, your data, and your terminology." data-subs="Fine-tuning & Training,RAG Systems,Model Evaluation,Knowledge Bases">Custom AI</a>
+                    <a href="/services/ai-strategy.html" class="mega-link svc-link" data-title="AI Strategy" data-desc="Discovery, roadmapping, and ROI modeling — turning AI opportunity into a plan your team can actually execute." data-subs="Discovery Blueprint,ROI Modeling,AI Readiness Assessment,Team Training">AI Strategy</a>
+                    <a href="/services/enterprise-ai.html" class="mega-link svc-link" data-title="Enterprise AI" data-desc="Production-grade AI infrastructure — compliance-ready, audit-traceable, and built to run at enterprise scale." data-subs="Enterprise Integration,Compliance & Governance,Scale & Infrastructure,Ongoing Support">Enterprise AI</a>
+                  </div>
+                </div>
+                <div class="mega-menu-right">
+                  <div class="mega-content">
+                    <h3 class="mega-title svc-mega-title">Our Services</h3>
+                    <p class="mega-desc svc-mega-desc">Hover a service to explore what we build.</p>
+                    <ul class="svc-sub-list" style="display:none;"></ul>
+                  </div>
+                  <a href="/service.html" class="btn-arrow mega-contact-btn">
+                    <span class="btn-label">All Services</span>
+                    <span class="btn-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+                  </a>
+                </div>
+              </div>
+            </div>
+            <a href="/case-study.html" class="nav-link">Case Study <span class="nav-slash"></span></a>
+            <div class="nav-dropdown-wrapper" id="resourcesDropdown">
+              <button class="nav-link nav-dropdown-btn">Resources <span class="nav-slash"></span></button>
+              <div class="nav-dropdown-menu mega-menu">
+                <div class="mega-menu-left">
+                  <div class="mega-menu-label">
+                    <svg width="12" height="12" viewBox="0 0 44 44" fill="var(--accent)" xmlns="http://www.w3.org/2000/svg"><polygon points="22,1 43,11 43,33 22,43 1,33 1,11"/></svg>
+                    RESOURCES
+                  </div>
+                  <div class="mega-links">
+                    <a href="/blog.html" class="mega-link" data-title="Field Notes & Breakdowns" data-desc="Read our latest articles on agentic workflows, enterprise AI strategy, and building autonomous systems.">Blog</a>
+                    <a href="/youtube" class="mega-link" data-title="Walkthroughs & Live Builds" data-desc="Watch our engineers build live, break down complex AI agents, and give product deep-dives on our channel.">YouTube</a>
+                  </div>
+                </div>
+                <div class="mega-menu-right">
+                  <div class="mega-content">
+                    <h3 class="mega-title">"We partner with brands to move the world through tech, design and strategy."</h3>
+                    <p class="mega-desc">Dive into our field notes, video walkthroughs, and frameworks on AI-native operations to build a smarter future.</p>
+                  </div>
+                  <a href="/contact.html" class="btn-arrow mega-contact-btn">
+                    <span class="btn-label">Contact Us</span>
+                    <span class="btn-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+                  </a>
+                </div>
+              </div>
+            </div>
+            <a href="/about.html" class="nav-link active">About <span class="nav-slash"></span></a>
+          </div>
+
+          <a href="/contact.html" class="btn-arrow nav-cta" id="navCta">
+            <span class="btn-label">Contact</span>
+            <span class="btn-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+          </a>
+
+          <button class="nav-hamburger" id="navHamburger" aria-label="Toggle navigation menu">
+            <span></span><span></span><span></span>
+          </button>
+
+        </div>
+      </nav>
+
+      <!-- ========== HERO SECTION ========== -->
+      <section class="hero" id="hero">
+        <div class="hero-container">
+          <div class="hero-content">
+
+            <div class="hero-label">
+              WHO WE ARE
+            </div>
+
+            <h1 class="hero-heading">
+              A team that
+              <span class="hero-words-wrapper">
+                <span class="hero-word-spacer"> obsesses.</span>
+                <span class="hero-word active"> believes.</span>
+                <span class="hero-word"> builds.</span>
+                <span class="hero-word"> delivers.</span>
+                <span class="hero-word"> obsesses.</span>
+              </span>
+            </h1>
+
+            <div class="hero-pills">
+              <span class="hero-pill-item">Founded 2026</span>
+              <span class="hero-pill-divider">|</span>
+              <span class="hero-pill-item">Trivandrum, India</span>
+              <span class="hero-pill-divider">|</span>
+              <span class="hero-pill-item">4 Founders</span>
+              <span class="hero-pill-divider">|</span>
+              <span class="hero-pill-item">AI Native</span>
+            </div>
+
+            <div class="hero-actions">
+              <a href="/contact.html" class="btn-arrow hero-cta" id="heroCta">
+                <span class="btn-label">Work With Us</span>
+                <span class="btn-icon">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M5 12h14M12 5l7 7-7 7"/>
+                  </svg>
+                </span>
+              </a>
+              <a href="/case-study.html" class="hero-case-study" id="heroCaseStudy">
+                Our Work
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M5 12h14M12 5l7 7-7 7"/>
+                </svg>
+              </a>
+            </div>
+
+            <p class="hero-tagline-script">Not a vendor. A partner in your AI journey.</p>
+
+          </div>
+        </div>
+      </section>
+
+      <!-- ========== SECTION 2: OUR STORY + TIMELINE ========== -->
+      <section class="about-content" id="aboutContent">
+        <div class="story-container">
+
+          <div class="story-label">
+            <svg width="10" height="10" viewBox="0 0 44 44" fill="#00c853" xmlns="http://www.w3.org/2000/svg"><polygon points="22,1 43,11 43,33 22,43 1,33 1,11"/></svg>
+            OUR STORY
+          </div>
+
+          <h2 class="story-heading">It started with<br>a simple <span class="story-accent">belief.</span></h2>
+
+          <div class="story-body">
+            <p class="story-para">Businesses shouldn't have to fight technology to grow.</p>
+            <p class="story-para">As engineering students and builders, we saw the same challenge everywhere: teams spending countless hours on repetitive tasks, disconnected workflows, and software that created more friction than value.</p>
+            <p class="story-para">We believed technology should do the opposite. It should simplify operations, automate the repetitive, and help people focus on meaningful work.</p>
+            <p class="story-para">That belief became A2B AI Technologies.</p>
+            <p class="story-para">Founded in February 2026 by Rahul VK, Akhil M S, Aman Xavier, and Dany Stephen, A2B was created with a shared vision: to help businesses harness AI, automation, and modern software to work smarter, move faster, and scale confidently.</p>
+            <p class="story-para">Today, we're building intelligent systems that transform complex processes into seamless experiences — empowering organizations to focus on growth, innovation, and what matters most.</p>
+            <p class="story-callout">Make technology work for people, not the other way around.</p>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- ========== SECTION 3: JOURNEY TIMELINE ========== -->
+      <section class="about-journey-section" id="journey">
+        <div class="journey-container">
+
+          <div class="journey-label">
+            <svg width="10" height="10" viewBox="0 0 44 44" fill="#00c853" xmlns="http://www.w3.org/2000/svg"><polygon points="22,1 43,11 43,33 22,43 1,33 1,11"/></svg>
+            OUR JOURNEY
+          </div>
+
+          <div class="journey-track">
+            <div class="journey-line">
+              <div class="journey-line-fill"></div>
+            </div>
+            <div class="journey-items">
+
+              <div class="journey-item done">
+                <div class="journey-year">2025</div>
+                <div class="journey-dot"></div>
+                <div class="journey-event">The Idea</div>
+              </div>
+
+              <div class="journey-item done">
+                <div class="journey-year">Feb 2026</div>
+                <div class="journey-dot"></div>
+                <div class="journey-event">A2B Founded</div>
+              </div>
+
+              <div class="journey-item done">
+                <div class="journey-year">2026</div>
+                <div class="journey-dot"></div>
+                <div class="journey-event">First Clients</div>
+              </div>
+
+              <div class="journey-item future">
+                <div class="journey-year">Future</div>
+                <div class="journey-dot"></div>
+                <div class="journey-event">100 Clients</div>
+              </div>
+
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- ========== SECTION 4: OUR MISSION ========== -->
+      <section class="about-mission-section" id="mission">
+        <div class="mission-container">
+
+          <div class="mission-label">
+            <svg width="10" height="10" viewBox="0 0 44 44" fill="#00c853" xmlns="http://www.w3.org/2000/svg"><polygon points="22,1 43,11 43,33 22,43 1,33 1,11"/></svg>
+            OUR MISSION
+          </div>
+
+          <h2 class="mission-heading">We build. You focus on what <span class="story-accent">matters.</span></h2>
+
+          <div class="mission-paras">
+            <p class="mission-para">Every day, businesses lose countless hours to repetitive tasks, manual processes, and inefficient workflows.</p>
+            <p class="mission-para">We believe people's time is too valuable to be spent on work that technology can handle.</p>
+            <p class="mission-para">That's why we build AI-powered products, intelligent automations, and modern software that eliminate friction and simplify operations.</p>
+            <p class="mission-para">Whether it's automating workflows, streamlining business processes, or creating SaaS products that solve real problems, our goal remains the same:</p>
+          </div>
+
+          <p class="mission-callout-big">Give people back their time.</p>
+          <p class="mission-closing">So they can focus on creativity, innovation, growth, and the work that truly matters.</p>
+
+        </div>
+      </section>
+
+      <!-- ========== SECTION 5: MEET THE TEAM ========== -->
+      <section class="about-team-section" id="team">
+        <div class="team-container">
+
+          <div class="team-header">
+            <div class="team-label">
+              <svg width="10" height="10" viewBox="0 0 44 44" fill="#00c853" xmlns="http://www.w3.org/2000/svg"><polygon points="22,1 43,11 43,33 22,43 1,33 1,11"/></svg>
+              MEET THE TEAM
+            </div>
+            <h2 class="team-heading">Small team. <span class="story-accent">Big ambitions.</span></h2>
+            <p class="team-sub">We may be a young company, but we're united by a shared mission: building intelligent technology that gives people back their time.</p>
+          </div>
+
+          <div class="team-grid">
+
+            <div class="team-card">
+              <div class="team-photo-wrap">
+                <img src="/assets/team/rahul.webp" alt="Rahul VK" class="team-photo" />
+              </div>
+              <div class="team-info">
+                <h3 class="team-name">Rahul VK</h3>
+                <p class="team-role">Co-Founder</p>
+              </div>
+            </div>
+
+            <div class="team-card">
+              <div class="team-photo-wrap">
+                <img src="/assets/team/aman.webp" alt="Aman Xavier" class="team-photo" />
+              </div>
+              <div class="team-info">
+                <h3 class="team-name">Aman Xavier</h3>
+                <p class="team-role">Co-Founder</p>
+              </div>
+            </div>
+
+            <div class="team-card">
+              <div class="team-photo-wrap">
+                <img src="/assets/team/akhil.webp" alt="Akhil M S" class="team-photo" />
+              </div>
+              <div class="team-info">
+                <h3 class="team-name">Akhil M S</h3>
+                <p class="team-role">Co-Founder</p>
+              </div>
+            </div>
+
+            <div class="team-card">
+              <div class="team-photo-wrap">
+                <img src="/assets/team/dany.webp" alt="Dany Stephen" class="team-photo" />
+              </div>
+              <div class="team-info">
+                <h3 class="team-name">Dany Stephen</h3>
+                <p class="team-role">Co-Founder</p>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+      </section>
+
+      <!-- ========== SECTION 6: VISION ========== -->
+      <section class="about-vision-section" id="vision">
+        <div class="vision-container">
+
+          <div class="vision-label">
+            <svg width="10" height="10" viewBox="0 0 44 44" fill="#00c853" xmlns="http://www.w3.org/2000/svg"><polygon points="22,1 43,11 43,33 22,43 1,33 1,11"/></svg>
+            OUR VISION
+          </div>
+
+          <div class="vision-top">
+            <h2 class="vision-heading">We're just getting <span class="story-accent">started.</span></h2>
+            <p class="vision-intro">A2B AI Technologies is at the beginning of its journey, but our vision is clear.</p>
+          </div>
+
+          <div class="vision-paras">
+            <p class="vision-para">We believe the future belongs to businesses that embrace intelligent systems, automation, and AI-driven decision making. Our goal is to build products and solutions that help organizations operate smarter, move faster, and achieve more with less effort.</p>
+            <p class="vision-para">From custom software and AI automation to innovative SaaS products, we're creating technology designed to solve real-world problems and deliver meaningful impact.</p>
+          </div>
+
+          <p class="vision-callout">This is only the beginning. The best ideas, products, and innovations are still ahead of us.</p>
+
+        </div>
+      </section>
+
+      <!-- ========== SECTION 7: CTA ========== -->
+      <section class="about-cta-section" id="aboutCta">
+        <div class="about-cta-inner">
+
+          <div class="home-cta-card">
+            <div class="home-cta-left">
+              <span class="home-cta-label">Get Started</span>
+              <h2 class="home-cta-heading">
+                Ready to go from<br/>
+                where you are, to<br/>
+                <em>where AI can take you?</em>
+              </h2>
+              <p class="home-cta-desc">
+                Let's map your first automation, build it in weeks, and measure the return before we move to the next one.
+              </p>
+              <a href="/contact.html" class="btn-arrow home-cta-btn">
+                <span class="btn-label">Free consultancy</span>
+                <span class="btn-icon">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M5 12h14M12 5l7 7-7 7"/>
+                  </svg>
+                </span>
+              </a>
+            </div>
+            <div class="home-cta-logo">
+              <img src="/assets/logos/a2blogowhite.png" alt="A2B Logo" class="home-cta-logo-img" />
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- ========== FOOTER ========== -->
+      <footer class="site-footer" id="footer">
+        <div class="footer-container">
+          <div class="footer-inner">
+
+            <div class="footer-top-right">
+              <div class="footer-socials">
+                <a href="https://www.linkedin.com/company/a2bai" target="_blank" rel="noopener" class="social-link"><i class="fab fa-linkedin-in"></i></a>
+                <a href="https://www.instagram.com/a2bai.tech" target="_blank" rel="noopener" class="social-link"><i class="fab fa-instagram"></i></a>
+                <a href="https://www.youtube.com/channel/UCOr8E2dKBEP6wZI3j19tlaw" target="_blank" rel="noopener" class="social-link"><i class="fab fa-youtube"></i></a>
+              </div>
+            </div>
+
+            <div class="footer-content">
+              <div class="footer-cta">
+                <div class="footer-logo-hex">
+                  <img src="/assets/logos/a2blogowhite.png" alt="A2B Logo" />
+                </div>
+                <h2 class="footer-title">A2B AI Technologies™</h2>
+                <p class="footer-desc">An elite AI agency helping you build a smarter future through Agentic Coding, AI Workflows, and Enterprise Automation.</p>
+                <a href="/contact.html" class="btn-arrow footer-btn">
+                  <span class="btn-label">Free consultancy</span>
+                  <div class="btn-icon">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <path d="M5 12h14M12 5l7 7-7 7"/>
+                    </svg>
+                  </div>
+                </a>
+                <hr class="footer-divider" />
+                <div class="footer-contact-info">
+                  <a href="mailto:a2b.business.official@gmail.com" class="footer-email">a2b.business.official@gmail.com</a>
+                  <p class="footer-location">Trivandrum · Kerala · India</p>
+                </div>
+              </div>
+
+              <div class="footer-links-wrapper">
+                <div class="footer-link-col">
+                  <h4 class="footer-col-title">Services</h4>
+                  <a href="/services/ai-strategy.html">AI Strategy</a>
+                  <a href="/services/ai-agents.html">AI Agents</a>
+                  <a href="/services/ai-automation.html">Workflow Auto</a>
+                  <a href="/services/custom-ai.html">Custom AI</a>
+                  <a href="/services/enterprise-ai.html">Enterprise AI</a>
+                </div>
+                <div class="footer-link-col">
+                  <h4 class="footer-col-title">Useful Links</h4>
+                  <a href="/contact.html">Contact Us</a>
+                  <a href="/blog.html">Blog</a>
+                  <a href="/case-study.html">Case Studies</a>
+                  <a href="/product.html">Products</a>
+                </div>
+                <div class="footer-link-col">
+                  <h4 class="footer-col-title">Company</h4>
+                  <a href="/about.html">About</a>
+                  <a href="/case-study.html">Case Studies</a>
+                  <a href="/contact.html">Team</a>
+                  <a href="#">Terms</a>
+                  <a href="#">Privacy</a>
+                </div>
+              </div>
+            </div>
+
+            <div class="footer-bottom">
+              <div class="footer-copyright">©2026 A2B AI Technologies</div>
+            </div>
+
+          </div>
+        </div>
+      </footer>
+
+    </div>
+
+    <script type="module" src="/src/main.js"></script>
+    <script>
+      // Animate journey line fill when section scrolls into view
+      (function() {
+        var fill = document.querySelector('.journey-line-fill');
+        if (!fill) return;
+        var observer = new IntersectionObserver(function(entries) {
+          entries.forEach(function(entry) {
+            if (entry.isIntersecting) {
+              fill.classList.add('in-view');
+              observer.disconnect();
+            }
+          });
+        }, { threshold: 0.4 });
+        observer.observe(document.getElementById('journey'));
+      })();
+    </script>
+  </body>
+</html>
