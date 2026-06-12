@@ -3332,10 +3332,66 @@ a.cinfo-line:hover {
     padding: 8px 16px;
     font-size: 0.8rem;
   }
-  
+
   .dark-card-features {
     grid-template-columns: 1fr;
     gap: 12px;
+  }
+
+  /* ---- Process accordion: compact mobile cards ---- */
+  .process-accordion {
+    gap: 8px;
+  }
+
+  /* Smaller chamfered corner for narrow cards */
+  .process-item {
+    clip-path: polygon(0 0, calc(100% - 16px) 0, 100% 16px, 100% 100%, 0 100%);
+  }
+
+  /* Restore horizontal layout: title left | time + number right */
+  .process-item-header {
+    padding: 14px 16px;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .process-item-title {
+    font-size: 1rem;
+    flex: 1;
+    min-width: 0;
+  }
+
+  .process-item-meta {
+    gap: 12px;
+    flex-shrink: 0;
+  }
+
+  .process-item-time {
+    font-size: 0.56rem;
+    letter-spacing: 0.5px;
+  }
+
+  .process-item-number {
+    font-size: 0.95rem;
+  }
+
+  /* Expanded state: tighter content area */
+  .process-item-content {
+    padding: 0 16px;
+  }
+
+  .process-item.expanded .process-item-content {
+    padding-bottom: 20px;
+  }
+
+  .process-item.expanded .process-item-header {
+    padding-bottom: 14px;
+  }
+
+  .process-content-inner {
+    gap: 24px;
+    padding-top: 16px;
   }
 }
 
