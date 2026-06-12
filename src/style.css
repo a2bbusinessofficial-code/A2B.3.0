@@ -1576,7 +1576,7 @@ a.cinfo-line:hover {
   }
 
   .hero-heading {
-    font-size: clamp(3.6rem, 10vw, 4.4rem);
+    font-size: clamp(3rem, 9vw, 4.4rem);
     letter-spacing: -0.03em;
     line-height: 1.1;
     margin-bottom: 0;
@@ -1609,6 +1609,18 @@ a.cinfo-line:hover {
     flex-wrap: wrap;
     gap: 20px;
   }
+
+  /* Reduce button thickness on all mobile sizes */
+  .btn-label {
+    height: 36px;
+    padding: 0 18px 0 24px;
+    font-size: 0.78rem;
+  }
+
+  .btn-icon {
+    width: 40px;
+    height: 36px;
+  }
 }
 
 /* Small phones — container padding only, nothing that changes Pixel 7 (412px) layout */
@@ -1618,14 +1630,15 @@ a.cinfo-line:hover {
   }
 
   .btn-label {
-    padding: 10px 18px 10px 24px;
-    font-size: 0.72rem;
-    letter-spacing: 1.2px;
+    height: 32px;
+    padding: 0 14px 0 18px;
+    font-size: 0.70rem;
+    letter-spacing: 1px;
   }
 
   .btn-icon {
-    width: 42px;
-    height: 36px;
+    width: 36px;
+    height: 32px;
   }
 }
 
@@ -1654,8 +1667,8 @@ a.cinfo-line:hover {
   }
 
   .hero-heading {
-    font-size: clamp(1.75rem, 7.5vw, 2.4rem);
-    line-height: 1.18;
+    font-size: clamp(2.2rem, 9vw, 3rem);
+    line-height: 1.15;
     overflow: hidden;
     margin-bottom: 0;
   }
@@ -1684,6 +1697,18 @@ a.cinfo-line:hover {
 
   .how-we-work-section {
     padding: 80px 0 60px;
+  }
+
+  .btn-label {
+    height: 30px;
+    padding: 0 12px 0 16px;
+    font-size: 0.68rem;
+    letter-spacing: 0.8px;
+  }
+
+  .btn-icon {
+    width: 32px;
+    height: 30px;
   }
 
   /* Shrink the fixed circle badge so it doesn't crowd the narrow viewport */
