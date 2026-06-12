@@ -48,6 +48,7 @@
 html {
   font-size: 16px;
   scroll-behavior: smooth;
+  overflow-x: hidden;
 }
 
 body {
@@ -1588,14 +1589,18 @@ a.cinfo-line:hover {
   }
 
   .hero-pills {
-    gap: 8px 14px;
+    gap: 6px 10px;
     margin-bottom: 0;
     flex-wrap: wrap;
   }
 
   .hero-pill-item {
-    font-size: 0.72rem;
-    letter-spacing: 1px;
+    font-size: 0.58rem;
+    letter-spacing: 0.8px;
+  }
+
+  .hero-pill-divider {
+    font-size: 0.7rem;
   }
 
   .hero-actions {
@@ -1606,14 +1611,10 @@ a.cinfo-line:hover {
   }
 }
 
-/* Small phones */
+/* Small phones — container padding only, nothing that changes Pixel 7 (412px) layout */
 @media (max-width: 480px) {
   :root {
     --container-padding: 20px;
-  }
-
-  .hero-heading {
-    font-size: clamp(3.2rem, 9vw, 3.8rem);
   }
 
   .btn-label {
@@ -1625,6 +1626,80 @@ a.cinfo-line:hover {
   .btn-icon {
     width: 42px;
     height: 36px;
+  }
+}
+
+/* iPhone SE and smaller ONLY (≤400px — Pixel 7 is 412px, untouched) */
+@media (max-width: 400px) {
+  /* 2/3 screen fill — mirrors Pixel 7 proportionally */
+  .hero {
+    min-height: 68vh;
+    min-height: 68svh;
+  }
+
+  /* Tighter padding so content area is larger within the shorter hero */
+  .hero-container {
+    padding-top: calc(var(--nav-height) + 24px);
+    padding-bottom: 40px;
+  }
+
+  /* Fixed gap layout: label/heading/pills grouped at top, buttons pinned to bottom */
+  .hero-content {
+    justify-content: flex-start;
+    gap: 32px;
+  }
+
+  .hero-actions {
+    margin-top: auto; /* push buttons to bottom of hero content */
+  }
+
+  .hero-heading {
+    font-size: clamp(1.75rem, 7.5vw, 2.4rem);
+    line-height: 1.18;
+    overflow: hidden;
+    margin-bottom: 0;
+  }
+
+  /* Interior page heroes: reduce excessive top/bottom padding.
+     !important overrides inline style="padding:..." on individual pages. */
+  .svc-hero {
+    padding: 120px 0 60px !important;
+  }
+
+  .svc-hero-title {
+    font-size: clamp(1.9rem, 7.5vw, 2.4rem);
+    line-height: 1.15;
+    margin-bottom: 20px;
+  }
+
+  .svc-hero-subtitle {
+    font-size: 0.92rem;
+    margin-bottom: 36px;
+  }
+
+  /* Prevent "How we work" heading from towering over the hero heading */
+  .hww-heading {
+    font-size: clamp(1.9rem, 7.5vw, 2.4rem);
+  }
+
+  .how-we-work-section {
+    padding: 80px 0 60px;
+  }
+
+  /* Shrink the fixed circle badge so it doesn't crowd the narrow viewport */
+  .fcb-circle {
+    width: 88px;
+    height: 88px;
+    right: 10px;
+  }
+
+  .fcb-circle-inner {
+    width: 34px;
+    height: 34px;
+  }
+
+  .fcb-ring-text {
+    font-size: 7px;
   }
 }
 
@@ -5481,10 +5556,10 @@ a, button, input, select, textarea {
     padding: 100px 0 80px;
   }
 
-  /* Inverted folds (white section after dark) */
+  /* new-white-section is a dark section with the same UP-tab shape as other sections */
   .new-white-section {
     margin-top: -30px;
-    clip-path: polygon(0 0, calc(50% - 26px) 0, calc(50% + 26px) 30px, 100% 30px, 100% 100%, 0 100%);
+    clip-path: polygon(0 30px, calc(50% - 26px) 30px, calc(50% + 26px) 0, 100% 0, 100% 100%, 0 100%);
   }
 }
 
@@ -5708,5 +5783,115 @@ a, button, input, select, textarea {
 
   .home-cs-header-wrap {
     padding-bottom: 40px;
+  }
+}
+
+/* ---- Case Studies Listing Page: Mobile ---- */
+@media (max-width: 900px) {
+  .cs-filter-bar-wide {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+    margin-bottom: 40px;
+  }
+
+  .filter-buttons {
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+}
+
+@media (max-width: 768px) {
+  .cs-header-section {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 24px;
+    padding-bottom: 48px;
+  }
+
+  .cs-title-massive {
+    font-size: clamp(2.4rem, 10vw, 4rem);
+    letter-spacing: -1px;
+  }
+
+  .cs-header-actions {
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  .cs-row-card {
+    grid-template-columns: 1fr;
+    padding: 32px 24px;
+    gap: 24px;
+  }
+
+  .cs-client-name {
+    font-size: 1.6rem;
+  }
+
+  .cs-project-title {
+    font-size: 1.9rem;
+    letter-spacing: -0.5px;
+  }
+
+  .cs-massive-metric {
+    font-size: 2.8rem;
+    letter-spacing: -1px;
+  }
+
+  .cs-more-work-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+    margin-bottom: 40px;
+  }
+
+  .cs-more-work-header h2,
+  .cs-under-the-hood h2,
+  .cs-results-left h2 {
+    font-size: clamp(2rem, 8vw, 2.8rem);
+  }
+
+  .cs-ai-native-box h2 {
+    font-size: clamp(2.4rem, 9vw, 3.5rem);
+  }
+}
+
+/* ---- Product / NS Pages: Mobile ---- */
+@media (max-width: 768px) {
+  .ns-container {
+    padding: 0 var(--container-padding);
+  }
+
+  .ns-hero {
+    padding: 120px 0 60px;
+  }
+
+  .ns-hero-top-vertical {
+    max-width: 100%;
+    margin-left: 0;
+    margin-right: 0;
+  }
+
+  .ns-hero-brand-row {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .ns-hero-big-logo {
+    width: 100px;
+    height: 100px;
+    border-radius: 20px;
+  }
+
+  .ns-product-name {
+    font-size: 2.5rem;
+  }
+
+  .ns-hero-actions,
+  .ns-hero-actions-left {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
   }
 }
