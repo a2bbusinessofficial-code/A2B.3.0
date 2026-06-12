@@ -5535,6 +5535,33 @@ a, button, input, select, textarea {
     margin-top: -30px;
     clip-path: polygon(0 30px, calc(50% - 26px) 30px, calc(50% + 26px) 0, 100% 0, 100% 100%, 0 100%);
     padding-top: 80px;
+    overflow: hidden;
+  }
+
+  /* Grid: reduce bottom padding + prevent card tracks from blowing out */
+  .home-cs-grid {
+    padding-bottom: 60px;
+  }
+
+  .home-cs-vcard {
+    min-width: 0;
+    overflow: hidden;
+  }
+
+  /* Tighter card padding on mobile */
+  .home-cs-vcard-top {
+    padding: 16px 16px 24px;
+  }
+
+  .home-cs-vcard-bottom {
+    padding: 20px 16px 20px;
+  }
+
+  /* Meta row: let the client tag truncate rather than forcing the card wider */
+  .home-cs-vcard-client {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 50%;
   }
 
   .home-testimonials-section {
