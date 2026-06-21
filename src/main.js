@@ -527,6 +527,48 @@ function initFooterAccordion() {
   });
 }
 
+/**
+ * Team Section Hover Animation
+ * Maps mouse position to determine whether to expand left or right.
+ */
+function initTeamHover() {
+  const row = document.querySelector('.team-row');
+  if (!row) return;
+
+  const members = row.querySelectorAll('.team-member');
+  if (!members.length) return;
+
+  let activeClass = '';
+
+  members.forEach((member, index) => {
+    member.addEventListener('mouseenter', (e) => {
+      if (window.innerWidth <= 768) return; // Disable on mobile
+      
+      const rect = row.getBoundingClientRect();
+      const mouseX = e.clientX;
+      const midpoint = rect.left + (rect.width / 2);
+      
+      const direction = mouseX < midpoint ? 'left' : 'right';
+      const newClass = `has-expanded-${index + 1}-${direction}`;
+
+      // Clean up previous classes
+      if (activeClass) row.classList.remove(activeClass);
+      members.forEach(m => m.classList.remove('is-expanded'));
+
+      // Add new
+      activeClass = newClass;
+      row.classList.add(activeClass);
+      member.classList.add('is-expanded');
+    });
+  });
+
+  row.addEventListener('mouseleave', () => {
+    if (activeClass) row.classList.remove(activeClass);
+    activeClass = '';
+    members.forEach(m => m.classList.remove('is-expanded'));
+  });
+}
+
 // ===== Initialize everything =====
 document.addEventListener('DOMContentLoaded', () => {
   initWordAnimation();
@@ -543,4 +585,5 @@ document.addEventListener('DOMContentLoaded', () => {
   initFreeConsultationButton();
   initHeroAnimation();
   initFooterAccordion();
+  initTeamHover();
 });

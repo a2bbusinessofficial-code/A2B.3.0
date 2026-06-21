@@ -1,4 +1,4 @@
-﻿<!doctype html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -94,7 +94,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700;800;900&family=Urbanist:wght@300;400;500;600&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="/src/style.css" />
 
     <style>
@@ -119,9 +119,16 @@
 
     /* ── Story section layout ── */
     .story-container {
-      max-width: 1200px;
+      max-width: 1400px;
       margin: 0 auto;
       padding: 80px 60px 120px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: start;
+    }
+    .story-content-left {
+      max-width: 680px;
     }
     .story-label {
       display: flex;
@@ -145,7 +152,7 @@
       max-width: 600px;
     }
     .story-body {
-      max-width: 680px;
+      max-width: 100%;
     }
     .story-para {
       font-family: 'Inter', sans-serif;
@@ -170,23 +177,64 @@
       padding-left: 20px;
       border-left: 3px solid #00c853;
     }
+
+    /* ── Masonry Collage ── */
+    .story-collage {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      grid-template-rows: 240px 180px 240px;
+      gap: 16px;
+      width: 100%;
+      margin-top: 90px; /* Align slightly below the heading */
+    }
+    .story-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .story-img-1 { grid-column: 1 / 3; grid-row: 1 / 2; }
+    .story-img-2 { grid-column: 3 / 4; grid-row: 1 / 3; }
+    .story-img-3 { grid-column: 1 / 2; grid-row: 2 / 4; }
+    .story-img-4 { grid-column: 2 / 3; grid-row: 2 / 3; }
+    .story-img-5 { grid-column: 2 / 4; grid-row: 3 / 4; }
+
+    @media (max-width: 1024px) {
+      .story-container {
+        grid-template-columns: 1fr;
+        gap: 60px;
+      }
+      .story-content-left {
+        max-width: 100%;
+      }
+      .story-collage {
+        grid-template-rows: 200px 140px 200px;
+      }
+    }
     @media (max-width: 768px) {
       .story-container { padding: 60px 24px 80px; }
+      .story-collage {
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: auto;
+        margin-top: 40px;
+      }
+      .story-img-1 { grid-column: 1 / -1; grid-row: auto; aspect-ratio: 16/9; }
+      .story-img-2 { grid-column: auto; grid-row: auto; aspect-ratio: 4/5; }
+      .story-img-3 { grid-column: auto; grid-row: auto; aspect-ratio: 4/5; }
+      .story-img-4 { grid-column: 1 / -1; grid-row: auto; aspect-ratio: 16/9; }
+      .story-img-5 { grid-column: 1 / -1; grid-row: auto; aspect-ratio: 16/9; }
     }
 
     /* ── Timeline (inside white section) ── */
-    /* ── Journey section (dark, folder-tab after white) ── */
-    .about-journey-section {
-      background: #0a0a0a;
-      position: relative;
-      z-index: 6;
-      margin-top: 0;
-      padding: 100px 0 100px;
-    }
-    .journey-container {
-      max-width: 1100px;
+    /* ── Journey card (embedded in story section) ── */
+    .journey-card {
+      max-width: 1400px;
       margin: 0 auto;
-      padding: 0 60px;
+      padding: 0 60px 80px;
+    }
+    .journey-card-inner {
+      background: #0a0a0a;
+      border-radius: 5px;
+      padding: 52px 60px;
     }
     .journey-label {
       display: flex;
@@ -197,7 +245,7 @@
       letter-spacing: 2.5px;
       color: #ffffff;
       text-transform: uppercase;
-      margin-bottom: 64px;
+      margin-bottom: 40px;
     }
     .journey-track {
       position: relative;
@@ -280,7 +328,9 @@
     .journey-item.future .journey-year,
     .journey-item.future .journey-event { color: rgba(255, 255, 255, 0.55); }
     @media (max-width: 768px) {
-      .journey-container { padding: 0 28px; }
+      .journey-card { padding: 0 24px 60px; }
+      .journey-card-inner { padding: 36px 24px; }
+      .journey-label { margin-bottom: 28px; }
 
       .journey-line {
         top: 0; bottom: 0; left: 15px; right: auto;
@@ -327,7 +377,7 @@
       .journey-event { grid-column: 2; grid-row: 2; text-align: left; max-width: 100%; font-size: 1rem; }
     }
 
-    /* ── Mission section (white, after dark journey) ── */
+    /* ── Mission section (white, diagonal separator after white story) ── */
     .about-mission-section {
       background: #ffffff;
       position: relative;
@@ -394,19 +444,38 @@
       margin: 0;
       font-style: italic;
     }
+    .mission-images {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr;
+      gap: 16px;
+      margin-top: 64px;
+      height: 380px;
+    }
+    .mission-images img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
     @media (max-width: 768px) {
       .mission-container { padding: 60px 24px 80px; }
       .mission-heading { max-width: 100%; }
       .mission-paras { grid-template-columns: 1fr; }
+      .mission-images {
+        grid-template-columns: 1fr;
+        height: auto;
+        grid-auto-rows: 240px;
+        margin-top: 40px;
+      }
     }
 
-    /* ── Team section (white, after mission) ── */
+    /* ── Team section (black bg, diagonal separator after white mission) ── */
     .about-team-section {
-      background: #ffffff;
+      background: #000000;
       position: relative;
       z-index: 8;
-      margin-top: 0;
-      padding: 100px 0 120px;
+      margin-top: -60px;
+      clip-path: polygon(0 60px, calc(50% - 52px) 60px, calc(50% + 52px) 0, 100% 0, 100% 100%, 0 100%);
+      padding: 160px 0 100px;
     }
     .team-container {
       max-width: 1200px;
@@ -414,7 +483,7 @@
       padding: 0 60px;
     }
     .team-header {
-      margin-bottom: 72px;
+      margin-bottom: 56px;
     }
     .team-label {
       display: flex;
@@ -423,7 +492,7 @@
       font-size: 11px;
       font-weight: 600;
       letter-spacing: 2.5px;
-      color: #0a0a0a;
+      color: #ffffff;
       text-transform: uppercase;
       margin-bottom: 28px;
     }
@@ -431,7 +500,7 @@
       font-family: 'Inter', sans-serif;
       font-size: clamp(2rem, 3.2vw, 3rem);
       font-weight: 400;
-      color: #0a0a0a;
+      color: #ffffff;
       line-height: 1.15;
       letter-spacing: -1px;
       margin: 0 0 20px;
@@ -441,76 +510,252 @@
       font-weight: 300;
       font-size: 1.05rem;
       line-height: 1.8;
-      color: #666;
+      color: rgba(255,255,255,0.6);
       max-width: 600px;
       margin: 0;
     }
-    .team-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 24px;
-    }
-    .team-card {
-      background: #f5f5f2;
-      border: 1px solid #e8e8e8;
-      clip-path: polygon(0 0, calc(100% - 20px) 0, 100% 20px, 100% 100%, 0 100%);
-      overflow: hidden;
-      transition: transform 0.3s ease, border-color 0.3s ease;
-    }
-    .team-card:hover {
-      transform: translateY(-4px);
-      border-color: #00c853;
-    }
-    .team-photo-wrap {
+
+    /* ── Photo row (desktop) ── */
+    .team-row {
+      position: relative;
       width: 100%;
+      height: 480px; /* Provides roughly a 4:5 aspect ratio feel for the cards */
       overflow: hidden;
-      background: #ffffff;
     }
-    .team-photo {
-      width: 100%;
-      height: auto;
-      display: block;
-      transition: transform 0.4s ease;
+    .team-member {
+      position: absolute;
+      background: #111;
+      overflow: hidden;
+      cursor: pointer;
+      /* Absolute positioning transition ensures perfectly smooth sliding */
+      transition: all 0.6s cubic-bezier(0.25, 1, 0.5, 1);
     }
-    .team-card:hover .team-photo {
-      transform: scale(1.03);
-    }
-    .team-info {
-      padding: 20px 20px 24px;
-    }
-    .team-name {
-      font-family: 'Inter', sans-serif;
-      font-size: 1rem;
-      font-weight: 500;
-      color: #0a0a0a;
-      margin: 0 0 6px;
-      letter-spacing: 0;
-    }
-    .team-role {
-      font-family: 'Inter', sans-serif;
-      font-size: 11px;
-      font-weight: 500;
-      letter-spacing: 1.5px;
-      text-transform: uppercase;
-      color: #00c853;
-      margin: 0;
-    }
-    @media (max-width: 900px) {
-      .team-grid { grid-template-columns: repeat(2, 1fr); }
-    }
-    @media (max-width: 480px) {
-      .team-grid { grid-template-columns: 1fr; }
-      .team-container { padding: 0 24px; }
+    
+    /* Default Positioning */
+    .team-member:nth-child(1) { left: 0%; width: calc(25% - 2.25px); top: 0; height: 100%; }
+    .team-member:nth-child(2) { left: calc(25% + 0.75px); width: calc(25% - 2.25px); top: 0; height: 100%; }
+    .team-member:nth-child(3) { left: calc(50% + 1.5px); width: calc(25% - 2.25px); top: 0; height: 100%; }
+    .team-member:nth-child(4) { left: calc(75% + 2.25px); width: calc(25% - 2.25px); top: 0; height: 100%; }
+
+    /* ── Hover state via JS classes (desktop) ── */
+    @media (hover: hover) and (pointer: fine) {
+      .team-row.has-expanded-1-left .team-member:nth-child(1) { left: 0%; width: calc(100% - 132px); top: 0; height: 100%; z-index: 2; }
+      .team-row.has-expanded-1-left .team-member:nth-child(2) { left: calc(100% - 128px); width: 128px; top: 0%; height: calc(33.333% - 2px); z-index: 1; }
+      .team-row.has-expanded-1-left .team-member:nth-child(3) { left: calc(100% - 128px); width: 128px; top: calc(33.333% + 1px); height: calc(33.333% - 2px); z-index: 1; }
+      .team-row.has-expanded-1-left .team-member:nth-child(4) { left: calc(100% - 128px); width: 128px; top: calc(66.666% + 2px); height: calc(33.333% - 2px); z-index: 1; }
+
+      .team-row.has-expanded-1-right .team-member:nth-child(1) { left: 132px; width: calc(100% - 132px); top: 0; height: 100%; z-index: 2; }
+      .team-row.has-expanded-1-right .team-member:nth-child(2) { left: 0; width: 128px; top: 0%; height: calc(33.333% - 2px); z-index: 1; }
+      .team-row.has-expanded-1-right .team-member:nth-child(3) { left: 0; width: 128px; top: calc(33.333% + 1px); height: calc(33.333% - 2px); z-index: 1; }
+      .team-row.has-expanded-1-right .team-member:nth-child(4) { left: 0; width: 128px; top: calc(66.666% + 2px); height: calc(33.333% - 2px); z-index: 1; }
+
+      .team-row.has-expanded-2-left .team-member:nth-child(2) { left: 0%; width: calc(100% - 132px); top: 0; height: 100%; z-index: 2; }
+      .team-row.has-expanded-2-left .team-member:nth-child(1) { left: calc(100% - 128px); width: 128px; top: 0%; height: calc(33.333% - 2px); z-index: 1; }
+      .team-row.has-expanded-2-left .team-member:nth-child(3) { left: calc(100% - 128px); width: 128px; top: calc(33.333% + 1px); height: calc(33.333% - 2px); z-index: 1; }
+      .team-row.has-expanded-2-left .team-member:nth-child(4) { left: calc(100% - 128px); width: 128px; top: calc(66.666% + 2px); height: calc(33.333% - 2px); z-index: 1; }
+
+      .team-row.has-expanded-2-right .team-member:nth-child(2) { left: 132px; width: calc(100% - 132px); top: 0; height: 100%; z-index: 2; }
+      .team-row.has-expanded-2-right .team-member:nth-child(1) { left: 0; width: 128px; top: 0%; height: calc(33.333% - 2px); z-index: 1; }
+      .team-row.has-expanded-2-right .team-member:nth-child(3) { left: 0; width: 128px; top: calc(33.333% + 1px); height: calc(33.333% - 2px); z-index: 1; }
+      .team-row.has-expanded-2-right .team-member:nth-child(4) { left: 0; width: 128px; top: calc(66.666% + 2px); height: calc(33.333% - 2px); z-index: 1; }
+
+      .team-row.has-expanded-3-left .team-member:nth-child(3) { left: 0%; width: calc(100% - 132px); top: 0; height: 100%; z-index: 2; }
+      .team-row.has-expanded-3-left .team-member:nth-child(1) { left: calc(100% - 128px); width: 128px; top: 0%; height: calc(33.333% - 2px); z-index: 1; }
+      .team-row.has-expanded-3-left .team-member:nth-child(2) { left: calc(100% - 128px); width: 128px; top: calc(33.333% + 1px); height: calc(33.333% - 2px); z-index: 1; }
+      .team-row.has-expanded-3-left .team-member:nth-child(4) { left: calc(100% - 128px); width: 128px; top: calc(66.666% + 2px); height: calc(33.333% - 2px); z-index: 1; }
+
+      .team-row.has-expanded-3-right .team-member:nth-child(3) { left: 132px; width: calc(100% - 132px); top: 0; height: 100%; z-index: 2; }
+      .team-row.has-expanded-3-right .team-member:nth-child(1) { left: 0; width: 128px; top: 0%; height: calc(33.333% - 2px); z-index: 1; }
+      .team-row.has-expanded-3-right .team-member:nth-child(2) { left: 0; width: 128px; top: calc(33.333% + 1px); height: calc(33.333% - 2px); z-index: 1; }
+      .team-row.has-expanded-3-right .team-member:nth-child(4) { left: 0; width: 128px; top: calc(66.666% + 2px); height: calc(33.333% - 2px); z-index: 1; }
+
+      .team-row.has-expanded-4-left .team-member:nth-child(4) { left: 0%; width: calc(100% - 132px); top: 0; height: 100%; z-index: 2; }
+      .team-row.has-expanded-4-left .team-member:nth-child(1) { left: calc(100% - 128px); width: 128px; top: 0%; height: calc(33.333% - 2px); z-index: 1; }
+      .team-row.has-expanded-4-left .team-member:nth-child(2) { left: calc(100% - 128px); width: 128px; top: calc(33.333% + 1px); height: calc(33.333% - 2px); z-index: 1; }
+      .team-row.has-expanded-4-left .team-member:nth-child(3) { left: calc(100% - 128px); width: 128px; top: calc(66.666% + 2px); height: calc(33.333% - 2px); z-index: 1; }
+
+      .team-row.has-expanded-4-right .team-member:nth-child(4) { left: 132px; width: calc(100% - 132px); top: 0; height: 100%; z-index: 2; }
+      .team-row.has-expanded-4-right .team-member:nth-child(1) { left: 0; width: 128px; top: 0%; height: calc(33.333% - 2px); z-index: 1; }
+      .team-row.has-expanded-4-right .team-member:nth-child(2) { left: 0; width: 128px; top: calc(33.333% + 1px); height: calc(33.333% - 2px); z-index: 1; }
+      .team-row.has-expanded-4-right .team-member:nth-child(3) { left: 0; width: 128px; top: calc(66.666% + 2px); height: calc(33.333% - 2px); z-index: 1; }
+
+      /* Expanded Image Shrink & Move */
+      .team-row[class*="-left"] .team-member.is-expanded .team-member-images {
+        width: 45%;
+        left: 0;
+      }
+      .team-row[class*="-right"] .team-member.is-expanded .team-member-images {
+        width: 45%;
+        left: 55%;
+      }
+
+      /* Expanded Content Show & Move */
+      .team-member.is-expanded .team-member-content {
+        opacity: 1;
+      }
+      .team-row[class*="-left"] .team-member.is-expanded .team-member-content {
+        left: 45%;
+      }
+      .team-row[class*="-right"] .team-member.is-expanded .team-member-content {
+        left: 0%;
+      }
+
+      .team-member.is-expanded .img-default { opacity: 0; }
+      .team-member.is-expanded .img-hover { opacity: 1; }
+
+      /* Hide Default Overlay & Info on ANY hover */
+      .team-row[class*="has-expanded-"] .team-member-overlay,
+      .team-row[class*="has-expanded-"] .team-member-info {
+        opacity: 0;
+      }
     }
 
-    /* ── Vision section (dark, after white team) ── */
+    /* Images */
+    .team-member-images {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      transition: width 0.6s cubic-bezier(0.25, 1, 0.5, 1), left 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+    }
+    .team-member img {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center top;
+      transition: opacity 0.4s ease;
+    }
+    .img-hover { opacity: 0; }
+
+    /* Permanent Info (Default State) */
+    .team-member-overlay {
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      height: 60%;
+      background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, transparent 100%);
+      pointer-events: none;
+      transition: opacity 0.4s ease;
+    }
+    .team-member-info {
+      position: absolute;
+      bottom: 24px; left: 24px; right: 24px;
+      pointer-events: none;
+      transition: opacity 0.4s ease;
+    }
+    .team-member-name {
+      font-family: 'Inter', sans-serif;
+      font-size: clamp(1.1rem, 1.4vw, 1.3rem);
+      font-weight: 500;
+      color: #ffffff;
+      margin: 0 0 4px;
+    }
+    .team-member-role {
+      font-family: 'Urbanist', sans-serif;
+      font-size: clamp(0.75rem, 0.9vw, 0.85rem);
+      color: rgba(255,255,255,0.7);
+      margin: 0;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    /* Expanded Quote Content */
+    .team-member-content {
+      position: absolute;
+      top: 0;
+      left: 45%;
+      width: 55%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 60px;
+      opacity: 0;
+      transition: opacity 0.4s ease 0.2s, left 0.6s cubic-bezier(0.25, 1, 0.5, 1); /* delay content fade slightly, animate left */
+      pointer-events: none;
+    }
+    .team-member-quote {
+      font-family: 'Inter', sans-serif;
+      font-size: 1.8rem;
+      font-weight: 300;
+      color: #ffffff;
+      margin-bottom: 24px;
+      line-height: 1.4;
+      letter-spacing: -0.02em;
+    }
+    .team-member-name-expanded {
+      font-family: 'Urbanist', sans-serif;
+      font-size: 1.2rem;
+      font-weight: 500;
+      color: #00DF81;
+      margin: 0;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+
+    /* ── Mobile: 2×2 grid, always visible info, color photos ── */
+    @media (max-width: 768px) {
+      .team-container { padding: 0 20px; }
+      .team-header { margin-bottom: 36px; }
+
+      .team-row {
+        height: auto;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 8px;
+        position: relative;
+      }
+      .team-member {
+        position: relative;
+        left: auto !important;
+        top: auto !important;
+        width: 100% !important;
+        height: auto !important;
+        aspect-ratio: 4/5;
+        z-index: 1 !important;
+      }
+      .team-member-images {
+        position: relative;
+      }
+      .img-default { opacity: 0; }
+      .img-hover { opacity: 1; }
+      
+      .team-member-content {
+        display: none; /* Hide expanded quote on mobile */
+      }
+      .team-member-overlay {
+        opacity: 1 !important;
+      }
+      .team-member-info {
+        opacity: 1 !important;
+        bottom: 16px;
+        left: 14px;
+        right: 14px;
+      }
+      .team-member-name { font-size: 1rem; }
+    }
+    @media (max-width: 480px) {
+      .team-container { padding: 0 12px; }
+      .team-member-info {
+        bottom: 12px;
+        left: 10px;
+        right: 10px;
+      }
+      .team-member-name { font-size: 0.85rem; }
+      .team-member-role { font-size: 0.65rem; }
+    }
+
+    /* ── Vision section (white, diagonal separator after dark team) ── */
     .about-vision-section {
-      background: #0a0a0a;
+      background: #ffffff;
       position: relative;
       z-index: 9;
       margin-top: -60px;
-      clip-path: polygon(0 0, calc(50% - 52px) 0, calc(50% + 52px) 60px, 100% 60px, 100% 100%, 0 100%);
-      padding: 130px 0 140px;
+      clip-path: polygon(0 60px, calc(50% - 52px) 60px, calc(50% + 52px) 0, 100% 0, 100% 100%, 0 100%);
+      padding: 160px 0 140px;
     }
     .vision-container {
       max-width: 1200px;
@@ -524,7 +769,7 @@
       font-size: 11px;
       font-weight: 600;
       letter-spacing: 2.5px;
-      color: #ffffff;
+      color: #0a0a0a;
       text-transform: uppercase;
       margin-bottom: 40px;
     }
@@ -539,7 +784,7 @@
       font-family: 'Inter', sans-serif;
       font-size: clamp(2.2rem, 3.5vw, 3.6rem);
       font-weight: 400;
-      color: #ffffff;
+      color: #0a0a0a;
       line-height: 1.1;
       letter-spacing: -1px;
       margin: 0;
@@ -549,7 +794,7 @@
       font-weight: 300;
       font-size: 1.1rem;
       line-height: 1.8;
-      color: #aaa;
+      color: #555;
       margin: 0;
     }
     .vision-paras {
@@ -558,21 +803,21 @@
       gap: 32px 60px;
       margin-bottom: 60px;
       padding-top: 48px;
-      border-top: 1px solid #1e1e1e;
+      border-top: 1px solid #e0e0e0;
     }
     .vision-para {
       font-family: 'Inter', sans-serif;
       font-weight: 300;
       font-size: 1rem;
       line-height: 1.85;
-      color: #999;
+      color: #555;
       margin: 0;
     }
     .vision-callout {
       font-family: 'Inter', sans-serif;
       font-size: clamp(1rem, 1.3vw, 1.1rem);
       font-weight: 400;
-      color: #ffffff;
+      color: #0a0a0a;
       line-height: 1.5;
       margin: 0;
       padding-left: 24px;
@@ -620,10 +865,15 @@
         margin-top: -30px;
         clip-path: polygon(0 30px, calc(50% - 26px) 30px, calc(50% + 26px) 0, 100% 0, 100% 100%, 0 100%);
       }
+      .about-team-section {
+        margin-top: -30px;
+        clip-path: polygon(0 30px, calc(50% - 26px) 30px, calc(50% + 26px) 0, 100% 0, 100% 100%, 0 100%);
+        padding: 100px 0 80px;
+      }
       .about-vision-section {
         margin-top: -30px;
-        clip-path: polygon(0 0, calc(50% - 26px) 0, calc(50% + 26px) 30px, 100% 30px, 100% 100%, 0 100%);
-        padding: 90px 0 100px;
+        clip-path: polygon(0 30px, calc(50% - 26px) 30px, calc(50% + 26px) 0, 100% 0, 100% 100%, 0 100%);
+        padding: 100px 0 100px;
       }
       .about-cta-section {
         margin-top: -30px;
@@ -796,70 +1046,72 @@
       <!-- ========== SECTION 2: OUR STORY + TIMELINE ========== -->
       <section class="about-content" id="aboutContent">
         <div class="story-container">
-
-          <div class="story-label">
-            <svg width="10" height="10" viewBox="0 0 44 44" fill="#00c853" xmlns="http://www.w3.org/2000/svg"><polygon points="22,1 43,11 43,33 22,43 1,33 1,11"/></svg>
-            OUR STORY
-          </div>
-
-          <h2 class="story-heading">It started with<br>a simple <span class="story-accent">belief.</span></h2>
-
-          <div class="story-body">
-            <p class="story-para">Businesses shouldn't have to fight technology to grow.</p>
-            <p class="story-para">As engineering students and builders, we saw the same challenge everywhere: teams spending countless hours on repetitive tasks, disconnected workflows, and software that created more friction than value.</p>
-            <p class="story-para">We believed technology should do the opposite. It should simplify operations, automate the repetitive, and help people focus on meaningful work.</p>
-            <p class="story-para">That belief became A2B AI Technologies.</p>
-            <p class="story-para">Founded in February 2026 by Rahul VK, Akhil M S, Aman Xavier, and Dany Stephen, A2B was created with a shared vision: to help businesses harness AI, automation, and modern software to work smarter, move faster, and scale confidently.</p>
-            <p class="story-para">Today, we're building intelligent systems that transform complex processes into seamless experiences — empowering organizations to focus on growth, innovation, and what matters most.</p>
-            <p class="story-callout">Make technology work for people, not the other way around.</p>
-          </div>
-
-        </div>
-      </section>
-
-      <!-- ========== SECTION 3: JOURNEY TIMELINE ========== -->
-      <section class="about-journey-section" id="journey">
-        <div class="journey-container">
-
-          <div class="journey-label">
-            <svg width="10" height="10" viewBox="0 0 44 44" fill="#00c853" xmlns="http://www.w3.org/2000/svg"><polygon points="22,1 43,11 43,33 22,43 1,33 1,11"/></svg>
-            OUR JOURNEY
-          </div>
-
-          <div class="journey-track">
-            <div class="journey-line">
-              <div class="journey-line-fill"></div>
+          <div class="story-content-left">
+            <div class="story-label">
+              <svg width="10" height="10" viewBox="0 0 44 44" fill="#00c853" xmlns="http://www.w3.org/2000/svg"><polygon points="22,1 43,11 43,33 22,43 1,33 1,11"/></svg>
+              OUR STORY
             </div>
-            <div class="journey-items">
 
-              <div class="journey-item done">
-                <div class="journey-year">2025</div>
-                <div class="journey-dot"></div>
-                <div class="journey-event">The Idea</div>
-              </div>
+            <h2 class="story-heading">It started with<br>a simple <span class="story-accent">belief.</span></h2>
 
-              <div class="journey-item done">
-                <div class="journey-year">Feb 2026</div>
-                <div class="journey-dot"></div>
-                <div class="journey-event">A2B Founded</div>
-              </div>
-
-              <div class="journey-item done">
-                <div class="journey-year">2026</div>
-                <div class="journey-dot"></div>
-                <div class="journey-event">First Clients</div>
-              </div>
-
-              <div class="journey-item future">
-                <div class="journey-year">Future</div>
-                <div class="journey-dot"></div>
-                <div class="journey-event">100 Clients</div>
-              </div>
-
+            <div class="story-body">
+              <p class="story-para">Businesses shouldn't have to fight technology to grow.</p>
+              <p class="story-para">As engineering students and builders, we saw the same challenge everywhere: teams spending countless hours on repetitive tasks, disconnected workflows, and software that created more friction than value.</p>
+              <p class="story-para">We believed technology should do the opposite. It should simplify operations, automate the repetitive, and help people focus on meaningful work.</p>
+              <p class="story-para">That belief became A2B AI Technologies.</p>
+              <p class="story-para">Founded in February 2026 by Rahul VK, Akhil M S, Aman Xavier, and Dany Stephen, A2B was created with a shared vision: to help businesses harness AI, automation, and modern software to work smarter, move faster, and scale confidently.</p>
+              <p class="story-para">Today, we're building intelligent systems that transform complex processes into seamless experiences — empowering organizations to focus on growth, innovation, and what matters most.</p>
+              <p class="story-callout">Make technology work for people, not the other way around.</p>
             </div>
           </div>
-
+          
+          <div class="story-collage">
+            <img src="/assets/about/TEAM_PIC.jpg" alt="A2B Team" class="story-img story-img-1" loading="lazy" />
+            <img src="/assets/about/aman%20_section1.jpg" alt="Aman Xavier" class="story-img story-img-2" loading="lazy" />
+            <img src="/assets/about/RAHUL_section1.jpg" alt="Rahul VK" class="story-img story-img-3" loading="lazy" />
+            <img src="/assets/about/TEAM%20PIC3.jpg" alt="Event Photo" class="story-img story-img-4" loading="lazy" />
+            <img src="/assets/about/team2.jpg" alt="Team Working" class="story-img story-img-5" loading="lazy" />
+          </div>
         </div>
+
+        <!-- Journey timeline as embedded dark card -->
+        <div class="journey-card" id="journey">
+          <div class="journey-card-inner">
+            <div class="journey-label">
+              <svg width="10" height="10" viewBox="0 0 44 44" fill="#00c853" xmlns="http://www.w3.org/2000/svg"><polygon points="22,1 43,11 43,33 22,43 1,33 1,11"/></svg>
+              OUR JOURNEY
+            </div>
+
+            <div class="journey-track">
+              <div class="journey-line">
+                <div class="journey-line-fill"></div>
+              </div>
+              <div class="journey-items">
+                <div class="journey-item done">
+                  <div class="journey-year">2025</div>
+                  <div class="journey-dot"></div>
+                  <div class="journey-event">The Idea</div>
+                </div>
+                <div class="journey-item done">
+                  <div class="journey-year">Feb 2026</div>
+                  <div class="journey-dot"></div>
+                  <div class="journey-event">A2B Founded</div>
+                </div>
+                <div class="journey-item done">
+                  <div class="journey-year">2026</div>
+                  <div class="journey-dot"></div>
+                  <div class="journey-event">First Clients</div>
+                </div>
+                <div class="journey-item future">
+                  <div class="journey-year">Future</div>
+                  <div class="journey-dot"></div>
+                  <div class="journey-event">100 Clients</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
       </section>
 
       <!-- ========== SECTION 4: OUR MISSION ========== -->
@@ -883,6 +1135,12 @@
           <p class="mission-callout-big">Give people back their time.</p>
           <p class="mission-closing">So they can focus on creativity, innovation, growth, and the work that truly matters.</p>
 
+          <div class="mission-images">
+            <img src="/assets/about/TEAME_PIC4.JPG" alt="Team at event" loading="lazy" />
+            <img src="/assets/about/aman_section2.jpg" alt="Team strategy" loading="lazy" />
+            <img src="/assets/about/rahul_section3.jpg" alt="Team meeting" loading="lazy" />
+          </div>
+
         </div>
       </section>
 
@@ -899,45 +1157,69 @@
             <p class="team-sub">We may be a young company, but we're united by a shared mission: building intelligent technology that gives people back their time.</p>
           </div>
 
-          <div class="team-grid">
+          <div class="team-row">
 
-            <div class="team-card">
-              <div class="team-photo-wrap">
-                <img src="/assets/team/rahul.webp" alt="Rahul VK" class="team-photo" />
+            <div class="team-member">
+              <div class="team-member-images">
+                <img src="/assets/team/rahul 1.png" class="img-default" alt="Rahul VK Default" loading="lazy" />
+                <img src="/assets/team/rahul.png" class="img-hover" alt="Rahul VK Hover" loading="lazy" />
+                <div class="team-member-overlay"></div>
+                <div class="team-member-info">
+                  <h3 class="team-member-name">Rahul</h3>
+                  <p class="team-member-role">Co-Founder & CEO</p>
+                </div>
               </div>
-              <div class="team-info">
-                <h3 class="team-name">Rahul VK</h3>
-                <p class="team-role">Co-Founder</p>
+              <div class="team-member-content">
+                <p class="team-member-quote">"Building systems that work for you, not the other way around."</p>
+                <h3 class="team-member-name-expanded">- Rahul V K</h3>
               </div>
             </div>
 
-            <div class="team-card">
-              <div class="team-photo-wrap">
-                <img src="/assets/team/aman.webp" alt="Aman Xavier" class="team-photo" />
+            <div class="team-member">
+              <div class="team-member-images">
+                <img src="/assets/team/aman1.png" class="img-default" alt="Aman Xavier Default" loading="lazy" />
+                <img src="/assets/team/aman.png" class="img-hover" alt="Aman Xavier Hover" loading="lazy" />
+                <div class="team-member-overlay"></div>
+                <div class="team-member-info">
+                  <h3 class="team-member-name">Aman</h3>
+                  <p class="team-member-role">Co-Founder & COO</p>
+                </div>
               </div>
-              <div class="team-info">
-                <h3 class="team-name">Aman Xavier</h3>
-                <p class="team-role">Co-Founder</p>
-              </div>
-            </div>
-
-            <div class="team-card">
-              <div class="team-photo-wrap">
-                <img src="/assets/team/akhil.webp" alt="Akhil M S" class="team-photo" />
-              </div>
-              <div class="team-info">
-                <h3 class="team-name">Akhil M S</h3>
-                <p class="team-role">Co-Founder</p>
+              <div class="team-member-content">
+                <p class="team-member-quote">"Operations should be invisible and scale infinitely."</p>
+                <h3 class="team-member-name-expanded">- Aman Xavier</h3>
               </div>
             </div>
 
-            <div class="team-card">
-              <div class="team-photo-wrap">
-                <img src="/assets/team/dany.webp" alt="Dany Stephen" class="team-photo" />
+            <div class="team-member">
+              <div class="team-member-images">
+                <img src="/assets/team/AKHIL1.jpeg" class="img-default" alt="Akhil M S Default" loading="lazy" />
+                <img src="/assets/team/akhil.png" class="img-hover" alt="Akhil M S Hover" loading="lazy" />
+                <div class="team-member-overlay"></div>
+                <div class="team-member-info">
+                  <h3 class="team-member-name">Akhil</h3>
+                  <p class="team-member-role">Co-Founder & CTO</p>
+                </div>
               </div>
-              <div class="team-info">
-                <h3 class="team-name">Dany Stephen</h3>
-                <p class="team-role">Co-Founder</p>
+              <div class="team-member-content">
+                <p class="team-member-quote">"Technology is just a tool; the magic is in the architecture."</p>
+                <h3 class="team-member-name-expanded">- Akhil M S</h3>
+              </div>
+            </div>
+
+            <div class="team-member">
+              <div class="team-member-images">
+                <img src="/assets/team/dany1.png" class="img-default" alt="Dany Stephen Default" loading="lazy" />
+                <img src="/assets/team/dany.png" class="img-hover" alt="Dany Stephen Hover" loading="lazy" />
+                <div class="team-member-overlay"></div>
+                <div class="team-member-info">
+                  <h3 class="team-member-name">Dany</h3>
+                  <p class="team-member-role">Co-Founder & CMO</p>
+                </div>
+              </div>
+              <div class="team-member-content">
+                <p class="team-member-quote">"Every great product starts with a deep understanding of people."</p>
+                <h3 class="team-member-name-expanded">- Dany Stephen</h3>
               </div>
             </div>
 
