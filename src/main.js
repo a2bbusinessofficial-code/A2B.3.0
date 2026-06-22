@@ -66,13 +66,17 @@ function initMobileMenu() {
     });
   });
 
-  // Mobile: toggle inline sub-menus on dropdown button click
+  // Desktop: click navigates to section page; mobile: toggle dropdown
   navLinks.querySelectorAll('.nav-dropdown-btn').forEach(btn => {
     btn.addEventListener('click', () => {
-      if (window.innerWidth > 768) return;
+      if (window.innerWidth > 768) {
+        const wrapper = btn.closest('.nav-dropdown-wrapper');
+        if (wrapper?.id === 'servicesDropdown') window.location.href = '/service';
+        else if (wrapper?.id === 'resourcesDropdown') window.location.href = '/blog';
+        return;
+      }
       const wrapper = btn.closest('.nav-dropdown-wrapper');
       if (!wrapper) return;
-      // Collapse sibling dropdowns
       navLinks.querySelectorAll('.nav-dropdown-wrapper').forEach(w => {
         if (w !== wrapper) w.classList.remove('open');
       });
@@ -176,7 +180,7 @@ function initNavScroll() {
         }
 
         // Dynamic light/dark mode adapting
-        const lightSections = document.querySelectorAll('.how-we-work-section, .home-cs-section, .home-testimonials-section');
+        const lightSections = document.querySelectorAll('.home-stats-section, .home-svc-section, .home-cs-section, .home-testimonials-section, .cbr-light-section');
         let isOverLightSection = false;
         const checkY = 40; // check color roughly halfway down the navbar
 
@@ -443,6 +447,140 @@ async function initContactForm() {
 }
 
 /**
+ * Clinic Fit Check Form — saves to Supabase and sends email via Web3Forms.
+ */
+async function initClinicFitCheckForm() {
+  const form = document.getElementById('clinicFitCheckForm');
+  if (!form) return;
+
+  const { supabase } = await import('./supabase.js');
+  const submitBtn = document.getElementById('clinicFitCheckBtn');
+  const labelEl = submitBtn.querySelector('.btn-label');
+  const successEl = document.getElementById('clinicFitCheckSuccess');
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+
+    const fd = new FormData(form);
+    const data = Object.fromEntries(fd.entries());
+
+    labelEl.textContent = 'Sending…';
+    submitBtn.disabled = true;
+
+    const subject = `Clinic Fit Check: ${data.contact_name} — ${data.website}`;
+
+    const { error: dbError } = await supabase
+      .from('form_submissions')
+      .insert({ source: 'clinic_fit_check', data });
+
+    if (dbError) {
+      console.error('Supabase error:', dbError);
+      labelEl.textContent = 'Error — try again';
+      submitBtn.disabled = false;
+      return;
+    }
+
+    fetch('https://api.web3forms.com/submit', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+      body: JSON.stringify({
+        access_key: import.meta.env.VITE_WEB3FORMS_ACCESS_KEY,
+        subject,
+        from_name: data.contact_name,
+        ...data,
+      }),
+    }).catch(err => console.error('Web3Forms error:', err));
+
+    form.style.display = 'none';
+    successEl.style.display = 'block';
+  });
+}
+
+/**
+ * Custom dropdowns for the Clinic fit-check form (replaces native <select>).
+ * The chosen value is written into a hidden input so the existing submit
+ * handler picks it up via FormData. Required selects are validated here,
+ * before the main submit handler runs.
+ */
+function initCbrSelects() {
+  const selects = document.querySelectorAll('.cv2-select');
+  if (!selects.length) return;
+
+  const closeAll = (except) => {
+    selects.forEach(s => { if (s !== except) s.classList.remove('open'); });
+  };
+
+  selects.forEach(select => {
+    const trigger = select.querySelector('.cv2-select-trigger');
+    const valueEl = select.querySelector('.cv2-select-value');
+    const input = select.querySelector('input[type="hidden"]');
+    const options = select.querySelectorAll('.cv2-select-option');
+
+    trigger.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const willOpen = !select.classList.contains('open');
+      closeAll(select);
+      select.classList.toggle('open', willOpen);
+      trigger.setAttribute('aria-expanded', String(willOpen));
+    });
+
+    options.forEach(opt => {
+      opt.addEventListener('click', (e) => {
+        e.stopPropagation();
+        options.forEach(o => o.classList.remove('selected'));
+        opt.classList.add('selected');
+        input.value = opt.dataset.value;
+        valueEl.textContent = opt.textContent;
+        valueEl.classList.remove('cv2-placeholder');
+        select.classList.remove('open', 'invalid');
+        trigger.setAttribute('aria-expanded', 'false');
+      });
+    });
+  });
+
+  document.addEventListener('click', () => closeAll(null));
+  document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeAll(null); });
+
+  // Validate required custom selects before the form's main submit handler.
+  const form = document.getElementById('clinicFitCheckForm');
+  if (form) {
+    form.addEventListener('submit', (e) => {
+      let firstInvalid = null;
+      selects.forEach(select => {
+        if (select.dataset.required !== 'true') return;
+        const input = select.querySelector('input[type="hidden"]');
+        if (!input.value) {
+          select.classList.add('invalid');
+          if (!firstInvalid) firstInvalid = select;
+        }
+      });
+      if (firstInvalid) {
+        e.preventDefault();
+        e.stopImmediatePropagation();
+        firstInvalid.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      }
+    });
+  }
+}
+
+/**
+ * Clinic Booking Recovery FAQ accordion.
+ */
+function initCbrFaq() {
+  const items = document.querySelectorAll('.cbr-faq-item');
+  if (!items.length) return;
+
+  items.forEach(item => {
+    const btn = item.querySelector('.cbr-faq-question');
+    btn.addEventListener('click', () => {
+      const isOpen = item.classList.contains('open');
+      items.forEach(i => i.classList.remove('open'));
+      if (!isOpen) item.classList.add('open');
+    });
+  });
+}
+
+/**
  * Free Consultancy — circular rotating-text button.
  * Peeks from the bottom-right corner; fully reveals on hover.
  * Clicking links to the contact page.
@@ -485,23 +623,15 @@ function initFreeConsultationButton() {
 
 async function initHeroAnimation() {
   const treesEl = document.getElementById('heroTrees');
-  const balloonEl = document.getElementById('heroBalloon');
-  if (!treesEl && !balloonEl) return;
+  if (!treesEl) return;
 
   const [lottie, resp] = await Promise.all([
     import('lottie-web').then(m => m.default),
     fetch('/assets/hero/heroanime.json').then(r => r.json()),
   ]);
 
-  if (treesEl) {
-    const treesData = { ...resp, layers: resp.layers.filter(l => l.nm !== 'balon.png') };
-    lottie.loadAnimation({ container: treesEl, renderer: 'svg', loop: true, autoplay: true, animationData: treesData });
-  }
-
-  if (balloonEl) {
-    const balloonData = { ...resp, layers: resp.layers.filter(l => l.nm === 'balon.png') };
-    lottie.loadAnimation({ container: balloonEl, renderer: 'svg', loop: true, autoplay: true, animationData: balloonData });
-  }
+  const treesData = { ...resp, layers: resp.layers.filter(l => l.nm !== 'balon.png') };
+  lottie.loadAnimation({ container: treesEl, renderer: 'svg', loop: true, autoplay: true, animationData: treesData });
 }
 
 /**
@@ -582,6 +712,9 @@ document.addEventListener('DOMContentLoaded', () => {
   initCaseStudyFilters();
   initTestimonialCarousels();
   initContactForm();
+  initCbrSelects();
+  initClinicFitCheckForm();
+  initCbrFaq();
   initFreeConsultationButton();
   initHeroAnimation();
   initFooterAccordion();

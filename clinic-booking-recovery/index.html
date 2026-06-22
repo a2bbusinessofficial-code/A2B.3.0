@@ -1,0 +1,722 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="A2B helps aesthetic, skin, laser, and med spa clinics follow up with old inquiries, missed consultations, and inactive clients, then turn interested replies into booking opportunities." />
+    <meta name="robots" content="index, follow" />
+    <title>Bring Back Interested Clinic Leads | A2B</title>
+    <link rel="canonical" href="https://a2b.services/clinic-booking-recovery" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="A2B AI Technologies" />
+    <meta property="og:title" content="Bring back people who already showed interest." />
+    <meta property="og:description" content="A 30 day booking recovery pilot for clinics with old inquiries, missed consultations, and inactive clients sitting in their records." />
+    <meta property="og:url" content="https://a2b.services/clinic-booking-recovery" />
+    <meta property="og:image" content="https://a2b.services/assets/logos/a2blogowhite.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Bring back people who already showed interest. | A2B" />
+    <meta name="twitter:description" content="A 30 day booking recovery pilot for clinics with old inquiries, missed consultations, and inactive clients." />
+    <meta name="twitter:image" content="https://a2b.services/assets/logos/a2blogowhite.png" />
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "Service",
+          "@id": "https://a2b.services/clinic-booking-recovery#service",
+          "name": "Clinic Booking Recovery Pilot",
+          "provider": {"@id": "https://a2b.services/#organization"},
+          "description": "A 30-day booking recovery pilot for aesthetic, skin, laser, and med spa clinics. A2B checks old records, finds contacts worth following up with, sends one clinic-approved message, and hands interested replies back to your team.",
+          "url": "https://a2b.services/clinic-booking-recovery",
+          "areaServed": "Worldwide",
+          "serviceType": "Database Reactivation"
+        },
+        {
+          "@type": "BreadcrumbList",
+          "itemListElement": [
+            {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://a2b.services/"},
+            {"@type": "ListItem", "position": 2, "name": "Services", "item": "https://a2b.services/service"},
+            {"@type": "ListItem", "position": 3, "name": "Clinic Booking Recovery", "item": "https://a2b.services/clinic-booking-recovery"}
+          ]
+        },
+        {
+          "@type": "FAQPage",
+          "mainEntity": [
+            {"@type": "Question", "name": "Is this only for old leads?", "acceptedAnswer": {"@type": "Answer", "text": "No. It can include old inquiries, missed consultations, no shows, inactive clients, past promo responders, or people who asked about treatment but never booked."}},
+            {"@type": "Question", "name": "Is this a discount campaign?", "acceptedAnswer": {"@type": "Answer", "text": "No. The first message can be a simple still interested check, a treatment update, new availability, or a clinic approved offer."}},
+            {"@type": "Question", "name": "Do you guarantee paying treatment clients?", "acceptedAnswer": {"@type": "Answer", "text": "No. The default pilot guarantees qualified booked consultation value from the approved list, not collected treatment revenue."}},
+            {"@type": "Question", "name": "What happens after the pilot?", "acceptedAnswer": {"@type": "Answer", "text": "If the pilot shows recoverable demand, A2B can continue as a monthly Booking Recovery System for ongoing campaigns, tracking, handoff, and reporting."}}
+          ]
+        },
+        {"@type": "Organization", "@id": "https://a2b.services/#organization", "name": "A2B AI Technologies", "url": "https://a2b.services"}
+      ]
+    }
+    </script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="/src/style.css" />
+    <script async src="https://plausible.io/js/pa-0lcm4EUVXsjASg9rf6RN1.js"></script>
+    <script>
+      window.plausible=window.plausible||function(){(plausible.q=plausible.q||[]).push(arguments)},plausible.init=plausible.init||function(i){plausible.o=i||{}};
+      plausible.init()
+    </script>
+  </head>
+  <body>
+    <div id="app">
+
+      <!-- ========== NAVBAR ========== -->
+      <nav class="navbar" id="navbar">
+        <div class="nav-container">
+          <a href="/" class="nav-logo" aria-label="A2B Home">
+            <img src="/assets/logos/a2blogowhite.png" alt="A2B Logo" class="nav-logo-img" width="42" height="42" />
+            <span class="nav-logo-text">A2B</span>
+          </a>
+          <div class="nav-links" id="navLinks">
+            <a href="/" class="nav-link">Home <span class="nav-slash"></span></a>
+            <a href="/product" class="nav-link">Lab <span class="nav-slash"></span></a>
+            <div class="nav-dropdown-wrapper" id="servicesDropdown">
+              <button class="nav-link nav-dropdown-btn active">Service <span class="nav-slash"></span></button>
+              <div class="nav-dropdown-menu mega-menu svc-mega-menu">
+                <div class="mega-menu-left svc-mega-left">
+                  <div class="mega-menu-label">
+                    <svg width="12" height="12" viewBox="0 0 44 44" fill="var(--accent)" xmlns="http://www.w3.org/2000/svg"><polygon points="22,1 43,11 43,33 22,43 1,33 1,11"/></svg>
+                    SERVICES
+                  </div>
+                  <div class="mega-links svc-links">
+                    <a href="/services/ai-automation" class="mega-link svc-link" data-title="AI Automation" data-desc="Intelligent process automation that eliminates manual work, connects your systems, and ships measurable ROI in weeks." data-subs="Document Intelligence,Workflow Automation,Data Pipeline Automation,Cross-System Integration">AI Automation</a>
+                    <a href="/services/ai-agents" class="mega-link svc-link" data-title="AI Agents" data-desc="Autonomous agentic systems that think, plan, and execute multi-step tasks without human intervention." data-subs="Task Agents,Multi-Agent Systems,Agentic Coding,Task Orchestration">AI Agents</a>
+                    <a href="/services/custom-ai" class="mega-link svc-link" data-title="Custom AI" data-desc="Fine-tuned models, RAG pipelines, and purpose-built AI that knows your domain, your data, and your terminology." data-subs="Fine-tuning & Training,RAG Systems,Model Evaluation,Knowledge Bases">Custom AI</a>
+                    <a href="/services/ai-strategy" class="mega-link svc-link" data-title="AI Strategy" data-desc="Discovery, roadmapping, and ROI modeling — turning AI opportunity into a plan your team can actually execute." data-subs="Discovery Blueprint,ROI Modeling,AI Readiness Assessment,Team Training">AI Strategy</a>
+                    <a href="/clinic-booking-recovery" class="mega-link svc-link" data-title="Clinic Booking Recovery" data-desc="Bring back old inquiries, missed consultations, and inactive clients. One approved message. Interested replies handed to your team." data-subs="Old Inquiry Follow-up,Missed Consultation Recovery,Inactive Client Re-engagement,Booking Handoff">Clinic Booking Recovery</a>
+                  </div>
+                </div>
+                <div class="mega-menu-right">
+                  <div class="mega-content">
+                    <h3 class="mega-title svc-mega-title">Our Services</h3>
+                    <p class="mega-desc svc-mega-desc">Hover a service to explore what we build.</p>
+                    <ul class="svc-sub-list" style="display: none;"></ul>
+                  </div>
+                  <a href="/service" class="btn-arrow mega-contact-btn">
+                    <span class="btn-label">All Services</span>
+                    <span class="btn-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+                  </a>
+                </div>
+              </div>
+            </div>
+            <a href="/case-studies" class="nav-link">Case Study <span class="nav-slash"></span></a>
+            <div class="nav-dropdown-wrapper" id="resourcesDropdown">
+              <button class="nav-link nav-dropdown-btn">Resources <span class="nav-slash"></span></button>
+              <div class="nav-dropdown-menu mega-menu">
+                <div class="mega-menu-left">
+                  <div class="mega-menu-label"><svg width="12" height="12" viewBox="0 0 44 44" fill="var(--accent)" xmlns="http://www.w3.org/2000/svg"><polygon points="22,1 43,11 43,33 22,43 1,33 1,11"/></svg> RESOURCES</div>
+                  <div class="mega-links">
+                    <a href="/blog" class="mega-link" data-title="Field notes & Breakdowns" data-desc="Read our latest articles on agentic workflows, enterprise AI strategy, and building autonomous systems.">Blog</a>
+                    <a href="/youtube" class="mega-link" data-title="Walkthroughs & Live Builds" data-desc="Watch our engineers build live, break down complex AI agents, and give product deep-dives on our channel.">YouTube</a>
+                  </div>
+                </div>
+                <div class="mega-menu-right">
+                  <div class="mega-content">
+                    <h3 class="mega-title">"We partner with brands to move the world through tech, design and strategy."</h3>
+                    <p class="mega-desc">Dive into our field notes, video walkthroughs, and frameworks on AI-native operations to build a smarter future.</p>
+                  </div>
+                  <a href="/contact" class="btn-arrow mega-contact-btn"><span class="btn-label">Contact Us</span><span class="btn-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span></a>
+                </div>
+              </div>
+            </div>
+            <a href="/about" class="nav-link">About <span class="nav-slash"></span></a>
+          </div>
+          <a href="#fit-check" class="btn-arrow nav-cta" id="navCta">
+            <span class="btn-label">Check My List</span>
+            <span class="btn-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+          </a>
+          <button class="nav-hamburger" id="navHamburger" aria-label="Toggle Menu"><span></span><span></span><span></span></button>
+        </div>
+      </nav>
+
+      <main class="cbr-page">
+
+        <!-- ══════════════════════════════════════════
+             1. HERO  —  DARK
+        ══════════════════════════════════════════ -->
+        <section class="cbr-hero">
+          <div class="cbr-hero-inner">
+            <div class="hero-label">FOR AESTHETIC &amp; MED SPA CLINICS</div>
+            <h1 class="cbr-hero-title">
+              Bring back people who<br/>
+              already showed interest.
+            </h1>
+            <div class="hero-pills" style="margin-bottom: 32px;">
+              <span class="hero-pill-item">Old Inquiries</span>
+              <span class="hero-pill-divider">|</span>
+              <span class="hero-pill-item">Missed Consultations</span>
+              <span class="hero-pill-divider">|</span>
+              <span class="hero-pill-item">Inactive Clients</span>
+              <span class="hero-pill-divider">|</span>
+              <span class="hero-pill-item">Booking Handoff</span>
+            </div>
+            <p class="cbr-hero-sub">We follow up with your old records, send one clinic approved message, and hand interested replies back to your team. No new ads. No cold list.</p>
+            <div class="hero-actions">
+              <a href="#fit-check" class="btn-arrow hero-cta">
+                <span class="btn-label">Check My List</span>
+                <span class="btn-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+              </a>
+              <a href="#how-it-works" class="hero-case-study">
+                See How It Works
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+              </a>
+            </div>
+            <div class="cbr-trust-strip">
+              <span>USD 1,000 pilot</span>
+              <span class="cbr-trust-dot">&middot;</span>
+              <span>30 days</span>
+              <span class="cbr-trust-dot">&middot;</span>
+              <span>Up to 500 approved contacts</span>
+              <span class="cbr-trust-dot">&middot;</span>
+              <span>One treatment focus</span>
+              <span class="cbr-trust-dot">&middot;</span>
+              <span>List approval first</span>
+            </div>
+          </div>
+        </section>
+
+        <!-- ══════════════════════════════════════════
+             2. PROBLEM  —  LIGHT
+        ══════════════════════════════════════════ -->
+        <section class="cbr-light-section cbr-problem-section">
+          <div class="cbr-section-container">
+            <div class="cbr-light-header">
+              <h2 class="cbr-light-heading">Some customers go quiet<br/>before they book.</h2>
+              <p class="cbr-light-sub">These are not cold strangers. They showed real interest — and then life got in the way.</p>
+            </div>
+            <div class="cbr-prob-grid">
+              <div class="cbr-prob-card">
+                <span class="cbr-prob-num">01</span>
+                <h3 class="cbr-prob-title">Asked About Laser</h3>
+                <p class="cbr-prob-body">They requested a quote, asked about pricing, and then went quiet before booking a consultation.</p>
+              </div>
+              <div class="cbr-prob-card">
+                <span class="cbr-prob-num">02</span>
+                <h3 class="cbr-prob-title">Missed A Consultation</h3>
+                <p class="cbr-prob-body">They booked, didn't show up, and were never followed up with. The slot was lost. The person wasn't.</p>
+              </div>
+              <div class="cbr-prob-card">
+                <span class="cbr-prob-num">03</span>
+                <h3 class="cbr-prob-title">Stopped Replying</h3>
+                <p class="cbr-prob-body">They wanted pricing, got it, and disappeared. One follow-up might have been all it took.</p>
+              </div>
+              <div class="cbr-prob-card">
+                <span class="cbr-prob-num">04</span>
+                <h3 class="cbr-prob-title">Came Once and Left</h3>
+                <p class="cbr-prob-body">They were a client. They liked the experience. Nobody reached out to bring them back.</p>
+              </div>
+            </div>
+            <div class="cbr-prob-closing">
+              <p class="cbr-prob-closing-text">They are not cold strangers.<br/>They are unfinished conversations.</p>
+            </div>
+          </div>
+        </section>
+
+        <!-- ══════════════════════════════════════════
+             3. POSITIONING + OFFER  —  DARK
+        ══════════════════════════════════════════ -->
+        <section class="cbr-section cbr-offer-section">
+          <div class="cbr-section-container">
+
+            <div class="cbr-positioning-row">
+              <div class="cbr-positioning-left">
+                <div class="cbr-section-label">The approach</div>
+                <h2 class="cbr-section-headline">We help you restart<br/>the right conversations.</h2>
+              </div>
+              <div class="cbr-positioning-right">
+                <p>A2B checks your old records, finds the contacts worth following up with, sends one clinic approved message, and hands interested replies back to your team.</p>
+                <div class="cbr-positioning-notes">
+                  <span>This is not a blast to everyone.</span>
+                  <span>It is a small recovery pilot around one valuable treatment.</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="cbr-offer-card">
+              <div class="cbr-offer-top">
+                <div class="cbr-offer-info">
+                  <div class="cbr-offer-tag">Clinic</div>
+                  <h2 class="cbr-offer-name">Clinic Booking<br/>Recovery Pilot</h2>
+                  <div class="cbr-offer-price-block">
+                    <span class="cbr-offer-price">USD 1,000</span>
+                    <span class="cbr-offer-timeline">30 days</span>
+                  </div>
+                </div>
+                <div class="cbr-offer-refund">
+                  <div class="cbr-refund-stamp" aria-hidden="true">
+                    <span class="cbr-refund-stamp-top">100%</span>
+                    <span class="cbr-refund-stamp-big">Full<br/>Refund</span>
+                    <span class="cbr-refund-stamp-bot">Guarantee</span>
+                  </div>
+                  <div class="cbr-offer-refund-label">Money-back condition</div>
+                  <p>If your approved list does not recover <strong>USD 1,000 in qualified booked consultation value</strong> within 30 days, we refund the USD 1,000 pilot fee.</p>
+                </div>
+              </div>
+              <div class="cbr-offer-cols">
+                <div class="cbr-offer-col cbr-offer-included">
+                  <div class="cbr-offer-col-title">Included</div>
+                  <ul>
+                    <li>Fit check for your old list</li>
+                    <li>Cleanup of up to 500 approved contacts</li>
+                    <li>One treatment focus</li>
+                    <li>One clinic approved follow up message</li>
+                    <li>One eligible channel — SMS or Email</li>
+                    <li>Interested reply review</li>
+                    <li>Booking handoff to your team</li>
+                    <li>Final pilot report</li>
+                  </ul>
+                </div>
+                <div class="cbr-offer-col cbr-offer-excluded">
+                  <div class="cbr-offer-col-title">Not included</div>
+                  <ul>
+                    <li>Paid ads</li>
+                    <li>Website changes</li>
+                    <li>Full CRM rebuild</li>
+                    <li>Unlimited campaigns</li>
+                    <li>Guaranteed treatment revenue</li>
+                    <li>Third party software or sending costs</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </section>
+
+        <!-- ══════════════════════════════════════════
+             4. HOW IT WORKS  —  LIGHT
+        ══════════════════════════════════════════ -->
+        <section class="cbr-light-section cbr-steps-section" id="how-it-works">
+          <div class="cbr-section-container">
+            <div class="cbr-light-header">
+              <h2 class="cbr-light-heading">Simple recovery.<br/><em>Clear handoff.</em></h2>
+              <p class="cbr-light-sub">Six steps from your old records to qualified replies in your inbox. No complexity, no guesswork.</p>
+            </div>
+            <div class="cbr-steps-grid-light">
+              <div class="cbr-step-card-light">
+                <span class="cbr-step-card-num">01</span>
+                <h3 class="cbr-step-card-title">Check The List</h3>
+                <p class="cbr-step-card-body">You answer 6 quick questions so we can see whether your old records are usable.</p>
+              </div>
+              <div class="cbr-step-card-light">
+                <span class="cbr-step-card-num">02</span>
+                <h3 class="cbr-step-card-title">Pick One Treatment</h3>
+                <p class="cbr-step-card-body">We focus on one service worth recovering first — laser, RF microneedling, resurfacing, fillers, body contouring, or a package skin program.</p>
+              </div>
+              <div class="cbr-step-card-light">
+                <span class="cbr-step-card-num">03</span>
+                <h3 class="cbr-step-card-title">Approve The Message</h3>
+                <p class="cbr-step-card-body">A2B writes one follow up message. Your team approves the wording and channel before anything is sent.</p>
+              </div>
+              <div class="cbr-step-card-light">
+                <span class="cbr-step-card-num">04</span>
+                <h3 class="cbr-step-card-title">Run The Pilot</h3>
+                <p class="cbr-step-card-body">We send the approved message to up to 500 approved contacts through the best eligible channel.</p>
+              </div>
+              <div class="cbr-step-card-light">
+                <span class="cbr-step-card-num">05</span>
+                <h3 class="cbr-step-card-title">Send Interested Replies</h3>
+                <p class="cbr-step-card-body">When someone shows real interest, we review the reply and hand it to your team with context.</p>
+              </div>
+              <div class="cbr-step-card-light">
+                <span class="cbr-step-card-num">06</span>
+                <h3 class="cbr-step-card-title">Report The Result</h3>
+                <p class="cbr-step-card-body">You get a simple report: contacts reviewed, messages sent, replies, qualified opportunities, handoff status, and the recommended next step.</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ══════════════════════════════════════════
+             5. ELIGIBILITY  —  DARK
+        ══════════════════════════════════════════ -->
+        <section class="cbr-section cbr-eligibility-section">
+          <div class="cbr-section-container">
+            <div class="cbr-section-label">Fit criteria</div>
+            <h2 class="cbr-section-headline">The list has to qualify first.</h2>
+            <p class="cbr-section-body">The pilot works only when there are enough usable records, a valuable treatment to recover, and someone on your team ready to handle interested replies.</p>
+            <div class="cbr-elig-table">
+              <div class="cbr-elig-col cbr-elig-good">
+                <div class="cbr-elig-head">
+                  <span class="cbr-elig-icon cbr-elig-icon-good">✓</span>
+                  Strong Fit
+                </div>
+                <ul>
+                  <li>300 or more approved old contacts (500+ preferred)</li>
+                  <li>Old inquiries, missed consultations, no shows, lapsed clients</li>
+                  <li>Records from the last 24 months preferred</li>
+                  <li>One service group worth ~USD 750 or more</li>
+                  <li>Same day handoff owner inside the clinic</li>
+                  <li>Clear booking path and usable SMS or Email</li>
+                </ul>
+              </div>
+              <div class="cbr-elig-col cbr-elig-bad">
+                <div class="cbr-elig-head">
+                  <span class="cbr-elig-icon cbr-elig-icon-bad">✗</span>
+                  Not A Fit
+                </div>
+                <ul>
+                  <li>No old records or under 100 old contacts</li>
+                  <li>No usable phone or email</li>
+                  <li>Mostly low ticket services</li>
+                  <li>No appointment availability</li>
+                  <li>No one available to handle interested replies</li>
+                  <li>No permission or lawful basis to contact the list</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ══════════════════════════════════════════
+             6. WHAT COUNTS + NO CRM  —  LIGHT
+        ══════════════════════════════════════════ -->
+        <section class="cbr-light-section cbr-result-section">
+          <div class="cbr-section-container">
+
+            <div class="cbr-result-row">
+              <div class="cbr-result-left">
+                <div class="cbr-light-label">How we count results</div>
+                <h2 class="cbr-light-heading-sm">We count booking opportunities, not random replies.</h2>
+                <p class="cbr-light-body">A result counts when the person:</p>
+                <div class="cbr-funnel">
+                  <div class="cbr-funnel-top">All interested replies</div>
+                  <ul class="cbr-funnel-stages">
+                    <li class="cbr-funnel-stage"><span class="cbr-funnel-stage-icon">&#10003;</span><span>came from your approved old list</span></li>
+                    <li class="cbr-funnel-stage"><span class="cbr-funnel-stage-icon">&#10003;</span><span>showed interest in the selected treatment</span></li>
+                    <li class="cbr-funnel-stage"><span class="cbr-funnel-stage-icon">&#10003;</span><span>is interested in a service worth around USD 750 or more</span></li>
+                    <li class="cbr-funnel-stage"><span class="cbr-funnel-stage-icon">&#10003;</span><span>confirmed they can take the next step</span></li>
+                    <li class="cbr-funnel-stage"><span class="cbr-funnel-stage-icon">&#10003;</span><span>gave or confirmed usable contact details</span></li>
+                    <li class="cbr-funnel-stage"><span class="cbr-funnel-stage-icon">&#10003;</span><span>was handed to your clinic with context</span></li>
+                  </ul>
+                  <div class="cbr-funnel-out">
+                    <span class="cbr-funnel-out-big">Counted booking opportunity</span>
+                  </div>
+                </div>
+                <p class="cbr-result-note-light">A2B does not guarantee collected treatment revenue. Your clinic still controls response speed, appointment availability, consultation quality, pricing, trust, and closing.</p>
+              </div>
+              <div class="cbr-result-right">
+                <div class="cbr-nocrm-card">
+                  <div class="cbr-nocrm-card-tag">Not quite ready?</div>
+                  <h3 class="cbr-nocrm-card-title">No clean list yet? Fix the tracking first.</h3>
+                  <p>If old inquiries are scattered, missing, or not tracked, the recovery pilot is not the right first step.</p>
+                  <p>A2B can set up the <strong>Booking Recovery Foundation</strong> first: lead capture, status tracking, follow up fields, and handoff workflow.</p>
+                  <p>Once the foundation is usable, recovery makes sense.</p>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </section>
+
+        <!-- ══════════════════════════════════════════
+             7. CTA + FIT CHECK FORM  —  DARK
+        ══════════════════════════════════════════ -->
+        <section class="cbr-section cbr-form-section" id="fit-check">
+          <div class="cbr-section-container">
+
+            <div class="cbr-form-cta-row">
+              <div class="cbr-form-cta-left">
+                <div class="cbr-section-label">Fit check</div>
+                <h2 class="cbr-section-headline">Check My List</h2>
+                <p class="cbr-section-body" style="margin-bottom:0;">Tell us about your old inquiries, missed consultations, and inactive clients. We will tell you whether the 30 day Booking Recovery Pilot makes sense.</p>
+              </div>
+              <div class="cbr-form-cta-right">
+                <!-- empty — form is below -->
+              </div>
+            </div>
+
+            <div class="cbr-form-wrap">
+              <form class="cbr-fit-form" id="clinicFitCheckForm">
+
+                <!-- Q1 -->
+                <div class="cv2-field cv2-full">
+                  <input type="url" name="website" placeholder="Clinic Website URL *" required />
+                </div>
+
+                <!-- Q2 -->
+                <div class="cv2-row">
+                  <div class="cv2-field">
+                    <input type="text" name="contact_name" placeholder="Your Name *" required />
+                  </div>
+                  <div class="cv2-field">
+                    <input type="text" name="contact_role" placeholder="Your Role *" required />
+                  </div>
+                </div>
+                <div class="cv2-row">
+                  <div class="cv2-field">
+                    <input type="email" name="email" placeholder="Email *" required />
+                  </div>
+                  <div class="cv2-field">
+                    <input type="tel" name="phone" placeholder="Phone *" required />
+                  </div>
+                </div>
+
+                <!-- Q3 -->
+                <div class="cv2-field cv2-full cv2-select" data-required="true">
+                  <input type="hidden" name="has_old_leads" />
+                  <button type="button" class="cv2-select-trigger" aria-haspopup="listbox" aria-expanded="false">
+                    <span class="cv2-select-value cv2-placeholder">Do you have old consultation leads, no-shows, lapsed clients, or unbooked inquiries? *</span>
+                    <i class="fa-solid fa-chevron-down cv2-select-icon"></i>
+                  </button>
+                  <ul class="cv2-select-menu" role="listbox">
+                    <li class="cv2-select-option" role="option" data-value="yes-definitely">Yes, definitely</li>
+                    <li class="cv2-select-option" role="option" data-value="probably-messy">Probably, but they are messy</li>
+                    <li class="cv2-select-option" role="option" data-value="not-sure">Not sure</li>
+                    <li class="cv2-select-option" role="option" data-value="no">No</li>
+                  </ul>
+                </div>
+
+                <!-- Q4 -->
+                <div class="cv2-field cv2-full cv2-select" data-required="true">
+                  <input type="hidden" name="contact_volume" />
+                  <button type="button" class="cv2-select-trigger" aria-haspopup="listbox" aria-expanded="false">
+                    <span class="cv2-select-value cv2-placeholder">Roughly how many old contacts could be available? *</span>
+                    <i class="fa-solid fa-chevron-down cv2-select-icon"></i>
+                  </button>
+                  <ul class="cv2-select-menu" role="listbox">
+                    <li class="cv2-select-option" role="option" data-value="under-100">Under 100</li>
+                    <li class="cv2-select-option" role="option" data-value="100-299">100 – 299</li>
+                    <li class="cv2-select-option" role="option" data-value="300-499">300 – 499</li>
+                    <li class="cv2-select-option" role="option" data-value="500-999">500 – 999</li>
+                    <li class="cv2-select-option" role="option" data-value="1000-plus">1,000+</li>
+                    <li class="cv2-select-option" role="option" data-value="not-sure">Not sure</li>
+                  </ul>
+                </div>
+
+                <!-- Q5 -->
+                <div class="cv2-field cv2-full cv2-select" data-required="true">
+                  <input type="hidden" name="contact_storage" />
+                  <button type="button" class="cv2-select-trigger" aria-haspopup="listbox" aria-expanded="false">
+                    <span class="cv2-select-value cv2-placeholder">Where are those contacts stored? *</span>
+                    <i class="fa-solid fa-chevron-down cv2-select-icon"></i>
+                  </button>
+                  <ul class="cv2-select-menu" role="listbox">
+                    <li class="cv2-select-option" role="option" data-value="crm">Booking software / CRM</li>
+                    <li class="cv2-select-option" role="option" data-value="spreadsheet">Spreadsheet</li>
+                    <li class="cv2-select-option" role="option" data-value="email-inbox">Email inbox</li>
+                    <li class="cv2-select-option" role="option" data-value="sms-platform">SMS platform</li>
+                    <li class="cv2-select-option" role="option" data-value="website-forms">Website forms</li>
+                    <li class="cv2-select-option" role="option" data-value="social-dms">Social DMs</li>
+                    <li class="cv2-select-option" role="option" data-value="mixed">Mixed across places</li>
+                    <li class="cv2-select-option" role="option" data-value="not-sure">Not sure</li>
+                  </ul>
+                </div>
+
+                <!-- Q6 -->
+                <div class="cv2-field cv2-full cv2-select" data-required="true">
+                  <input type="hidden" name="target_service" />
+                  <button type="button" class="cv2-select-trigger" aria-haspopup="listbox" aria-expanded="false">
+                    <span class="cv2-select-value cv2-placeholder">Which service would you most want to recover bookings for? *</span>
+                    <i class="fa-solid fa-chevron-down cv2-select-icon"></i>
+                  </button>
+                  <ul class="cv2-select-menu" role="listbox">
+                    <li class="cv2-select-option" role="option" data-value="laser">Laser treatments</li>
+                    <li class="cv2-select-option" role="option" data-value="rf-microneedling">RF microneedling / Morpheus8</li>
+                    <li class="cv2-select-option" role="option" data-value="skin-resurfacing">Skin resurfacing</li>
+                    <li class="cv2-select-option" role="option" data-value="fillers">Fillers</li>
+                    <li class="cv2-select-option" role="option" data-value="body-contouring">Body contouring</li>
+                    <li class="cv2-select-option" role="option" data-value="hair-restoration">Hair restoration</li>
+                    <li class="cv2-select-option" role="option" data-value="skin-program">Package-based skin program</li>
+                    <li class="cv2-select-option" role="option" data-value="other">Other</li>
+                  </ul>
+                </div>
+
+                <div class="cv2-form-footer">
+                  <p class="cv2-note">We will review your website and answers, then let you know whether this looks like a recovery pilot, a smaller test, or a foundation setup first.</p>
+                  <button type="submit" class="btn-arrow" id="clinicFitCheckBtn">
+                    <span class="btn-label">Submit For Review</span>
+                    <span class="btn-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+                  </button>
+                </div>
+
+              </form>
+
+              <div class="cbr-form-success" id="clinicFitCheckSuccess" style="display:none;">
+                <div class="cbr-form-success-icon">
+                  <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                </div>
+                <h3>Thanks.</h3>
+                <p>We will review your website and answers, then tell you whether this looks like a recovery pilot, a smaller test, or a foundation setup first.</p>
+              </div>
+            </div>
+
+          </div>
+        </section>
+
+        <!-- ══════════════════════════════════════════
+             8. FAQ  —  LIGHT
+        ══════════════════════════════════════════ -->
+        <section class="cbr-light-section cbr-faq-section">
+          <div class="cbr-section-container">
+            <div class="cbr-light-header">
+              <h2 class="cbr-light-heading">Common questions.</h2>
+            </div>
+            <div class="cbr-faq-list">
+
+              <div class="cbr-faq-item">
+                <button class="cbr-faq-question cbr-faq-question-light">
+                  <span>Is this only for old leads?</span>
+                  <span class="cbr-faq-icon"><i class="fa-solid fa-plus"></i></span>
+                </button>
+                <div class="cbr-faq-answer cbr-faq-answer-light">
+                  <p>No. It can include old inquiries, missed consultations, no shows, inactive clients, past promo responders, or people who asked about treatment but never booked.</p>
+                </div>
+              </div>
+
+              <div class="cbr-faq-item">
+                <button class="cbr-faq-question cbr-faq-question-light">
+                  <span>Is this a discount campaign?</span>
+                  <span class="cbr-faq-icon"><i class="fa-solid fa-plus"></i></span>
+                </button>
+                <div class="cbr-faq-answer cbr-faq-answer-light">
+                  <p>No. The first message can be a simple still interested check, a treatment update, new availability, or a clinic approved offer.</p>
+                </div>
+              </div>
+
+              <div class="cbr-faq-item">
+                <button class="cbr-faq-question cbr-faq-question-light">
+                  <span>Do you guarantee paying treatment clients?</span>
+                  <span class="cbr-faq-icon"><i class="fa-solid fa-plus"></i></span>
+                </button>
+                <div class="cbr-faq-answer cbr-faq-answer-light">
+                  <p>No. The default pilot guarantees qualified booked consultation value from the approved list, not collected treatment revenue.</p>
+                </div>
+              </div>
+
+              <div class="cbr-faq-item">
+                <button class="cbr-faq-question cbr-faq-question-light">
+                  <span>Why do you approve the list first?</span>
+                  <span class="cbr-faq-icon"><i class="fa-solid fa-plus"></i></span>
+                </button>
+                <div class="cbr-faq-answer cbr-faq-answer-light">
+                  <p>Because the result depends on the list. If the records are too small, too old, not contactable, or not legally usable, the refund condition should not apply.</p>
+                </div>
+              </div>
+
+              <div class="cbr-faq-item">
+                <button class="cbr-faq-question cbr-faq-question-light">
+                  <span>Do you use SMS?</span>
+                  <span class="cbr-faq-icon"><i class="fa-solid fa-plus"></i></span>
+                </button>
+                <div class="cbr-faq-answer cbr-faq-answer-light">
+                  <p>SMS is used when eligible. If SMS consent, opt out handling, or sending setup is not clear enough, we use email instead.</p>
+                </div>
+              </div>
+
+              <div class="cbr-faq-item">
+                <button class="cbr-faq-question cbr-faq-question-light">
+                  <span>What happens after the pilot?</span>
+                  <span class="cbr-faq-icon"><i class="fa-solid fa-plus"></i></span>
+                </button>
+                <div class="cbr-faq-answer cbr-faq-answer-light">
+                  <p>If the pilot shows recoverable demand, A2B can continue as a monthly Booking Recovery System for ongoing campaigns, tracking, handoff, and reporting.</p>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </section>
+
+        <!-- ══════════════════════════════════════════
+             9. FOOTER CTA  —  matches homepage home-cta-card
+        ══════════════════════════════════════════ -->
+        <section class="cbr-cta-band">
+          <div class="cbr-cta-band-inner">
+            <div class="home-cta-card">
+              <div class="home-cta-left">
+                <span class="home-cta-label">Get Started</span>
+                <h2 class="home-cta-heading">Bring back people who<br/>already showed <em>interest.</em></h2>
+                <p class="home-cta-desc">Before buying more leads, check whether your old inquiries can still turn into bookings.</p>
+                <div class="home-cta-actions">
+                  <a href="#fit-check" class="btn-arrow home-cta-btn">
+                    <span class="btn-label">Check My List</span>
+                    <span class="btn-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+                  </a>
+                  <a href="/contact" class="btn-arrow home-cta-btn">
+                    <span class="btn-label">Talk to us</span>
+                    <span class="btn-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+                  </a>
+                </div>
+              </div>
+              <div class="home-cta-logo">
+                <img src="/assets/logos/a2blogowhite.png" alt="A2B Logo" class="home-cta-logo-img" />
+              </div>
+            </div>
+          </div>
+        </section>
+
+      </main>
+
+      <!-- ========== FOOTER ========== -->
+      <footer class="site-footer" id="footer">
+        <div class="footer-container">
+          <div class="footer-inner">
+            <div class="footer-top-right">
+              <div class="footer-socials">
+                <a href="https://www.linkedin.com/company/a2bai" target="_blank" rel="noopener" class="social-link"><i class="fab fa-linkedin-in"></i></a>
+                <a href="https://www.instagram.com/a2bai.tech" target="_blank" rel="noopener" class="social-link"><i class="fab fa-instagram"></i></a>
+                <a href="https://www.youtube.com/channel/UCOr8E2dKBEP6wZI3j19tlaw" target="_blank" rel="noopener" class="social-link"><i class="fab fa-youtube"></i></a>
+              </div>
+            </div>
+            <div class="footer-content">
+              <div class="footer-cta">
+                <div class="footer-logo-hex"><img src="/assets/logos/a2blogowhite.png" alt="A2B Logo" /></div>
+                <h2 class="footer-title">A2B AI Technologies™</h2>
+                <p class="footer-desc">An elite AI agency helping you build a smarter future through Agentic Coding, AI Workflows, and Enterprise Automation.</p>
+                <a href="/contact" class="btn-arrow footer-btn">
+                  <span class="btn-label">Free consultancy</span>
+                  <div class="btn-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+                </a>
+                <hr class="footer-divider" />
+                <div class="footer-contact-info">
+                  <a href="mailto:a2b.business.official@gmail.com" class="footer-email">a2b.business.official@gmail.com</a>
+                  <p class="footer-location">Trivandrum · Kerala · India</p>
+                </div>
+              </div>
+              <div class="footer-links-wrapper">
+                <div class="footer-link-col">
+                  <h4 class="footer-col-title">Services</h4>
+                  <a href="/services/ai-automation">AI Automation</a>
+                  <a href="/services/ai-agents">AI Agents</a>
+                  <a href="/services/custom-ai">Custom AI</a>
+                  <a href="/services/ai-strategy">AI Strategy</a>
+                  
+                  <a href="/clinic-booking-recovery">Clinic Booking Recovery</a>
+                </div>
+                <div class="footer-link-col">
+                  <h4 class="footer-col-title">Useful Links</h4>
+                  <a href="/contact">Contact Us</a>
+                  <a href="#">Speaking</a>
+                  <a href="#">Support</a>
+                  <a href="/blog">Blog</a>
+                  <a href="#">Sitemap</a>
+                </div>
+                <div class="footer-link-col">
+                  <h4 class="footer-col-title">Company</h4>
+                  <a href="/case-studies">Case Studies</a>
+                  <a href="/product">Lab</a>
+                  <a href="/about">About</a>
+                  <a href="#">Terms</a>
+                  <a href="#">Privacy</a>
+                </div>
+              </div>
+            </div>
+            <div class="footer-bottom">
+              <div class="footer-copyright">&copy;2026 A2B AI Technologies</div>
+            </div>
+          </div>
+        </div>
+      </footer>
+
+    </div>
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>

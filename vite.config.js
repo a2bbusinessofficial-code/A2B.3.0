@@ -38,11 +38,12 @@ export default defineConfig({
         blog:               r('blog/index.html'),
         'case-studies':     r('case-studies/index.html'),
 
+        'clinic-booking-recovery': r('clinic-booking-recovery/index.html'),
+
         'svc-automation':   r('services/ai-automation/index.html'),
         'svc-agents':       r('services/ai-agents/index.html'),
         'svc-custom-ai':    r('services/custom-ai/index.html'),
         'svc-strategy':     r('services/ai-strategy/index.html'),
-        'svc-enterprise':   r('services/enterprise-ai/index.html'),
 
         'prod-ztrike':      r('products/ztrike/index.html'),
         'prod-roastmysnap': r('products/roastmysnap/index.html'),
