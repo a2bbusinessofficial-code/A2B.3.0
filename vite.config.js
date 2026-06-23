@@ -34,7 +34,7 @@ export default defineConfig({
         service:            r('service/index.html'),
         about:              r('about/index.html'),
         contact:            r('contact/index.html'),
-        product:            r('product/index.html'),
+        labs:               r('labs/index.html'),
         blog:               r('blog/index.html'),
         'case-studies':     r('case-studies/index.html'),
 
@@ -45,9 +45,9 @@ export default defineConfig({
         'svc-custom-ai':    r('services/custom-ai/index.html'),
         'svc-strategy':     r('services/ai-strategy/index.html'),
 
-        'prod-ztrike':      r('products/ztrike/index.html'),
-        'prod-roastmysnap': r('products/roastmysnap/index.html'),
-        'prod-gitart':      r('products/gitart/index.html'),
+        'prod-ztrike':      r('labs/ztrike/index.html'),
+        'prod-roastmysnap': r('labs/roastmysnap/index.html'),
+        'prod-gitart':      r('labs/gitart/index.html'),
 
         'cs-sacred-text':   r('case-studies/sacred-text-publishing/index.html'),
         'cs-medical':       r('case-studies/medical-consultation/index.html'),

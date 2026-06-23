@@ -1,4 +1,4 @@
-<!doctype html>
+﻿<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -222,6 +222,7 @@
       .story-img-3 { grid-column: auto; grid-row: auto; aspect-ratio: 4/5; }
       .story-img-4 { grid-column: 1 / -1; grid-row: auto; aspect-ratio: 16/9; }
       .story-img-5 { grid-column: 1 / -1; grid-row: auto; aspect-ratio: 16/9; }
+      .story-img { height: auto; } /* Fix: height:100% conflicts with aspect-ratio on mobile grid */
     }
 
     /* ── Timeline (inside white section) ── */
@@ -333,7 +334,7 @@
       .journey-label { margin-bottom: 28px; }
 
       .journey-line {
-        top: 0; bottom: 0; left: 15px; right: auto;
+        top: 0; bottom: 0; left: 16px; right: auto;
         width: 2px; height: 100%; transform: none;
         background: rgba(255, 255, 255, 0.2);
         overflow: hidden;
@@ -409,7 +410,7 @@
       line-height: 1.15;
       letter-spacing: -1px;
       margin: 0 0 52px;
-      max-width: 55%;
+      max-width: 80%;
     }
     .mission-paras {
       display: grid;
@@ -455,6 +456,10 @@
       width: 100%;
       height: 100%;
       object-fit: cover;
+    }
+    @media (max-width: 1024px) {
+      .mission-heading { max-width: 100%; }
+      .mission-paras { grid-template-columns: 1fr; gap: 20px; }
     }
     @media (max-width: 768px) {
       .mission-container { padding: 60px 24px 80px; }
@@ -610,6 +615,12 @@
       }
     }
 
+    /* Medium desktop: tighten expanded content */
+    @media (max-width: 1200px) {
+      .team-member-quote { font-size: 1.4rem; }
+      .team-member-content { padding: 40px; }
+    }
+
     /* Images */
     .team-member-images {
       position: absolute;
@@ -718,7 +729,11 @@
         z-index: 1 !important;
       }
       .team-member-images {
-        position: relative;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
       }
       .img-default { opacity: 0; }
       .img-hover { opacity: 1; }
@@ -919,7 +934,7 @@
 
           <div class="nav-links" id="navLinks">
             <a href="/" class="nav-link">Home <span class="nav-slash"></span></a>
-            <a href="/product" class="nav-link">Lab <span class="nav-slash"></span></a>
+            <a href="/labs" class="nav-link">Labs <span class="nav-slash"></span></a>
             <div class="nav-dropdown-wrapper" id="servicesDropdown">
               <button class="nav-link nav-dropdown-btn">Service <span class="nav-slash"></span></button>
               <div class="nav-dropdown-menu mega-menu svc-mega-menu">
@@ -1193,7 +1208,7 @@
 
             <div class="team-member">
               <div class="team-member-images">
-                <img src="/assets/team/AKHIL1.jpeg" class="img-default" alt="Akhil M S Default" loading="lazy" />
+                <img src="/assets/team/AKHIL1.png" class="img-default" alt="Akhil M S Default" loading="lazy" />
                 <img src="/assets/team/akhil.png" class="img-hover" alt="Akhil M S Hover" loading="lazy" />
                 <div class="team-member-overlay"></div>
                 <div class="team-member-info">
@@ -1298,6 +1313,7 @@
             </div>
 
             <div class="footer-content">
+              <!-- Left CTA Side -->
               <div class="footer-cta">
                 <div class="footer-logo-hex">
                   <img src="/assets/logos/a2blogowhite.png" alt="A2B Logo" />
@@ -1306,42 +1322,37 @@
                 <p class="footer-desc">An elite AI agency helping you build a smarter future through Agentic Coding, AI Workflows, and Enterprise Automation.</p>
                 <a href="/contact" class="btn-arrow footer-btn">
                   <span class="btn-label">Free consultancy</span>
-                  <div class="btn-icon">
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                      <path d="M5 12h14M12 5l7 7-7 7"/>
-                    </svg>
-                  </div>
+                  <div class="btn-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
                 </a>
-                <hr class="footer-divider" />
-                <div class="footer-contact-info">
-                  <a href="mailto:a2b.business.official@gmail.com" class="footer-email">a2b.business.official@gmail.com</a>
-                  <p class="footer-location">Trivandrum · Kerala · India</p>
-                </div>
               </div>
 
-              <div class="footer-links-wrapper">
-                <div class="footer-link-col">
-                  <h4 class="footer-col-title">Services</h4>
-                  <a href="/services/ai-strategy">AI Strategy</a>
-                  <a href="/services/ai-agents">AI Agents</a>
-                  <a href="/services/ai-automation">Workflow Auto</a>
-                  <a href="/services/custom-ai">Custom AI</a>
-                  
+              <!-- Right: Links + Contact -->
+              <div class="footer-right">
+                <div class="footer-links-wrapper">
+                  <div class="footer-link-col">
+                    <h4 class="footer-col-title">Resources</h4>
+                    <a href="/case-studies">Case Studies</a>
+                    <a href="/blog">Blog</a>
+                    <a href="/faq">FAQ</a>
+                  </div>
+                  <div class="footer-link-col">
+                    <h4 class="footer-col-title">Pages</h4>
+                    <a href="/">Home</a>
+                    <a href="/labs">Labs</a>
+                    <a href="/service">Services</a>
+                  </div>
+                  <div class="footer-link-col">
+                    <h4 class="footer-col-title">Company</h4>
+                    <a href="/about">About</a>
+                    <a href="/contact">Contact Us</a>
+                    <a href="/privacy">Privacy Policy</a>
+                    <a href="/terms">Terms of Service</a>
+                    <a href="/cookies">Cookie Policy</a>
+                  </div>
                 </div>
-                <div class="footer-link-col">
-                  <h4 class="footer-col-title">Useful Links</h4>
-                  <a href="/contact">Contact Us</a>
-                  <a href="/blog">Blog</a>
-                  <a href="/case-studies">Case Studies</a>
-                  <a href="/product">Lab</a>
-                </div>
-                <div class="footer-link-col">
-                  <h4 class="footer-col-title">Company</h4>
-                  <a href="/about">About</a>
-                  <a href="/case-studies">Case Studies</a>
-                  <a href="/contact">Team</a>
-                  <a href="#">Terms</a>
-                  <a href="#">Privacy</a>
+                <div class="footer-contact-info">
+                  <a href="mailto:info@a2b.services" class="footer-email">info@a2b.services</a>
+                  <p class="footer-location">Trivandrum · Kerala · India</p>
                 </div>
               </div>
             </div>
