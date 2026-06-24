@@ -1,0 +1,307 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/x-icon" href="/assets/favicon.ico" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Three months wasted chasing AI agents before learning the basics. Here's the roadmap that actually works: start boring, build reliable, then go smart." />
+  <meta property="og:title" content="So you want to learn n8n... Read this first or you'll waste 3 months like I did. | A2B Blog" />
+  <meta property="og:description" content="Three months wasted chasing AI agents before learning the basics. Here's the roadmap that actually works: start boring, build reliable, then go smart." />
+  <meta property="og:image" content="https://bfmoirwycojttdbitvir.supabase.co/storage/v1/object/public/blog-images/0.33297743176819616.webp" />
+  <meta property="og:type" content="article" />
+  <meta property="article:published_time" content="2025-12-11" />
+  <meta property="article:author" content="Rahul V K" />
+  <title>So you want to learn n8n... Read this first or you'll waste 3 months like I did. | A2B Blog</title>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": "So you want to learn n8n... Read this first or you'll waste 3 months like I did.",
+    "description": "Three months wasted chasing AI agents before learning the basics. Here's the roadmap that actually works: start boring, build reliable, then go smart.",
+    "image": "https://bfmoirwycojttdbitvir.supabase.co/storage/v1/object/public/blog-images/0.33297743176819616.webp",
+    "datePublished": "2025-12-11",
+    "dateModified": "2025-12-11",
+    "url": "https://a2b.services/blog/post/learn-n8n-in-2026/",
+    "author": {
+      "@type": "Person",
+      "name": "Rahul VK",
+      "jobTitle": "Co-Founder & CEO",
+      "url": "https://a2b.services/about"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "A2B AI Technologies",
+      "url": "https://a2b.services",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://a2b.services/assets/logos/a2blogowhite.png"
+      }
+    },
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https://a2b.services/blog/post/learn-n8n-in-2026/"
+    }
+  }
+  </script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/src/style.css" />
+  <style>
+    .blog-post-body { font-size:1.05rem; line-height:1.85; color:#222222; }
+    .blog-post-body h1,.blog-post-body h2,.blog-post-body h3,.blog-post-body h4 { font-family:Inter,sans-serif; font-weight:700; color:#0a0a0a; line-height:1.2; letter-spacing:-0.3px; margin-top:2.4em; margin-bottom:0.6em; }
+    .blog-post-body h1 { font-size:2rem; }
+    .blog-post-body h2 { font-size:1.55rem; }
+    .blog-post-body h3 { font-size:1.25rem; }
+    .blog-post-body h4 { font-size:1.05rem; }
+    .blog-post-body p  { margin-bottom:1.55em; }
+    .blog-post-body img { width:100%; border-radius:8px; margin:2em 0; display:block; }
+    .blog-post-body blockquote { border-left:3px solid #00c853; padding:4px 0 4px 20px; margin:2em 0; color:rgba(0,0,0,0.6); font-style:italic; }
+    .blog-post-body ul,.blog-post-body ol { padding-left:1.5em; margin-bottom:1.55em; }
+    .blog-post-body li { margin-bottom:0.5em; }
+    .blog-post-body strong { color:#0a0a0a; font-weight:600; }
+    .blog-post-body a { color:#00c853; text-decoration:underline; text-underline-offset:3px; }
+    .blog-post-body hr,.blog-post-body .post-hr { border:none; border-top:1px solid rgba(0,0,0,0.08); margin:2.5em 0; }
+    .blog-post-body table { width:100%; border-collapse:collapse; margin-bottom:1.55em; font-size:0.95rem; }
+    .blog-post-body th { text-align:left; font-weight:600; color:#0a0a0a; padding:10px 14px; border-bottom:2px solid rgba(0,0,0,0.1); }
+    .blog-post-body td { padding:10px 14px; border-bottom:1px solid rgba(0,0,0,0.06); }
+    .blog-section-tag { font-size:0.7rem !important; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:rgba(0,0,0,0.35) !important; margin-top:2.5em !important; margin-bottom:0.5em !important; }
+    .post-sidebar-card { border-radius:12px; padding:28px; }
+    .post-cta-btn { display:flex; align-items:center; justify-content:space-between; width:100%; box-sizing:border-box; background:#0a0a0a; color:#fff; font-family:Inter,sans-serif; font-size:0.9rem; font-weight:500; padding:14px 20px; border:none; border-radius:6px; text-decoration:none; cursor:pointer; margin-top:20px; transition:background 0.2s ease; }
+    .post-cta-btn:hover { opacity:0.9; }
+    .post-hr { border:none; border-top:1px solid rgba(0,0,0,0.08); margin:2.5em 0; }
+    /* Fix sticky: overflow-x:hidden on html/body breaks position:sticky.
+       clip behaves identically visually but does NOT create a scroll container. */
+    html, body { overflow-x: clip !important; }
+    /* Force navbar visible on white-background page */
+    #navbar .nav-container { background:rgba(255,255,255,0.97) !important; border-bottom:1px solid rgba(0,0,0,0.07) !important; backdrop-filter:blur(20px) !important; -webkit-backdrop-filter:blur(20px) !important; }
+    #navbar .nav-logo-img { filter:invert(1) !important; }
+    #navbar .nav-logo-text { color:#0a0a0a !important; }
+    #navbar .nav-link { color:#0a0a0a !important; }
+    #navbar .nav-slash { color:rgba(0,0,0,0.25) !important; }
+    @media (max-width:900px) {
+      .post-layout { grid-template-columns:1fr !important; }
+      .post-sidebar { position:static !important; align-self:auto !important; }
+      .post-header-pad { padding:48px 24px 36px !important; }
+      .post-body-pad { padding:0 24px 80px !important; }
+    }
+  </style>
+  <script async src="https://plausible.io/js/pa-0lcm4EUVXsjASg9rf6RN1.js"></script>
+  <script>window.plausible=window.plausible||function(){(plausible.q=plausible.q||[]).push(arguments)};plausible.init=plausible.init||function(i){plausible.o=i||{}};plausible.init();</script>
+  <script src="/analytics.js"></script>
+</head>
+<body>
+<div id="app">
+
+<nav class="navbar" id="navbar">
+  <div class="nav-container">
+    <a href="/" class="nav-logo" aria-label="A2B Home">
+      <img src="/assets/logos/a2blogowhite.png" alt="A2B Logo" class="nav-logo-img" width="42" height="42" />
+      <span class="nav-logo-text">A2B</span>
+    </a>
+    <div class="nav-links" id="navLinks">
+      <a href="/" class="nav-link">Home <span class="nav-slash"></span></a>
+      <a href="/labs" class="nav-link">Labs <span class="nav-slash"></span></a>
+      <a href="/service" class="nav-link">Service <span class="nav-slash"></span></a>
+      <a href="/case-studies" class="nav-link">Case Study <span class="nav-slash"></span></a>
+      <div class="nav-dropdown-wrapper" id="resourcesDropdown">
+        <button class="nav-link nav-dropdown-btn active">Resources <span class="nav-slash"></span></button>
+        <div class="nav-dropdown-menu mega-menu">
+          <div class="mega-menu-left">
+            <div class="mega-menu-label"><svg width="12" height="12" viewBox="0 0 44 44" fill="var(--accent)" xmlns="http://www.w3.org/2000/svg"><polygon points="22,1 43,11 43,33 22,43 1,33 1,11"/></svg> RESOURCES</div>
+            <div class="mega-links">
+              <a href="/blog" class="mega-link" data-title="Field notes &amp; Breakdowns" data-desc="Read our latest articles on agentic workflows, enterprise AI strategy, and building autonomous systems.">Blog</a>
+              <a href="/youtube" class="mega-link" data-title="Walkthroughs &amp; Live Builds" data-desc="Watch our engineers build live, break down complex AI agents, and give product deep-dives on our channel.">YouTube</a>
+            </div>
+          </div>
+          <div class="mega-menu-right">
+            <div class="mega-content">
+              <h3 class="mega-title">&ldquo;We partner with brands to move the world through tech, design and strategy.&rdquo;</h3>
+              <p class="mega-desc">Dive into our field notes, video walkthroughs, and frameworks on AI-native operations to build a smarter future.</p>
+            </div>
+            <a href="/contact" class="btn-arrow mega-contact-btn"><span class="btn-label">Contact Us</span><span class="btn-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span></a>
+          </div>
+        </div>
+      </div>
+      <a href="/about" class="nav-link">About <span class="nav-slash"></span></a>
+    </div>
+    <a href="/contact" class="btn-arrow nav-cta" id="navCta"><span class="btn-label">Contact</span><span class="btn-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span></a>
+    <button class="nav-hamburger" id="navHamburger" aria-label="Toggle Menu"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+
+<main style="background:#ffffff;min-height:100vh;">
+
+  <section>
+    <div style="max-width:var(--container-max);margin:0 auto;padding:130px var(--container-padding) 56px;" class="post-header-pad">
+      <a href="/blog" style="display:inline-flex;align-items:center;gap:6px;font-size:0.85rem;color:rgba(0,0,0,0.4);text-decoration:none;margin-bottom:44px;letter-spacing:0.1px;transition:color 0.2s;" onmouseover="this.style.color='#0a0a0a'" onmouseout="this.style.color='rgba(0,0,0,0.4)'">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+        Back to Blog
+      </a>
+      <h1 style="font-family:Inter,sans-serif;font-size:clamp(2rem,4vw,3.2rem);font-weight:800;line-height:1.12;color:#0a0a0a;letter-spacing:-0.5px;margin-bottom:20px;">So you want to learn n8n... Read this first or you'll waste 3 months like I did.</h1>
+      <p style="font-size:1.1rem;color:rgba(0,0,0,0.55);line-height:1.65;max-width:680px;margin-bottom:28px;">Three months wasted chasing AI agents before learning the basics. Here's the roadmap that actually works: start boring, build reliable, then go smart.</p>
+      <div style="display:flex;align-items:center;gap:14px;font-size:0.85rem;color:rgba(0,0,0,0.45);flex-wrap:wrap;margin-bottom:40px;">
+        <span>Rahul V K</span>
+        <span style="width:3px;height:3px;border-radius:50%;background:rgba(0,0,0,0.3);flex-shrink:0;"></span>
+        <span>December 11, 2025</span>
+         &nbsp;&middot;&nbsp; <a href="https://www.dropbox.com/scl/fi/6udpdl5l73s8w56iwt8zx/learn_n8n.pdf?rlkey=j9v06e5ttsqqxz7l1xk1a55x9&st=uc3ru908&dl=0" target="_blank" rel="noopener" style="color:#00c853;text-decoration:underline;">View PDF &rarr;</a>
+      </div>
+      <div style="height:1px;background:rgba(0,0,0,0.08);"></div>
+    </div>
+  </section>
+
+  <section>
+    <div style="max-width:var(--container-max);margin:0 auto;padding:56px var(--container-padding) 120px;display:grid;grid-template-columns:1fr 340px;gap:60px;" class="post-layout post-body-pad">
+
+      <article>
+        <img src="https://bfmoirwycojttdbitvir.supabase.co/storage/v1/object/public/blog-images/0.33297743176819616.webp" alt="So you want to learn n8n... Read this first or you'll waste 3 months like I did." style="width:100%;height:480px;object-fit:cover;object-position:center;border-radius:4px;margin-bottom:24px;">
+        <div style="background:#f5f5f3;border-radius:6px;padding:18px 22px;margin-bottom:40px;display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap;">
+        <div>
+          <p style="font-size:0.68rem;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:rgba(0,0,0,0.35);margin-bottom:5px;">Attached Resource</p>
+          <p style="font-size:0.9rem;font-weight:600;color:#0a0a0a;margin:0;">View or download the full document</p>
+        </div>
+        <a href="https://www.dropbox.com/scl/fi/6udpdl5l73s8w56iwt8zx/learn_n8n.pdf?rlkey=j9v06e5ttsqqxz7l1xk1a55x9&st=uc3ru908&dl=0" target="_blank" rel="noopener" class="btn-arrow" style="flex-shrink:0;">
+          <span class="btn-label">Open Document</span>
+          <span class="btn-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg></span>
+        </a>
+      </div>
+        <div class="blog-post-body"><h2 class="blog-section-tag">MY STORY</h2>
+<p>I wasted 3 months learning n8n because I wanted to build cool stuff... and honestly, I thought I was smarter than everyone else. It was mid 2024 and I kept seeing these YouTube videos about AI agents that could supposedly do anything. I convinced myself I'd skip the boring basics and jump straight into building autonomous agents. My first agent took three weeks to build and worked perfectly for exactly two days. Then someone submitted a form with a weird character in their name and the entire thing exploded. Six hours of debugging later, I realized I could have prevented the whole mess if I had just understood how data actually flows through n8n.</p>
+<p>The turning point came from the most unexpected place. My buddy who runs a small accounting firm asked if I could help automate some basic stuff... when a client emails an invoice, save it to Google Drive, update a spreadsheet, send a confirmation. I almost said no because it sounded boring as hell. No AI, no agents, just basic workflow automation. Took me two hours to build and it's been running for four months without a single issue. He pays me five hundred dollars a month to maintain it and I spend maybe ten minutes a week checking it. That's when it clicked... I had been chasing the wrong thing this entire time.</p>
+<p>So I started over with a completely different approach. Phase one was forcing myself to learn the unglamorous stuff everyone skips... JSON, HTTP requests, webhooks, basic error handling. This phase is mind numbingly boring and that's exactly why most people skip it. But this boring foundation is where eighty percent of the actual value lives. Phase two was adding AI strategically to enhance workflows, not replace them. Phase three was finally building agents, but only after mastering everything before. The biggest mindset shift was spending thirty minutes with pen and paper before touching the computer... mapping out triggers, data flow, and everything that could go wrong.</p>
+<p>When I talk to clients now, I never mention agents or AI unless they ask. Nobody cares about your tech stack. They care about getting time back, eliminating errors, and not paying someone for repetitive work. I have one client paying me twelve hundred dollars a month for automations that took eight hours total to build. Not a single one uses AI... just rock solid workflows that do their job every single day. Here's what nobody tells you though... around month three you're going to hit a wall where everything feels overwhelming and you'll question why you started. Push through that phase because on the other side, you start seeing patterns and realize most automations are just variations of the same fifteen nodes.</p>
+<p>If you're starting from zero in 2025, learn from my mistakes. Don't touch AI for your first month. Build five simple workflows like form to spreadsheet stuff. Break them on purpose to learn error handling. Then add AI to enhance what you've built. Only build agents after you're comfortable with everything above. The boring foundation work separates people who build reliable systems from people who build demos that break in production.</p>
+<h2 class="blog-section-tag">GUIDE</h2>
+<p>(Note: Next time I will post this in a more structured format.)</p>
+<p>How I'd Learn AI Automation in 2026 (If I Had to Start Over)</p>
+<p>It's easy to get caught up in the excitement of building sophisticated AI agents. The online world is full of them, and the immediate impulse is to jump in and start building the "cool" stuff as quickly as possible. When I first started, I brute-forced my way through the learning process, thinking the goal was to build AI agents as fast as I could. I now realize this is exactly the wrong approach. The fastest and most effective path to mastering advanced AI automation is to first master the "boring" fundamentals.</p>
+<hr class="post-hr">
+<p>1. Your First Step: Ignore AI Completely</p>
+<p>The single most important piece of advice for anyone starting today is this: do not start with AI. Learn the fundamentals of classic automation and rule-based workflows before you even think about building an agent. Most beginners skip this part, but it's like trying to run before you can walk. You cannot build reliable agents if you don't understand how a basic workflow functions.</p>
+<p>There are three distinct layers to automation. First, Workflows: rule-based, predictable systems. You know the inputs, you can map the variables, and the workflow runs the same way every time. Second, AI-assisted Workflows: the middle layer, where you take a predictable workflow and add intelligence. For example, using AI to score a support ticket's priority or personalize an email. Third, AI Agents: powerful systems that can make decisions, use tools, and adjust based on context. They are far more difficult to control and more likely to break.</p>
+<p>The value of mastering basic workflows first cannot be overstated. Standard workflow automation alone can deliver 30% to 200% ROI in year one, with labor cost savings of 25% to 40%. In fact, about 50% of all work activities can be automated without using AI at all. Jumping straight to agents causes confusion, things break, and you want to quit.</p>
+<hr class="post-hr">
+<p>2. Expect an Emotional Rollercoaster</p>
+<p>Learning automation isn't just a technical challenge; it's a psychological one. You're probably going to feel overwhelmed. Understanding the "transition curve" helps you map out this emotional journey and find the perspective to succeed when things get difficult.</p>
+<ul><li>Phase 1 — Uninformed Optimism: You see the opportunity and you're excited to start.</li><li>Phase 2 — Informed Pessimism: You begin to understand the true complexity. This is when you feel overwhelmed.</li><li>Phase 3 — Crisis of Meaning: The critical decision point. You can either crash and burn or push through.</li><li>Phase 4 — Informed Optimism: You've pushed through and are now building with confidence.</li></ul>
+<p>This cycle is not a one-time event. Knowing it exists is empowering. It helps you recognize that the struggle is a normal phase.</p>
+<hr class="post-hr">
+<p>3. Give the AI a Cheat Sheet</p>
+<p>There's a lot of talk about "prompt engineering," but a far more important skill is context engineering. Large Language Models are simply predicting the next logical word. They don't know your business, your clients, or your internal processes. An AI is only as smart as the information you provide it.</p>
+<p>A system prompt is like studying the night before an exam. Good context is like having a cheat sheet during the exam. The best results come from doing both. Stop expecting the model to guess what you want and start giving it the information it needs.</p>
+<hr class="post-hr">
+<p>4. Build Systems That Run While You Sleep</p>
+<p>The true power of automation lies in building workflows that save time without you ever being involved. A "personal assistant" agent only takes action when you tell it to — low leverage. Compare that to a workflow triggered by a real-world event, like a new lead submitting a form. That system wakes up on its own and can run all day and all night. That is where you get scale.</p>
+<p>To identify high-leverage opportunities, a process is worth automating if it is repetitive, time-consuming, error-prone, and scalable. If a process does not check at least two of those boxes, it's probably not worth automating yet.</p>
+<hr class="post-hr">
+<p>5. Sharpen Your Axe Before You Chop the Tree</p>
+<p>The most common mistake is jumping directly into a builder tool, which leads to messy, fragile workflows that aren't modular or scalable. The most critical work happens before you drag a single node onto the canvas.</p>
+<p>Before you build, think like a process engineer and ask: Who does what? When does it happen? What triggers this? Where's the data coming from? What do we do with the data? What is the final outcome we care about?</p>
+<p>If you can't explain a process clearly on paper, you have no chance of automating it clearly. A small amount of planning upfront will save you a huge amount of time later.</p>
+<hr class="post-hr">
+<p>Mastering automation isn't about chasing the latest AI hype. It's about building a solid, foundational understanding of rule-based systems, thinking strategically about leverage, and planning with the discipline of an engineer. Build boring stuff that works first — you can make it cool later.</p></div>
+      </article>
+
+      <aside class="post-sidebar" style="align-self:start;position:sticky;top:100px;">
+        <div style="display:flex;flex-direction:column;gap:16px;">
+
+          <div class="post-sidebar-card" style="background:#f9f9f8;border:1px solid rgba(0,0,0,0.07);">
+            <p style="font-size:0.68rem;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:rgba(0,0,0,0.35);margin-bottom:14px;">Published</p>
+            <div style="display:flex;flex-direction:column;gap:10px;">
+              <div>
+                <p style="font-size:0.72rem;color:rgba(0,0,0,0.4);margin-bottom:3px;">Author</p>
+                <p style="font-size:0.9rem;font-weight:600;color:#0a0a0a;margin:0;">Rahul V K</p>
+              </div>
+              <div style="height:1px;background:rgba(0,0,0,0.06);"></div>
+              <div>
+                <p style="font-size:0.72rem;color:rgba(0,0,0,0.4);margin-bottom:3px;">Date</p>
+                <p style="font-size:0.9rem;font-weight:600;color:#0a0a0a;margin:0;">December 11, 2025</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="post-sidebar-card" style="background:#0a0a0a;">
+            <p style="font-size:0.68rem;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:rgba(255,255,255,0.3);margin-bottom:12px;">Work With Us</p>
+            <h4 style="font-family:Inter,sans-serif;font-size:1rem;font-weight:700;color:#ffffff;margin-bottom:8px;line-height:1.3;">Have a project in mind?</h4>
+            <p style="font-size:0.82rem;color:rgba(255,255,255,0.45);line-height:1.65;margin-bottom:0;">Let&rsquo;s bring your ideas to life &mdash; get in touch or book a free call with our team.</p>
+            <div style="display:flex;flex-direction:column;gap:10px;margin-top:20px;">
+              <a href="/contact" class="post-cta-btn" style="background:rgba(255,255,255,0.08);color:#ffffff;margin-top:0;">
+                Get in Touch
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+              </a>
+              <a href="/contact" class="post-cta-btn" style="background:#00c853;color:#000000;margin-top:0;">
+                Book a Meeting
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+              </a>
+            </div>
+          </div>
+
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <section style="background:#ffffff;padding:40px 0;border-top:1px solid rgba(0,0,0,0.06);">
+        <div style="max-width:var(--container-max);margin:0 auto;padding:0 var(--container-padding);display:flex;align-items:center;justify-content:space-between;gap:40px;flex-wrap:wrap;">
+          <div>
+            <p style="font-size:0.7rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#888;margin-bottom:8px;">Attached Document</p>
+            <p style="font-size:1.1rem;font-weight:500;color:#111;margin:0;">This post includes a downloadable PDF.</p>
+          </div>
+          <a href="https://www.dropbox.com/scl/fi/6udpdl5l73s8w56iwt8zx/learn_n8n.pdf?rlkey=j9v06e5ttsqqxz7l1xk1a55x9&st=uc3ru908&dl=0" target="_blank" rel="noopener" class="btn-arrow">
+            <span class="btn-label">View / Download PDF</span>
+            <span class="btn-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg></span>
+          </a>
+        </div>
+      </section>
+
+  <section class="cs-ai-native-cta">
+    <div class="cs-under-the-hood-container">
+      <div class="cs-ai-native-box">
+        <div aria-hidden="true" style="position:absolute;top:50%;right:80px;transform:translateY(-50%);width:300px;height:300px;background:#ffffff;opacity:0.95;-webkit-mask:url('/assets/logos/a2blogowhite.png') center/contain no-repeat;mask:url('/assets/logos/a2blogowhite.png') center/contain no-repeat;pointer-events:none;user-select:none;z-index:0;"></div>
+        <h2>Enjoyed<br>this post?</h2>
+        <p>Explore more field notes and breakdowns from the A2B engineering team.</p>
+        <div style="display:flex;gap:16px;flex-wrap:wrap;margin-top:8px;">
+          <a href="/blog" class="btn-arrow"><span class="btn-label">Back to Blog</span><span class="btn-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span></a>
+          <a href="/contact" class="btn-arrow"><span class="btn-label">Contact Us</span><span class="btn-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer" id="footer">
+  <div class="footer-container"><div class="footer-inner">
+    <div class="footer-top-right"><div class="footer-socials">
+      <a href="https://www.linkedin.com/company/a2bai" target="_blank" rel="noopener" class="social-link"><i class="fab fa-linkedin-in"></i></a>
+      <a href="https://www.instagram.com/a2bai.tech" target="_blank" rel="noopener" class="social-link"><i class="fab fa-instagram"></i></a>
+      <a href="https://www.youtube.com/channel/UCOr8E2dKBEP6wZI3j19tlaw" target="_blank" rel="noopener" class="social-link"><i class="fab fa-youtube"></i></a>
+    </div></div>
+    <div class="footer-content">
+      <div class="footer-cta">
+        <div class="footer-logo-hex"><img src="/assets/logos/a2blogowhite.png" alt="A2B Logo" /></div>
+        <h2 class="footer-title">A2B AI Technologies&trade;</h2>
+        <p class="footer-desc">An elite AI agency helping you build a smarter future through Agentic Coding, AI Workflows, and Enterprise Automation.</p>
+        <a href="/contact" class="btn-arrow footer-btn"><span class="btn-label">Free consultancy</span><div class="btn-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div></a>
+      </div>
+      <div class="footer-right">
+        <div class="footer-links-wrapper">
+          <div class="footer-link-col"><h4 class="footer-col-title">Resources</h4><a href="/case-studies">Case Studies</a><a href="/blog">Blog</a><a href="/faq">FAQ</a></div>
+          <div class="footer-link-col"><h4 class="footer-col-title">Pages</h4><a href="/">Home</a><a href="/labs">Labs</a><a href="/service">Services</a></div>
+          <div class="footer-link-col"><h4 class="footer-col-title">Company</h4><a href="/about">About</a><a href="/contact">Contact Us</a><a href="/privacy">Privacy Policy</a><a href="/terms">Terms of Service</a><a href="/cookies">Cookie Policy</a></div>
+        </div>
+        <div class="footer-contact-info">
+          <a href="mailto:info@a2b.services" class="footer-email">info@a2b.services</a>
+          <p class="footer-location">Trivandrum &middot; Kerala &middot; India</p>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom"><div class="footer-copyright">&copy;2026 A2B AI Technologies</div></div>
+  </div></div>
+</footer>
+
+</div>
+<script type="module" src="/src/main.js"></script>
+</body>
+</html>

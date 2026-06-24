@@ -1,3 +1,6 @@
+# UTM short links — serve redirect handler for any /a2b/[slug]
+/a2b/*  /a2b/index.html  200
+
 # Redirect old .html URLs to clean URLs (301 = permanent, preserves SEO ranking)
 /service.html           /service                301
 /about.html             /about                  301
@@ -23,3 +26,11 @@
 /case-studies/medical-consultation.html         /case-studies/medical-consultation         301
 /case-studies/knowledge-agent.html              /case-studies/knowledge-agent              301
 /case-studies/image-generation.html             /case-studies/image-generation             301
+
+# Blog post old query-param URLs → new static pages
+/blog/post?slug=n8n-v2-0                                                                    /blog/post/n8n-v2-0/                                                                   301
+/blog/post?slug=learn-n8n-in-2026                                                           /blog/post/learn-n8n-in-2026/                                                          301
+/blog/post?slug=debugging-a-workflow-that-had-zero-error-logs-and-lost-1200                 /blog/post/debugging-a-workflow-that-had-zero-error-logs-and-lost-1200/                301
+/blog/post?slug=built-50-automations-that-clients-never-used                                /blog/post/built-50-automations-that-clients-never-used/                               301
+/blog/post?slug=i-wasted-6-months-building-automations-that-kept-breaking-here-s-what-actually-fixed-them  /blog/post/i-wasted-6-months-building-automations-that-kept-breaking-here-s-what-actually-fixed-them/  301
+/blog/post?slug=built-a-system-that-does-500-in-the-time-i-used-to-do-5                    /blog/post/built-a-system-that-does-500-in-the-time-i-used-to-do-5/                    301

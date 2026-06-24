@@ -53,25 +53,33 @@
             {
               "@type": "Person",
               "name": "Rahul VK",
-              "jobTitle": "Co-Founder",
+              "jobTitle": "Co-Founder & CEO",
+              "description": "CEO and co-founder of A2B AI Technologies. Leads product vision, agentic workflow architecture, and AI system delivery. Specialises in building production-grade autonomous AI pipelines and enterprise automation.",
+              "url": "https://a2b.services/about",
               "worksFor": {"@id": "https://a2b.services/#organization"}
             },
             {
               "@type": "Person",
               "name": "Akhil M S",
-              "jobTitle": "Co-Founder",
+              "jobTitle": "Co-Founder & CMO",
+              "description": "CMO and co-founder of A2B AI Technologies. Leads brand strategy, content, and go-to-market. Deep expertise in AI product positioning and helping clients understand where AI creates real business value.",
+              "url": "https://a2b.services/about",
               "worksFor": {"@id": "https://a2b.services/#organization"}
             },
             {
               "@type": "Person",
               "name": "Aman Xavier",
-              "jobTitle": "Co-Founder",
+              "jobTitle": "Co-Founder & COO",
+              "description": "COO and co-founder of A2B AI Technologies. Oversees operations, client delivery, and project execution. Ensures every AI system ships on time and performs as designed in production.",
+              "url": "https://a2b.services/about",
               "worksFor": {"@id": "https://a2b.services/#organization"}
             },
             {
               "@type": "Person",
               "name": "Dany Stephen",
-              "jobTitle": "Co-Founder",
+              "jobTitle": "Co-Founder & CTO",
+              "description": "CTO and co-founder of A2B AI Technologies. Leads technical architecture, model integration, and infrastructure. Specialises in RAG pipelines, LLM fine-tuning, and scalable AI system design.",
+              "url": "https://a2b.services/about",
               "worksFor": {"@id": "https://a2b.services/#organization"}
             }
           ],
@@ -96,25 +104,56 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700;800;900&family=Urbanist:wght@300;400;500;600&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="/src/style.css" />
+    <script type="module" src="https://cdn.jsdelivr.net/npm/@lottiefiles/dotlottie-wc/dist/dotlottie-wc.js"></script>
 
     <style>
-    /* ── About page: center the hero ── */
-    .hero { justify-content: center; }
-    .hero-content {
-      text-align: center;
-      max-width: 860px;
-      margin: 0 auto;
+    /* ── About page hero: white background ── */
+    #hero.hero { background-color: #ffffff; }
+
+    /* ── Hero text: dark for white background ── */
+    #hero .hero-label      { color: rgba(10, 10, 10, 0.5); }
+    #hero .hero-heading    { color: #0a0a0a; }
+    #hero .hero-pill-item  { color: rgba(10, 10, 10, 0.75); }
+    #hero .hero-case-study { color: rgba(10, 10, 10, 0.55); }
+    #hero .hero-case-study:hover { color: var(--accent); }
+
+    /* ── Hero button: white card → dark for white background ── */
+    #hero .btn-label {
+      background: #0a0a0a;
+      color: #ffffff;
     }
-    .hero-pills   { justify-content: center; }
-    .hero-actions { justify-content: center; }
+
+    /* ── About page hero: two-column layout ── */
+    .hero-content {
+      text-align: left;
+      max-width: none;
+      margin: 0;
+    }
+    .hero-pills   { justify-content: flex-start; }
+    .hero-actions { justify-content: flex-start; }
+
+    /* ── Right column: Lottie + tagline ── */
+    .about-hero-right {
+      flex: 0 0 460px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 20px;
+    }
+    .about-hero-lottie {
+      width: 100%;
+      max-width: 460px;
+      mix-blend-mode: multiply;
+    }
 
     /* ── Hero tagline script line ── */
     .hero-tagline-script {
       font-family: 'Dancing Script', cursive;
       font-size: clamp(1.2rem, 2vw, 1.6rem);
       color: #00c853;
-      margin: 20px 0 0;
+      margin: 0;
       opacity: 0.9;
+      text-align: center;
     }
 
     /* ── Story section layout ── */
@@ -899,17 +938,25 @@
 
     /* ── Mobile hero overrides ── */
     @media (max-width: 768px) {
-      .hero { justify-content: flex-start; }
-      .hero-container { align-items: stretch; }
+      .hero-container {
+        flex-direction: column;
+        align-items: stretch;
+      }
       .hero-content {
         width: 100%;
         max-width: 100%;
         margin: 0;
         text-align: left;
       }
+      .about-hero-right {
+        flex: none;
+        width: 100%;
+        max-width: 320px;
+        margin: 0 auto;
+      }
       .hero-pills   { justify-content: flex-start; }
       .hero-actions { justify-content: flex-start; }
-      .hero-tagline-script { margin: 0; font-size: 1.1rem; }
+      .hero-tagline-script { font-size: 1.1rem; }
     }
     </style>
     <!-- Privacy-friendly analytics by Plausible -->
@@ -918,13 +965,14 @@
     window.plausible=window.plausible||function(){(plausible.q=plausible.q||[]).push(arguments)},plausible.init=plausible.init||function(i){plausible.o=i||{}};
     plausible.init()
   </script>
+  <script src="/analytics.js"></script>
   </head>
 
   <body>
     <div id="app">
 
       <!-- ========== NAVBAR ========== -->
-      <nav class="navbar" id="navbar">
+      <nav class="navbar light-mode" id="navbar">
         <div class="nav-container">
 
           <a href="/" class="nav-logo" aria-label="A2B Home">
@@ -1006,7 +1054,7 @@
       </nav>
 
       <!-- ========== HERO SECTION ========== -->
-      <section class="hero" id="hero">
+      <section class="hero about-hero-light" id="hero">
         <div class="hero-container">
           <div class="hero-content">
 
@@ -1052,9 +1100,18 @@
               </a>
             </div>
 
-            <p class="hero-tagline-script">Not a vendor. A partner in your AI journey.</p>
-
           </div>
+
+          <div class="about-hero-right">
+            <dotlottie-wc
+              class="about-hero-lottie"
+              src="/assets/hero/About Us Team.lottie"
+              autoplay
+              loop
+            ></dotlottie-wc>
+            <p class="hero-tagline-script">Not a vendor. A partner in your AI journey.</p>
+          </div>
+
         </div>
       </section>
 

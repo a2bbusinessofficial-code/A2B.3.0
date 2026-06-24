@@ -180,7 +180,7 @@ function initNavScroll() {
         }
 
         // Dynamic light/dark mode adapting
-        const lightSections = document.querySelectorAll('.home-stats-section, .home-svc-section, .home-cs-section, .home-testimonials-section, .cbr-light-section');
+        const lightSections = document.querySelectorAll('.home-stats-section, .home-svc-section, .home-cs-section, .home-testimonials-section, .cbr-light-section, .about-hero-light');
         let isOverLightSection = false;
         const checkY = 40; // check color roughly halfway down the navbar
 
@@ -506,22 +506,72 @@ function initCbrSelects() {
   const selects = document.querySelectorAll('.cv2-select');
   if (!selects.length) return;
 
+  // Portal a menu to <body> so it escapes any parent clip-path / stacking context.
+  function openMenu(select) {
+    const trigger = select.querySelector('.cv2-select-trigger');
+    const menu    = select.querySelector('.cv2-select-menu');
+    const rect    = trigger.getBoundingClientRect();
+
+    select._portalMenu = menu;
+    document.body.appendChild(menu);
+
+    Object.assign(menu.style, {
+      position:   'fixed',
+      left:       rect.left + 'px',
+      right:      'auto',
+      width:      rect.width + 'px',
+      top:        (rect.bottom + 6) + 'px',
+      bottom:     'auto',
+      opacity:    '1',
+      visibility: 'visible',
+      transform:  'translateY(0)',
+      transition: 'none',
+      zIndex:     '99999',
+    });
+  }
+
+  function closeMenu(select) {
+    const menu = select._portalMenu;
+    if (!menu) return;
+    select.appendChild(menu);  // return to original parent
+    menu.style.cssText = '';
+    select._portalMenu = null;
+  }
+
+  function syncPosition(select) {
+    const menu = select._portalMenu;
+    if (!menu) return;
+    const trigger = select.querySelector('.cv2-select-trigger');
+    const rect    = trigger.getBoundingClientRect();
+    menu.style.left  = rect.left + 'px';
+    menu.style.top   = (rect.bottom + 6) + 'px';
+    menu.style.width = rect.width + 'px';
+  }
+
   const closeAll = (except) => {
-    selects.forEach(s => { if (s !== except) s.classList.remove('open'); });
+    selects.forEach(s => {
+      if (s !== except) { s.classList.remove('open'); closeMenu(s); }
+    });
   };
 
   selects.forEach(select => {
     const trigger = select.querySelector('.cv2-select-trigger');
     const valueEl = select.querySelector('.cv2-select-value');
-    const input = select.querySelector('input[type="hidden"]');
+    const input   = select.querySelector('input[type="hidden"]');
     const options = select.querySelectorAll('.cv2-select-option');
 
     trigger.addEventListener('click', (e) => {
       e.stopPropagation();
-      const willOpen = !select.classList.contains('open');
+      const wasOpen = select.classList.contains('open');
       closeAll(select);
-      select.classList.toggle('open', willOpen);
-      trigger.setAttribute('aria-expanded', String(willOpen));
+      if (!wasOpen) {
+        select.classList.add('open');
+        trigger.setAttribute('aria-expanded', 'true');
+        openMenu(select);
+      } else {
+        select.classList.remove('open');
+        trigger.setAttribute('aria-expanded', 'false');
+      }
     });
 
     options.forEach(opt => {
@@ -533,10 +583,15 @@ function initCbrSelects() {
         valueEl.textContent = opt.textContent;
         valueEl.classList.remove('cv2-placeholder');
         select.classList.remove('open', 'invalid');
+        closeMenu(select);
         trigger.setAttribute('aria-expanded', 'false');
       });
     });
   });
+
+  const syncAll = () => selects.forEach(s => { if (s.classList.contains('open')) syncPosition(s); });
+  window.addEventListener('scroll', syncAll, { passive: true });
+  window.addEventListener('resize', syncAll);
 
   document.addEventListener('click', () => closeAll(null));
   document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeAll(null); });

@@ -1,11 +1,22 @@
 import { defineConfig } from 'vite'
 import { resolve } from 'path'
-import { existsSync } from 'fs'
+import { existsSync, readdirSync } from 'fs'
 import { fileURLToPath } from 'url'
 import { dirname } from 'path'
 
 const __dirname = dirname(fileURLToPath(import.meta.url))
 const r = (...p) => resolve(__dirname, ...p)
+
+const blogPostEntries = {};
+const blogPostDir = r('blog', 'post');
+if (existsSync(blogPostDir)) {
+  readdirSync(blogPostDir, { withFileTypes: true })
+    .filter(d => d.isDirectory())
+    .forEach(d => {
+      const html = r('blog', 'post', d.name, 'index.html');
+      if (existsSync(html)) blogPostEntries['blog-post-' + d.name] = html;
+    });
+}
 
 export default defineConfig({
   plugins: [
@@ -40,6 +51,9 @@ export default defineConfig({
 
         'clinic-booking-recovery': r('clinic-booking-recovery/index.html'),
 
+        admin:  r('admin/index.html'),
+        'utm-redirect': r('a2b/index.html'),
+
         'svc-automation':   r('services/ai-automation/index.html'),
         'svc-agents':       r('services/ai-agents/index.html'),
         'svc-custom-ai':    r('services/custom-ai/index.html'),
@@ -56,6 +70,8 @@ export default defineConfig({
         'cs-seo':           r('case-studies/seo-reporting/index.html'),
         'cs-visual-brand':  r('case-studies/visual-brand-intelligence/index.html'),
         'cs-reddit-yt':     r('case-studies/reddit-youtube/index.html'),
+        'blog-post-index':  r('blog/post/index.html'),
+        ...blogPostEntries,
       }
     }
   }

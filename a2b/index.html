@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="noindex, nofollow" />
+  <title>A2B — Redirecting…</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Inter', system-ui, sans-serif;
+      background: #0a0a0a;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      gap: 14px;
+    }
+    .dot {
+      width: 8px; height: 8px;
+      background: #00c853;
+      border-radius: 50%;
+      animation: bounce 1s ease-in-out infinite;
+    }
+    .dot:nth-child(2) { animation-delay: 0.15s; }
+    .dot:nth-child(3) { animation-delay: 0.3s; }
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0); opacity: 0.4; }
+      50%       { transform: translateY(-8px); opacity: 1; }
+    }
+  </style>
+</head>
+<body>
+  <div class="dot"></div>
+  <div class="dot"></div>
+  <div class="dot"></div>
+  <script type="module" src="/src/utm-redirect.js"></script>
+</body>
+</html>
