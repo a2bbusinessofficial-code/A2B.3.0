@@ -34,3 +34,20 @@
 /blog/post?slug=built-50-automations-that-clients-never-used                                /blog/post/built-50-automations-that-clients-never-used/                               301
 /blog/post?slug=i-wasted-6-months-building-automations-that-kept-breaking-here-s-what-actually-fixed-them  /blog/post/i-wasted-6-months-building-automations-that-kept-breaking-here-s-what-actually-fixed-them/  301
 /blog/post?slug=built-a-system-that-does-500-in-the-time-i-used-to-do-5                    /blog/post/built-a-system-that-does-500-in-the-time-i-used-to-do-5/                    301
+
+# Legacy Structure -> New Structure Redirects
+/blog/built-a-system-that-does-500-in-the-time-i-used-to-do-5                  /blog/post/built-a-system-that-does-500-in-the-time-i-used-to-do-5/                  301
+/blog/debugging-a-workflow-that-had-zero-error-logs-and-lost-1200              /blog/post/debugging-a-workflow-that-had-zero-error-logs-and-lost-1200/              301
+/blog/learn-n8n-in-2026                                                        /blog/post/learn-n8n-in-2026/                                                        301
+/blog/built-50-automations-that-clients-never-used                             /blog/post/built-50-automations-that-clients-never-used/                             301
+/blog/n8n-v2-0                                                                 /blog/post/n8n-v2-0/                                                                 301
+/blog/i-wasted-6-months-building-automations-that-kept-breaking-here-s-what-actually-fixed-them /blog/post/i-wasted-6-months-building-automations-that-kept-breaking-here-s-what-actually-fixed-them/ 301
+
+# Core Pages Old -> New Redirects
+/services                   /service             301
+/pricing                    /contact             301
+/resources                  /blog                301
+/products                   /labs                301
+/products/roastmysnap       /labs/roastmysnap    301
+/products/ztrike            /labs/ztrike         301
+/products/gitart            /labs/gitart         301
