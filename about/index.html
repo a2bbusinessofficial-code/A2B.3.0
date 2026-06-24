@@ -269,7 +269,7 @@
     .journey-card {
       max-width: 1400px;
       margin: 0 auto;
-      padding: 0 60px 80px;
+      padding: 0 60px 0;
     }
     .journey-card-inner {
       background: #0a0a0a;
@@ -423,12 +423,12 @@
       position: relative;
       z-index: 7;
       margin-top: 0;
-      padding-top: 80px;
+      padding-top: 20px;
     }
     .mission-container {
       max-width: 1200px;
       margin: 0 auto;
-      padding: 80px 60px 120px;
+      padding: 0 60px 120px;
     }
     .mission-label {
       display: flex;
@@ -810,7 +810,8 @@
       z-index: 9;
       margin-top: -60px;
       clip-path: polygon(0 60px, calc(50% - 52px) 60px, calc(50% + 52px) 0, 100% 0, 100% 100%, 0 100%);
-      padding: 160px 0 140px;
+      padding: 160px 0 60px;
+      margin-bottom: -2px; /* Fix subpixel rendering gap causing gray line */
     }
     .vision-container {
       max-width: 1200px;
@@ -891,7 +892,7 @@
       z-index: 10;
       margin-top: 0;
       clip-path: none;
-      padding: 120px 0 100px;
+      padding: 40px 0 100px;
     }
     .about-cta-inner {
       max-width: 1200px;

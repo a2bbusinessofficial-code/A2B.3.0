@@ -180,7 +180,7 @@ function initNavScroll() {
         }
 
         // Dynamic light/dark mode adapting
-        const lightSections = document.querySelectorAll('.home-stats-section, .home-svc-section, .home-cs-section, .home-testimonials-section, .cbr-light-section, .about-hero-light');
+        const lightSections = document.querySelectorAll('.home-stats-section, .home-svc-section, .home-cs-section, .home-testimonials-section, .cbr-light-section, .about-hero-light, .about-content, .about-mission-section, .about-vision-section, .about-cta-section');
         let isOverLightSection = false;
         const checkY = 40; // check color roughly halfway down the navbar
 

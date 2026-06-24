@@ -119,9 +119,7 @@ button {
 }
 
 .navbar.scrolled .nav-container {
-  background: rgba(10, 10, 10, 0.9);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
+  background: #0a0a0a;
   border-bottom: 1px solid rgba(255, 255, 255, 0.08);
   height: 70px;
 }
@@ -420,13 +418,13 @@ button {
 
 /* ===== Navbar Light Mode (inverts colors over white sections) ===== */
 .navbar.light-mode .nav-container {
-  background: rgba(255, 255, 255, 0.9);
+  background: #ffffff;
   border-bottom: 1px solid rgba(0, 0, 0, 0.08);
 }
 
 /* When scrolled AND over a light section, stay light (overrides .scrolled dark bg) */
 .navbar.light-mode.scrolled .nav-container {
-  background: rgba(255, 255, 255, 0.95);
+  background: #ffffff;
   border-bottom: 1px solid rgba(0, 0, 0, 0.1);
 }
 
@@ -3001,6 +2999,7 @@ a.hsg-cell--last:hover .hsg-cell-link {
   margin-top: -60px;
   clip-path: polygon(0 60px, calc(50% - 52px) 60px, calc(50% + 52px) 0, 100% 0, 100% 100%, 0 100%);
   padding: 140px 0 120px;
+  margin-bottom: -2px; /* Fix sub-pixel rendering gap */
 }
 
 .home-testimonials-container {
@@ -8084,10 +8083,8 @@ a, button, input, select, textarea {
   position: relative;
   background: #ffffff;
   color: #0a0a0a;
-  padding: 120px 0 160px;
+  padding: 60px 0 160px;
   z-index: 10;
-  margin-top: -60px;
-  clip-path: polygon(0 60px, calc(50% - 52px) 60px, calc(50% + 52px) 0, 100% 0, 100% 100%, 0 100%);
 }
 
 .home-blog-container {
