@@ -615,7 +615,7 @@ button {
   font-weight: 300;
   letter-spacing: 3.5px;
   text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.6); 
+  color: rgba(255, 255, 255, 0.6);
   margin-bottom: 40px;
   opacity: 0;
   animation: fadeInUp 0.9s var(--ease-out) forwards;
