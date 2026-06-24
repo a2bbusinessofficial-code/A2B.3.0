@@ -641,12 +641,13 @@ function initCbrFaq() {
  * Clicking links to the contact page.
  */
 function initFreeConsultationButton() {
-  if (window.location.pathname.includes('contact')) return;
+  const path = window.location.pathname.toLowerCase();
+  if (path.includes('contact') || path.includes('admin')) return;
 
   const circle = document.createElement('a');
   circle.href = '/contact';
   circle.className = 'fcb-circle';
-  circle.setAttribute('aria-label', 'Book your free consultancy');
+  circle.setAttribute('aria-label', 'Book your free strategic call');
 
   // Unique ID so multiple pages don't clash on the same textPath
   const pathId = 'fcbTextPath';
@@ -659,7 +660,7 @@ function initFreeConsultationButton() {
       </defs>
       <text class="fcb-ring-text">
         <textPath href="#${pathId}">
-          FREE CONSULTANCY &bull; FREE CONSULTANCY &bull;
+          FREE STRATEGIC CALL &bull; FREE STRATEGIC CALL &bull;
         </textPath>
       </text>
     </svg>

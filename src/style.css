@@ -431,7 +431,8 @@ button {
 }
 
 .navbar.light-mode .nav-logo-img {
-  filter: invert(1);
+  filter: none !important;
+  content: url('/assets/logos/newlogoblack.png');
 }
 
 .navbar.light-mode .nav-logo-text {
@@ -1275,7 +1276,8 @@ a.cinfo-line:hover {
 }
 
 .light-nav .nav-logo-img {
-  filter: invert(1) !important; /* Turns the white logo black */
+  filter: none !important;
+  content: url('/assets/logos/newlogoblack.png');
 }
 
 .light-nav .nav-hamburger span {
@@ -3461,7 +3463,6 @@ a.hsg-cell--last:hover .hsg-cell-link {
   width: 180px;
   height: 180px;
   object-fit: contain;
-  filter: brightness(0) invert(1);
   opacity: 0.9;
 }
 
@@ -6167,9 +6168,9 @@ a.hsg-cell--last:hover .hsg-cell-link {
 
 .fcb-ring-text {
   font-family: var(--font-body);
-  font-size: 13px;
+  font-size: 11.5px;
   font-weight: 700;
-  letter-spacing: 0.32em;
+  letter-spacing: 0.35em;
   fill: #ffffff;
   text-transform: uppercase;
 }
@@ -6211,7 +6212,7 @@ a.hsg-cell--last:hover .hsg-cell-link {
   }
   .fcb-circle:hover { transform: translateY(0); }
   .fcb-circle-inner { width: 40px; height: 40px; }
-  .fcb-ring-text { font-size: 8px; }
+  .fcb-ring-text { font-size: 7.2px; }
 }
 
 /* ==============================================

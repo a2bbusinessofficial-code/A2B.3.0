@@ -1,4 +1,4 @@
-﻿<!doctype html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -15,12 +15,12 @@
     <meta property="og:title" content="About A2B AI Technologies | AI Agency Founded in Trivandrum, India" />
     <meta property="og:description" content="Founded February 2026 by 4 engineers in Trivandrum, India. We build AI automation and agent systems that give businesses back their time." />
     <meta property="og:url" content="https://a2b.services/about" />
-    <meta property="og:image" content="https://a2b.services/assets/logos/a2blogowhite.png" />
+    <meta property="og:image" content="https://a2b.services/assets/logos/newlogowhite.png" />
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="About A2B AI Technologies" />
     <meta name="twitter:description" content="Founded February 2026 by 4 engineers in Trivandrum, India. We build AI systems that give businesses back their time." />
-    <meta name="twitter:image" content="https://a2b.services/assets/logos/a2blogowhite.png" />
+    <meta name="twitter:image" content="https://a2b.services/assets/logos/newlogowhite.png" />
     <!-- JSON-LD Structured Data -->
     <script type="application/ld+json">
     {
@@ -636,6 +636,7 @@
       /* Expanded Content Show & Move */
       .team-member.is-expanded .team-member-content {
         opacity: 1;
+        transition: opacity 0.4s ease 0.2s, left 0.6s cubic-bezier(0.25, 1, 0.5, 1);
       }
       .team-row[class*="-left"] .team-member.is-expanded .team-member-content {
         left: 45%;
@@ -724,7 +725,7 @@
       justify-content: center;
       padding: 60px;
       opacity: 0;
-      transition: opacity 0.4s ease 0.2s, left 0.6s cubic-bezier(0.25, 1, 0.5, 1); /* delay content fade slightly, animate left */
+      transition: opacity 0.1s ease; /* fast fade out on leave, no position sliding */
       pointer-events: none;
     }
     .team-member-quote {
@@ -976,7 +977,7 @@
         <div class="nav-container">
 
           <a href="/" class="nav-logo" aria-label="A2B Home">
-            <img src="/assets/logos/a2blogowhite.png" alt="A2B Logo" class="nav-logo-img" width="42" height="42" />
+            <img src="/assets/logos/newlogowhite.png" alt="A2B Logo" class="nav-logo-img" width="42" height="42" />
             <span class="nav-logo-text">A2B</span>
           </a>
 
@@ -1349,7 +1350,7 @@
               </a>
             </div>
             <div class="home-cta-logo">
-              <img src="/assets/logos/a2blogowhite.png" alt="A2B Logo" class="home-cta-logo-img" />
+              <img src="/assets/logos/newlogowhite.png" alt="A2B Logo" class="home-cta-logo-img" />
             </div>
           </div>
 
@@ -1373,7 +1374,7 @@
               <!-- Left CTA Side -->
               <div class="footer-cta">
                 <div class="footer-logo-hex">
-                  <img src="/assets/logos/a2blogowhite.png" alt="A2B Logo" />
+                  <img src="/assets/logos/newlogowhite.png" alt="A2B Logo" />
                 </div>
                 <h2 class="footer-title">A2B AI Technologies™</h2>
                 <p class="footer-desc">An elite AI agency helping you build a smarter future through Agentic Coding, AI Workflows, and Enterprise Automation.</p>

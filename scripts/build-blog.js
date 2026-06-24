@@ -146,7 +146,7 @@ function generatePage(post) {
     html, body { overflow-x: clip !important; }
     /* Force navbar visible on white-background page */
     #navbar .nav-container { background:rgba(255,255,255,0.97) !important; border-bottom:1px solid rgba(0,0,0,0.07) !important; backdrop-filter:blur(20px) !important; -webkit-backdrop-filter:blur(20px) !important; }
-    #navbar .nav-logo-img { filter:invert(1) !important; }
+    #navbar .nav-logo-img { content:url('/assets/logos/newlogoblack.png') !important; filter:none !important; }
     #navbar .nav-logo-text { color:#0a0a0a !important; }
     #navbar .nav-link { color:#0a0a0a !important; }
     #navbar .nav-slash { color:rgba(0,0,0,0.25) !important; }
@@ -167,7 +167,7 @@ function generatePage(post) {
 <nav class="navbar" id="navbar">
   <div class="nav-container">
     <a href="/" class="nav-logo" aria-label="A2B Home">
-      <img src="/assets/logos/a2blogowhite.png" alt="A2B Logo" class="nav-logo-img" width="42" height="42" />
+      <img src="/assets/logos/newlogowhite.png" alt="A2B Logo" class="nav-logo-img" width="42" height="42" />
       <span class="nav-logo-text">A2B</span>
     </a>
     <div class="nav-links" id="navLinks">
@@ -274,7 +274,7 @@ function generatePage(post) {
   <section class="cs-ai-native-cta">
     <div class="cs-under-the-hood-container">
       <div class="cs-ai-native-box">
-        <div aria-hidden="true" style="position:absolute;top:50%;right:80px;transform:translateY(-50%);width:300px;height:300px;background:#ffffff;opacity:0.95;-webkit-mask:url('/assets/logos/a2blogowhite.png') center/contain no-repeat;mask:url('/assets/logos/a2blogowhite.png') center/contain no-repeat;pointer-events:none;user-select:none;z-index:0;"></div>
+        <img aria-hidden="true" src="/assets/logos/newlogowhite.png" style="position:absolute;top:50%;right:80px;transform:translateY(-50%);width:300px;height:300px;object-fit:contain;opacity:0.95;pointer-events:none;user-select:none;z-index:0;" alt="" />
         <h2>Enjoyed<br>this post?</h2>
         <p>Explore more field notes and breakdowns from the A2B engineering team.</p>
         <div style="display:flex;gap:16px;flex-wrap:wrap;margin-top:8px;">
@@ -296,7 +296,7 @@ function generatePage(post) {
     </div></div>
     <div class="footer-content">
       <div class="footer-cta">
-        <div class="footer-logo-hex"><img src="/assets/logos/a2blogowhite.png" alt="A2B Logo" /></div>
+        <div class="footer-logo-hex"><img src="/assets/logos/newlogowhite.png" alt="A2B Logo" /></div>
         <h2 class="footer-title">A2B AI Technologies&trade;</h2>
         <p class="footer-desc">An elite AI agency helping you build a smarter future through Agentic Coding, AI Workflows, and Enterprise Automation.</p>
         <a href="/contact" class="btn-arrow footer-btn"><span class="btn-label">Free consultancy</span><div class="btn-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div></a>
