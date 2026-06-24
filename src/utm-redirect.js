@@ -57,11 +57,8 @@ async function logClick(link) {
       user_agent: navigator.userAgent,
     });
 
-    // Increment total_clicks counter
-    await supabase
-      .from('utm_links')
-      .update({ total_clicks: (link.total_clicks || 0) + 1 })
-      .eq('id', link.id);
+    // Increment total_clicks counter securely via RPC
+    await supabase.rpc('increment_utm_clicks', { link_id: link.id });
   } catch {
     // Silently ignore — redirect already happened
   }
