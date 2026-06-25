@@ -22,9 +22,6 @@ async function handleRedirect() {
     return;
   }
 
-  // Log click in background (don't block redirect)
-  logClick(link);
-
   // Build final destination URL with UTM params appended
   let dest;
   try {
@@ -45,6 +42,8 @@ async function handleRedirect() {
     if (v) dest.searchParams.set(k, v);
   });
 
+  // Await click log so the request isn't cancelled by the navigation
+  await logClick(link);
   window.location.replace(dest.toString());
 }
 
