@@ -1,7 +1,4 @@
-# UTM short links — serve redirect handler for any /a2b/[slug]
-/a2b/*  /a2b/index.html  200
-
-# Redirect old .html URLs to clean URLs (301 = permanent, preserves SEO ranking)
+#Redirect old .html URLs to clean URLs (301 = permanent, preserves SEO ranking)
 /service.html           /service                301
 /about.html             /about                  301
 /contact.html           /contact                301
