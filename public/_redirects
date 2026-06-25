@@ -43,6 +43,9 @@
 /blog/n8n-v2-0                                                                 /blog/post/n8n-v2-0/                                                                 301
 /blog/i-wasted-6-months-building-automations-that-kept-breaking-here-s-what-actually-fixed-them /blog/post/i-wasted-6-months-building-automations-that-kept-breaking-here-s-what-actually-fixed-them/ 301
 
+# Old website indexed URLs
+/case-studies/tech-stack        /case-studies           301
+
 # Core Pages Old -> New Redirects
 /services                   /service             301
 /pricing                    /contact             301
