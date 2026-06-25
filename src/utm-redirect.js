@@ -1,28 +1,15 @@
 import { supabase } from './supabase.js';
+import { UTM_LINKS } from './utm-links-config.js';
 
 async function handleRedirect() {
-  // Extract slug from path: /a2b/my-slug → "my-slug"
   const parts = window.location.pathname.split('/').filter(Boolean);
-  const slug  = parts[1]; // parts[0] = 'a2b', parts[1] = slug
+  const slug  = parts[1];
 
-  if (!slug) {
-    window.location.replace('/');
-    return;
-  }
+  if (!slug) { window.location.replace('/'); return; }
 
-  const { data: link, error } = await supabase
-    .from('utm_links')
-    .select('*')
-    .eq('slug', slug)
-    .maybeSingle();
+  const link = UTM_LINKS[slug];
+  if (!link) { window.location.replace('/'); return; }
 
-  if (error || !link) {
-    // Unknown slug — send to homepage
-    window.location.replace('/');
-    return;
-  }
-
-  // Build final destination URL with UTM params appended
   let dest;
   try {
     dest = new URL(link.destination);
@@ -42,25 +29,31 @@ async function handleRedirect() {
     if (v) dest.searchParams.set(k, v);
   });
 
-  // Await click log so the request isn't cancelled by the navigation
-  await logClick(link);
+  // Fire-and-forget — redirect does not wait for Supabase
+  logClick(slug);
   window.location.replace(dest.toString());
 }
 
-async function logClick(link) {
-  try {
-    // Insert click record
-    await supabase.from('utm_clicks').insert({
-      link_id:    link.id,
+function logClick(slug) {
+  const url = `${import.meta.env.VITE_SUPABASE_URL}/rest/v1/utm_clicks`;
+  const key  = import.meta.env.VITE_SUPABASE_ANON_KEY;
+
+  // keepalive: true ensures the request survives page navigation
+  fetch(url, {
+    method:    'POST',
+    keepalive: true,
+    headers: {
+      'Content-Type':  'application/json',
+      'apikey':        key,
+      'Authorization': `Bearer ${key}`,
+      'Prefer':        'return=minimal',
+    },
+    body: JSON.stringify({
+      slug,
       referrer:   document.referrer || null,
       user_agent: navigator.userAgent,
-    });
-
-    // Increment total_clicks counter securely via RPC
-    await supabase.rpc('increment_utm_clicks', { link_id: link.id });
-  } catch {
-    // Silently ignore — redirect already happened
-  }
+    }),
+  }).catch(() => {});
 }
 
 handleRedirect();

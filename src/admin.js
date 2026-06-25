@@ -1,13 +1,12 @@
 import { supabase } from './supabase.js';
+import { UTM_LINKS } from './utm-links-config.js';
 
 // ─────────────────────────────────────────
 // State
 // ─────────────────────────────────────────
 let contactLeads = [];
 let clinicLeads  = [];
-let utmLinks     = [];
 const leadsMap   = new Map();
-const utmMap     = new Map();
 
 const $ = id => document.getElementById(id);
 
@@ -299,198 +298,83 @@ window.showLeadDetail = id => {
 };
 
 // ─────────────────────────────────────────
-// UTM Manager
+// UTM Analytics (links are hardcoded in utm-links-config.js)
 // ─────────────────────────────────────────
 async function loadUTM() {
   const el = $('section-utm');
-  el.innerHTML = '<div class="loading">Loading UTM links…</div>';
+  el.innerHTML = '<div class="loading">Loading UTM analytics…</div>';
 
-  const { data } = await supabase
-    .from('utm_links')
-    .select('*')
-    .order('created_at', { ascending: false });
+  const { data: clicks } = await supabase
+    .from('utm_clicks')
+    .select('slug');
 
-  utmLinks = data || [];
-  utmLinks.forEach(l => utmMap.set(l.id, l));
-  renderUTM();
+  const countBySlug = {};
+  (clicks || []).forEach(c => {
+    if (c.slug) countBySlug[c.slug] = (countBySlug[c.slug] || 0) + 1;
+  });
+
+  renderUTM(countBySlug);
 }
 
-function renderUTM() {
-  const el = $('section-utm');
+function renderUTM(countBySlug) {
+  const el    = $('section-utm');
+  const links = Object.entries(UTM_LINKS);
+
   el.innerHTML = `
     <div class="section-header">
       <div class="section-title-row">
-        <h2 class="section-title">UTM Manager</h2>
-        <span class="badge">${utmLinks.length} links</span>
+        <h2 class="section-title">UTM Analytics</h2>
+        <span class="badge">${links.length} links</span>
       </div>
     </div>
 
-    <div class="utm-layout">
-
-      <!-- ── Create form ── -->
-      <div class="utm-card">
-        <h3 class="card-title">Create Link</h3>
-        <form id="utm-form" onsubmit="submitUTMForm(event)">
-          <div class="form-row">
-            <label class="form-label">Label <span class="form-hint">(internal name)</span></label>
-            <input id="utm-label" class="form-input" placeholder="e.g. Instagram June Story" required />
-          </div>
-          <div class="form-row">
-            <label class="form-label">Slug <span class="form-hint">(a–z, 0–9, hyphens only)</span></label>
-            <div class="slug-wrap">
-              <span class="slug-prefix">a2b.services/a2b/</span>
-              <input id="utm-slug" class="form-input slug-input"
-                     placeholder="ig-jun26" pattern="[a-z0-9\\-]+" required />
-            </div>
-          </div>
-          <div class="form-row">
-            <label class="form-label">Destination URL</label>
-            <input id="utm-dest" class="form-input" type="url"
-                   placeholder="https://a2b.services/contact" required />
-          </div>
-          <div class="form-2col">
-            <div class="form-row">
-              <label class="form-label">Source</label>
-              <input id="utm-source" class="form-input" placeholder="instagram" />
-            </div>
-            <div class="form-row">
-              <label class="form-label">Medium</label>
-              <input id="utm-medium" class="form-input" placeholder="story" />
-            </div>
-            <div class="form-row">
-              <label class="form-label">Campaign</label>
-              <input id="utm-campaign" class="form-input" placeholder="june-promo" />
-            </div>
-            <div class="form-row">
-              <label class="form-label">Content <span class="form-hint">(optional)</span></label>
-              <input id="utm-content" class="form-input" placeholder="cta-button" />
-            </div>
-          </div>
-          <div id="utm-preview-wrap" style="display:none" class="form-row">
-            <label class="form-label">Full destination URL preview</label>
-            <div id="utm-preview" class="utm-preview-box"></div>
-          </div>
-          <div id="utm-form-error" class="form-error"></div>
-          <div class="utm-form-actions">
-            <button type="button" class="btn-secondary" onclick="previewUTM()">Preview</button>
-            <button type="submit" class="btn-primary" id="utm-submit-btn">Create Link</button>
-          </div>
-        </form>
-      </div>
-
-      <!-- ── Links table ── -->
-      <div class="utm-card">
-        <h3 class="card-title">All Links</h3>
-        ${utmLinks.length === 0
-          ? '<div class="empty-state">No links yet. Create your first link above.</div>'
-          : `<div class="table-wrap">
-              <table class="data-table">
-                <thead><tr>
-                  <th>Label</th><th>Short URL</th><th>Destination</th>
-                  <th>Clicks</th><th>Created</th><th></th>
-                </tr></thead>
-                <tbody>${utmLinks.map(utmLinkRow).join('')}</tbody>
-              </table>
-            </div>`
-        }
-      </div>
+    <div class="utm-card">
+      ${links.length === 0
+        ? '<div class="empty-state">No links configured. Add entries to utm-links-config.js and redeploy.</div>'
+        : `<div class="table-wrap">
+            <table class="data-table">
+              <thead><tr>
+                <th>Label</th><th>Short URL</th><th>Destination</th>
+                <th>Source</th><th>Medium</th><th>Campaign</th>
+                <th>Clicks</th><th></th>
+              </tr></thead>
+              <tbody>${links.map(([slug, link]) => utmLinkRow(slug, link, countBySlug[slug] || 0)).join('')}</tbody>
+            </table>
+          </div>`
+      }
     </div>
   `;
-
-  // Live preview update
-  ['utm-slug','utm-dest','utm-source','utm-medium','utm-campaign','utm-content'].forEach(id => {
-    document.getElementById(id)?.addEventListener('input', () => {
-      if ($('utm-preview-wrap').style.display !== 'none') previewUTM();
-    });
-  });
 }
 
-function utmLinkRow(link) {
-  const shortUrl  = `https://a2b.services/a2b/${link.slug}`;
-  const date      = fmtDate(link.created_at);
+function utmLinkRow(slug, link, clicks) {
+  const shortUrl  = `https://a2b.services/a2b/${slug}`;
   const destShort = link.destination.length > 38
     ? link.destination.slice(0, 38) + '…'
     : link.destination;
   return `
     <tr>
-      <td class="td-bold">${esc(link.label || link.slug)}</td>
+      <td class="td-bold">${esc(link.label || slug)}</td>
       <td>
         <div class="utm-short-row">
           <code class="utm-code">${esc(shortUrl)}</code>
-          <button class="btn-copy" onclick="copyUTM('${link.id}')" title="Copy URL">⎘</button>
+          <button class="btn-copy" onclick="copyUTM('${slug}')" title="Copy URL">⎘</button>
         </div>
       </td>
       <td class="td-muted" title="${esc(link.destination)}">${esc(destShort)}</td>
-      <td><strong>${link.total_clicks || 0}</strong></td>
-      <td class="td-muted">${date}</td>
+      <td class="td-muted">${esc(link.utm_source || '—')}</td>
+      <td class="td-muted">${esc(link.utm_medium || '—')}</td>
+      <td class="td-muted">${esc(link.utm_campaign || '—')}</td>
+      <td><strong>${clicks}</strong></td>
       <td>
         <div class="action-row">
-          <button class="btn-view" onclick="showUTMAnalytics('${link.id}')">Analytics</button>
-          <button class="btn-danger" onclick="deleteUTMLink('${link.id}')">Delete</button>
+          <button class="btn-view" onclick="showUTMAnalytics('${slug}')">Analytics</button>
         </div>
       </td>
     </tr>`;
 }
 
-window.previewUTM = () => {
-  const dest     = $('utm-dest')?.value.trim();
-  const slug     = $('utm-slug')?.value.trim();
-  const previewEl = $('utm-preview');
-  if (!dest || !slug || !previewEl) return;
-
-  try {
-    const url = new URL(dest);
-    const params = { source: 'utm-source', medium: 'utm-medium', campaign: 'utm-campaign', content: 'utm-content' };
-    Object.entries(params).forEach(([k, id]) => {
-      const v = $(id)?.value.trim();
-      if (v) url.searchParams.set(`utm_${k}`, v);
-    });
-    previewEl.textContent = url.toString();
-    $('utm-preview-wrap').style.display = 'block';
-  } catch {
-    previewEl.textContent = 'Invalid destination URL.';
-    $('utm-preview-wrap').style.display = 'block';
-  }
-};
-
-window.submitUTMForm = async e => {
-  e.preventDefault();
-  const btn = $('utm-submit-btn');
-  const err = $('utm-form-error');
-  btn.disabled    = true;
-  btn.textContent = 'Creating…';
-  err.textContent = '';
-
-  const payload = {
-    label:        $('utm-label').value.trim(),
-    slug:         $('utm-slug').value.trim().toLowerCase(),
-    destination:  $('utm-dest').value.trim(),
-    utm_source:   $('utm-source').value.trim()   || null,
-    utm_medium:   $('utm-medium').value.trim()   || null,
-    utm_campaign: $('utm-campaign').value.trim() || null,
-    utm_content:  $('utm-content').value.trim()  || null,
-    total_clicks: 0,
-  };
-
-  const { error } = await supabase.from('utm_links').insert(payload);
-
-  btn.disabled    = false;
-  btn.textContent = 'Create Link';
-
-  if (error) {
-    err.textContent = error.code === '23505'
-      ? 'Slug already in use — try a different one.'
-      : `Error: ${error.message}`;
-    return;
-  }
-
-  await loadUTM();
-};
-
-window.copyUTM = async id => {
-  const link = utmMap.get(id);
-  if (!link) return;
-  const url = `https://a2b.services/a2b/${link.slug}`;
+window.copyUTM = async slug => {
+  const url = `https://a2b.services/a2b/${slug}`;
   try {
     await navigator.clipboard.writeText(url);
     showToast('Copied to clipboard');
@@ -499,27 +383,20 @@ window.copyUTM = async id => {
   }
 };
 
-window.deleteUTMLink = async id => {
-  const link = utmMap.get(id);
-  if (!confirm(`Delete "${link?.label || link?.slug}"? This also removes all click data.`)) return;
-  await supabase.from('utm_links').delete().eq('id', id);
-  await loadUTM();
-};
-
-window.showUTMAnalytics = async id => {
+window.showUTMAnalytics = async slug => {
   openModal('<div class="loading">Loading analytics…</div>');
 
-  const link = utmMap.get(id);
+  const link = UTM_LINKS[slug];
+
   const { data: clicks } = await supabase
     .from('utm_clicks')
     .select('*')
-    .eq('link_id', id)
+    .eq('slug', slug)
     .order('created_at', { ascending: false });
 
   const clickList = clicks || [];
-  const shortUrl  = `https://a2b.services/a2b/${link.slug}`;
+  const shortUrl  = `https://a2b.services/a2b/${slug}`;
 
-  // Group by date
   const byDate = {};
   clickList.forEach(c => {
     const day = c.created_at.slice(0, 10);
@@ -530,14 +407,14 @@ window.showUTMAnalytics = async id => {
     <div class="modal-header">
       <div>
         <span class="modal-source-tag">UTM Analytics</span>
-        <h3 class="modal-name">${esc(link.label || link.slug)}</h3>
+        <h3 class="modal-name">${esc(link?.label || slug)}</h3>
         <code class="utm-code" style="margin-top:6px;display:inline-block">${esc(shortUrl)}</code>
       </div>
     </div>
 
     <div class="analytics-stats">
       <div class="stat-box">
-        <div class="stat-num">${link.total_clicks || 0}</div>
+        <div class="stat-num">${clickList.length}</div>
         <div class="stat-lbl">Total Clicks</div>
       </div>
       <div class="stat-box">
@@ -545,26 +422,26 @@ window.showUTMAnalytics = async id => {
         <div class="stat-lbl">Active Days</div>
       </div>
       <div class="stat-box">
-        <div class="stat-num">${esc(link.utm_source || '—')}</div>
+        <div class="stat-num">${esc(link?.utm_source || '—')}</div>
         <div class="stat-lbl">Source</div>
       </div>
       <div class="stat-box">
-        <div class="stat-num">${esc(link.utm_medium || '—')}</div>
+        <div class="stat-num">${esc(link?.utm_medium || '—')}</div>
         <div class="stat-lbl">Medium</div>
       </div>
       <div class="stat-box">
-        <div class="stat-num">${esc(link.utm_campaign || '—')}</div>
+        <div class="stat-num">${esc(link?.utm_campaign || '—')}</div>
         <div class="stat-lbl">Campaign</div>
       </div>
     </div>
 
     <div class="analytics-dest">
       <span class="td-muted">Destination →</span>
-      <a href="${esc(link.destination)}" target="_blank" class="table-link">${esc(link.destination)}</a>
+      <a href="${esc(link?.destination)}" target="_blank" class="table-link">${esc(link?.destination)}</a>
     </div>
 
     ${clickList.length === 0
-      ? '<div class="empty-state" style="margin-top:24px">No clicks recorded yet. Share the link to start tracking.</div>'
+      ? '<div class="empty-state" style="margin-top:24px">No clicks recorded yet.</div>'
       : `
         <h4 class="analytics-sub-title">Clicks by Day</h4>
         <div class="table-wrap">
