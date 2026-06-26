@@ -1,4 +1,3 @@
-import './style.css';
 
 /* ==============================================
    A2B — Main JavaScript
@@ -786,12 +785,21 @@ document.addEventListener('DOMContentLoaded', () => {
     progressBar.id = 'scrollProgressBar';
     navbar.appendChild(progressBar);
 
+    let ticking = false;
     window.addEventListener('scroll', () => {
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+
       const scrollPx = document.documentElement.scrollTop || document.body.scrollTop;
       const winHeightPx = document.documentElement.scrollHeight - document.documentElement.clientHeight;
       if (winHeightPx > 0) {
         const scrolled = (scrollPx / winHeightPx) * 100;
         progressBar.style.width = scrolled + '%';
+      }
+    
+          ticking = false;
+        });
+        ticking = true;
       }
     });
   }

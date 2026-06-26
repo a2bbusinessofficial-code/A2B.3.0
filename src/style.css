@@ -47,8 +47,6 @@
 
 html {
   font-size: 16px;
-  scroll-behavior: smooth;
-  overflow-x: hidden;
 }
 
 body {
@@ -100,6 +98,8 @@ button {
 /* ===== Navbar ===== */
 .navbar {
   position: fixed;
+  will-change: transform, background-color;
+  transform: translateZ(0);
   top: 0;
   left: 0;
   width: 100%;
@@ -1457,6 +1457,8 @@ a.cinfo-line:hover {
 
 .cs-row-card {
   display: grid;
+  will-change: transform;
+  transform: translateZ(0);
   grid-template-columns: 300px 1fr 300px;
   gap: 60px;
   padding: 60px;
