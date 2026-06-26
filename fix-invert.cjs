@@ -12,7 +12,7 @@ function replaceInvertInDir(dir) {
         } else if (file.endsWith('.html') || file.endsWith('.js')) {
             let content = fs.readFileSync(fullPath, 'utf8');
             if (content.includes('filter:invert(1) !important')) {
-                content = content.split('filter:invert(1) !important').join('content:url(\'/assets/logos/newlogoblack.png\') !important; filter:none !important');
+                content = content.split('filter:invert(1) !important').join('content:url(\'/assets/logos/newlogo-black.png\') !important; filter:none !important');
                 fs.writeFileSync(fullPath, content, 'utf8');
                 console.log('Fixed invert in', fullPath);
             }

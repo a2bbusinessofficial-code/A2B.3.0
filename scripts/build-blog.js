@@ -14,7 +14,7 @@ function esc(str) {
 }
 
 function toHtml(text) {
-  text = text.replace(/""/g, '“').replace(/""/g, '”').trim();
+  text = text.replace(/""/g, 'Ã¢â‚¬Å“').replace(/""/g, 'Ã¢â‚¬Â').trim();
   const lines = text.split('\n');
   const out = [];
   let buf = [];
@@ -31,18 +31,29 @@ function toHtml(text) {
 
     if (/^-{15,}$/.test(t)) { flush(); out.push('<hr class="post-hr">'); i++; continue; }
 
+        if (t.startsWith('## ')) {
+      flush();
+      out.push('<h2>' + t.slice(3) + '</h2>');
+      i++; continue;
+    }
+    if (t.startsWith('### ')) {
+      flush();
+      out.push('<h3>' + t.slice(4) + '</h3>');
+      i++; continue;
+    }
+
     if (/^(MY STORY|GUIDE):?\s*$/i.test(t)) {
       flush();
       out.push('<h2 class="blog-section-tag">' + t.replace(/:$/, '') + '</h2>');
       i++; continue;
     }
 
-    if (t.startsWith('• ') || t.startsWith('* ')) {
+    if (t.startsWith('Ã¢â‚¬Â¢ ') || t.startsWith('* ')) {
       flush();
       const items = [];
       while (i < lines.length) {
         const lt = lines[i].trim();
-        if (lt.startsWith('• ') || lt.startsWith('* ')) {
+        if (lt.startsWith('Ã¢â‚¬Â¢ ') || lt.startsWith('* ')) {
           items.push('<li>' + lt.slice(2) + '</li>');
           i++;
         } else break;
@@ -64,7 +75,7 @@ function generatePage(post) {
   const hasDoc = !!post.pdf;
 
   const imgTag = post.image
-    ? `<img src="${post.image}" alt="${esc(post.title)}" style="width:100%;height:480px;object-fit:cover;object-position:center;border-radius:4px;margin-bottom:24px;">`
+    ? `<img src="${post.image}" alt="${esc(post.title)}" style="width:100%;max-height:500px;height:auto;object-fit:contain;object-position:center;border-radius:4px;margin-bottom:24px;background:#f5f5f3;">`
     : '';
 
   const docSection = hasDoc
@@ -96,8 +107,12 @@ function generatePage(post) {
     : '';
 
   const pdfMetaLink = hasDoc
-    ? ` &nbsp;&middot;&nbsp; <a href="${post.pdf}" target="_blank" rel="noopener" style="color:#00c853;text-decoration:underline;">View PDF &rarr;</a>`
+    ? ` &nbsp;&middot;&nbsp; <a href="${post.pdf}" target="_blank" rel="noopener" style="color:#00DF81;text-decoration:underline;">View PDF &rarr;</a>`
     : '';
+
+  const titleText = post.seoTitle ? post.seoTitle : post.title;
+  const descText = post.seoDescription ? post.seoDescription : post.description;
+  const keywordsTag = post.keywords ? `\n  <meta name="keywords" content="${esc(post.keywords)}" />` : '';
 
   return `<!doctype html>
 <html lang="en">
@@ -105,14 +120,14 @@ function generatePage(post) {
   <meta charset="UTF-8" />
   <link rel="icon" type="image/x-icon" href="/assets/favicon.ico" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="${esc(post.description)}" />
-  <meta property="og:title" content="${esc(post.title)} | A2B Blog" />
-  <meta property="og:description" content="${esc(post.description)}" />
+  <meta name="description" content="${esc(descText)}" />${keywordsTag}
+  <meta property="og:title" content="${esc(titleText)} | A2B Blog" />
+  <meta property="og:description" content="${esc(descText)}" />
   <meta property="og:image" content="${post.image}" />
   <meta property="og:type" content="article" />
   <meta property="article:published_time" content="${post.date}" />
   <meta property="article:author" content="${esc(post.author)}" />
-  <title>${esc(post.title)} | A2B Blog</title>
+  <title>${esc(titleText)} | A2B Blog</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -127,11 +142,11 @@ function generatePage(post) {
     .blog-post-body h4 { font-size:1.05rem; }
     .blog-post-body p  { margin-bottom:1.55em; }
     .blog-post-body img { width:100%; border-radius:8px; margin:2em 0; display:block; }
-    .blog-post-body blockquote { border-left:3px solid #00c853; padding:4px 0 4px 20px; margin:2em 0; color:rgba(0,0,0,0.6); font-style:italic; }
+    .blog-post-body blockquote { border-left:3px solid #00DF81; padding:4px 0 4px 20px; margin:2em 0; color:rgba(0,0,0,0.6); font-style:italic; }
     .blog-post-body ul,.blog-post-body ol { padding-left:1.5em; margin-bottom:1.55em; }
     .blog-post-body li { margin-bottom:0.5em; }
     .blog-post-body strong { color:#0a0a0a; font-weight:600; }
-    .blog-post-body a { color:#00c853; text-decoration:underline; text-underline-offset:3px; }
+    .blog-post-body a { color:#00DF81; text-decoration:underline; text-underline-offset:3px; }
     .blog-post-body hr,.blog-post-body .post-hr { border:none; border-top:1px solid rgba(0,0,0,0.08); margin:2.5em 0; }
     .blog-post-body table { width:100%; border-collapse:collapse; margin-bottom:1.55em; font-size:0.95rem; }
     .blog-post-body th { text-align:left; font-weight:600; color:#0a0a0a; padding:10px 14px; border-bottom:2px solid rgba(0,0,0,0.1); }
@@ -146,7 +161,7 @@ function generatePage(post) {
     html, body { overflow-x: clip !important; }
     /* Force navbar visible on white-background page */
     #navbar .nav-container { background:rgba(255,255,255,0.97) !important; border-bottom:1px solid rgba(0,0,0,0.07) !important; backdrop-filter:blur(20px) !important; -webkit-backdrop-filter:blur(20px) !important; }
-    #navbar .nav-logo-img { content:url('/assets/logos/newlogoblack.png') !important; filter:none !important; }
+    #navbar .nav-logo-img { content:url('/assets/logos/primarylogo-black.png') !important; filter:none !important; }
     #navbar .nav-logo-text { color:#0a0a0a !important; }
     #navbar .nav-link { color:#0a0a0a !important; }
     #navbar .nav-slash { color:rgba(0,0,0,0.25) !important; }
@@ -167,7 +182,7 @@ function generatePage(post) {
 <nav class="navbar" id="navbar">
   <div class="nav-container">
     <a href="/" class="nav-logo" aria-label="A2B Home">
-      <img src="/assets/logos/newlogowhite.png" alt="A2B Logo" class="nav-logo-img" width="42" height="42" />
+      <img src="/assets/logos/primarylogo-white.png" alt="A2B Logo" class="nav-logo-img" width="42" height="42" />
       <span class="nav-logo-text">A2B</span>
     </a>
     <div class="nav-links" id="navLinks">
@@ -257,7 +272,7 @@ function generatePage(post) {
                 Get in Touch
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
               </a>
-              <a href="/contact" class="post-cta-btn" style="background:#00c853;color:#000000;margin-top:0;">
+              <a href="/contact" class="post-cta-btn" style="background:#00DF81;color:#000000;margin-top:0;">
                 Book a Meeting
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
               </a>
@@ -274,7 +289,7 @@ function generatePage(post) {
   <section class="cs-ai-native-cta">
     <div class="cs-under-the-hood-container">
       <div class="cs-ai-native-box">
-        <img aria-hidden="true" src="/assets/logos/newlogowhite.png" style="position:absolute;top:50%;right:80px;transform:translateY(-50%);width:300px;height:300px;object-fit:contain;opacity:0.95;pointer-events:none;user-select:none;z-index:0;" alt="" />
+        <img aria-hidden="true" src="/assets/logos/newlogo-white.png" style="position:absolute;top:50%;right:80px;transform:translateY(-50%);width:300px;height:300px;object-fit:contain;opacity:0.95;pointer-events:none;user-select:none;z-index:0;" alt="" />
         <h2>Enjoyed<br>this post?</h2>
         <p>Explore more field notes and breakdowns from the A2B engineering team.</p>
         <div style="display:flex;gap:16px;flex-wrap:wrap;margin-top:8px;">
@@ -296,7 +311,7 @@ function generatePage(post) {
     </div></div>
     <div class="footer-content">
       <div class="footer-cta">
-        <div class="footer-logo-hex"><img src="/assets/logos/newlogowhite.png" alt="A2B Logo" /></div>
+        <div class="footer-logo-hex"><img src="/assets/logos/primarylogo-white.png" alt="A2B Logo" /></div>
         <h2 class="footer-title">A2B AI Technologies&trade;</h2>
         <p class="footer-desc">An elite AI agency helping you build a smarter future through Agentic Coding, AI Workflows, and Enterprise Automation.</p>
         <a href="/contact" class="btn-arrow footer-btn"><span class="btn-label">Free consultancy</span><div class="btn-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div></a>
@@ -325,9 +340,52 @@ function generatePage(post) {
 
 const posts = [
   {
+    slug: 'database-reactivation',
+    title: "Your Old Customer List Is Worth More Than You Think",
+    seoTitle: "Database Reactivation Services | Turn Old Leads Into Sales",
+    description: "How Database Reactivation Turns Dormant Contacts Into New Revenue",
+    seoDescription: "Need more leads without spending on ads? Discover how our automated database reactivation services help business owners turn old customers and dormant contacts into new revenue.",
+    keywords: "database reactivation services, automated lead generation, get more leads from old customers, revive dormant contacts, AI outreach campaign",
+    author: 'Akhil',
+    date: '2026-06-26',
+    image: '/assets/blogpost/database-reactivation/db_rat.webp',
+    content: `Most businesses are sitting on a list they never look at twice. Past customers who haven’t booked in a year. Leads who went quiet after one phone call. Subscribers who stopped opening emails months ago. That list isn’t dead weight, it’s unfinished business, and it’s usually one of the cheapest sources of new revenue a business already owns.
+
+The instinct is to focus all the marketing budget on bringing in new people. But new customers are expensive to win, and most businesses already have hundreds (sometimes thousands) of past contacts who already know who they are, have already paid them once, and just haven’t been asked to come back.
+
+## What Database Reactivation Actually Is
+Database reactivation is a structured outreach campaign built to re-engage a dormant contact list, old customers, cold leads, inactive subscribers, through a mix of SMS, email, and AI-assisted conversation. Instead of one generic blast, contacts are sorted by how recently they engaged and how likely they are to respond, then walked through a sequence designed to bring them back: a first message, a follow-up with a different angle, and a final nudge before they move to long-term nurture.
+
+When someone replies or clicks, an AI-trained assistant can pick up the conversation, answer common questions, and guide them straight to booking, without a team member lifting a finger for every single reply.
+
+## Why It Works Better Than It Sounds
+Three things make this approach effective rather than just another marketing email:
+
+* The list is already warm. These are people who have interacted with the business before. The trust-building work is already done, reactivation just needs to remind them the business exists and give them a reason to come back now.
+* The messaging is sequenced, not random. Contacts who don’t respond to the first message see a different message the second time, not a repeat. That alone meaningfully improves response rates over a single one-off email blast.
+* Booked customers get pulled out automatically. The moment someone books an appointment, they’re removed from the outreach sequence. No one gets a “we miss you” text the same week they’ve already rebooked, which is a fast way to lose trust instead of rebuilding it.
+
+A campaign that converts just two or three people from an old list back into paying customers is often enough to cover its own cost, everything after that is recovered revenue that would have otherwise stayed dormant
+
+## It Doesn’t Stop at the Booking
+A reactivation campaign is also a natural moment to ask happy, returning customers for a review, while filtering out negative feedback before it ever reaches a public page. Customers who report a great experience get routed to a public review link. Anyone less satisfied is routed privately to the business owner instead, so the issue gets seen and solved without becoming a public rating problem. It’s a simple way to protect a business’s reputation while still listening to the feedback that matters.
+
+## Why Now
+Every month a contact list sits untouched, more of those relationships go cold for good. The good news is that re-engaging a list doesn’t require ripping out existing systems or learning new software, it runs quietly in the background on tools many businesses already use, doing the outreach and the follow-up automatically.
+
+The contacts are already there. The only thing missing is the campaign that brings them back.
+
+### <i>Curious what’s sitting in your own list?</i>
+
+<i>A2B AI Technologies builds and manages database reactivation campaigns end-to-end from segmenting your contacts to writing the sequences to training the AI that handles the replies. Reach out and we’ll take a look at what your list could be worth.</i>
+
+<i>Get in touch:   info@a2b.services   |   www.a2b.services</i>`
+  },
+
+  {
     slug: 'n8n-v2-0',
     title: "Just upgraded to n8n v2.0 pre-release. Here's what actually changed.",
-    description: "Hands-on with n8n v2: instant saves, flatter UI, thicker connectors, and a major change to Execute Workflow — sub-workflow outputs now flow back into the parent. This fixes approval-path friction but can break fire-and-forget designs. Keep production on v1 until you fully test sub-workflow behavior.",
+    description: "Hands-on with n8n v2: instant saves, flatter UI, thicker connectors, and a major change to Execute Workflow Ã¢â‚¬â€ sub-workflow outputs now flow back into the parent. This fixes approval-path friction but can break fire-and-forget designs. Keep production on v1 until you fully test sub-workflow behavior.",
     author: 'Rahul V K',
     date: '2025-12-07',
     image: 'https://bfmoirwycojttdbitvir.supabase.co/storage/v1/object/public/blog-images/0.24177335967231017.webp',
@@ -386,10 +444,10 @@ The value of mastering basic workflows first cannot be overstated. Standard work
 
 Learning automation isn't just a technical challenge; it's a psychological one. You're probably going to feel overwhelmed. Understanding the "transition curve" helps you map out this emotional journey and find the perspective to succeed when things get difficult.
 
-• Phase 1 — Uninformed Optimism: You see the opportunity and you're excited to start.
-• Phase 2 — Informed Pessimism: You begin to understand the true complexity. This is when you feel overwhelmed.
-• Phase 3 — Crisis of Meaning: The critical decision point. You can either crash and burn or push through.
-• Phase 4 — Informed Optimism: You've pushed through and are now building with confidence.
+Ã¢â‚¬Â¢ Phase 1 Ã¢â‚¬â€ Uninformed Optimism: You see the opportunity and you're excited to start.
+Ã¢â‚¬Â¢ Phase 2 Ã¢â‚¬â€ Informed Pessimism: You begin to understand the true complexity. This is when you feel overwhelmed.
+Ã¢â‚¬Â¢ Phase 3 Ã¢â‚¬â€ Crisis of Meaning: The critical decision point. You can either crash and burn or push through.
+Ã¢â‚¬Â¢ Phase 4 Ã¢â‚¬â€ Informed Optimism: You've pushed through and are now building with confidence.
 
 This cycle is not a one-time event. Knowing it exists is empowering. It helps you recognize that the struggle is a normal phase.
 
@@ -405,7 +463,7 @@ A system prompt is like studying the night before an exam. Good context is like 
 
 4. Build Systems That Run While You Sleep
 
-The true power of automation lies in building workflows that save time without you ever being involved. A "personal assistant" agent only takes action when you tell it to — low leverage. Compare that to a workflow triggered by a real-world event, like a new lead submitting a form. That system wakes up on its own and can run all day and all night. That is where you get scale.
+The true power of automation lies in building workflows that save time without you ever being involved. A "personal assistant" agent only takes action when you tell it to Ã¢â‚¬â€ low leverage. Compare that to a workflow triggered by a real-world event, like a new lead submitting a form. That system wakes up on its own and can run all day and all night. That is where you get scale.
 
 To identify high-leverage opportunities, a process is worth automating if it is repetitive, time-consuming, error-prone, and scalable. If a process does not check at least two of those boxes, it's probably not worth automating yet.
 
@@ -421,7 +479,7 @@ If you can't explain a process clearly on paper, you have no chance of automatin
 
 --------------------------------------------------------------------------------
 
-Mastering automation isn't about chasing the latest AI hype. It's about building a solid, foundational understanding of rule-based systems, thinking strategically about leverage, and planning with the discipline of an engineer. Build boring stuff that works first — you can make it cool later.`
+Mastering automation isn't about chasing the latest AI hype. It's about building a solid, foundational understanding of rule-based systems, thinking strategically about leverage, and planning with the discipline of an engineer. Build boring stuff that works first Ã¢â‚¬â€ you can make it cool later.`
   },
   {
     slug: 'debugging-a-workflow-that-had-zero-error-logs-and-lost-1200',
@@ -445,7 +503,7 @@ GUIDE:
 
 Your Automation is Only 20% Done: 5 Production-Ready Secrets for n8n
 
-You've done it. After hours of tinkering, connecting nodes, and testing logic, your n8n workflow finally runs successfully from start to finish. This is where most people stop, believing the work is done. The reality is that building the functional workflow is just the tip of the iceberg — about 20% of the total effort.
+You've done it. After hours of tinkering, connecting nodes, and testing logic, your n8n workflow finally runs successfully from start to finish. This is where most people stop, believing the work is done. The reality is that building the functional workflow is just the tip of the iceberg Ã¢â‚¬â€ about 20% of the total effort.
 
 The real work, the hidden 80%, lies in transforming that functional prototype into a production-ready system. Whether you're building a complex AI agent or a deterministic workflow with code nodes and API calls, this framework applies to any automation you create.
 
@@ -471,7 +529,7 @@ How do I block danger? Even if a user is legitimate, you need to ensure the requ
 
 3. Design Your Workflow to Fail Gracefully
 
-In a production environment, failures are not just possible — they are expected. The key is to handle them intentionally so that the user is always informed and the system remains predictable.
+In a production environment, failures are not just possible Ã¢â‚¬â€ they are expected. The key is to handle them intentionally so that the user is always informed and the system remains predictable.
 
 Use the Webhook Response node to communicate status back to the front-end system. The three key response codes to use are: Status 200 for a successful response. Status 404 for an authorization error, telling the front end the user is not authenticated. Status 500 for an internal service error, communicating that the user was valid but a component inside the workflow failed.
 
@@ -481,7 +539,7 @@ This approach provides a clean, predictable experience for the user, even when t
 
 4. Become a Chronicler: Log Every Key Event
 
-A chronicler doesn't just write down the ending of a story; they document every chapter. Log the full narrative of each execution — not just for catching errors but for understanding the quality of its work.
+A chronicler doesn't just write down the ending of a story; they document every chapter. Log the full narrative of each execution Ã¢â‚¬â€ not just for catching errors but for understanding the quality of its work.
 
 Log three key stages: what information was received, what was the key decision made with that information, and what was the final action or response. This detailed chronicle makes debugging incredibly fast. When a run fails, you can immediately see which stage it failed at and why.
 
@@ -491,13 +549,13 @@ Log three key stages: what information was received, what was the key decision m
 
 To move from a test workflow to a production system, replace random tinkering with a structured, repeatable framework.
 
-First, deconstruct the system: break your automation down into its core components — the front-end interface, the API transport layer, and the core workflow logic. Second, analyze risks: for each component, list everything that could possibly go wrong. Third, implement mitigations: for every risk you listed, devise a specific solution. Add a database check for unknown users. Implement header authentication to secure the webhook. Create detailed logging for failures.
+First, deconstruct the system: break your automation down into its core components Ã¢â‚¬â€ the front-end interface, the API transport layer, and the core workflow logic. Second, analyze risks: for each component, list everything that could possibly go wrong. Third, implement mitigations: for every risk you listed, devise a specific solution. Add a database check for unknown users. Implement header authentication to secure the webhook. Create detailed logging for failures.
 
 This methodical process transforms your workflow from a fragile script into a robust system.
 
 --------------------------------------------------------------------------------
 
-Moving a workflow into production requires a fundamental shift in identity. You are no longer just a builder of features; you become an architect of reliable, resilient systems. By embracing the "boring" 80% — security, error handling, logging, and risk mitigation — you ensure that what you build can stand on its own and deliver consistent value over the long term.`
+Moving a workflow into production requires a fundamental shift in identity. You are no longer just a builder of features; you become an architect of reliable, resilient systems. By embracing the "boring" 80% Ã¢â‚¬â€ security, error handling, logging, and risk mitigation Ã¢â‚¬â€ you ensure that what you build can stand on its own and deliver consistent value over the long term.`
   },
   {
     slug: 'built-50-automations-that-clients-never-used',
@@ -535,7 +593,7 @@ So instead of building a chatbot that had nice pleasant conversations and collec
 
 I also realized I was only building for binary outcomes. Qualified or not qualified. Yes or no. But that's not how actual business works. Most leads aren't a clear yes or no. They're interested but their boss needs to approve the budget first. They love the product but can't implement anything new for two months.
 
-So I started building a third route. Yes leads go straight to the CRM for immediate follow up. No leads get discarded. But maybe leads — the ones who are genuinely interested but not ready right now — go into a re-engage database. Then a scheduled job runs every two weeks and sends a simple, non-pushy message: "Hey, we chatted a few weeks ago and you mentioned you might be interested later. Is now a better time?" The number of leads that convert from that follow-up is honestly surprising.
+So I started building a third route. Yes leads go straight to the CRM for immediate follow up. No leads get discarded. But maybe leads Ã¢â‚¬â€ the ones who are genuinely interested but not ready right now Ã¢â‚¬â€ go into a re-engage database. Then a scheduled job runs every two weeks and sends a simple, non-pushy message: "Hey, we chatted a few weeks ago and you mentioned you might be interested later. Is now a better time?" The number of leads that convert from that follow-up is honestly surprising.
 
 I'm not writing this to show off or act like I've figured everything out. I really haven't. But I wasted months of my life, and honestly a decent amount of my clients' money, building things that nobody used. The issue was that I was solving the wrong problem entirely. I was optimizing for technical functionality and clean code when I should have been optimizing for adoption and real-world fit. Start looking left to see what's actually feeding into your automation. Start looking right to see what really happens after it finishes. Build for the full messy real-world process, not just the clean middle step that's fun to code.`
   },
@@ -557,12 +615,12 @@ Put "Edit Fields" nodes at key points as stable anchors so upstream changes don'
 
 The difference was massive. Before, every small change meant a 2 hour debugging session. Now I make changes, map to anchor points, and keep moving. Before I'd test by running the entire workflow 30 times. Now I pin data, edit it, and test edge cases in 5 minutes. Before I had "undefined" errors everywhere after conditional logic. Now the first() function solves it immediately.
 
-The workflow you see on screen is the easy part. The stability comes from the invisible structure underneath — anchor points, logs, proper data handling before every split. Once I understood that, everything clicked. Build the anchors first. Then build the logic. Your future self at 3am will thank you.`
+The workflow you see on screen is the easy part. The stability comes from the invisible structure underneath Ã¢â‚¬â€ anchor points, logs, proper data handling before every split. Once I understood that, everything clicked. Build the anchors first. Then build the logic. Your future self at 3am will thank you.`
   },
   {
     slug: 'built-a-system-that-does-500-in-the-time-i-used-to-do-5',
     title: "Spent 4 hours a day researching leads. Built a system that does 500 in the time I used to do 5.",
-    description: "How I automated lead research with n8n, LinkedIn scraping, real-time company news, and Claude to write personalized cold emails at scale — without sacrificing response rates.",
+    description: "How I automated lead research with n8n, LinkedIn scraping, real-time company news, and Claude to write personalized cold emails at scale Ã¢â‚¬â€ without sacrificing response rates.",
     author: 'Rahul V K',
     date: '2026-01-04',
     image: 'https://bfmoirwycojttdbitvir.supabase.co/storage/v1/object/public/blog-images/0.9740702812356797.webp',

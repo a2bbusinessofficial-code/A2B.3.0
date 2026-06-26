@@ -1,5 +1,5 @@
 /* =============================================
-   A2B — Global Styles & Hero Section
+   A2B â€” Global Styles & Hero Section
    Color Scheme: Black / White / Green
    Matched to neversettle.it reference design
    ============================================= */
@@ -13,11 +13,11 @@
   --text-primary: #ffffff;
   --text-secondary: rgba(255, 255, 255, 0.55);
   --text-muted: rgba(255, 255, 255, 0.3);
-  --accent: #00c853;
-  --accent-light: #00e676;
-  --accent-dark: #00a844;
-  --accent-glow: rgba(0, 200, 83, 0.25);
-  --accent-subtle: rgba(0, 200, 83, 0.06);
+  --accent: #00DF81;
+  --accent-light: #19E693;
+  --accent-dark: #00B267;
+  --accent-glow: rgba(0, 223, 129, 0.25);
+  --accent-subtle: rgba(0, 223, 129, 0.06);
   --border-subtle: rgba(255, 255, 255, 0.06);
   --border-medium: rgba(255, 255, 255, 0.15);
 
@@ -138,12 +138,14 @@ button {
 }
 
 .nav-logo-img {
-  width: 42px;
-  height: 42px;
+  width: auto;
+  height: 50px;
+  max-width: 250px;
   object-fit: contain;
 }
 
 .nav-logo-text {
+  display: none;
   font-family: var(--font-body);
   font-size: 1.3rem;
   font-weight: 500;
@@ -430,7 +432,7 @@ button {
 
 .navbar.light-mode .nav-logo-img {
   filter: none !important;
-  content: url('/assets/logos/newlogoblack.png');
+  content: url('/assets/logos/primarylogo-black.png');
 }
 
 .navbar.light-mode .nav-logo-text {
@@ -647,7 +649,7 @@ button {
   margin-left: 0.25em;
 }
 
-/* Invisible spacer — reserves width for the longest word */
+/* Invisible spacer â€” reserves width for the longest word */
 .hero-word-spacer {
   visibility: hidden;
   font-family: var(--font-handwriting);
@@ -1007,8 +1009,8 @@ a.cinfo-line:hover {
 .cv2-field select:focus,
 .cv2-field textarea:focus {
   border-color: var(--accent);
-  background: rgba(0, 200, 83, 0.04);
-  box-shadow: 0 0 0 3px rgba(0, 200, 83, 0.08);
+  background: rgba(0, 223, 129, 0.04);
+  box-shadow: 0 0 0 3px rgba(0, 223, 129, 0.08);
 }
 
 .cv2-field textarea {
@@ -1052,8 +1054,8 @@ a.cinfo-line:hover {
 .cv2-select.open .cv2-select-trigger,
 .cv2-select-trigger:focus-visible {
   border-color: var(--accent);
-  background: rgba(0, 200, 83, 0.04);
-  box-shadow: 0 0 0 3px rgba(0, 200, 83, 0.08);
+  background: rgba(0, 223, 129, 0.04);
+  box-shadow: 0 0 0 3px rgba(0, 223, 129, 0.08);
   outline: none;
 }
 .cv2-select.invalid .cv2-select-trigger {
@@ -1128,7 +1130,7 @@ a.cinfo-line:hover {
 }
 .cv2-select-option:hover,
 .cv2-select-option.active {
-  background: rgba(0, 200, 83, 0.08);
+  background: rgba(0, 223, 129, 0.08);
   color: #fff;
 }
 .cv2-select-option.selected {
@@ -1275,7 +1277,7 @@ a.cinfo-line:hover {
 
 .light-nav .nav-logo-img {
   filter: none !important;
-  content: url('/assets/logos/newlogoblack.png');
+  content: url('/assets/logos/primarylogo-black.png');
 }
 
 .light-nav .nav-hamburger span {
@@ -1584,7 +1586,7 @@ a.cinfo-line:hover {
   opacity: 0.7;
 }
 
-/* Service hub rows — sub-item meta line (reuses .cs-row-card layout) */
+/* Service hub rows â€” sub-item meta line (reuses .cs-row-card layout) */
 .svc-row-subs {
   font-family: var(--font-body);
   font-size: 0.8rem;
@@ -1762,7 +1764,7 @@ a.cinfo-line:hover {
   }
 }
 
-/* Small phones — container padding only, nothing that changes Pixel 7 (412px) layout */
+/* Small phones â€” container padding only, nothing that changes Pixel 7 (412px) layout */
 @media (max-width: 480px) {
   :root {
     --container-padding: 20px;
@@ -1781,9 +1783,9 @@ a.cinfo-line:hover {
   }
 }
 
-/* iPhone SE and smaller ONLY (≤400px — Pixel 7 is 412px, untouched) */
+/* iPhone SE and smaller ONLY (â‰¤400px â€” Pixel 7 is 412px, untouched) */
 @media (max-width: 400px) {
-  /* 2/3 screen fill — larger heading fills the vertical space */
+  /* 2/3 screen fill â€” larger heading fills the vertical space */
   .hero {
     min-height: 68vh;
     min-height: 68svh;
@@ -1799,7 +1801,7 @@ a.cinfo-line:hover {
     justify-content: space-between;
   }
 
-  /* 13.5vw at 375px ≈ 50.6px — forces "Your AI / partner for / the [word]" 3-row wrap */
+  /* 13.5vw at 375px â‰ˆ 50.6px â€” forces "Your AI / partner for / the [word]" 3-row wrap */
   .hero-heading {
     font-size: clamp(3rem, 13.5vw, 5rem);
     line-height: 1.15;
@@ -2080,7 +2082,7 @@ a.cinfo-line:hover {
   }
 }
 
-/* ===== Dark Section (industries tabs — inverted fold from white stats) ===== */
+/* ===== Dark Section (industries tabs â€” inverted fold from white stats) ===== */
 .dark-section {
   position: relative;
   min-height: 60vh;
@@ -2631,7 +2633,7 @@ a.hsg-cell--last:hover .hsg-cell-link {
   letter-spacing: 0.16em;
   text-transform: uppercase;
   color: var(--accent);
-  border: 1px solid rgba(0, 200, 83, 0.4);
+  border: 1px solid rgba(0, 223, 129, 0.4);
   padding: 5px 12px;
   border-radius: 20px;
   margin-bottom: 24px;
@@ -2744,7 +2746,7 @@ a.hsg-cell--last:hover .hsg-cell-link {
 .home-svc-section .btn-arrow .btn-label { background: #0a0a0a; color: #fff; }
 .home-svc-section .btn-arrow .btn-icon { background: #111; color: var(--accent); }
 .home-svc-section .btn-arrow:hover .btn-icon { background: var(--accent); color: #000; }
-/* …but inside the dark featured card, restore the light button */
+/* â€¦but inside the dark featured card, restore the light button */
 .home-svc-featured .btn-arrow .btn-label { background: #fff; color: #0a0a0a; }
 .home-svc-featured .btn-arrow .btn-icon { background: #222; color: #fff; }
 .home-svc-featured .btn-arrow:hover .btn-icon { background: linear-gradient(135deg, var(--accent-light) 0%, var(--accent) 100%); color: #000; }
@@ -3051,7 +3053,7 @@ a.hsg-cell--last:hover .hsg-cell-link {
   gap: 60px;
 }
 
-/* ── Left: Video panel ── */
+/* â”€â”€ Left: Video panel â”€â”€ */
 .t-video-panel {
   flex-shrink: 0;
   width: 240px;
@@ -3229,7 +3231,7 @@ a.hsg-cell--last:hover .hsg-cell-link {
   transform: scale(1.4);
 }
 
-/* ── Right: Written testimonial panel ── */
+/* â”€â”€ Right: Written testimonial panel â”€â”€ */
 .t-written-panel {
   flex: 1;
   display: flex;
@@ -3462,7 +3464,7 @@ a.hsg-cell--last:hover .hsg-cell-link {
 
 .home-cta-logo-img {
   width: 180px;
-  height: 180px;
+  height: auto;
   object-fit: contain;
   opacity: 0.9;
 }
@@ -3485,8 +3487,8 @@ a.hsg-cell--last:hover .hsg-cell-link {
   }
 
   .home-cta-logo-img {
-    width: 100px;
-    height: 100px;
+    width: 140px;
+    height: auto;
   }
 }
 
@@ -3530,7 +3532,7 @@ a.hsg-cell--last:hover .hsg-cell-link {
 }
 
 .footer-logo-hex img {
-  width: 100px;
+  width: 350px;
   height: auto;
 }
 
@@ -3592,6 +3594,7 @@ a.hsg-cell--last:hover .hsg-cell-link {
 }
 
 .footer-title {
+  display: none;
   font-family: var(--font-body);
   font-size: clamp(1.5rem, 3vw, 2.1rem);
   font-weight: 500;
@@ -3837,7 +3840,7 @@ a.hsg-cell--last:hover .hsg-cell-link {
 }
 
 .dark-card-features li::before {
-  content: '→';
+  content: 'â†’';
   position: absolute;
   left: 0;
   color: var(--accent);
@@ -4268,7 +4271,7 @@ a.hsg-cell--last:hover .hsg-cell-link {
 }
 
 .cs-article-quote {
-  background-color: rgba(0, 200, 83, 0.05);
+  background-color: rgba(0, 223, 129, 0.05);
   border-left: 4px solid var(--accent);
   padding: 32px;
   margin: 40px 0;
@@ -5082,7 +5085,7 @@ a.hsg-cell--last:hover .hsg-cell-link {
 }
 
 /* ===================================================
-   Blog Listing Page — Cards & Grid
+   Blog Listing Page â€” Cards & Grid
    =================================================== */
 
 .blog-grid {
@@ -5432,7 +5435,7 @@ a.hsg-cell--last:hover .hsg-cell-link {
   }
 }
 
-/* ── Blog card: folder-pocket preview image ─────────────────────── */
+/* â”€â”€ Blog card: folder-pocket preview image â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 
 /* Force the top section to flex-column so the preview fills remaining space */
 #blog-grid .cs-more-card-top,
@@ -5442,7 +5445,7 @@ a.hsg-cell--last:hover .hsg-cell-link {
   min-height: 160px;
 }
 
-/* Preview container — clips the sliding image at the bottom */
+/* Preview container â€” clips the sliding image at the bottom */
 .blog-card-preview-wrap {
   flex: 1;
   overflow: hidden;
@@ -5509,7 +5512,7 @@ a.hsg-cell--last:hover .hsg-cell-link {
   background: rgba(255, 255, 255, 0.08);
 }
 
-/* Blog listing cards — uniform dark color (top + bottom both #111) */
+/* Blog listing cards â€” uniform dark color (top + bottom both #111) */
 #blog-grid .cs-more-card-bottom,
 #blog-loading .cs-more-card-bottom {
   background-color: #111;
@@ -5526,7 +5529,7 @@ a.hsg-cell--last:hover .hsg-cell-link {
   color: var(--accent);
 }
 
-/* Blog Post — Full-width cover image in dark section */
+/* Blog Post â€” Full-width cover image in dark section */
 .blog-post-full-img {
   width: 100%;
   max-height: 480px;
@@ -5535,7 +5538,7 @@ a.hsg-cell--last:hover .hsg-cell-link {
   display: block;
 }
 
-/* Blog Post — Centered reading column inside ns-section-light-cut */
+/* Blog Post â€” Centered reading column inside ns-section-light-cut */
 .blog-post-reading-col {
   max-width: 760px;
   margin: 0 auto;
@@ -5662,8 +5665,8 @@ a.hsg-cell--last:hover .hsg-cell-link {
 .svc-hub-icon {
   width: 48px;
   height: 48px;
-  background: rgba(0,200,83,0.08);
-  border: 1px solid rgba(0,200,83,0.3);
+  background: rgba(0, 223, 129,0.08);
+  border: 1px solid rgba(0, 223, 129,0.3);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -5932,8 +5935,8 @@ a.hsg-cell--last:hover .hsg-cell-link {
 .svc-feature-hex {
   width: 44px;
   height: 44px;
-  background: rgba(0,200,83,0.07);
-  border: 1px solid rgba(0,200,83,0.2);
+  background: rgba(0, 223, 129,0.07);
+  border: 1px solid rgba(0, 223, 129,0.2);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -6111,14 +6114,14 @@ a.hsg-cell--last:hover .hsg-cell-link {
 }
 
 /* =============================================
-   Free Consultancy — Corner Circle Button
+   Free Consultancy â€” Corner Circle Button
    ============================================= */
 
 @keyframes fcb-spin {
   to { transform: rotate(360deg); }
 }
 
-/* Outer wrapper — peeks from the bottom edge, slides up on hover */
+/* Outer wrapper â€” peeks from the bottom edge, slides up on hover */
 .fcb-circle {
   position: fixed;
   bottom: 0;
@@ -6150,7 +6153,7 @@ a.hsg-cell--last:hover .hsg-cell-link {
   inset: 0;
   border-radius: 50%;
   background: #0a0a0a;
-  border: 1.5px solid rgba(0, 200, 83, 0.35);
+  border: 1.5px solid rgba(0, 223, 129, 0.35);
   transition: border-color 0.3s;
 }
 
@@ -6398,7 +6401,7 @@ a, button, input, select, textarea {
   }
 
   .footer-link-col.open .footer-col-title::after {
-    content: '−';
+    content: 'âˆ’';
   }
 
   /* Collapsible link group */
@@ -6444,7 +6447,7 @@ a, button, input, select, textarea {
     color: rgba(255, 255, 255, 0.55);
   }
 
-  /* +/− indicator */
+  /* +/âˆ’ indicator */
   .nav-links.mobile-open .nav-dropdown-btn::after {
     content: '+';
     font-size: 1.1rem;
@@ -6455,7 +6458,7 @@ a, button, input, select, textarea {
   }
 
   .nav-links.mobile-open .nav-dropdown-wrapper.open .nav-dropdown-btn::after {
-    content: '−';
+    content: 'âˆ’';
   }
 
   /* Hide the positioned desktop dropdown; show inline */
@@ -6525,7 +6528,7 @@ a, button, input, select, textarea {
   }
 }
 
-/* ---- Small phones (≤480 px) ---- */
+/* ---- Small phones (â‰¤480 px) ---- */
 @media (max-width: 480px) {
   .home-cta-card {
     padding: 56px 20px 36px;
@@ -6676,7 +6679,7 @@ a, button, input, select, textarea {
   color: var(--text-primary);
 }
 
-/* ── Shared section container ── */
+/* â”€â”€ Shared section container â”€â”€ */
 .cbr-section-container {
   max-width: var(--container-max);
   margin: 0 auto;
@@ -6731,7 +6734,7 @@ a, button, input, select, textarea {
   margin: 0 0 32px;
 }
 
-/* ── HERO ── */
+/* â”€â”€ HERO â”€â”€ */
 .cbr-hero {
   position: relative;
   min-height: 80vh;
@@ -6833,7 +6836,7 @@ a, button, input, select, textarea {
   color: rgba(255, 255, 255, 0.18);
 }
 
-/* ── PROBLEM ── */
+/* â”€â”€ PROBLEM â”€â”€ */
 .cbr-problem-section {
   z-index: 3;
 }
@@ -6858,7 +6861,7 @@ a, button, input, select, textarea {
   font-weight: 700 !important;
 }
 
-/* ── POSITIONING ── */
+/* â”€â”€ POSITIONING â”€â”€ */
 .cbr-positioning-notes {
   border-left: 2px solid var(--accent);
   padding-left: 20px;
@@ -6873,7 +6876,7 @@ a, button, input, select, textarea {
   margin: 0;
 }
 
-/* ── OFFER CARD ── */
+/* â”€â”€ OFFER CARD â”€â”€ */
 .cbr-offer-section {
   z-index: 4;
 }
@@ -6967,13 +6970,13 @@ a, button, input, select, textarea {
   position: relative;
   opacity: 0.92;
   flex-shrink: 0;
-  box-shadow: inset 0 0 0 1px rgba(0, 200, 83, 0.25);
+  box-shadow: inset 0 0 0 1px rgba(0, 223, 129, 0.25);
 }
 .cbr-refund-stamp::before {
   content: '';
   position: absolute;
   inset: 9px;
-  border: 1px solid rgba(0, 200, 83, 0.45);
+  border: 1px solid rgba(0, 223, 129, 0.45);
   border-radius: 50%;
 }
 .cbr-refund-stamp-top,
@@ -7065,7 +7068,7 @@ a, button, input, select, textarea {
 }
 
 .cbr-offer-included li::before {
-  content: '✓';
+  content: 'âœ“';
   position: absolute;
   left: 0;
   color: var(--accent);
@@ -7078,14 +7081,14 @@ a, button, input, select, textarea {
 }
 
 .cbr-offer-excluded li::before {
-  content: '×';
+  content: 'Ã—';
   position: absolute;
   left: 0;
   color: rgba(255, 255, 255, 0.2);
   font-weight: 700;
 }
 
-/* ── HOW IT WORKS ── */
+/* â”€â”€ HOW IT WORKS â”€â”€ */
 .cbr-steps-section {
   z-index: 5;
 }
@@ -7131,7 +7134,7 @@ a, button, input, select, textarea {
   margin: 0;
 }
 
-/* ── ELIGIBILITY ── */
+/* â”€â”€ ELIGIBILITY â”€â”€ */
 .cbr-eligibility-section {
   z-index: 6;
 }
@@ -7174,7 +7177,7 @@ a, button, input, select, textarea {
 }
 
 .cbr-elig-icon-good {
-  background: rgba(0, 200, 83, 0.14);
+  background: rgba(0, 223, 129, 0.14);
   color: var(--accent);
 }
 
@@ -7201,7 +7204,7 @@ a, button, input, select, textarea {
 }
 
 .cbr-elig-good li::before {
-  content: '✓';
+  content: 'âœ“';
   position: absolute;
   left: 0;
   color: var(--accent);
@@ -7218,19 +7221,19 @@ a, button, input, select, textarea {
 }
 
 .cbr-elig-bad li::before {
-  content: '×';
+  content: 'Ã—';
   position: absolute;
   left: 0;
   color: rgba(255, 255, 255, 0.18);
   font-weight: 700;
 }
 
-/* ── WHAT COUNTS ── */
+/* â”€â”€ WHAT COUNTS â”€â”€ */
 .cbr-result-section {
   z-index: 7;
 }
 
-/* "How we count results" — qualifying funnel */
+/* "How we count results" â€” qualifying funnel */
 .cbr-funnel {
   margin: 10px 0 28px;
   display: flex;
@@ -7287,7 +7290,7 @@ a, button, input, select, textarea {
   width: 19px;
   height: 19px;
   border-radius: 50%;
-  background: rgba(0, 200, 83, 0.14);
+  background: rgba(0, 223, 129, 0.14);
   color: var(--accent);
   display: flex;
   align-items: center;
@@ -7330,7 +7333,7 @@ a, button, input, select, textarea {
 }
 
 .cbr-result-list li::before {
-  content: '→';
+  content: 'â†’';
   position: absolute;
   left: 0;
   color: var(--accent);
@@ -7346,7 +7349,7 @@ a, button, input, select, textarea {
   max-width: 560px;
 }
 
-/* ── NO CRM ── */
+/* â”€â”€ NO CRM â”€â”€ */
 .cbr-nocrm-box {
   border: 1px solid rgba(255, 255, 255, 0.09);
   padding: 52px;
@@ -7373,7 +7376,7 @@ a, button, input, select, textarea {
   font-weight: 600;
 }
 
-/* ── MID CTA ── */
+/* â”€â”€ MID CTA â”€â”€ */
 .cbr-cta-section {
   background: var(--bg-primary);
   text-align: center;
@@ -7403,7 +7406,7 @@ a, button, input, select, textarea {
   margin: 0;
 }
 
-/* ── FIT CHECK FORM ── */
+/* â”€â”€ FIT CHECK FORM â”€â”€ */
 .cbr-form-section {
   z-index: 8;
 }
@@ -7447,7 +7450,7 @@ a, button, input, select, textarea {
   width: 60px;
   height: 60px;
   border-radius: 50%;
-  background: rgba(0, 200, 83, 0.13);
+  background: rgba(0, 223, 129, 0.13);
   color: var(--accent);
   display: flex;
   align-items: center;
@@ -7471,7 +7474,7 @@ a, button, input, select, textarea {
   margin: 0 auto;
 }
 
-/* ── FAQ ── */
+/* â”€â”€ FAQ â”€â”€ */
 .cbr-faq-section {
   z-index: 9;
 }
@@ -7546,7 +7549,7 @@ a, button, input, select, textarea {
   max-width: 640px;
 }
 
-/* ── MOBILE ── */
+/* â”€â”€ MOBILE â”€â”€ */
 @media (max-width: 768px) {
   .cbr-hero {
     min-height: 70vh;
@@ -7624,7 +7627,7 @@ a, button, input, select, textarea {
   }
 }
 
-/* ── CBR HERO: use homepage hero-label + hero-pills ── */
+/* â”€â”€ CBR HERO: use homepage hero-label + hero-pills â”€â”€ */
 .cbr-hero .hero-label {
   font-size: 0.68rem;
   letter-spacing: 0.16em;
@@ -7640,7 +7643,7 @@ a, button, input, select, textarea {
   margin-top: 0;
 }
 
-/* ── LIGHT SECTIONS ── */
+/* â”€â”€ LIGHT SECTIONS â”€â”€ */
 .cbr-light-section {
   position: relative;
   background: #f0eee9;
@@ -7729,7 +7732,7 @@ a, button, input, select, textarea {
   margin: 0 0 20px;
 }
 
-/* ── PROBLEM CARDS ── */
+/* â”€â”€ PROBLEM CARDS â”€â”€ */
 .cbr-prob-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -7793,7 +7796,7 @@ a, button, input, select, textarea {
   margin: 0;
 }
 
-/* ── POSITIONING ROW ── */
+/* â”€â”€ POSITIONING ROW â”€â”€ */
 .cbr-positioning-row {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -7822,7 +7825,7 @@ a, button, input, select, textarea {
   color: rgba(255, 255, 255, 0.4);
 }
 
-/* ── HOW IT WORKS CARDS (LIGHT) ── */
+/* â”€â”€ HOW IT WORKS CARDS (LIGHT) â”€â”€ */
 .cbr-steps-grid-light {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -7870,7 +7873,7 @@ a, button, input, select, textarea {
   font-weight: 300;
 }
 
-/* ── WHAT COUNTS + NO CRM ROW ── */
+/* â”€â”€ WHAT COUNTS + NO CRM ROW â”€â”€ */
 .cbr-result-row {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -7896,7 +7899,7 @@ a, button, input, select, textarea {
 }
 
 .cbr-result-list-light li::before {
-  content: '→';
+  content: 'â†’';
   position: absolute;
   left: 0;
   color: var(--accent);
@@ -7961,7 +7964,7 @@ a, button, input, select, textarea {
   font-weight: 600;
 }
 
-/* ── FORM SECTION LAYOUT ── */
+/* â”€â”€ FORM SECTION LAYOUT â”€â”€ */
 .cbr-form-cta-row {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -7970,9 +7973,9 @@ a, button, input, select, textarea {
   align-items: end;
 }
 
-/* ── FAQ LIGHT OVERRIDES (already handled by base .cbr-faq-* rules above) ── */
+/* â”€â”€ FAQ LIGHT OVERRIDES (already handled by base .cbr-faq-* rules above) â”€â”€ */
 
-/* ── LIGHT SECTION MOBILE ── */
+/* â”€â”€ LIGHT SECTION MOBILE â”€â”€ */
 @media (max-width: 768px) {
   .cbr-light-section {
     padding: 100px 0 80px;
@@ -8165,7 +8168,7 @@ a, button, input, select, textarea {
 .home-blog-section .btn-arrow .btn-icon { background: #111; color: var(--accent); }
 .home-blog-section .btn-arrow:hover .btn-icon { background: var(--accent); color: #000; }
 
-/* ===== FAQ Section (black, folds over blog — DOWN notch to alternate) ===== */
+/* ===== FAQ Section (black, folds over blog â€” DOWN notch to alternate) ===== */
 .home-faq-section {
   position: relative;
   background: #0a0a0a;

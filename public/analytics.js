@@ -55,14 +55,14 @@
       "<div style=\"font-size:15px;font-weight:600;color:#ffffff;letter-spacing:0.2px;margin-bottom:12px;\">Quick question</div>" +
       "<div style=\"font-size:13px;color:rgba(255,255,255,0.55);line-height:1.7;margin-bottom:22px;\">" +
         "We use basic analytics to see what's working. No ad tracking, no data selling, no third-party tracking. " +
-        "<a href=\"/cookies\" style=\"color:#00c853;border-bottom:1px solid rgba(0,200,83,0.35);padding-bottom:1px;text-decoration:none;\">Cookie Policy</a>" +
+        "<a href=\"/cookies\" style=\"color:#00DF81;border-bottom:1px solid rgba(0, 223, 129,0.35);padding-bottom:1px;text-decoration:none;\">Cookie Policy</a>" +
       "</div>" +
       "<div style=\"display:flex;gap:10px;\">" +
         "<button id=\"a2b-cookie-reject\" style=\"flex:1;background:transparent;" +
           "border:1px solid rgba(255,255,255,0.15);color:rgba(255,255,255,0.4);" +
           "padding:11px 12px;border-radius:0;cursor:pointer!important;font-size:12px;" +
           "font-family:Inter,sans-serif;font-weight:500;letter-spacing:0.2px;\">No thanks</button>" +
-        "<button id=\"a2b-cookie-accept\" style=\"flex:2;background:#00c853;border:none;color:#000000;" +
+        "<button id=\"a2b-cookie-accept\" style=\"flex:2;background:#00DF81;border:none;color:#000000;" +
           "padding:11px 12px;border-radius:0;cursor:pointer!important;font-size:12px;" +
           "font-family:Inter,sans-serif;font-weight:600;letter-spacing:0.2px;\">I'll help out</button>" +
       "</div>";

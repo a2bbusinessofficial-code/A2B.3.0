@@ -4,9 +4,9 @@
   <meta charset="UTF-8" />
   <link rel="icon" type="image/x-icon" href="/assets/favicon.ico" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Hands-on with n8n v2: instant saves, flatter UI, thicker connectors, and a major change to Execute Workflow — sub-workflow outputs now flow back into the parent. This fixes approval-path friction but can break fire-and-forget designs. Keep production on v1 until you fully test sub-workflow behavior." />
+  <meta name="description" content="Hands-on with n8n v2: instant saves, flatter UI, thicker connectors, and a major change to Execute Workflow Ã¢â‚¬â€ sub-workflow outputs now flow back into the parent. This fixes approval-path friction but can break fire-and-forget designs. Keep production on v1 until you fully test sub-workflow behavior." />
   <meta property="og:title" content="Just upgraded to n8n v2.0 pre-release. Here's what actually changed. | A2B Blog" />
-  <meta property="og:description" content="Hands-on with n8n v2: instant saves, flatter UI, thicker connectors, and a major change to Execute Workflow — sub-workflow outputs now flow back into the parent. This fixes approval-path friction but can break fire-and-forget designs. Keep production on v1 until you fully test sub-workflow behavior." />
+  <meta property="og:description" content="Hands-on with n8n v2: instant saves, flatter UI, thicker connectors, and a major change to Execute Workflow Ã¢â‚¬â€ sub-workflow outputs now flow back into the parent. This fixes approval-path friction but can break fire-and-forget designs. Keep production on v1 until you fully test sub-workflow behavior." />
   <meta property="og:image" content="https://bfmoirwycojttdbitvir.supabase.co/storage/v1/object/public/blog-images/0.24177335967231017.webp" />
   <meta property="og:type" content="article" />
   <meta property="article:published_time" content="2025-12-07" />
@@ -26,11 +26,11 @@
     .blog-post-body h4 { font-size:1.05rem; }
     .blog-post-body p  { margin-bottom:1.55em; }
     .blog-post-body img { width:100%; border-radius:8px; margin:2em 0; display:block; }
-    .blog-post-body blockquote { border-left:3px solid #00c853; padding:4px 0 4px 20px; margin:2em 0; color:rgba(0,0,0,0.6); font-style:italic; }
+    .blog-post-body blockquote { border-left:3px solid #00DF81; padding:4px 0 4px 20px; margin:2em 0; color:rgba(0,0,0,0.6); font-style:italic; }
     .blog-post-body ul,.blog-post-body ol { padding-left:1.5em; margin-bottom:1.55em; }
     .blog-post-body li { margin-bottom:0.5em; }
     .blog-post-body strong { color:#0a0a0a; font-weight:600; }
-    .blog-post-body a { color:#00c853; text-decoration:underline; text-underline-offset:3px; }
+    .blog-post-body a { color:#00DF81; text-decoration:underline; text-underline-offset:3px; }
     .blog-post-body hr,.blog-post-body .post-hr { border:none; border-top:1px solid rgba(0,0,0,0.08); margin:2.5em 0; }
     .blog-post-body table { width:100%; border-collapse:collapse; margin-bottom:1.55em; font-size:0.95rem; }
     .blog-post-body th { text-align:left; font-weight:600; color:#0a0a0a; padding:10px 14px; border-bottom:2px solid rgba(0,0,0,0.1); }
@@ -45,7 +45,7 @@
     html, body { overflow-x: clip !important; }
     /* Force navbar visible on white-background page */
     #navbar .nav-container { background:rgba(255,255,255,0.97) !important; border-bottom:1px solid rgba(0,0,0,0.07) !important; backdrop-filter:blur(20px) !important; -webkit-backdrop-filter:blur(20px) !important; }
-    #navbar .nav-logo-img { content:url('/assets/logos/newlogoblack.png') !important; filter:none !important; }
+    #navbar .nav-logo-img { content:url('/assets/logos/primarylogo-black.png') !important; filter:none !important; }
     #navbar .nav-logo-text { color:#0a0a0a !important; }
     #navbar .nav-link { color:#0a0a0a !important; }
     #navbar .nav-slash { color:rgba(0,0,0,0.25) !important; }
@@ -66,7 +66,7 @@
 <nav class="navbar" id="navbar">
   <div class="nav-container">
     <a href="/" class="nav-logo" aria-label="A2B Home">
-      <img src="/assets/logos/newlogowhite.png" alt="A2B Logo" class="nav-logo-img" width="42" height="42" />
+      <img src="/assets/logos/primarylogo-white.png" alt="A2B Logo" class="nav-logo-img" width="42" height="42" />
       <span class="nav-logo-text">A2B</span>
     </a>
     <div class="nav-links" id="navLinks">
@@ -109,12 +109,12 @@
         Back to Blog
       </a>
       <h1 style="font-family:Inter,sans-serif;font-size:clamp(2rem,4vw,3.2rem);font-weight:800;line-height:1.12;color:#0a0a0a;letter-spacing:-0.5px;margin-bottom:20px;">Just upgraded to n8n v2.0 pre-release. Here's what actually changed.</h1>
-      <p style="font-size:1.1rem;color:rgba(0,0,0,0.55);line-height:1.65;max-width:680px;margin-bottom:28px;">Hands-on with n8n v2: instant saves, flatter UI, thicker connectors, and a major change to Execute Workflow — sub-workflow outputs now flow back into the parent. This fixes approval-path friction but can break fire-and-forget designs. Keep production on v1 until you fully test sub-workflow behavior.</p>
+      <p style="font-size:1.1rem;color:rgba(0,0,0,0.55);line-height:1.65;max-width:680px;margin-bottom:28px;">Hands-on with n8n v2: instant saves, flatter UI, thicker connectors, and a major change to Execute Workflow Ã¢â‚¬â€ sub-workflow outputs now flow back into the parent. This fixes approval-path friction but can break fire-and-forget designs. Keep production on v1 until you fully test sub-workflow behavior.</p>
       <div style="display:flex;align-items:center;gap:14px;font-size:0.85rem;color:rgba(0,0,0,0.45);flex-wrap:wrap;margin-bottom:40px;">
         <span>Rahul V K</span>
         <span style="width:3px;height:3px;border-radius:50%;background:rgba(0,0,0,0.3);flex-shrink:0;"></span>
         <span>December 7, 2025</span>
-         &nbsp;&middot;&nbsp; <a href="https://www.dropbox.com/scl/fi/fdusyvx4pfc0aaiopprb9/n8n_v2.pdf?rlkey=i30dfzwdys875n3huon6a1fww&st=6qes1cdg&dl=0" target="_blank" rel="noopener" style="color:#00c853;text-decoration:underline;">View PDF &rarr;</a>
+         &nbsp;&middot;&nbsp; <a href="https://www.dropbox.com/scl/fi/fdusyvx4pfc0aaiopprb9/n8n_v2.pdf?rlkey=i30dfzwdys875n3huon6a1fww&st=6qes1cdg&dl=0" target="_blank" rel="noopener" style="color:#00DF81;text-decoration:underline;">View PDF &rarr;</a>
       </div>
       <div style="height:1px;background:rgba(0,0,0,0.08);"></div>
     </div>
@@ -124,7 +124,7 @@
     <div style="max-width:var(--container-max);margin:0 auto;padding:56px var(--container-padding) 120px;display:grid;grid-template-columns:1fr 340px;gap:60px;" class="post-layout post-body-pad">
 
       <article>
-        <img src="https://bfmoirwycojttdbitvir.supabase.co/storage/v1/object/public/blog-images/0.24177335967231017.webp" alt="Just upgraded to n8n v2.0 pre-release. Here's what actually changed." style="width:100%;height:480px;object-fit:cover;object-position:center;border-radius:4px;margin-bottom:24px;">
+        <img src="https://bfmoirwycojttdbitvir.supabase.co/storage/v1/object/public/blog-images/0.24177335967231017.webp" alt="Just upgraded to n8n v2.0 pre-release. Here's what actually changed." style="width:100%;max-height:500px;height:auto;object-fit:contain;object-position:center;border-radius:4px;margin-bottom:24px;background:#f5f5f3;">
         <div style="background:#f5f5f3;border-radius:6px;padding:18px 22px;margin-bottom:40px;display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap;">
         <div>
           <p style="font-size:0.68rem;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:rgba(0,0,0,0.35);margin-bottom:5px;">Attached Resource</p>
@@ -169,7 +169,7 @@
                 Get in Touch
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
               </a>
-              <a href="/contact" class="post-cta-btn" style="background:#00c853;color:#000000;margin-top:0;">
+              <a href="/contact" class="post-cta-btn" style="background:#00DF81;color:#000000;margin-top:0;">
                 Book a Meeting
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
               </a>
@@ -197,7 +197,7 @@
   <section class="cs-ai-native-cta">
     <div class="cs-under-the-hood-container">
       <div class="cs-ai-native-box">
-        <img aria-hidden="true" src="/assets/logos/newlogowhite.png" style="position:absolute;top:50%;right:80px;transform:translateY(-50%);width:300px;height:300px;object-fit:contain;opacity:0.95;pointer-events:none;user-select:none;z-index:0;" alt="" />
+        <img aria-hidden="true" src="/assets/logos/newlogo-white.png" style="position:absolute;top:50%;right:80px;transform:translateY(-50%);width:300px;height:300px;object-fit:contain;opacity:0.95;pointer-events:none;user-select:none;z-index:0;" alt="" />
         <h2>Enjoyed<br>this post?</h2>
         <p>Explore more field notes and breakdowns from the A2B engineering team.</p>
         <div style="display:flex;gap:16px;flex-wrap:wrap;margin-top:8px;">
@@ -219,7 +219,7 @@
     </div></div>
     <div class="footer-content">
       <div class="footer-cta">
-        <div class="footer-logo-hex"><img src="/assets/logos/newlogowhite.png" alt="A2B Logo" /></div>
+        <div class="footer-logo-hex"><img src="/assets/logos/primarylogo-white.png" alt="A2B Logo" /></div>
         <h2 class="footer-title">A2B AI Technologies&trade;</h2>
         <p class="footer-desc">An elite AI agency helping you build a smarter future through Agentic Coding, AI Workflows, and Enterprise Automation.</p>
         <a href="/contact" class="btn-arrow footer-btn"><span class="btn-label">Free consultancy</span><div class="btn-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div></a>
