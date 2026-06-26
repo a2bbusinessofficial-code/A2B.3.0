@@ -8236,3 +8236,16 @@ a, button, input, select, textarea {
     margin-top: -40px;
   }
 }
+
+
+/* Scroll Progress Bar */
+#scrollProgressBar {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0%;
+  height: 3px;
+  background: var(--accent);
+  z-index: 1000;
+  transition: width 0.1s ease-out;
+}

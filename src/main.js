@@ -776,3 +776,23 @@ document.addEventListener('DOMContentLoaded', () => {
   initFooterAccordion();
   initTeamHover();
 });
+
+
+/* Scroll Progress Bar Initialization */
+document.addEventListener('DOMContentLoaded', () => {
+  const navbar = document.getElementById('navbar');
+  if (navbar) {
+    const progressBar = document.createElement('div');
+    progressBar.id = 'scrollProgressBar';
+    navbar.appendChild(progressBar);
+
+    window.addEventListener('scroll', () => {
+      const scrollPx = document.documentElement.scrollTop || document.body.scrollTop;
+      const winHeightPx = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+      if (winHeightPx > 0) {
+        const scrolled = (scrollPx / winHeightPx) * 100;
+        progressBar.style.width = scrolled + '%';
+      }
+    });
+  }
+});
