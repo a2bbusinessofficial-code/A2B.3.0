@@ -49,7 +49,7 @@ export default defineConfig({
         blog:               r('blog/index.html'),
         'case-studies':     r('case-studies/index.html'),
 
-        'clinic-booking-recovery': r('clinic-booking-recovery/index.html'),
+        'dormant-lead-recovery': r('dormant-lead-recovery/index.html'),
 
         admin:  r('admin/index.html'),
         'utm-redirect': r('a2b/index.html'),

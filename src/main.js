@@ -618,7 +618,7 @@ function initCbrSelects() {
 }
 
 /**
- * Clinic Booking Recovery FAQ accordion.
+ * Dormant Lead Recovery FAQ accordion.
  */
 function initCbrFaq() {
   const items = document.querySelectorAll('.cbr-faq-item');
