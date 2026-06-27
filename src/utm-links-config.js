@@ -7,6 +7,14 @@ export const UTM_LINKS = {
     utm_campaign: 'test-campaign',
     utm_content:  null,
   },
+  'referral-cmo': {
+    label:        'cmo referral link',
+    destination:  'https://a2b.services/',
+    utm_source:   'youtube',
+    utm_medium:   'video',
+    utm_campaign: 'july 2026',
+    utm_content:  null,
+  },
 
   // Add your real links below:
   // 'your-slug': {
