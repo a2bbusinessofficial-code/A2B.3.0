@@ -71,6 +71,10 @@ export default defineConfig({
         'cs-visual-brand':  r('case-studies/visual-brand-intelligence/index.html'),
         'cs-reddit-yt':     r('case-studies/reddit-youtube/index.html'),
         'blog-post-index':  r('blog/post/index.html'),
+        cookies:            r('cookies/index.html'),
+        privacy:            r('privacy/index.html'),
+        terms:              r('terms/index.html'),
+        faq:                r('faq/index.html'),
         ...blogPostEntries,
       }
     }
