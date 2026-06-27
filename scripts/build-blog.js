@@ -120,6 +120,8 @@ function generatePage(post) {
   <meta charset="UTF-8" />
   <link rel="icon" type="image/x-icon" href="/assets/favicon.ico" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://a2b.services/blog/post/${post.slug}/" />
   <meta name="description" content="${esc(descText)}" />${keywordsTag}
   <meta property="og:title" content="${esc(titleText)} | A2B Blog" />
   <meta property="og:description" content="${esc(descText)}" />
