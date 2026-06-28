@@ -42,14 +42,14 @@ export default defineConfig({
     rollupOptions: {
       input: {
         main:               r('index.html'),
-        service:            r('service/index.html'),
+        service:            r('services/index.html'),
         about:              r('about/index.html'),
         contact:            r('contact/index.html'),
         labs:               r('labs/index.html'),
         blog:               r('blog/index.html'),
         'case-studies':     r('case-studies/index.html'),
 
-        'dormant-lead-recovery': r('dormant-lead-recovery/index.html'),
+        'dormant-lead-recovery': r('services/dormant-lead-recovery/index.html'),
 
         admin:  r('admin/index.html'),
         'utm-redirect': r('a2b/index.html'),
@@ -71,9 +71,9 @@ export default defineConfig({
         'cs-visual-brand':  r('case-studies/visual-brand-intelligence/index.html'),
         'cs-reddit-yt':     r('case-studies/reddit-youtube/index.html'),
         'blog-post-index':  r('blog/post/index.html'),
-        cookies:            r('cookies/index.html'),
-        privacy:            r('privacy/index.html'),
-        terms:              r('terms/index.html'),
+        cookies:            r('legal/cookies/index.html'),
+        privacy:            r('legal/privacy/index.html'),
+        terms:              r('legal/terms/index.html'),
         faq:                r('faq/index.html'),
         ...blogPostEntries,
       }

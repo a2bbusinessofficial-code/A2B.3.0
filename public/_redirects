@@ -47,7 +47,11 @@
 /case-studies/tech-stack        /case-studies           301
 
 # Core Pages Old -> New Redirects
-/services                   /service             301
+/service                  /services                             301
+/dormant-lead-recovery    /services/dormant-lead-recovery       301
+/privacy                  /legal/privacy                        301
+/terms                    /legal/terms                          301
+/cookies                  /legal/cookies                        301
 /pricing                    /contact             301
 /resources                  /blog                301
 /products                   /labs                301
@@ -55,4 +59,4 @@
 /products/ztrike            /labs/ztrike         301
 /products/gitart            /labs/gitart         301
 
-/clinic-booking-recovery    /dormant-lead-recovery    301
+/clinic-booking-recovery    /services/dormant-lead-recovery    301

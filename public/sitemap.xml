@@ -9,7 +9,7 @@
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://a2b.services/service</loc>
+    <loc>https://a2b.services/services</loc>
     <lastmod>2026-06-23</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
@@ -39,7 +39,7 @@
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://a2b.services/clinic-booking-recovery</loc>
+    <loc>https://a2b.services/services/dormant-lead-recovery</loc>
     <lastmod>2026-06-23</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
@@ -187,19 +187,19 @@
 
   <!-- Legal -->
   <url>
-    <loc>https://a2b.services/privacy</loc>
+    <loc>https://a2b.services/legal/privacy</loc>
     <lastmod>2026-06-23</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://a2b.services/cookies</loc>
+    <loc>https://a2b.services/legal/cookies</loc>
     <lastmod>2026-06-23</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://a2b.services/terms</loc>
+    <loc>https://a2b.services/legal/terms</loc>
     <lastmod>2026-06-23</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
