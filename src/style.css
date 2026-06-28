@@ -401,18 +401,19 @@ button {
 .btn-label {
   display: flex;
   align-items: center;
-  height: 42px;
-  padding: 0 24px 0 32px;
+  height: 38px;
+  padding: 0 20px 0 24px;
   font-family: var(--font-body);
-  font-size: 0.85rem;
+  font-size: 0.8rem;
   font-weight: 600;
-  letter-spacing: 1.2px;
+  letter-spacing: 1px;
   text-transform: none;
   color: #0a0a0a;
   background: #ffffff;
   border: none;
   clip-path: polygon(14px 0, 100% 0, 100% 100%, 14px 100%, 0 50%);
   transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  white-space: nowrap;
 }
 
 .btn-arrow:hover .btn-label {
@@ -464,8 +465,8 @@ button {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 48px;
-  height: 42px;
+  width: 44px;
+  height: 38px;
   background: #222222;
   color: #ffffff;
   position: relative;
@@ -1372,7 +1373,7 @@ a.cinfo-line:hover {
 
 /* ===== Case Study Page (Light Mode Redesign) ===== */
 .case-study-page {
-  padding-top: 140px;
+  padding-top: 130px;
   min-height: 100vh;
   background-color: #fafafa;
   color: #111;
@@ -1386,7 +1387,7 @@ a.cinfo-line:hover {
 
 /* Header Section */
 .cs-header-section {
-  padding: 60px var(--container-padding) 80px;
+  padding: 30px var(--container-padding) 80px;
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
@@ -6633,16 +6634,20 @@ a, button, input, select, textarea {
 }
 
 @media (max-width: 768px) {
+  .case-study-page {
+    padding-top: var(--nav-height);
+  }
+
   .cs-header-section {
     flex-direction: column;
     align-items: flex-start;
     gap: 24px;
-    padding-bottom: 48px;
+    padding: 75px var(--container-padding) 50px;
   }
 
   .cs-title-massive {
-    font-size: clamp(2.4rem, 10vw, 4rem);
-    letter-spacing: -1px;
+    font-size: clamp(3rem, 13vw, 4.5rem);
+    letter-spacing: -1.5px;
   }
 
   .cs-header-actions {
@@ -8336,4 +8341,192 @@ a, button, input, select, textarea {
   background: var(--accent);
   z-index: 1000;
   transition: width 0.1s ease-out;
+}
+
+/* ==============================================
+   FIND US PAGE v3 — Vertical Cards matched to Case Study
+   ============================================== */
+.find-us-page-v2 {
+  background: #fff;
+  color: #0a0a0a;
+}
+
+/* ---- Hero ---- */
+.fu-v2-hero {
+  padding: 200px 0 80px;
+  background: #fff;
+}
+
+.fu-v2-container {
+  max-width: var(--container-max);
+  margin: 0 auto;
+  padding: 0 var(--container-padding);
+}
+
+.fu-v2-label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(0, 0, 0, 0.4);
+  margin-bottom: 16px;
+}
+
+.fu-v2-dot {
+  width: 8px;
+  height: 8px;
+  background: var(--accent);
+  clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%);
+  display: inline-block;
+}
+
+.fu-v2-heading {
+  font-family: var(--font-body);
+  font-size: clamp(2.4rem, 4vw, 3.8rem);
+  font-weight: 300;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  color: #0a0a0a;
+  margin: 0 0 20px;
+}
+
+.fu-v2-sub {
+  max-width: 420px;
+  font-size: 0.95rem;
+  color: rgba(0, 0, 0, 0.55);
+  line-height: 1.65;
+  margin: 0;
+}
+
+/* ---- Sections ---- */
+.fu-v3-section {
+  padding: 0 0 64px;
+  background: #fff;
+}
+
+.fu-v3-section-last {
+  padding-bottom: 120px;
+}
+
+.fu-v3-container {
+  max-width: var(--container-max);
+  margin: 0 auto;
+  padding: 0 var(--container-padding);
+}
+
+.fu-v3-section-label {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 20px;
+}
+
+/* ---- Card Grid ---- */
+.fu-v3-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 24px;
+}
+
+/* ---- Vertical Card ---- */
+.fu-v3-card {
+  display: flex;
+  flex-direction: column;
+  padding: 40px;
+  border-radius: 4px;
+  text-decoration: none;
+  transition: transform 0.3s;
+}
+
+.fu-v3-card:hover {
+  transform: translateY(-4px);
+}
+
+.fu-v3-grid.theme-dark .fu-v3-card {
+  background: #000;
+  color: #fff;
+}
+.fu-v3-grid.theme-dark .fu-v3-title, .fu-v3-grid.theme-dark .fu-v3-link {
+  color: #fff;
+}
+.fu-v3-grid.theme-dark .fu-v3-tag, .fu-v3-grid.theme-dark .fu-v3-desc {
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.fu-v3-grid.theme-light .fu-v3-card {
+  background: #f1efe9;
+  color: #000;
+}
+.fu-v3-grid.theme-light .fu-v3-title, .fu-v3-grid.theme-light .fu-v3-link {
+  color: #000;
+}
+.fu-v3-grid.theme-light .fu-v3-tag, .fu-v3-grid.theme-light .fu-v3-desc {
+  color: rgba(0, 0, 0, 0.6);
+}
+
+.fu-v3-header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 32px;
+}
+
+.fu-v3-icon {
+  font-size: 24px;
+  color: var(--accent);
+}
+
+.fu-v3-tag {
+  font-family: var(--font-body);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.fu-v3-title {
+  font-family: var(--font-body);
+  font-size: 2rem;
+  font-weight: 300;
+  margin: 0 0 16px 0;
+  line-height: 1.1;
+  letter-spacing: -1px;
+}
+
+.fu-v3-desc {
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  font-weight: 300;
+  line-height: 1.6;
+  margin: 0 0 32px 0;
+  flex: 1;
+}
+
+.fu-v3-link {
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  font-weight: 600;
+  transition: opacity 0.3s;
+}
+
+.fu-v3-card:hover .fu-v3-link {
+  opacity: 0.7;
+}
+
+/* ---- Responsive ---- */
+@media (max-width: 900px) {
+  .fu-v3-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 560px) {
+  .fu-v3-grid {
+    grid-template-columns: 1fr;
+  }
 }
