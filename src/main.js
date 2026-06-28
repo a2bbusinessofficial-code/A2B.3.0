@@ -70,7 +70,7 @@ function initMobileMenu() {
     btn.addEventListener('click', () => {
       if (window.innerWidth > 768) {
         const wrapper = btn.closest('.nav-dropdown-wrapper');
-        if (wrapper?.id === 'servicesDropdown') window.location.href = '/service';
+        if (wrapper?.id === 'servicesDropdown') window.location.href = '/services/';
         else if (wrapper?.id === 'resourcesDropdown') window.location.href = '/blog';
         return;
       }
