@@ -657,9 +657,14 @@ function initFreeConsultationButton() {
         <path id="${pathId}"
           d="M 100,100 m -72,0 a 72,72 0 1,1 144,0 a 72,72 0 1,1 -144,0"/>
       </defs>
-      <text class="fcb-ring-text">
-        <textPath href="#${pathId}">
+      <text class="fcb-ring-text fcb-desktop-text">
+        <textPath href="#${pathId}" textLength="440">
           FREE STRATEGIC CALL &bull; FREE STRATEGIC CALL &bull;
+        </textPath>
+      </text>
+      <text class="fcb-ring-text fcb-mobile-text">
+        <textPath href="#${pathId}" textLength="445">
+          FREE STRATEGIC CALL &bull; 
         </textPath>
       </text>
     </svg>

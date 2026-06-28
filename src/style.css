@@ -453,8 +453,11 @@ button {
   color: #ffffff;
 }
 
-.navbar.light-mode .hamburger span {
-  background: #0a0a0a;
+.navbar.light-mode .nav-hamburger span {
+  background: #0a0a0a !important;
+}
+.navbar.light-mode .nav-hamburger.active span {
+  background: #fff !important;
 }
 
 .btn-icon {
@@ -628,6 +631,10 @@ button {
   display: none;
 }
 
+.mobile-break {
+  display: none;
+}
+
 /* ---- Hero Heading ---- */
 .hero-heading {
   font-family: var(--font-body);
@@ -709,6 +716,13 @@ button {
   color: rgba(255, 255, 255, 0.85);
 }
 
+.hero-pill-divider.nav-slash {
+  color: var(--accent);
+  font-weight: 800;
+}
+.mobile-only-link {
+  display: none;
+}
 .hero-pill-divider {
   color: var(--accent);
   font-weight: 300;
@@ -1216,13 +1230,23 @@ a.cinfo-line:hover {
 
 @media (max-width: 900px) {
   .contact-v2-grid {
-    grid-template-columns: 1fr;
-    gap: 56px;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
   }
 
-  .contact-v2-left {
-    position: static;
+  .contact-v2-left, .contact-v2-right {
+    display: contents;
   }
+  
+  .contact-v2-eyebrow { order: 1; }
+  .contact-v2-heading { order: 2; }
+  .contact-v2-desc { order: 3; }
+  .contact-v2-schedule-btn { order: 4; }
+  .contact-v2-quick-links { order: 5; margin-bottom: 60px; }
+  .cv2-tabs-bar { order: 6; }
+  .cv2-tab-panel { order: 7; margin-bottom: 60px; width: 100%; }
+  .contact-v2-info { order: 8; }
 
   .contact-v2-heading {
     font-size: clamp(2.8rem, 9vw, 4rem);
@@ -1283,6 +1307,23 @@ a.cinfo-line:hover {
 
 .light-nav .nav-hamburger span {
   background: #000 !important;
+}
+/* Fix mobile menu button and text colors when the menu is open on a light page */
+.light-nav .nav-hamburger.active span {
+  background: #fff !important;
+}
+.light-nav .nav-links.mobile-open .nav-link,
+.light-nav .nav-links.mobile-open .nav-dropdown-btn {
+  color: rgba(255,255,255,0.7) !important;
+}
+.light-nav .nav-links.mobile-open .nav-link:first-child,
+.light-nav .nav-links.mobile-open .nav-link.active,
+.light-nav .nav-links.mobile-open .nav-link:hover {
+  color: #fff !important;
+}
+.light-nav .nav-links.mobile-open .mega-link,
+.light-nav .nav-links.mobile-open .svc-link {
+  color: rgba(255, 255, 255, 0.5) !important;
 }
 
 .light-nav .nav-dropdown-menu {
@@ -1345,11 +1386,10 @@ a.cinfo-line:hover {
 
 /* Header Section */
 .cs-header-section {
-  padding: 60px 0;
+  padding: 60px var(--container-padding) 80px;
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
-  padding-bottom: 80px;
 }
 
 .cs-header-content {
@@ -1638,6 +1678,9 @@ a.cinfo-line:hover {
   .nav-links {
     display: none;
   }
+  .mobile-only-link {
+    display: flex !important;
+  }
 
   .nav-cta {
     display: none;
@@ -1689,9 +1732,13 @@ a.cinfo-line:hover {
     display: none;
   }
 
+  /* Mobile break */
+  .mobile-break { display: block; }
+
   /* Mobile hero */
   .hero {
-    min-height: 68vh;
+    min-height: 75vh;
+    min-height: 75svh;
     align-items: stretch;
     padding-top: 0;
     padding-bottom: 0;
@@ -1788,8 +1835,8 @@ a.cinfo-line:hover {
 @media (max-width: 400px) {
   /* 2/3 screen fill â€” larger heading fills the vertical space */
   .hero {
-    min-height: 68vh;
-    min-height: 68svh;
+    min-height: 75vh;
+    min-height: 75svh;
   }
 
   .hero-container {
@@ -1799,7 +1846,7 @@ a.cinfo-line:hover {
 
   /* space-between: ~22px gaps between label / heading / pills / button */
   .hero-content {
-    justify-content: space-between;
+    justify-content: space-evenly;
   }
 
   /* 13.5vw at 375px â‰ˆ 50.6px â€” forces "Your AI / partner for / the [word]" 3-row wrap */
@@ -6180,6 +6227,10 @@ a.hsg-cell--last:hover .hsg-cell-link {
   text-transform: uppercase;
 }
 
+.fcb-mobile-text {
+  display: none;
+}
+
 /* White hexagon centre with green arrow */
 .fcb-circle-inner {
   position: relative;
@@ -6207,17 +6258,22 @@ a.hsg-cell--last:hover .hsg-cell-link {
   display: block;
 }
 
-@media (max-width: 600px) {
+@media (max-width: 768px) {
   .fcb-circle {
-    width: 110px;
-    height: 110px;
-    bottom: 0;
+    width: 90px;
+    height: 90px;
+    bottom: 16px;
     right: 16px;
-    transform: translateY(50%);
+    transform: none;
   }
-  .fcb-circle:hover { transform: translateY(0); }
-  .fcb-circle-inner { width: 40px; height: 40px; }
-  .fcb-ring-text { font-size: 7.2px; }
+  .fcb-circle:hover { transform: scale(1.05); }
+  .fcb-circle-inner { width: 32px; height: 32px; }
+  .fcb-desktop-text { display: none; }
+  .fcb-mobile-text {
+    display: block;
+    font-size: 22px;
+    letter-spacing: 0;
+  }
 }
 
 /* ==============================================
@@ -6666,8 +6722,18 @@ a, button, input, select, textarea {
   .ns-hero-actions,
   .ns-hero-actions-left {
     flex-direction: column;
-    align-items: flex-start;
+    align-items: stretch;
     gap: 12px;
+    width: 100%;
+  }
+  .ns-hero-actions .btn-arrow,
+  .ns-hero-actions-left .btn-arrow {
+    width: 100%;
+  }
+  .ns-hero-actions .btn-arrow .btn-label,
+  .ns-hero-actions-left .btn-arrow .btn-label {
+    flex: 1;
+    justify-content: center;
   }
 }
 
@@ -6995,6 +7061,22 @@ a, button, input, select, textarea {
   letter-spacing: 0.01em;
   text-transform: uppercase;
   margin: 5px 0;
+}
+
+@media (max-width: 768px) {
+  .cbr-refund-stamp {
+    width: 100px;
+    height: 100px;
+    margin-top: -10px !important;
+  }
+  .cbr-refund-stamp-top,
+  .cbr-refund-stamp-bot {
+    font-size: 0.4rem;
+  }
+  .cbr-refund-stamp-big {
+    font-size: 1rem;
+    margin: 2px 0;
+  }
 }
 
 .cbr-offer-refund-label {
