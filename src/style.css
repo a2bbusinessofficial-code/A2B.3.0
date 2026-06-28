@@ -69,7 +69,7 @@ body.no-scroll {
 /* Hide the cursor only on actual buttons, per request.
    Cards, nav links and text links keep the normal pointer.
    Exclude form trigger buttons so cursor stays visible inside the form. */
-button:not(.cv2-select-trigger):hover,
+button:not(.cv2-select-trigger):not(.cbr-faq-question):hover,
 .btn-arrow:hover {
   cursor: none !important;
 }
@@ -2002,7 +2002,7 @@ a.cinfo-line:hover {
 /* ===== How We Work Section (inverted fold from white services) ===== */
 .how-we-work-section {
   position: relative;
-  padding: 160px 0 120px;
+  padding: 120px 0 120px;
   background: #0a0a0a;
   color: #ffffff;
   z-index: 7;
@@ -2135,7 +2135,7 @@ a.cinfo-line:hover {
 .dark-section {
   position: relative;
   min-height: 60vh;
-  padding: 100px 0 120px;
+  padding: 120px 0 120px;
   background: var(--bg-primary);
   color: var(--text-primary);
   z-index: 5;
@@ -2153,7 +2153,7 @@ a.cinfo-line:hover {
 .new-white-section {
   position: relative;
   min-height: 400px;
-  padding: 160px 0 120px;
+  padding: 120px 0 120px;
   background: #0a0a0a;
   color: #ffffff;
   z-index: 9;
@@ -2590,7 +2590,7 @@ a.hsg-cell--last:hover .hsg-cell-link {
   z-index: 6;
   margin-top: -60px;
   clip-path: polygon(0 60px, calc(50% - 52px) 60px, calc(50% + 52px) 0, 100% 0, 100% 100%, 0 100%);
-  padding: 140px 0 100px;
+  padding: 120px 0 120px;
 }
 
 .home-svc-container {
@@ -2881,7 +2881,7 @@ a.hsg-cell--last:hover .hsg-cell-link {
 .home-cs-grid {
   max-width: var(--container-max);
   margin: 0 auto;
-  padding: 0 var(--container-padding) 140px;
+  padding: 0 var(--container-padding);
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 12px;
@@ -3051,7 +3051,7 @@ a.hsg-cell--last:hover .hsg-cell-link {
   z-index: 10;
   margin-top: -60px;
   clip-path: polygon(0 60px, calc(50% - 52px) 60px, calc(50% + 52px) 0, 100% 0, 100% 100%, 0 100%);
-  padding: 140px 0 120px;
+  padding: 120px 0 120px;
   margin-bottom: -2px; /* Fix sub-pixel rendering gap */
 }
 
@@ -3400,7 +3400,7 @@ a.hsg-cell--last:hover .hsg-cell-link {
   position: relative;
   background: #ffffff;
   z-index: 10;
-  padding: 80px 0 160px;
+  padding: 120px 0 120px;
   margin-top: -60px;
   clip-path: polygon(0 60px, calc(50% - 52px) 60px, calc(50% + 52px) 0, 100% 0, 100% 100%, 0 100%);
 }
@@ -8176,7 +8176,7 @@ a, button, input, select, textarea {
   position: relative;
   background: #ffffff;
   color: #0a0a0a;
-  padding: 60px 0 160px;
+  padding: 60px 0 120px;
   z-index: 10;
 }
 
@@ -8261,7 +8261,7 @@ a, button, input, select, textarea {
   position: relative;
   background: #0a0a0a;
   color: #ffffff;
-  padding: 100px 0 120px;
+  padding: 120px 0 120px;
   z-index: 10;
   margin-top: -60px;
   clip-path: polygon(0 0, calc(50% - 52px) 0, calc(50% + 52px) 60px, 100% 60px, 100% 100%, 0 100%);
@@ -8297,6 +8297,15 @@ a, button, input, select, textarea {
 }
 .home-faq-section .cbr-faq-answer p {
   color: rgba(255, 255, 255, 0.6);
+}
+
+.home-faq-section .cbr-faq-list:not(.faq-expanded) .cbr-faq-item:nth-child(n+7) {
+  display: none;
+}
+.home-faq-section .faq-see-more-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 40px;
 }
 
 /* ===== Blog + FAQ responsive ===== */

@@ -626,12 +626,43 @@ function initCbrFaq() {
 
   items.forEach(item => {
     const btn = item.querySelector('.cbr-faq-question');
-    btn.addEventListener('click', () => {
-      const isOpen = item.classList.contains('open');
-      items.forEach(i => i.classList.remove('open'));
-      if (!isOpen) item.classList.add('open');
-    });
+    if (btn) {
+      btn.addEventListener('click', () => {
+        const isOpen = item.classList.contains('open');
+        items.forEach(i => i.classList.remove('open'));
+        if (!isOpen) item.classList.add('open');
+      });
+    }
   });
+
+  const seeMoreBtn = document.getElementById('faqSeeMoreBtn');
+  if (seeMoreBtn) {
+    seeMoreBtn.addEventListener('click', () => {
+      const faqList = document.querySelector('.cbr-faq-list');
+      if (faqList) {
+        const isExpanded = faqList.classList.contains('faq-expanded');
+        const label = seeMoreBtn.querySelector('.btn-label');
+        const icon = seeMoreBtn.querySelector('.btn-icon svg');
+
+        if (isExpanded) {
+          faqList.classList.remove('faq-expanded');
+          if (label) label.textContent = 'See more questions';
+          if (icon) icon.innerHTML = '<path d="M6 9l6 6 6-6"/>';
+          
+          // Scroll back up slightly so the user doesn't lose context
+          const faqSection = document.querySelector('.home-faq-section');
+          if (faqSection) {
+            const y = faqSection.getBoundingClientRect().top + window.scrollY - 100;
+            window.scrollTo({ top: y, behavior: 'smooth' });
+          }
+        } else {
+          faqList.classList.add('faq-expanded');
+          if (label) label.textContent = 'Show less';
+          if (icon) icon.innerHTML = '<path d="M18 15l-6-6-6 6"/>';
+        }
+      }
+    });
+  }
 }
 
 /**
