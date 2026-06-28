@@ -42,7 +42,8 @@ export default defineConfig({
     rollupOptions: {
       input: {
         main:               r('index.html'),
-        service:            r('services/index.html'),
+        services:           r('services/index.html'),
+        service:            r('service/index.html'),
         about:              r('about/index.html'),
         contact:            r('contact/index.html'),
         labs:               r('labs/index.html'),
