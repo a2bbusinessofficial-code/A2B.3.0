@@ -69,7 +69,7 @@ body.no-scroll {
 /* Hide the cursor only on actual buttons, per request.
    Cards, nav links and text links keep the normal pointer.
    Exclude form trigger buttons so cursor stays visible inside the form. */
-button:not(.cv2-select-trigger):not(.cbr-faq-question):hover,
+button:not(.cv2-select-trigger):not(.cbr-faq-question):not(.nav-dropdown-btn):hover,
 .btn-arrow:hover {
   cursor: none !important;
 }

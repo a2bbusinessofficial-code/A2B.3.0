@@ -83,7 +83,35 @@
           <div class="nav-links" id="navLinks">
             <a href="/" class="nav-link">Home <span class="nav-slash"></span></a>
             <a href="/labs" class="nav-link">Labs <span class="nav-slash"></span></a>
-            <a href="/services" class="nav-link">Service <span class="nav-slash"></span></a>
+            <div class="nav-dropdown-wrapper" id="servicesDropdown">
+              <button class="nav-link nav-dropdown-btn">Services <span class="nav-slash"></span></button>
+              <div class="nav-dropdown-menu mega-menu svc-mega-menu">
+                <div class="mega-menu-left svc-mega-left">
+                  <div class="mega-menu-label">
+                    <svg width="12" height="12" viewBox="0 0 44 44" fill="var(--accent)" xmlns="http://www.w3.org/2000/svg"><polygon points="22,1 43,11 43,33 22,43 1,33 1,11"/></svg>
+                    SERVICES
+                  </div>
+                  <div class="mega-links svc-links">
+                    <a href="/services/dormant-lead-recovery" class="mega-link svc-link" data-title="Dormant Lead Recovery" data-desc="Re-engage old inquiries, missed consultations, and inactive clients with one approved message — interested replies handed directly to your team." data-subs="Old Inquiry Follow-up,Missed Consultation Recovery,Inactive Client Re-engagement,Booking Handoff">Dormant Lead Recovery</a>
+                    <a href="/services/ai-automation" class="mega-link svc-link" data-title="AI Automation" data-desc="Intelligent process automation that eliminates manual work, connects your systems, and ships measurable ROI in weeks." data-subs="Document Intelligence,Workflow Automation,Data Pipeline Automation,Cross-System Integration">AI Automation</a>
+                    <a href="/services/ai-agents" class="mega-link svc-link" data-title="AI Agents" data-desc="Autonomous agentic systems that think, plan, and execute multi-step tasks without human intervention." data-subs="Task Agents,Multi-Agent Systems,Agentic Coding,Task Orchestration">AI Agents</a>
+                    <a href="/services/custom-ai" class="mega-link svc-link" data-title="Custom AI" data-desc="Fine-tuned models, RAG pipelines, and purpose-built AI that knows your domain, your data, and your terminology." data-subs="Fine-tuning &amp; Training,RAG Systems,Model Evaluation,Knowledge Bases">Custom AI</a>
+                    <a href="/services/ai-strategy" class="mega-link svc-link" data-title="AI Strategy" data-desc="Discovery, roadmapping, and ROI modeling — turning AI opportunity into a plan your team can actually execute." data-subs="Discovery Blueprint,ROI Modeling,AI Readiness Assessment,Team Training">AI Strategy</a>
+                  </div>
+                </div>
+                <div class="mega-menu-right">
+                  <div class="mega-content">
+                    <h3 class="mega-title svc-mega-title">Our Services</h3>
+                    <p class="mega-desc svc-mega-desc">Hover a service to explore what we build.</p>
+                    <ul class="svc-sub-list" style="display: none;"></ul>
+                  </div>
+                  <a href="/services" class="btn-arrow mega-contact-btn">
+                    <span class="btn-label">All Services</span>
+                    <span class="btn-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+                  </a>
+                </div>
+              </div>
+            </div>
             <a href="/case-studies" class="nav-link active">Case Study <span class="nav-slash"></span></a>
             <div class="nav-dropdown-wrapper" id="resourcesDropdown">
               <button class="nav-link nav-dropdown-btn">Resources <span class="nav-slash"></span></button>
