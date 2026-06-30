@@ -16,13 +16,42 @@ export const UTM_LINKS = {
     utm_content:  null,
   },
 
-  // Add your real links below:
-  // 'your-slug': {
-  //   label:        'Human-readable name',
-  //   destination:  'https://a2b.services/your-page',
-  //   utm_source:   'instagram',
-  //   utm_medium:   'story',
-  //   utm_campaign: 'june-2026',
-  //   utm_content:  null, 
-  // },
+  // ── Founder referral links ──────────────────────────────────────────────────
+  // Link #1 = general link. Future links (ra2, ra3…) will be platform-specific.
+
+  'referral=ra1': {
+    label:        'Rahul — General Referral',
+    destination:  'https://a2b.services/',
+    utm_source:   'rahul',
+    utm_medium:   'referral',
+    utm_campaign: 'founder-general',
+    utm_content:  null,
+  },
+
+  'referral=ak1': {
+    label:        'Akhil — General Referral',
+    destination:  'https://a2b.services/',
+    utm_source:   'akhil',
+    utm_medium:   'referral',
+    utm_campaign: 'founder-general',
+    utm_content:  null,
+  },
+
+  'referral=da1': {
+    label:        'Dany — General Referral',
+    destination:  'https://a2b.services/',
+    utm_source:   'dany',
+    utm_medium:   'referral',
+    utm_campaign: 'founder-general',
+    utm_content:  null,
+  },
+
+  'referral=am1': {
+    label:        'Aman — General Referral',
+    destination:  'https://a2b.services/',
+    utm_source:   'aman',
+    utm_medium:   'referral',
+    utm_campaign: 'founder-general',
+    utm_content:  null,
+  },
 };
