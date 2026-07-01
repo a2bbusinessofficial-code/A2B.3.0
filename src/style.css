@@ -3192,7 +3192,14 @@ a.hsg-cell--last:hover .hsg-cell-link {
 }
 
 .t-play-btn.playing {
-  display: none;
+  background: rgba(0, 0, 0, 0);
+  opacity: 0;
+  transition: opacity 0.3s, background 0.3s;
+}
+
+.t-play-btn.playing:hover {
+  opacity: 1;
+  background: rgba(0, 0, 0, 0.3);
 }
 
 /* Solid accent-color name band at the bottom of each video */

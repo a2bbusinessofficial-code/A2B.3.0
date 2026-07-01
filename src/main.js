@@ -339,17 +339,37 @@ function initTestimonialCarousels() {
     if (nextBtn) nextBtn.addEventListener('click', () => goVP(page + 1));
     goVP(0);
 
-    // Play button logic
+    // Play/pause toggle logic
+    const pauseIcon = `<svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/></svg>`;
+    const playIcon  = `<svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg>`;
+
     cards.forEach(card => {
       const video   = card.querySelector('.t-cv-video');
       const playBtn = card.querySelector('.t-play-btn');
       if (!video || !playBtn) return;
+
       playBtn.addEventListener('click', () => {
-        video.play();
-        playBtn.classList.add('playing');
+        if (video.paused) {
+          video.play();
+          playBtn.classList.add('playing');
+          playBtn.innerHTML = pauseIcon;
+          playBtn.setAttribute('aria-label', 'Pause video');
+        } else {
+          video.pause();
+          playBtn.classList.remove('playing');
+          playBtn.innerHTML = playIcon;
+          playBtn.setAttribute('aria-label', 'Play video');
+        }
       });
-      video.addEventListener('pause', () => playBtn.classList.remove('playing'));
-      video.addEventListener('ended', () => playBtn.classList.remove('playing'));
+
+      video.addEventListener('pause', () => {
+        playBtn.classList.remove('playing');
+        playBtn.innerHTML = playIcon;
+      });
+      video.addEventListener('ended', () => {
+        playBtn.classList.remove('playing');
+        playBtn.innerHTML = playIcon;
+      });
     });
   }
 
