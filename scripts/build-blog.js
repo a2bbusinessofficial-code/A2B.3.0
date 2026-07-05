@@ -14,7 +14,7 @@ function esc(str) {
 }
 
 function toHtml(text) {
-  text = text.replace(/""/g, 'Ã¢â‚¬Å“').replace(/""/g, 'Ã¢â‚¬Â').trim();
+  text = text.replace(/“/g, '“').replace(/”/g, '”').trim();
   const lines = text.split('\n');
   const out = [];
   let buf = [];
@@ -48,12 +48,12 @@ function toHtml(text) {
       i++; continue;
     }
 
-    if (t.startsWith('Ã¢â‚¬Â¢ ') || t.startsWith('* ')) {
+    if (t.startsWith('• ') || t.startsWith('* ')) {
       flush();
       const items = [];
       while (i < lines.length) {
         const lt = lines[i].trim();
-        if (lt.startsWith('Ã¢â‚¬Â¢ ') || lt.startsWith('* ')) {
+        if (lt.startsWith('• ') || lt.startsWith('* ')) {
           items.push('<li>' + lt.slice(2) + '</li>');
           i++;
         } else break;
@@ -443,7 +443,7 @@ The contacts are already there. The only thing missing is the campaign that brin
   {
     slug: 'n8n-v2-0',
     title: "Just upgraded to n8n v2.0 pre-release. Here's what actually changed.",
-    description: "Hands-on with n8n v2: instant saves, flatter UI, thicker connectors, and a major change to Execute Workflow Ã¢â‚¬â€ sub-workflow outputs now flow back into the parent. This fixes approval-path friction but can break fire-and-forget designs. Keep production on v1 until you fully test sub-workflow behavior.",
+    description: "Hands-on with n8n v2: instant saves, flatter UI, thicker connectors, and a major change to Execute Workflow — sub-workflow outputs now flow back into the parent. This fixes approval-path friction but can break fire-and-forget designs. Keep production on v1 until you fully test sub-workflow behavior.",
     author: 'Rahul V K',
     date: '2025-12-07',
     image: 'https://bfmoirwycojttdbitvir.supabase.co/storage/v1/object/public/blog-images/0.24177335967231017.webp',
@@ -502,10 +502,10 @@ The value of mastering basic workflows first cannot be overstated. Standard work
 
 Learning automation isn't just a technical challenge; it's a psychological one. You're probably going to feel overwhelmed. Understanding the "transition curve" helps you map out this emotional journey and find the perspective to succeed when things get difficult.
 
-Ã¢â‚¬Â¢ Phase 1 Ã¢â‚¬â€ Uninformed Optimism: You see the opportunity and you're excited to start.
-Ã¢â‚¬Â¢ Phase 2 Ã¢â‚¬â€ Informed Pessimism: You begin to understand the true complexity. This is when you feel overwhelmed.
-Ã¢â‚¬Â¢ Phase 3 Ã¢â‚¬â€ Crisis of Meaning: The critical decision point. You can either crash and burn or push through.
-Ã¢â‚¬Â¢ Phase 4 Ã¢â‚¬â€ Informed Optimism: You've pushed through and are now building with confidence.
+• Phase 1 — Uninformed Optimism: You see the opportunity and you're excited to start.
+• Phase 2 — Informed Pessimism: You begin to understand the true complexity. This is when you feel overwhelmed.
+• Phase 3 — Crisis of Meaning: The critical decision point. You can either crash and burn or push through.
+• Phase 4 — Informed Optimism: You've pushed through and are now building with confidence.
 
 This cycle is not a one-time event. Knowing it exists is empowering. It helps you recognize that the struggle is a normal phase.
 
@@ -521,7 +521,7 @@ A system prompt is like studying the night before an exam. Good context is like 
 
 4. Build Systems That Run While You Sleep
 
-The true power of automation lies in building workflows that save time without you ever being involved. A "personal assistant" agent only takes action when you tell it to Ã¢â‚¬â€ low leverage. Compare that to a workflow triggered by a real-world event, like a new lead submitting a form. That system wakes up on its own and can run all day and all night. That is where you get scale.
+The true power of automation lies in building workflows that save time without you ever being involved. A "personal assistant" agent only takes action when you tell it to — low leverage. Compare that to a workflow triggered by a real-world event, like a new lead submitting a form. That system wakes up on its own and can run all day and all night. That is where you get scale.
 
 To identify high-leverage opportunities, a process is worth automating if it is repetitive, time-consuming, error-prone, and scalable. If a process does not check at least two of those boxes, it's probably not worth automating yet.
 
@@ -537,7 +537,7 @@ If you can't explain a process clearly on paper, you have no chance of automatin
 
 --------------------------------------------------------------------------------
 
-Mastering automation isn't about chasing the latest AI hype. It's about building a solid, foundational understanding of rule-based systems, thinking strategically about leverage, and planning with the discipline of an engineer. Build boring stuff that works first Ã¢â‚¬â€ you can make it cool later.`
+Mastering automation isn't about chasing the latest AI hype. It's about building a solid, foundational understanding of rule-based systems, thinking strategically about leverage, and planning with the discipline of an engineer. Build boring stuff that works first — you can make it cool later.`
   },
   {
     slug: 'debugging-a-workflow-that-had-zero-error-logs-and-lost-1200',
@@ -561,7 +561,7 @@ GUIDE:
 
 Your Automation is Only 20% Done: 5 Production-Ready Secrets for n8n
 
-You've done it. After hours of tinkering, connecting nodes, and testing logic, your n8n workflow finally runs successfully from start to finish. This is where most people stop, believing the work is done. The reality is that building the functional workflow is just the tip of the iceberg Ã¢â‚¬â€ about 20% of the total effort.
+You've done it. After hours of tinkering, connecting nodes, and testing logic, your n8n workflow finally runs successfully from start to finish. This is where most people stop, believing the work is done. The reality is that building the functional workflow is just the tip of the iceberg — about 20% of the total effort.
 
 The real work, the hidden 80%, lies in transforming that functional prototype into a production-ready system. Whether you're building a complex AI agent or a deterministic workflow with code nodes and API calls, this framework applies to any automation you create.
 
@@ -587,7 +587,7 @@ How do I block danger? Even if a user is legitimate, you need to ensure the requ
 
 3. Design Your Workflow to Fail Gracefully
 
-In a production environment, failures are not just possible Ã¢â‚¬â€ they are expected. The key is to handle them intentionally so that the user is always informed and the system remains predictable.
+In a production environment, failures are not just possible — they are expected. The key is to handle them intentionally so that the user is always informed and the system remains predictable.
 
 Use the Webhook Response node to communicate status back to the front-end system. The three key response codes to use are: Status 200 for a successful response. Status 404 for an authorization error, telling the front end the user is not authenticated. Status 500 for an internal service error, communicating that the user was valid but a component inside the workflow failed.
 
@@ -597,7 +597,7 @@ This approach provides a clean, predictable experience for the user, even when t
 
 4. Become a Chronicler: Log Every Key Event
 
-A chronicler doesn't just write down the ending of a story; they document every chapter. Log the full narrative of each execution Ã¢â‚¬â€ not just for catching errors but for understanding the quality of its work.
+A chronicler doesn't just write down the ending of a story; they document every chapter. Log the full narrative of each execution — not just for catching errors but for understanding the quality of its work.
 
 Log three key stages: what information was received, what was the key decision made with that information, and what was the final action or response. This detailed chronicle makes debugging incredibly fast. When a run fails, you can immediately see which stage it failed at and why.
 
@@ -607,13 +607,13 @@ Log three key stages: what information was received, what was the key decision m
 
 To move from a test workflow to a production system, replace random tinkering with a structured, repeatable framework.
 
-First, deconstruct the system: break your automation down into its core components Ã¢â‚¬â€ the front-end interface, the API transport layer, and the core workflow logic. Second, analyze risks: for each component, list everything that could possibly go wrong. Third, implement mitigations: for every risk you listed, devise a specific solution. Add a database check for unknown users. Implement header authentication to secure the webhook. Create detailed logging for failures.
+First, deconstruct the system: break your automation down into its core components — the front-end interface, the API transport layer, and the core workflow logic. Second, analyze risks: for each component, list everything that could possibly go wrong. Third, implement mitigations: for every risk you listed, devise a specific solution. Add a database check for unknown users. Implement header authentication to secure the webhook. Create detailed logging for failures.
 
 This methodical process transforms your workflow from a fragile script into a robust system.
 
 --------------------------------------------------------------------------------
 
-Moving a workflow into production requires a fundamental shift in identity. You are no longer just a builder of features; you become an architect of reliable, resilient systems. By embracing the "boring" 80% Ã¢â‚¬â€ security, error handling, logging, and risk mitigation Ã¢â‚¬â€ you ensure that what you build can stand on its own and deliver consistent value over the long term.`
+Moving a workflow into production requires a fundamental shift in identity. You are no longer just a builder of features; you become an architect of reliable, resilient systems. By embracing the "boring" 80% — security, error handling, logging, and risk mitigation — you ensure that what you build can stand on its own and deliver consistent value over the long term.`
   },
   {
     slug: 'built-50-automations-that-clients-never-used',
@@ -651,7 +651,7 @@ So instead of building a chatbot that had nice pleasant conversations and collec
 
 I also realized I was only building for binary outcomes. Qualified or not qualified. Yes or no. But that's not how actual business works. Most leads aren't a clear yes or no. They're interested but their boss needs to approve the budget first. They love the product but can't implement anything new for two months.
 
-So I started building a third route. Yes leads go straight to the CRM for immediate follow up. No leads get discarded. But maybe leads Ã¢â‚¬â€ the ones who are genuinely interested but not ready right now Ã¢â‚¬â€ go into a re-engage database. Then a scheduled job runs every two weeks and sends a simple, non-pushy message: "Hey, we chatted a few weeks ago and you mentioned you might be interested later. Is now a better time?" The number of leads that convert from that follow-up is honestly surprising.
+So I started building a third route. Yes leads go straight to the CRM for immediate follow up. No leads get discarded. But maybe leads — the ones who are genuinely interested but not ready right now — go into a re-engage database. Then a scheduled job runs every two weeks and sends a simple, non-pushy message: "Hey, we chatted a few weeks ago and you mentioned you might be interested later. Is now a better time?" The number of leads that convert from that follow-up is honestly surprising.
 
 I'm not writing this to show off or act like I've figured everything out. I really haven't. But I wasted months of my life, and honestly a decent amount of my clients' money, building things that nobody used. The issue was that I was solving the wrong problem entirely. I was optimizing for technical functionality and clean code when I should have been optimizing for adoption and real-world fit. Start looking left to see what's actually feeding into your automation. Start looking right to see what really happens after it finishes. Build for the full messy real-world process, not just the clean middle step that's fun to code.`
   },
@@ -673,12 +673,12 @@ Put "Edit Fields" nodes at key points as stable anchors so upstream changes don'
 
 The difference was massive. Before, every small change meant a 2 hour debugging session. Now I make changes, map to anchor points, and keep moving. Before I'd test by running the entire workflow 30 times. Now I pin data, edit it, and test edge cases in 5 minutes. Before I had "undefined" errors everywhere after conditional logic. Now the first() function solves it immediately.
 
-The workflow you see on screen is the easy part. The stability comes from the invisible structure underneath Ã¢â‚¬â€ anchor points, logs, proper data handling before every split. Once I understood that, everything clicked. Build the anchors first. Then build the logic. Your future self at 3am will thank you.`
+The workflow you see on screen is the easy part. The stability comes from the invisible structure underneath — anchor points, logs, proper data handling before every split. Once I understood that, everything clicked. Build the anchors first. Then build the logic. Your future self at 3am will thank you.`
   },
   {
     slug: 'built-a-system-that-does-500-in-the-time-i-used-to-do-5',
     title: "Spent 4 hours a day researching leads. Built a system that does 500 in the time I used to do 5.",
-    description: "How I automated lead research with n8n, LinkedIn scraping, real-time company news, and Claude to write personalized cold emails at scale Ã¢â‚¬â€ without sacrificing response rates.",
+    description: "How I automated lead research with n8n, LinkedIn scraping, real-time company news, and Claude to write personalized cold emails at scale — without sacrificing response rates.",
     author: 'Rahul V K',
     date: '2026-01-04',
     image: 'https://bfmoirwycojttdbitvir.supabase.co/storage/v1/object/public/blog-images/0.9740702812356797.webp',
