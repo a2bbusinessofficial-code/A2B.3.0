@@ -2,6 +2,7 @@
   var CONSENT_KEY = "a2b_cookie_consent";
   var TWO_WEEKS   = 14 * 24 * 60 * 60 * 1000;
   var GA_ID       = "G-Z3ML7DV9EG";
+  var CLARITY_ID  = "xhrhgw463e";
 
   function saveConsent(value) {
     localStorage.setItem(CONSENT_KEY, JSON.stringify({ value: value, ts: Date.now() }));
@@ -34,6 +35,19 @@
     gtag("config", GA_ID);
   }
 
+  function loadClarity() {
+    (function (c, l, a, r, i, t, y) {
+      c[a] = c[a] || function () { (c[a].q = c[a].q || []).push(arguments); };
+      t = l.createElement(r); t.async = 1; t.src = "https://www.clarity.ms/tag/" + i;
+      y = l.getElementsByTagName(r)[0]; y.parentNode.insertBefore(t, y);
+    })(window, document, "clarity", "script", CLARITY_ID);
+  }
+
+  function loadAnalytics() {
+    loadGA();
+    loadClarity();
+  }
+
   function showBanner() {
     if (document.getElementById("a2b-cookie-banner")) return;
 
@@ -54,7 +68,7 @@
     card.innerHTML =
       "<div style=\"font-size:15px;font-weight:600;color:#ffffff;letter-spacing:0.2px;margin-bottom:12px;\">Quick question</div>" +
       "<div style=\"font-size:13px;color:rgba(255,255,255,0.55);line-height:1.7;margin-bottom:22px;\">" +
-        "We use basic analytics to see what's working. No ad tracking, no data selling, no third-party tracking. " +
+        "We use analytics and session insights to see what's working. No ad tracking, no data selling. " +
         "<a href=\"/cookies\" style=\"color:#00DF81;border-bottom:1px solid rgba(0, 223, 129,0.35);padding-bottom:1px;text-decoration:none;\">Cookie Policy</a>" +
       "</div>" +
       "<div style=\"display:flex;gap:10px;\">" +
@@ -84,7 +98,7 @@
 
     document.getElementById("a2b-cookie-accept").onclick = function () {
       saveConsent("accepted");
-      dismiss(loadGA);
+      dismiss(loadAnalytics);
     };
     document.getElementById("a2b-cookie-reject").onclick = function () {
       saveConsent("rejected");
@@ -94,7 +108,7 @@
 
   var consent = getConsent();
   if (consent === "accepted") {
-    loadGA();
+    loadAnalytics();
   } else if (!consent) {
     if (document.readyState === "loading") {
       document.addEventListener("DOMContentLoaded", showBanner);

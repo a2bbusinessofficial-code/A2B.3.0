@@ -82,10 +82,11 @@
             <p>Similar technologies include local storage and session storage — browser-based mechanisms that store data on your device without using cookie files.</p>
 
             <h2>2. First-Party Cookies and Storage</h2>
-            <p><strong>We do not set any first-party cookies.</strong> Our website code does not write to <code>document.cookie</code>, <code>localStorage</code>, or <code>sessionStorage</code>. No login sessions, preference data, or tracking identifiers are stored on your device by A2B directly.</p>
+            <p>We do not set any first-party <em>tracking</em> cookies. The only data our own website code stores on your device is a single <code>localStorage</code> entry (<code>a2b_cookie_consent</code>) that remembers your choice on the cookie banner, so we don't ask you again on every visit. This entry contains no personal data and no tracking identifier.</p>
+            <p>If you accept analytics on the cookie banner, the third-party analytics services described in Section 4 are then loaded and may set their own cookies. If you decline, they are not loaded and no analytics cookies are set.</p>
 
             <h2>3. Analytics — Plausible (No Cookies)</h2>
-            <p>We use <strong>Plausible Analytics</strong> to understand how visitors use our website. Plausible is specifically designed to be cookieless and privacy-first:</p>
+            <p>We use <strong>Plausible Analytics</strong> as our default, always-on analytics. Plausible is specifically designed to be cookieless and privacy-first:</p>
             <ul>
               <li>No cookies are set — ever.</li>
               <li>No personal data is collected or stored.</li>
@@ -154,6 +155,56 @@
 
             <p>These cookies are only set when you visit our Contact page and the Calendly widget loads. You can manage or decline these cookies using Calendly's own GDPR consent banner displayed within the widget, or through your browser settings. <a href="https://calendly.com/privacy" target="_blank" rel="noopener">Calendly Privacy Policy</a>.</p>
 
+            <h3>Google Analytics &amp; Microsoft Clarity — Consent Required</h3>
+            <p>If, and only if, you select <strong>"I'll help out"</strong> on our cookie banner, we load two additional analytics services to better understand how visitors use the site: <strong>Google Analytics</strong> (aggregate traffic and behaviour) and <strong>Microsoft Clarity</strong> (anonymised heatmaps and session replays, which record mouse movement, clicks and scrolling — text input is masked). These services set the following cookies. If you decline, or ignore the banner, they are never loaded.</p>
+
+            <div class="cookie-table-wrap">
+              <table class="cookie-table">
+                <thead>
+                  <tr>
+                    <th>Cookie Name</th>
+                    <th>Set By</th>
+                    <th>Duration</th>
+                    <th>Purpose</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><code>_ga</code></td>
+                    <td>Google Analytics</td>
+                    <td>2 years</td>
+                    <td>Analytics — distinguishes unique visitors.</td>
+                  </tr>
+                  <tr>
+                    <td><code>_ga_&lt;id&gt;</code></td>
+                    <td>Google Analytics</td>
+                    <td>2 years</td>
+                    <td>Analytics — persists session state for the property.</td>
+                  </tr>
+                  <tr>
+                    <td><code>_clck</code></td>
+                    <td>Microsoft Clarity</td>
+                    <td>1 year</td>
+                    <td>Analytics — persists a Clarity user ID across sessions.</td>
+                  </tr>
+                  <tr>
+                    <td><code>_clsk</code></td>
+                    <td>Microsoft Clarity</td>
+                    <td>1 day</td>
+                    <td>Analytics — connects multiple page views into a single session.</td>
+                  </tr>
+                  <tr>
+                    <td><code>CLID</code> / <code>MUID</code> / <code>ANONCHK</code> / <code>SM</code></td>
+                    <td>Microsoft (clarity.ms)</td>
+                    <td>Session – 1 year</td>
+                    <td>Analytics — identifies the browser and enables Clarity's recording and heatmap features.</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <p>You can withdraw consent at any time by clearing your browser's site data for a2b.services, which resets the cookie banner. <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Google Privacy Policy</a> · <a href="https://privacy.microsoft.com/privacystatement" target="_blank" rel="noopener">Microsoft Privacy Statement</a>.</p>
+
             <h2>5. Services That Do Not Set Cookies</h2>
             <p>The following third-party services are also used on our website but <strong>do not set any cookies</strong> in your browser:</p>
             <ul>
@@ -167,7 +218,7 @@
             <p>We do not use any of the following on this website:</p>
             <ul>
               <li>Advertising or retargeting cookies (no Facebook Pixel, Google Ads, LinkedIn Insight Tag, TikTok Pixel, or Twitter Pixel)</li>
-              <li>Behavioural tracking or session recording tools (no Hotjar, Microsoft Clarity)</li>
+              <li>Any behavioural analytics without your consent — Google Analytics and Microsoft Clarity load only after you accept the cookie banner (see Section 4)</li>
               <li>Live chat or CRM widgets (no Intercom, HubSpot, Crisp)</li>
               <li>Cross-site fingerprinting</li>
             </ul>
