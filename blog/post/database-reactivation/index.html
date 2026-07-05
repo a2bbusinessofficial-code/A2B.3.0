@@ -21,27 +21,31 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="/src/style.css" />
   <style>
-    .blog-post-body { font-size:1.05rem; line-height:1.85; color:#222222; }
-    .blog-post-body h1,.blog-post-body h2,.blog-post-body h3,.blog-post-body h4 { font-family:Inter,sans-serif; font-weight:700; color:#0a0a0a; line-height:1.2; letter-spacing:-0.3px; margin-top:2.4em; margin-bottom:0.6em; }
+    html { scroll-behavior: smooth; }
+    .blog-post-body h2[id] { scroll-margin-top: 96px; }
+    :root { --read-max: 720px; }
+    /* ── Slim reading-progress bar ── */
+    .read-progress { position:fixed; top:0; left:0; height:3px; width:0; background:#00DF81; z-index:1200; transition:width 0.08s linear; }
+    .blog-post-body { font-size:1.18rem; line-height:1.8; color:#2b2b2b; font-family:Inter,sans-serif; }
+    .blog-post-body > p:first-of-type { font-size:1.32rem; line-height:1.65; color:#151515; margin-bottom:1.4em; }
+    .blog-post-body h1,.blog-post-body h2,.blog-post-body h3,.blog-post-body h4 { font-family:Inter,sans-serif; font-weight:700; color:#0a0a0a; line-height:1.25; letter-spacing:-0.4px; margin-top:2em; margin-bottom:0.5em; }
     .blog-post-body h1 { font-size:2rem; }
-    .blog-post-body h2 { font-size:1.55rem; }
-    .blog-post-body h3 { font-size:1.25rem; }
-    .blog-post-body h4 { font-size:1.05rem; }
-    .blog-post-body p  { margin-bottom:1.55em; }
+    .blog-post-body h2 { font-size:1.6rem; }
+    .blog-post-body h3 { font-size:1.28rem; }
+    .blog-post-body h4 { font-size:1.08rem; }
+    .blog-post-body p  { margin-bottom:1.5em; }
     .blog-post-body img { width:100%; border-radius:8px; margin:2em 0; display:block; }
-    .blog-post-body blockquote { border-left:3px solid #00DF81; padding:4px 0 4px 20px; margin:2em 0; color:rgba(0,0,0,0.6); font-style:italic; }
-    .blog-post-body ul,.blog-post-body ol { padding-left:1.5em; margin-bottom:1.55em; }
-    .blog-post-body li { margin-bottom:0.5em; }
+    .blog-post-body blockquote { border-left:3px solid #00DF81; padding:4px 0 4px 22px; margin:2em 0; color:rgba(0,0,0,0.6); font-style:italic; font-size:1.22rem; }
+    .blog-post-body ul,.blog-post-body ol { padding-left:1.4em; margin-bottom:1.5em; }
+    .blog-post-body li { margin-bottom:0.7em; padding-left:0.2em; }
     .blog-post-body strong { color:#0a0a0a; font-weight:600; }
-    .blog-post-body a { color:#00DF81; text-decoration:underline; text-underline-offset:3px; }
-    .blog-post-body hr,.blog-post-body .post-hr { border:none; border-top:1px solid rgba(0,0,0,0.08); margin:2.5em 0; }
-    .blog-post-body table { width:100%; border-collapse:collapse; margin-bottom:1.55em; font-size:0.95rem; }
+    .blog-post-body a { color:#0a7d4f; text-decoration:underline; text-underline-offset:3px; text-decoration-thickness:1px; transition:color 0.15s; }
+    .blog-post-body a:hover { color:#00DF81; }
+    .blog-post-body hr,.blog-post-body .post-hr { border:none; border-top:1px solid rgba(0,0,0,0.1); margin:2.6em 0; }
+    .blog-post-body table { width:100%; border-collapse:collapse; margin-bottom:1.5em; font-size:0.98rem; }
     .blog-post-body th { text-align:left; font-weight:600; color:#0a0a0a; padding:10px 14px; border-bottom:2px solid rgba(0,0,0,0.1); }
     .blog-post-body td { padding:10px 14px; border-bottom:1px solid rgba(0,0,0,0.06); }
     .blog-section-tag { font-size:0.7rem !important; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:rgba(0,0,0,0.35) !important; margin-top:2.5em !important; margin-bottom:0.5em !important; }
-    .post-sidebar-card { border-radius:12px; padding:28px; }
-    .post-cta-btn { display:flex; align-items:center; justify-content:space-between; width:100%; box-sizing:border-box; background:#0a0a0a; color:#fff; font-family:Inter,sans-serif; font-size:0.9rem; font-weight:500; padding:14px 20px; border:none; border-radius:6px; text-decoration:none; cursor:pointer; margin-top:20px; transition:background 0.2s ease; }
-    .post-cta-btn:hover { opacity:0.9; }
     .post-hr { border:none; border-top:1px solid rgba(0,0,0,0.08); margin:2.5em 0; }
     /* Fix sticky: overflow-x:hidden on html/body breaks position:sticky.
        clip behaves identically visually but does NOT create a scroll container. */
@@ -52,11 +56,31 @@
     #navbar .nav-logo-text { color:#0a0a0a !important; }
     #navbar .nav-link { color:#0a0a0a !important; }
     #navbar .nav-slash { color:rgba(0,0,0,0.25) !important; }
-    @media (max-width:900px) {
-      .post-layout { grid-template-columns:1fr !important; }
-      .post-sidebar { position:static !important; align-self:auto !important; }
-      .post-header-pad { padding:48px 24px 36px !important; }
-      .post-body-pad { padding:0 24px 80px !important; }
+    /* ── Two-column layout with sticky Table of Contents ── */
+    .post-grid { max-width:var(--container-max); margin:0 auto; padding:0 var(--container-padding); display:grid; grid-template-columns:250px 1fr; gap:64px; align-items:start; }
+    .post-toc-wrap { position:sticky; top:110px; align-self:start; }
+    .post-toc { display:flex; flex-direction:column; gap:28px; }
+    .post-toc-title { font-size:1.05rem; font-weight:800; color:#0a0a0a; margin:0 0 16px; font-family:Inter,sans-serif; }
+    .post-toc-list { list-style:none; padding:0; margin:0; border-left:2px solid rgba(0,0,0,0.09); }
+    .post-toc-list a { display:block; padding:8px 0 8px 18px; margin-left:-2px; border-left:2px solid transparent; font-size:0.9rem; line-height:1.45; color:rgba(0,0,0,0.5); text-decoration:none; transition:color 0.18s,border-color 0.18s; }
+    .post-toc-list a:hover { color:#0a0a0a; }
+    .post-toc-list a.active { color:#0a0a0a; font-weight:600; border-left-color:#00DF81; }
+    .post-toc-cta { background:#0a0a0a; border-radius:14px; padding:22px; }
+    .post-toc-cta h4 { font-family:Inter,sans-serif; font-size:1rem; font-weight:700; color:#fff; margin:0 0 14px; line-height:1.35; }
+    .post-toc-cta a { display:inline-flex; align-items:center; justify-content:space-between; gap:10px; width:100%; box-sizing:border-box; background:#00DF81; color:#000; font-family:Inter,sans-serif; font-size:0.85rem; font-weight:600; padding:12px 16px; border-radius:8px; text-decoration:none; transition:opacity 0.2s; }
+    .post-toc-cta a:hover { opacity:0.9; }
+    .post-share-label { font-size:0.75rem; font-weight:600; letter-spacing:0.5px; color:rgba(0,0,0,0.5); margin:0 0 12px; }
+    .post-share-row { display:flex; gap:10px; }
+    .post-share-btn { width:36px; height:36px; border-radius:8px; background:#0a0a0a; color:#fff; display:inline-flex; align-items:center; justify-content:center; text-decoration:none; transition:opacity 0.2s; }
+    .post-share-btn:hover { opacity:0.8; }
+    @media (max-width:960px) {
+      .post-grid { grid-template-columns:1fr; gap:0; }
+      .post-toc-wrap { display:none; }
+    }
+    @media (max-width:768px) {
+      .blog-post-body { font-size:1.08rem; }
+      .blog-post-body > p:first-of-type { font-size:1.18rem; }
+      .blog-post-body h2 { font-size:1.4rem; }
     }
   </style>
   <script async src="https://plausible.io/js/pa-0lcm4EUVXsjASg9rf6RN1.js"></script>
@@ -64,6 +88,7 @@
   <script src="/analytics.js"></script>
 </head>
 <body>
+<div class="read-progress" id="readProgress"></div>
 <div id="app">
 
 <nav class="navbar" id="navbar">
@@ -105,29 +130,55 @@
 
 <main style="background:#ffffff;min-height:100vh;">
 
-  <section>
-    <div style="max-width:var(--container-max);margin:0 auto;padding:130px var(--container-padding) 56px;" class="post-header-pad">
-      <a href="/blog" style="display:inline-flex;align-items:center;gap:6px;font-size:0.85rem;color:rgba(0,0,0,0.4);text-decoration:none;margin-bottom:44px;letter-spacing:0.1px;transition:color 0.2s;" onmouseover="this.style.color='#0a0a0a'" onmouseout="this.style.color='rgba(0,0,0,0.4)'">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
-        Back to Blog
-      </a>
-      <h1 style="font-family:Inter,sans-serif;font-size:clamp(2rem,4vw,3.2rem);font-weight:800;line-height:1.12;color:#0a0a0a;letter-spacing:-0.5px;margin-bottom:20px;">Your Old Customer List Is Worth More Than You Think</h1>
-      <p style="font-size:1.1rem;color:rgba(0,0,0,0.55);line-height:1.65;max-width:680px;margin-bottom:28px;">How Database Reactivation Turns Dormant Contacts Into New Revenue</p>
-      <div style="display:flex;align-items:center;gap:14px;font-size:0.85rem;color:rgba(0,0,0,0.45);flex-wrap:wrap;margin-bottom:40px;">
-        <span>Akhil</span>
-        <span style="width:3px;height:3px;border-radius:50%;background:rgba(0,0,0,0.3);flex-shrink:0;"></span>
-        <span>June 26, 2026</span>
-        
-      </div>
-      <div style="height:1px;background:rgba(0,0,0,0.08);"></div>
-    </div>
-  </section>
+  <section style="padding-top:110px;padding-bottom:100px;">
+    <div class="post-grid">
 
-  <section>
-    <div style="max-width:var(--container-max);margin:0 auto;padding:56px var(--container-padding) 120px;display:grid;grid-template-columns:1fr 340px;gap:60px;" class="post-layout post-body-pad">
+      <!-- ── Left: sticky Table of Contents + CTA + Share ── -->
+      <aside class="post-toc-wrap">
+        <div class="post-toc">
+          <div>
+            <p class="post-toc-title">In this Article</p>
+            <ul class="post-toc-list" id="tocList"></ul>
+          </div>
 
-      <article>
-        <img src="/assets/blogpost/database-reactivation/db_rat.webp" alt="Your Old Customer List Is Worth More Than You Think" style="width:100%;max-height:500px;height:auto;object-fit:contain;object-position:center;border-radius:4px;margin-bottom:24px;background:#f5f5f3;">
+          <div class="post-toc-cta">
+            <h4>Partner with our AI team.</h4>
+            <a href="/contact">CONTACT US <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+          </div>
+
+          <div>
+            <p class="post-share-label">Share this article on:</p>
+            <div class="post-share-row">
+              <a class="post-share-btn" href="https://www.facebook.com/sharer/sharer.php?u=https://a2b.services/blog/post/database-reactivation/" target="_blank" rel="noopener" aria-label="Share on Facebook"><i class="fab fa-facebook-f"></i></a>
+              <a class="post-share-btn" href="https://twitter.com/intent/tweet?url=https://a2b.services/blog/post/database-reactivation/&text=Your%20Old%20Customer%20List%20Is%20Worth%20More%20Than%20You%20Think" target="_blank" rel="noopener" aria-label="Share on X"><i class="fa-brands fa-x-twitter"></i></a>
+              <a class="post-share-btn" href="https://www.linkedin.com/sharing/share-offsite/?url=https://a2b.services/blog/post/database-reactivation/" target="_blank" rel="noopener" aria-label="Share on LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+            </div>
+          </div>
+        </div>
+      </aside>
+
+      <!-- ── Right: article content ── -->
+      <div>
+        <a href="/blog" style="display:inline-flex;align-items:center;gap:6px;font-size:0.85rem;color:rgba(0,0,0,0.4);text-decoration:none;margin-bottom:28px;letter-spacing:0.1px;transition:color 0.2s;" onmouseover="this.style.color='#0a0a0a'" onmouseout="this.style.color='rgba(0,0,0,0.4)'">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+          Back to Blog
+        </a>
+
+        <img src="/assets/blogpost/database-reactivation/db_rat.webp" alt="Your Old Customer List Is Worth More Than You Think" style="width:100%;max-height:420px;height:auto;object-fit:cover;object-position:center;border-radius:10px;margin-bottom:32px;background:#f5f5f3;">
+
+        <p style="font-size:0.72rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#0a7d4f;margin-bottom:16px;">Field Notes</p>
+        <h1 style="font-family:Inter,sans-serif;font-size:clamp(1.9rem,4vw,2.7rem);font-weight:800;line-height:1.15;color:#0a0a0a;letter-spacing:-0.6px;margin-bottom:20px;">Your Old Customer List Is Worth More Than You Think</h1>
+
+        <div style="display:flex;align-items:center;gap:14px;font-size:0.85rem;color:rgba(0,0,0,0.5);flex-wrap:wrap;padding-bottom:22px;margin-bottom:8px;border-bottom:1px solid rgba(0,0,0,0.08);">
+          <span style="display:inline-flex;align-items:center;gap:7px;">
+            <span style="width:26px;height:26px;border-radius:50%;background:#0a0a0a;color:#fff;display:inline-flex;align-items:center;justify-content:center;font-size:0.75rem;font-weight:700;">A</span>
+            Posted by: <strong style="color:#0a0a0a;font-weight:600;">Akhil</strong>
+          </span>
+          <span style="width:3px;height:3px;border-radius:50%;background:rgba(0,0,0,0.3);"></span>
+          <span>June 26, 2026 / 3 min read</span>
+        </div>
+
+        <article id="post-article">
         
         <div class="blog-post-body"><p>Most businesses are sitting on a list they never look at twice. Past customers who haven’t booked in a year. Leads who went quiet after one phone call. Subscribers who stopped opening emails months ago. That list isn’t dead weight, it’s unfinished business, and it’s usually one of the cheapest sources of new revenue a business already owns.</p>
 <p>The instinct is to focus all the marketing budget on bringing in new people. But new customers are expensive to win, and most businesses already have hundreds (sometimes thousands) of past contacts who already know who they are, have already paid them once, and just haven’t been asked to come back.</p>
@@ -146,44 +197,9 @@
 <h3><i>Curious what’s sitting in your own list?</i></h3>
 <p><i>A2B AI Technologies builds and manages database reactivation campaigns end-to-end from segmenting your contacts to writing the sequences to training the AI that handles the replies. Reach out and we’ll take a look at what your list could be worth.</i></p>
 <p><i>Get in touch:   info@a2b.services   |   www.a2b.services</i></p></div>
-      </article>
+        </article>
+      </div>
 
-      <aside class="post-sidebar" style="align-self:start;position:sticky;top:100px;">
-        <div style="display:flex;flex-direction:column;gap:16px;">
-
-          <div class="post-sidebar-card" style="background:#f9f9f8;border:1px solid rgba(0,0,0,0.07);">
-            <p style="font-size:0.68rem;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:rgba(0,0,0,0.35);margin-bottom:14px;">Published</p>
-            <div style="display:flex;flex-direction:column;gap:10px;">
-              <div>
-                <p style="font-size:0.72rem;color:rgba(0,0,0,0.4);margin-bottom:3px;">Author</p>
-                <p style="font-size:0.9rem;font-weight:600;color:#0a0a0a;margin:0;">Akhil</p>
-              </div>
-              <div style="height:1px;background:rgba(0,0,0,0.06);"></div>
-              <div>
-                <p style="font-size:0.72rem;color:rgba(0,0,0,0.4);margin-bottom:3px;">Date</p>
-                <p style="font-size:0.9rem;font-weight:600;color:#0a0a0a;margin:0;">June 26, 2026</p>
-              </div>
-            </div>
-          </div>
-
-          <div class="post-sidebar-card" style="background:#0a0a0a;">
-            <p style="font-size:0.68rem;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:rgba(255,255,255,0.3);margin-bottom:12px;">Work With Us</p>
-            <h4 style="font-family:Inter,sans-serif;font-size:1rem;font-weight:700;color:#ffffff;margin-bottom:8px;line-height:1.3;">Have a project in mind?</h4>
-            <p style="font-size:0.82rem;color:rgba(255,255,255,0.45);line-height:1.65;margin-bottom:0;">Let&rsquo;s bring your ideas to life &mdash; get in touch or book a free call with our team.</p>
-            <div style="display:flex;flex-direction:column;gap:10px;margin-top:20px;">
-              <a href="/contact" class="post-cta-btn" style="background:rgba(255,255,255,0.08);color:#ffffff;margin-top:0;">
-                Get in Touch
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-              </a>
-              <a href="/contact" class="post-cta-btn" style="background:#00DF81;color:#000000;margin-top:0;">
-                Book a Meeting
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
-              </a>
-            </div>
-          </div>
-
-        </div>
-      </aside>
     </div>
   </section>
 
@@ -237,5 +253,41 @@
 
 </div>
 <script type="module" src="/src/main.js"></script>
+<script>
+  (function () {
+    var bar = document.getElementById('readProgress');
+    var article = document.getElementById('post-article');
+    var tocList = document.getElementById('tocList');
+    var body = document.querySelector('.blog-post-body');
+    var heads = body ? Array.prototype.slice.call(body.querySelectorAll('h2')) : [];
+    var items = [];
+    heads.forEach(function (h, i) {
+      if (!h.id) h.id = 'sec-' + (i + 1);
+      var a = document.createElement('a');
+      a.href = '#' + h.id;
+      a.textContent = h.textContent;
+      var li = document.createElement('li');
+      li.appendChild(a);
+      if (tocList) tocList.appendChild(li);
+      items.push({ el: h, link: a });
+    });
+    function update() {
+      if (bar && article) {
+        var top = article.offsetTop;
+        var total = article.offsetHeight - window.innerHeight + 200;
+        var scrolled = window.scrollY - top + 200;
+        bar.style.width = Math.min(Math.max(scrolled / total, 0), 1) * 100 + '%';
+      }
+      if (items.length) {
+        var cur = items[0];
+        items.forEach(function (it) { if (it.el.getBoundingClientRect().top <= 120) cur = it; });
+        items.forEach(function (it) { it.link.classList.toggle('active', it === cur); });
+      }
+    }
+    window.addEventListener('scroll', update, { passive: true });
+    window.addEventListener('resize', update);
+    update();
+  })();
+</script>
 </body>
 </html>

@@ -57,27 +57,37 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="/src/style.css" />
   <style>
-    .blog-post-body { font-size:1.05rem; line-height:1.85; color:#222222; }
-    .blog-post-body h1,.blog-post-body h2,.blog-post-body h3,.blog-post-body h4 { font-family:Inter,sans-serif; font-weight:700; color:#0a0a0a; line-height:1.2; letter-spacing:-0.3px; margin-top:2.4em; margin-bottom:0.6em; }
+    html { scroll-behavior: smooth; }
+    .blog-post-body h2[id] { scroll-margin-top: 96px; }
+    /* ── Reading column: narrow, centered, distraction-free ── */
+    :root { --read-max: 720px; }
+    .read-wrap { max-width:var(--read-max); margin:0 auto; padding-left:24px; padding-right:24px; }
+
+    /* ── Slim reading-progress bar ── */
+    .read-progress { position:fixed; top:0; left:0; height:3px; width:0; background:#00DF81; z-index:1200; transition:width 0.08s linear; }
+
+    .blog-post-body { font-size:1.18rem; line-height:1.8; color:#2b2b2b; font-family:Inter,sans-serif; }
+    /* Lead paragraph — larger, sets the reading tone */
+    .blog-post-body > p:first-of-type { font-size:1.32rem; line-height:1.65; color:#151515; margin-bottom:1.4em; }
+    .blog-post-body h1,.blog-post-body h2,.blog-post-body h3,.blog-post-body h4 { font-family:Inter,sans-serif; font-weight:700; color:#0a0a0a; line-height:1.25; letter-spacing:-0.4px; margin-top:2em; margin-bottom:0.5em; }
     .blog-post-body h1 { font-size:2rem; }
-    .blog-post-body h2 { font-size:1.55rem; }
-    .blog-post-body h3 { font-size:1.25rem; }
-    .blog-post-body h4 { font-size:1.05rem; }
-    .blog-post-body p  { margin-bottom:1.55em; }
+    .blog-post-body h2 { font-size:1.6rem; }
+    .blog-post-body h3 { font-size:1.28rem; }
+    .blog-post-body h4 { font-size:1.08rem; }
+    .blog-post-body p  { margin-bottom:1.5em; }
     .blog-post-body img { width:100%; border-radius:8px; margin:2em 0; display:block; }
-    .blog-post-body blockquote { border-left:3px solid #00DF81; padding:4px 0 4px 20px; margin:2em 0; color:rgba(0,0,0,0.6); font-style:italic; }
-    .blog-post-body ul,.blog-post-body ol { padding-left:1.5em; margin-bottom:1.55em; }
-    .blog-post-body li { margin-bottom:0.5em; }
+    .blog-post-body blockquote { border-left:3px solid #00DF81; padding:4px 0 4px 22px; margin:2em 0; color:rgba(0,0,0,0.6); font-style:italic; font-size:1.22rem; }
+    .blog-post-body ul,.blog-post-body ol { padding-left:1.4em; margin-bottom:1.5em; }
+    .blog-post-body li { margin-bottom:0.7em; padding-left:0.2em; }
     .blog-post-body strong { color:#0a0a0a; font-weight:600; }
-    .blog-post-body a { color:#00DF81; text-decoration:underline; text-underline-offset:3px; }
-    .blog-post-body hr,.blog-post-body .post-hr { border:none; border-top:1px solid rgba(0,0,0,0.08); margin:2.5em 0; }
-    .blog-post-body table { width:100%; border-collapse:collapse; margin-bottom:1.55em; font-size:0.95rem; }
+    .blog-post-body a { color:#0a7d4f; text-decoration:underline; text-underline-offset:3px; text-decoration-thickness:1px; transition:color 0.15s; }
+    .blog-post-body a:hover { color:#00DF81; }
+    .blog-post-body hr,.blog-post-body .post-hr { border:none; border-top:1px solid rgba(0,0,0,0.1); margin:2.6em 0; }
+    .blog-post-body table { width:100%; border-collapse:collapse; margin-bottom:1.5em; font-size:0.98rem; }
     .blog-post-body th { text-align:left; font-weight:600; color:#0a0a0a; padding:10px 14px; border-bottom:2px solid rgba(0,0,0,0.1); }
     .blog-post-body td { padding:10px 14px; border-bottom:1px solid rgba(0,0,0,0.06); }
-    .blog-section-tag { font-size:0.7rem !important; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:rgba(0,0,0,0.35) !important; margin-top:2.5em !important; margin-bottom:0.5em !important; }
-    .post-sidebar-card { border-radius:12px; padding:28px; }
-    .post-cta-btn { display:flex; align-items:center; justify-content:space-between; width:100%; box-sizing:border-box; background:#0a0a0a; color:#fff; font-family:Inter,sans-serif; font-size:0.9rem; font-weight:500; padding:14px 20px; border:none; border-radius:6px; text-decoration:none; cursor:pointer; margin-top:20px; transition:background 0.2s ease; }
-    .post-cta-btn:hover { opacity:0.9; }
+    /* Closing italic note block */
+    .blog-post-body .end-note p { font-size:1.02rem; color:rgba(0,0,0,0.55); line-height:1.7; }
     .post-hr { border:none; border-top:1px solid rgba(0,0,0,0.08); margin:2.5em 0; }
     /* Fix sticky: overflow-x:hidden on html/body breaks position:sticky.
        clip behaves identically visually but does NOT create a scroll container. */
@@ -88,11 +98,34 @@
     #navbar .nav-logo-text { color:#0a0a0a !important; }
     #navbar .nav-link { color:#0a0a0a !important; }
     #navbar .nav-slash { color:rgba(0,0,0,0.25) !important; }
-    @media (max-width:900px) {
-      .post-layout { grid-template-columns:1fr !important; }
-      .post-sidebar { position:static !important; align-self:auto !important; }
-      .post-header-pad { padding:48px 24px 36px !important; }
-      .post-body-pad { padding:0 24px 80px !important; }
+    /* ── Two-column layout with sticky Table of Contents ── */
+    .post-grid { max-width:var(--container-max); margin:0 auto; padding:0 var(--container-padding); display:grid; grid-template-columns:250px 1fr; gap:64px; align-items:start; }
+    .post-toc-wrap { position:sticky; top:110px; align-self:start; }
+    .post-toc { display:flex; flex-direction:column; gap:28px; }
+    .post-toc-title { font-size:1.05rem; font-weight:800; color:#0a0a0a; margin:0 0 16px; font-family:Inter,sans-serif; }
+    .post-toc-list { list-style:none; padding:0; margin:0; border-left:2px solid rgba(0,0,0,0.09); }
+    .post-toc-list a { display:block; padding:8px 0 8px 18px; margin-left:-2px; border-left:2px solid transparent; font-size:0.9rem; line-height:1.45; color:rgba(0,0,0,0.5); text-decoration:none; transition:color 0.18s,border-color 0.18s; }
+    .post-toc-list a:hover { color:#0a0a0a; }
+    .post-toc-list a.active { color:#0a0a0a; font-weight:600; border-left-color:#00DF81; }
+    .post-toc-cta { background:#0a0a0a; border-radius:14px; padding:22px; }
+    .post-toc-cta h4 { font-family:Inter,sans-serif; font-size:1rem; font-weight:700; color:#fff; margin:0 0 14px; line-height:1.35; }
+    .post-toc-cta a { display:inline-flex; align-items:center; justify-content:space-between; gap:10px; width:100%; box-sizing:border-box; background:#00DF81; color:#000; font-family:Inter,sans-serif; font-size:0.85rem; font-weight:600; padding:12px 16px; border-radius:8px; text-decoration:none; transition:opacity 0.2s; }
+    .post-toc-cta a:hover { opacity:0.9; }
+    .post-share-label { font-size:0.75rem; font-weight:600; letter-spacing:0.5px; color:rgba(0,0,0,0.5); margin:0 0 12px; }
+    .post-share-row { display:flex; gap:10px; }
+    .post-share-btn { width:36px; height:36px; border-radius:8px; background:#0a0a0a; color:#fff; display:inline-flex; align-items:center; justify-content:center; text-decoration:none; transition:opacity 0.2s; }
+    .post-share-btn:hover { opacity:0.8; }
+
+    @media (max-width:960px) {
+      .post-grid { grid-template-columns:1fr; gap:0; }
+      .post-toc-wrap { display:none; }
+    }
+    @media (max-width:768px) {
+      .blog-post-body { font-size:1.08rem; }
+      .blog-post-body > p:first-of-type { font-size:1.18rem; }
+      .blog-post-body h2 { font-size:1.4rem; }
+      .post-header-pad { padding:100px 0 32px !important; }
+      .post-body-pad { padding:36px 0 80px !important; }
     }
   </style>
   <script async src="https://plausible.io/js/pa-0lcm4EUVXsjASg9rf6RN1.js"></script>
@@ -100,6 +133,7 @@
   <script src="/analytics.js"></script>
 </head>
 <body>
+<div class="read-progress" id="readProgress"></div>
 <div id="app">
 
 <nav class="navbar" id="navbar">
@@ -142,97 +176,106 @@
 
 <main style="background:#ffffff;min-height:100vh;">
 
-  <section>
-    <div style="max-width:var(--container-max);margin:0 auto;padding:130px var(--container-padding) 56px;" class="post-header-pad">
-      <a href="/blog" style="display:inline-flex;align-items:center;gap:6px;font-size:0.85rem;color:rgba(0,0,0,0.4);text-decoration:none;margin-bottom:44px;letter-spacing:0.1px;transition:color 0.2s;" onmouseover="this.style.color='#0a0a0a'" onmouseout="this.style.color='rgba(0,0,0,0.4)'">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
-        Back to Blog
-      </a>
-      <h1 style="font-family:Inter,sans-serif;font-size:clamp(2rem,4vw,3.2rem);font-weight:800;line-height:1.12;color:#0a0a0a;letter-spacing:-0.5px;margin-bottom:20px;">The Complete Guide to AI Agents for Businesses in 2026</h1>
-      <p style="font-size:1.1rem;color:rgba(0,0,0,0.55);line-height:1.65;max-width:680px;margin-bottom:28px;">What an AI agent actually is, where it delivers ROI fastest, and how to start with one focused agent.</p>
-      <div style="display:flex;align-items:center;gap:14px;font-size:0.85rem;color:rgba(0,0,0,0.45);flex-wrap:wrap;margin-bottom:40px;">
-        <span>Akhil</span>
-        <span style="width:3px;height:3px;border-radius:50%;background:rgba(0,0,0,0.3);flex-shrink:0;"></span>
-        <span>July 4, 2026</span>
+  <section style="padding-top:110px;padding-bottom:100px;">
+    <div class="post-grid">
 
-      </div>
-      <div style="height:1px;background:rgba(0,0,0,0.08);"></div>
-    </div>
-  </section>
+      <!-- ── Left: sticky Table of Contents + CTA + Share ── -->
+      <aside class="post-toc-wrap">
+        <div class="post-toc">
+          <div>
+            <p class="post-toc-title">In this Article</p>
+            <ul class="post-toc-list" id="tocList">
+              <li><a href="#sec-what">What an AI agent actually is</a></li>
+              <li><a href="#sec-why">Why this matters right now</a></li>
+              <li><a href="#sec-types">The main types of AI agents</a></li>
+              <li><a href="#sec-business">What it looks like for your business</a></li>
+              <li><a href="#sec-limits">What it doesn&rsquo;t do</a></li>
+              <li><a href="#sec-start">How to actually start</a></li>
+            </ul>
+          </div>
 
-  <section>
-    <div style="max-width:var(--container-max);margin:0 auto;padding:56px var(--container-padding) 120px;display:grid;grid-template-columns:1fr 340px;gap:60px;" class="post-layout post-body-pad">
+          <div class="post-toc-cta">
+            <h4>Partner with our AI team.</h4>
+            <a href="/contact">CONTACT US <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+          </div>
 
-      <article>
-        <img src="/assets/blogpost/guid2026/aiguide.jpg" alt="The Complete Guide to AI Agents for Businesses in 2026" style="width:100%;max-height:500px;height:auto;object-fit:contain;object-position:center;border-radius:4px;margin-bottom:24px;background:#f5f5f3;">
+          <div>
+            <p class="post-share-label">Share this article on:</p>
+            <div class="post-share-row">
+              <a class="post-share-btn" href="https://www.facebook.com/sharer/sharer.php?u=https://a2b.services/blog/post/complete-guide-to-ai-agents-2026/" target="_blank" rel="noopener" aria-label="Share on Facebook"><i class="fab fa-facebook-f"></i></a>
+              <a class="post-share-btn" href="https://twitter.com/intent/tweet?url=https://a2b.services/blog/post/complete-guide-to-ai-agents-2026/&text=The%20Complete%20Guide%20to%20AI%20Agents%20for%20Businesses%20in%202026" target="_blank" rel="noopener" aria-label="Share on X"><i class="fa-brands fa-x-twitter"></i></a>
+              <a class="post-share-btn" href="https://www.linkedin.com/sharing/share-offsite/?url=https://a2b.services/blog/post/complete-guide-to-ai-agents-2026/" target="_blank" rel="noopener" aria-label="Share on LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+            </div>
+          </div>
+        </div>
+      </aside>
 
+      <!-- ── Right: article content ── -->
+      <div>
+        <a href="/blog" style="display:inline-flex;align-items:center;gap:6px;font-size:0.85rem;color:rgba(0,0,0,0.4);text-decoration:none;margin-bottom:28px;letter-spacing:0.1px;transition:color 0.2s;" onmouseover="this.style.color='#0a0a0a'" onmouseout="this.style.color='rgba(0,0,0,0.4)'">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+          Back to Blog
+        </a>
+
+        <img src="/assets/blogpost/guid2026/aiguide.jpg" alt="The Complete Guide to AI Agents for Businesses in 2026" style="width:100%;max-height:420px;height:auto;object-fit:cover;object-position:center;border-radius:10px;margin-bottom:32px;background:#f5f5f3;">
+
+        <p style="font-size:0.72rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#0a7d4f;margin-bottom:16px;">AI Agents &middot; Guide</p>
+        <h1 style="font-family:Inter,sans-serif;font-size:clamp(1.9rem,4vw,2.7rem);font-weight:800;line-height:1.15;color:#0a0a0a;letter-spacing:-0.6px;margin-bottom:20px;">The Complete Guide to AI Agents for Businesses in 2026</h1>
+
+        <div style="display:flex;align-items:center;gap:14px;font-size:0.85rem;color:rgba(0,0,0,0.5);flex-wrap:wrap;padding-bottom:22px;margin-bottom:8px;border-bottom:1px solid rgba(0,0,0,0.08);">
+          <span style="display:inline-flex;align-items:center;gap:7px;">
+            <span style="width:26px;height:26px;border-radius:50%;background:#0a0a0a;color:#fff;display:inline-flex;align-items:center;justify-content:center;font-size:0.75rem;font-weight:700;">A</span>
+            Posted by: <strong style="color:#0a0a0a;font-weight:600;">Akhil</strong>
+          </span>
+          <span style="width:3px;height:3px;border-radius:50%;background:rgba(0,0,0,0.3);"></span>
+          <span>July 4, 2026 / 4 min read</span>
+        </div>
+
+        <article id="post-article">
         <div class="blog-post-body"><p>If you&rsquo;ve heard &ldquo;AI agent&rdquo; thrown around a dozen times this year and still aren&rsquo;t sure how it&rsquo;s different from the chatbot you already tried, you&rsquo;re not alone. Most business owners picture a fancier version of the same thing. It isn&rsquo;t. Here&rsquo;s what&rsquo;s actually changed, and what it means for a business your size.</p>
-<h2>What an AI agent actually is</h2>
+<h2 id="sec-what">What an AI agent actually is</h2>
 <p>A chatbot waits for you to ask something, answers, and stops. An AI agent works differently: you give it a goal, and it plans the steps, takes actions, checks the results, and adjusts, without you approving each move along the way. The simplest way to tell the difference: if it waits for the next prompt, it&rsquo;s a tool. If it decides its own next step, it&rsquo;s an agent.</p>
 <p>In practice, that means an agent doesn&rsquo;t just answer &ldquo;what are your hours?&rdquo; It can qualify a lead, check availability, book the appointment, and follow up if the person goes quiet, all in one continuous sequence.</p>
-<h2>Why this matters right now</h2>
+<h2 id="sec-why">Why this matters right now</h2>
 <p>Adoption is moving fast, but there&rsquo;s a real gap between businesses experimenting with agents and businesses actually running them day to day. Most companies exploring AI agents are still in the trial phase, with only a small fraction having moved a fully working agent into daily use. The businesses closing that gap aren&rsquo;t the ones with the biggest budgets. They&rsquo;re the ones who picked one specific, measurable problem, like a slow reply time, a list of no-shows, or a pile of unanswered reviews, and built one agent to solve it, instead of trying to &ldquo;add AI&rdquo; everywhere at once.</p>
-<h2>The main types of AI agents (in plain terms)</h2>
+<h2 id="sec-types">The main types of AI agents (in plain terms)</h2>
 <ul>
 <li><strong>Reactive agents:</strong> respond to a specific trigger (a form fill, a missed call, a tag added to a contact) and run a fixed set of steps.</li>
 <li><strong>Goal-based agents:</strong> given an outcome to hit (get this lead booked, get this review request answered), they&rsquo;ll try different paths to get there.</li>
 <li><strong>Learning agents:</strong> improve their responses over time based on what&rsquo;s worked before.</li>
 </ul>
 <p>Most small businesses don&rsquo;t need the most advanced version. A reactive or goal-based agent, built around one workflow, is usually where the real ROI is.</p>
-<h2>What this looks like for a small or mid-sized business</h2>
+<h2 id="sec-business">What this looks like for a small or mid-sized business</h2>
 <p>Here&rsquo;s where the theory becomes concrete. Three places an agent earns its keep almost immediately:</p>
 <ul>
 <li><strong>Reviving old contacts.</strong> Instead of a static &ldquo;we miss you&rdquo; text, an agent can tag contacts by how long they&rsquo;ve been dormant, run a sequenced outreach campaign, and hand off to a human only when someone actually replies.</li>
 <li><strong>Answering inbound messages instantly.</strong> Whoever replies first usually wins the booking. An agent trained on your services, pricing, and FAQs can pick up a conversation the moment it comes in at 11pm on a Sunday, not just during business hours.</li>
 <li><strong>Managing reviews without babysitting them.</strong> An agent can ask for feedback after a visit, route the happy responses to your public Google listing, and quietly send anything under four stars straight to you instead of the internet.</li>
 </ul>
-<h2>What it doesn&rsquo;t do</h2>
+<h2 id="sec-limits">What it doesn&rsquo;t do</h2>
 <p>An agent isn&rsquo;t magic and isn&rsquo;t a replacement for judgment. It&rsquo;s excellent at high-volume, repeatable situations with clear rules, not one-off decisions or anything genuinely new. The goal isn&rsquo;t &ldquo;hand everything to AI.&rdquo; It&rsquo;s: automate the predictable, keep a human on the exceptions.</p>
-<h2>How to actually start</h2>
+<h2 id="sec-start">How to actually start</h2>
 <p>Don&rsquo;t start by asking &ldquo;what can AI do for my business?&rdquo; That question is too big and leads to nothing shipping. Start by asking &ldquo;where do we lose time or money to something repeatable?&rdquo; Missed follow-ups, slow replies, and unanswered reviews are usually the easiest places to find the answer, because the cost of not fixing them is already visible in your day-to-day.</p>
 <p>This is exactly the approach behind <a href="/blog/post/database-reactivation/">Database Reactivation</a> and our AI conversation bots at A2B (A2B AI Technologies): one focused agent, wired into a workflow that already exists, solving one measurable problem before it&rsquo;s asked to solve ten.</p>
 <p>If you&rsquo;re not sure where your business would get the fastest return from an agent, that&rsquo;s usually the actual starting question: not &ldquo;should we use AI,&rdquo; but &ldquo;which slow, repeatable thing should we hand off first.&rdquo;</p>
 <hr class="post-hr">
+<div class="end-note">
 <p><i>A2B AI Technologies builds and manages focused AI agents end-to-end, from mapping the workflow to training the AI that handles the conversations. <a href="/contact">Get in touch</a> and we&rsquo;ll help you find where your business gets the fastest return.</i></p>
-<p><i>This article was also published on <a href="https://medium.com/@akhilams172/the-complete-guide-to-ai-agents-for-businesses-in-2026-897411a2cde8" target="_blank" rel="noopener">Medium</a>.</i></p></div>
-      </article>
+<p><i>This article was also published on <a href="https://medium.com/@akhilams172/the-complete-guide-to-ai-agents-for-businesses-in-2026-897411a2cde8" target="_blank" rel="noopener">Medium</a>.</i></p>
+</div></div>
 
-      <aside class="post-sidebar" style="align-self:start;position:sticky;top:100px;">
-        <div style="display:flex;flex-direction:column;gap:16px;">
-
-          <div class="post-sidebar-card" style="background:#f9f9f8;border:1px solid rgba(0,0,0,0.07);">
-            <p style="font-size:0.68rem;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:rgba(0,0,0,0.35);margin-bottom:14px;">Published</p>
-            <div style="display:flex;flex-direction:column;gap:10px;">
-              <div>
-                <p style="font-size:0.72rem;color:rgba(0,0,0,0.4);margin-bottom:3px;">Author</p>
-                <p style="font-size:0.9rem;font-weight:600;color:#0a0a0a;margin:0;">Akhil</p>
-              </div>
-              <div style="height:1px;background:rgba(0,0,0,0.06);"></div>
-              <div>
-                <p style="font-size:0.72rem;color:rgba(0,0,0,0.4);margin-bottom:3px;">Date</p>
-                <p style="font-size:0.9rem;font-weight:600;color:#0a0a0a;margin:0;">July 4, 2026</p>
-              </div>
-            </div>
+        <!-- Inline author + CTA, placed AFTER the read so it doesn't distract -->
+        <div style="margin-top:56px;padding:28px;border-radius:14px;background:#0a0a0a;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:20px;">
+          <div style="max-width:380px;">
+            <p style="font-size:0.68rem;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:rgba(255,255,255,0.3);margin-bottom:8px;">Work With Us</p>
+            <h4 style="font-family:Inter,sans-serif;font-size:1.15rem;font-weight:700;color:#fff;margin:0 0 6px;line-height:1.3;">Want one focused agent solving one real problem?</h4>
+            <p style="font-size:0.88rem;color:rgba(255,255,255,0.5);line-height:1.6;margin:0;">Book a free call and we&rsquo;ll find where your business gets the fastest return.</p>
           </div>
-
-          <div class="post-sidebar-card" style="background:#0a0a0a;">
-            <p style="font-size:0.68rem;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:rgba(255,255,255,0.3);margin-bottom:12px;">Work With Us</p>
-            <h4 style="font-family:Inter,sans-serif;font-size:1rem;font-weight:700;color:#ffffff;margin-bottom:8px;line-height:1.3;">Have a project in mind?</h4>
-            <p style="font-size:0.82rem;color:rgba(255,255,255,0.45);line-height:1.65;margin-bottom:0;">Let&rsquo;s bring your ideas to life &mdash; get in touch or book a free call with our team.</p>
-            <div style="display:flex;flex-direction:column;gap:10px;margin-top:20px;">
-              <a href="/contact" class="post-cta-btn" style="background:rgba(255,255,255,0.08);color:#ffffff;margin-top:0;">
-                Get in Touch
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-              </a>
-              <a href="/contact" class="post-cta-btn" style="background:#00DF81;color:#000000;margin-top:0;">
-                Book a Meeting
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
-              </a>
-            </div>
-          </div>
-
+          <a href="/contact" class="btn-arrow" style="flex-shrink:0;"><span class="btn-label">Book a Meeting</span><span class="btn-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span></a>
         </div>
-      </aside>
+        </article>
+      </div>
+
     </div>
   </section>
 
@@ -288,5 +331,39 @@
 
 </div>
 <script type="module" src="/src/main.js"></script>
+<script>
+  (function () {
+    var bar = document.getElementById('readProgress');
+    var article = document.getElementById('post-article');
+    var tocLinks = Array.prototype.slice.call(document.querySelectorAll('#tocList a'));
+    var sections = tocLinks
+      .map(function (a) { return document.getElementById(a.getAttribute('href').slice(1)); })
+      .filter(Boolean);
+
+    function update() {
+      // Reading-progress bar
+      if (bar && article) {
+        var top = article.offsetTop;
+        var total = article.offsetHeight - window.innerHeight + 200;
+        var scrolled = window.scrollY - top + 200;
+        bar.style.width = Math.min(Math.max(scrolled / total, 0), 1) * 100 + '%';
+      }
+      // TOC scroll-spy: highlight the section nearest the top
+      if (sections.length) {
+        var current = sections[0];
+        for (var i = 0; i < sections.length; i++) {
+          if (sections[i].getBoundingClientRect().top <= 120) current = sections[i];
+        }
+        tocLinks.forEach(function (a) {
+          a.classList.toggle('active', a.getAttribute('href').slice(1) === current.id);
+        });
+      }
+    }
+
+    window.addEventListener('scroll', update, { passive: true });
+    window.addEventListener('resize', update);
+    update();
+  })();
+</script>
 </body>
 </html>
