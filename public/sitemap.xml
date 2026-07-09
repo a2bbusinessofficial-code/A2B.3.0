@@ -9,19 +9,19 @@
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://a2b.services/services</loc>
+    <loc>https://a2b.services/services/</loc>
     <lastmod>2026-06-23</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://a2b.services/about</loc>
+    <loc>https://a2b.services/about/</loc>
     <lastmod>2026-06-23</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://a2b.services/contact</loc>
+    <loc>https://a2b.services/contact/</loc>
     <lastmod>2026-06-23</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
@@ -33,19 +33,19 @@
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://a2b.services/blog</loc>
+    <loc>https://a2b.services/blog/</loc>
     <lastmod>2026-06-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://a2b.services/faq</loc>
+    <loc>https://a2b.services/faq/</loc>
     <lastmod>2026-06-23</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://a2b.services/services/dormant-lead-recovery</loc>
+    <loc>https://a2b.services/services/dormant-lead-recovery/</loc>
     <lastmod>2026-06-23</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
@@ -53,25 +53,25 @@
 
   <!-- Service Pages -->
   <url>
-    <loc>https://a2b.services/services/ai-automation</loc>
+    <loc>https://a2b.services/services/ai-automation/</loc>
     <lastmod>2026-06-23</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.85</priority>
   </url>
   <url>
-    <loc>https://a2b.services/services/ai-agents</loc>
+    <loc>https://a2b.services/services/ai-agents/</loc>
     <lastmod>2026-06-23</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.85</priority>
   </url>
   <url>
-    <loc>https://a2b.services/services/custom-ai</loc>
+    <loc>https://a2b.services/services/custom-ai/</loc>
     <lastmod>2026-06-23</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.85</priority>
   </url>
   <url>
-    <loc>https://a2b.services/services/ai-strategy</loc>
+    <loc>https://a2b.services/services/ai-strategy/</loc>
     <lastmod>2026-06-23</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.85</priority>
@@ -79,25 +79,25 @@
 
   <!-- Labs -->
   <url>
-    <loc>https://a2b.services/labs</loc>
+    <loc>https://a2b.services/labs/</loc>
     <lastmod>2026-06-23</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://a2b.services/labs/ztrike</loc>
+    <loc>https://a2b.services/labs/ztrike/</loc>
     <lastmod>2026-06-23</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://a2b.services/labs/roastmysnap</loc>
+    <loc>https://a2b.services/labs/roastmysnap/</loc>
     <lastmod>2026-06-23</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://a2b.services/labs/gitart</loc>
+    <loc>https://a2b.services/labs/gitart/</loc>
     <lastmod>2026-06-23</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
@@ -105,37 +105,37 @@
 
   <!-- Blog Posts -->
   <url>
-    <loc>https://a2b.services/blog/post/n8n-v2-0</loc>
+    <loc>https://a2b.services/blog/post/n8n-v2-0/</loc>
     <lastmod>2025-12-07</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://a2b.services/blog/post/built-50-automations-that-clients-never-used</loc>
+    <loc>https://a2b.services/blog/post/built-50-automations-that-clients-never-used/</loc>
     <lastmod>2025-12-09</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://a2b.services/blog/post/learn-n8n-in-2026</loc>
+    <loc>https://a2b.services/blog/post/learn-n8n-in-2026/</loc>
     <lastmod>2025-12-11</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://a2b.services/blog/post/i-wasted-6-months-building-automations-that-kept-breaking-here-s-what-actually-fixed-them</loc>
+    <loc>https://a2b.services/blog/post/i-wasted-6-months-building-automations-that-kept-breaking-here-s-what-actually-fixed-them/</loc>
     <lastmod>2025-12-04</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://a2b.services/blog/post/debugging-a-workflow-that-had-zero-error-logs-and-lost-1200</loc>
+    <loc>https://a2b.services/blog/post/debugging-a-workflow-that-had-zero-error-logs-and-lost-1200/</loc>
     <lastmod>2026-01-02</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://a2b.services/blog/post/built-a-system-that-does-500-in-the-time-i-used-to-do-5</loc>
+    <loc>https://a2b.services/blog/post/built-a-system-that-does-500-in-the-time-i-used-to-do-5/</loc>
     <lastmod>2026-01-04</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
@@ -143,49 +143,49 @@
 
   <!-- Case Studies -->
   <url>
-    <loc>https://a2b.services/case-studies</loc>
+    <loc>https://a2b.services/case-studies/</loc>
     <lastmod>2026-06-23</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://a2b.services/case-studies/sacred-text-publishing</loc>
+    <loc>https://a2b.services/case-studies/sacred-text-publishing/</loc>
     <lastmod>2026-06-23</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://a2b.services/case-studies/medical-consultation</loc>
+    <loc>https://a2b.services/case-studies/medical-consultation/</loc>
     <lastmod>2026-06-23</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://a2b.services/case-studies/image-generation</loc>
+    <loc>https://a2b.services/case-studies/image-generation/</loc>
     <lastmod>2026-06-23</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://a2b.services/case-studies/knowledge-agent</loc>
+    <loc>https://a2b.services/case-studies/knowledge-agent/</loc>
     <lastmod>2026-06-23</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://a2b.services/case-studies/seo-reporting</loc>
+    <loc>https://a2b.services/case-studies/seo-reporting/</loc>
     <lastmod>2026-06-23</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://a2b.services/case-studies/visual-brand-intelligence</loc>
+    <loc>https://a2b.services/case-studies/visual-brand-intelligence/</loc>
     <lastmod>2026-06-23</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://a2b.services/case-studies/reddit-youtube</loc>
+    <loc>https://a2b.services/case-studies/reddit-youtube/</loc>
     <lastmod>2026-06-23</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
@@ -193,19 +193,19 @@
 
   <!-- Legal -->
   <url>
-    <loc>https://a2b.services/legal/privacy</loc>
+    <loc>https://a2b.services/legal/privacy/</loc>
     <lastmod>2026-06-23</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://a2b.services/legal/cookies</loc>
+    <loc>https://a2b.services/legal/cookies/</loc>
     <lastmod>2026-06-23</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://a2b.services/legal/terms</loc>
+    <loc>https://a2b.services/legal/terms/</loc>
     <lastmod>2026-06-23</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
