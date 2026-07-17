@@ -1,0 +1,302 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/x-icon" href="/assets/favicon.ico" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://a2b.services/blog/post/3-things-business-owners-get-wrong-about-ai-automation/" />
+  <meta name="description" content="The most common AI automation myths we hear on strategy calls — and what's actually true, from an AI agency that builds these systems every week." />
+  <meta name="keywords" content="AI automation myths, AI automation for business owners, does AI replace jobs, when to start AI automation, AI automation strategy, AI agency" />
+  <meta property="og:title" content="3 Things Business Owners Get Wrong About AI Automation | A2B Blog" />
+  <meta property="og:description" content="The most common AI automation myths we hear on strategy calls — and what's actually true, from an AI agency that builds these systems every week." />
+  <meta property="og:image" content="/assets/blogpost/myth/3myth.webp" />
+  <meta property="og:type" content="article" />
+  <meta property="article:published_time" content="2026-07-17" />
+  <meta property="article:author" content="Akhil" />
+  <title>3 Things Business Owners Get Wrong About AI Automation | A2B Blog</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/src/style.css" />
+  <style>
+    html { scroll-behavior: smooth; }
+    .blog-post-body h2[id] { scroll-margin-top: 96px; }
+    :root { --read-max: 720px; }
+    /* ── Slim reading-progress bar ── */
+    .read-progress { position:fixed; top:0; left:0; height:3px; width:0; background:#00DF81; z-index:1200; transition:width 0.08s linear; }
+    .blog-post-body { font-size:1.18rem; line-height:1.8; color:#2b2b2b; font-family:Inter,sans-serif; }
+    .blog-post-body > p:first-of-type { font-size:1.32rem; line-height:1.65; color:#151515; margin-bottom:1.4em; }
+    .blog-post-body h1,.blog-post-body h2,.blog-post-body h3,.blog-post-body h4 { font-family:Inter,sans-serif; font-weight:700; color:#0a0a0a; line-height:1.25; letter-spacing:-0.4px; margin-top:2em; margin-bottom:0.5em; }
+    .blog-post-body h1 { font-size:2rem; }
+    .blog-post-body h2 { font-size:1.6rem; }
+    .blog-post-body h3 { font-size:1.28rem; }
+    .blog-post-body h4 { font-size:1.08rem; }
+    .blog-post-body p  { margin-bottom:1.5em; }
+    .blog-post-body img { width:100%; border-radius:8px; margin:2em 0; display:block; }
+    .blog-post-body blockquote { border-left:3px solid #00DF81; padding:4px 0 4px 22px; margin:2em 0; color:rgba(0,0,0,0.6); font-style:italic; font-size:1.22rem; }
+    .blog-post-body ul,.blog-post-body ol { padding-left:1.4em; margin-bottom:1.5em; }
+    .blog-post-body li { margin-bottom:0.7em; padding-left:0.2em; }
+    .blog-post-body strong { color:#0a0a0a; font-weight:600; }
+    .blog-post-body a { color:#0a7d4f; text-decoration:underline; text-underline-offset:3px; text-decoration-thickness:1px; transition:color 0.15s; }
+    .blog-post-body a:hover { color:#00DF81; }
+    .blog-post-body hr,.blog-post-body .post-hr { border:none; border-top:1px solid rgba(0,0,0,0.1); margin:2.6em 0; }
+    .blog-post-body table { width:100%; border-collapse:collapse; margin-bottom:1.5em; font-size:0.98rem; }
+    .blog-post-body th { text-align:left; font-weight:600; color:#0a0a0a; padding:10px 14px; border-bottom:2px solid rgba(0,0,0,0.1); }
+    .blog-post-body td { padding:10px 14px; border-bottom:1px solid rgba(0,0,0,0.06); }
+    .blog-section-tag { font-size:0.7rem !important; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:rgba(0,0,0,0.35) !important; margin-top:2.5em !important; margin-bottom:0.5em !important; }
+    .post-hr { border:none; border-top:1px solid rgba(0,0,0,0.08); margin:2.5em 0; }
+    /* Fix sticky: overflow-x:hidden on html/body breaks position:sticky.
+       clip behaves identically visually but does NOT create a scroll container. */
+    html, body { overflow-x: clip !important; }
+    /* Force navbar visible on white-background page */
+    #navbar .nav-container { background:rgba(255,255,255,0.97) !important; border-bottom:1px solid rgba(0,0,0,0.07) !important; backdrop-filter:blur(20px) !important; -webkit-backdrop-filter:blur(20px) !important; }
+    #navbar .nav-logo-img { content:url('/assets/logos/primarylogo-black.png') !important; filter:none !important; }
+    #navbar .nav-logo-text { color:#0a0a0a !important; }
+    #navbar .nav-link { color:#0a0a0a !important; }
+    #navbar .nav-slash { color:rgba(0,0,0,0.25) !important; }
+    /* ── Two-column layout with sticky Table of Contents ── */
+    .post-grid { max-width:var(--container-max); margin:0 auto; padding:0 var(--container-padding); display:grid; grid-template-columns:250px 1fr; gap:64px; align-items:start; }
+    .post-toc-wrap { position:sticky; top:110px; align-self:start; }
+    .post-toc { display:flex; flex-direction:column; gap:28px; }
+    .post-toc-title { font-size:1.05rem; font-weight:800; color:#0a0a0a; margin:0 0 16px; font-family:Inter,sans-serif; }
+    .post-toc-list { list-style:none; padding:0; margin:0; border-left:2px solid rgba(0,0,0,0.09); }
+    .post-toc-list a { display:block; padding:8px 0 8px 18px; margin-left:-2px; border-left:2px solid transparent; font-size:0.9rem; line-height:1.45; color:rgba(0,0,0,0.5); text-decoration:none; transition:color 0.18s,border-color 0.18s; }
+    .post-toc-list a:hover { color:#0a0a0a; }
+    .post-toc-list a.active { color:#0a0a0a; font-weight:600; border-left-color:#00DF81; }
+    .post-toc-cta { background:#0a0a0a; border-radius:14px; padding:22px; }
+    .post-toc-cta h4 { font-family:Inter,sans-serif; font-size:1rem; font-weight:700; color:#fff; margin:0 0 14px; line-height:1.35; }
+    .post-toc-cta a { display:inline-flex; align-items:center; justify-content:space-between; gap:10px; width:100%; box-sizing:border-box; background:#00DF81; color:#000; font-family:Inter,sans-serif; font-size:0.85rem; font-weight:600; padding:12px 16px; border-radius:8px; text-decoration:none; transition:opacity 0.2s; }
+    .post-toc-cta a:hover { opacity:0.9; }
+    .post-share-label { font-size:0.75rem; font-weight:600; letter-spacing:0.5px; color:rgba(0,0,0,0.5); margin:0 0 12px; }
+    .post-share-row { display:flex; gap:10px; }
+    .post-share-btn { width:36px; height:36px; border-radius:8px; background:#0a0a0a; color:#fff; display:inline-flex; align-items:center; justify-content:center; text-decoration:none; transition:opacity 0.2s; }
+    .post-share-btn:hover { opacity:0.8; }
+    @media (max-width:960px) {
+      .post-grid { grid-template-columns:1fr; gap:0; }
+      .post-toc-wrap { display:none; }
+    }
+    @media (max-width:768px) {
+      .blog-post-body { font-size:1.08rem; }
+      .blog-post-body > p:first-of-type { font-size:1.18rem; }
+      .blog-post-body h2 { font-size:1.4rem; }
+    }
+  </style>
+  <script async src="https://plausible.io/js/pa-0lcm4EUVXsjASg9rf6RN1.js"></script>
+  <script>window.plausible=window.plausible||function(){(plausible.q=plausible.q||[]).push(arguments)};plausible.init=plausible.init||function(i){plausible.o=i||{}};plausible.init();</script>
+  <script src="/analytics.js"></script>
+</head>
+<body>
+<div class="read-progress" id="readProgress"></div>
+<div id="app">
+
+<nav class="navbar" id="navbar">
+  <div class="nav-container">
+    <a href="/" class="nav-logo" aria-label="A2B Home">
+      <img src="/assets/logos/primarylogo-white.png" alt="A2B Logo" class="nav-logo-img" width="42" height="42" />
+      <span class="nav-logo-text">A2B</span>
+    </a>
+    <div class="nav-links" id="navLinks">
+      <a href="/" class="nav-link">Home <span class="nav-slash"></span></a>
+      <a href="/labs" class="nav-link">Labs <span class="nav-slash"></span></a>
+      <a href="/services" class="nav-link">Service <span class="nav-slash"></span></a>
+      <a href="/case-studies" class="nav-link">Case Study <span class="nav-slash"></span></a>
+      <div class="nav-dropdown-wrapper" id="resourcesDropdown">
+        <button class="nav-link nav-dropdown-btn active">Resources <span class="nav-slash"></span></button>
+        <div class="nav-dropdown-menu mega-menu">
+          <div class="mega-menu-left">
+            <div class="mega-menu-label"><svg width="12" height="12" viewBox="0 0 44 44" fill="var(--accent)" xmlns="http://www.w3.org/2000/svg"><polygon points="22,1 43,11 43,33 22,43 1,33 1,11"/></svg> RESOURCES</div>
+            <div class="mega-links">
+              <a href="/blog" class="mega-link" data-title="Field notes &amp; Breakdowns" data-desc="Read our latest articles on agentic workflows, enterprise AI strategy, and building autonomous systems.">Blog</a>
+              <a href="/youtube" class="mega-link" data-title="Walkthroughs &amp; Live Builds" data-desc="Watch our engineers build live, break down complex AI agents, and give product deep-dives on our channel.">YouTube</a>
+            </div>
+          </div>
+          <div class="mega-menu-right">
+            <div class="mega-content">
+              <h3 class="mega-title">&ldquo;We partner with brands to move the world through tech, design and strategy.&rdquo;</h3>
+              <p class="mega-desc">Dive into our field notes, video walkthroughs, and frameworks on AI-native operations to build a smarter future.</p>
+            </div>
+            <a href="/contact" class="btn-arrow mega-contact-btn"><span class="btn-label">Contact Us</span><span class="btn-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span></a>
+          </div>
+        </div>
+      </div>
+      <a href="/about" class="nav-link">About <span class="nav-slash"></span></a>
+    </div>
+    <a href="/contact" class="btn-arrow nav-cta" id="navCta"><span class="btn-label">Contact</span><span class="btn-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span></a>
+    <button class="nav-hamburger" id="navHamburger" aria-label="Toggle Menu"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+
+<main style="background:#ffffff;min-height:100vh;">
+
+  <section style="padding-top:110px;padding-bottom:100px;">
+    <div class="post-grid">
+
+      <!-- ── Left: sticky Table of Contents + CTA + Share ── -->
+      <aside class="post-toc-wrap">
+        <div class="post-toc">
+          <div>
+            <p class="post-toc-title">In this Article</p>
+            <ul class="post-toc-list" id="tocList"></ul>
+          </div>
+
+          <div class="post-toc-cta">
+            <h4>Partner with our AI team.</h4>
+            <a href="/contact">CONTACT US <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+          </div>
+
+          <div>
+            <p class="post-share-label">Share this article on:</p>
+            <div class="post-share-row">
+              <a class="post-share-btn" href="https://www.facebook.com/sharer/sharer.php?u=https://a2b.services/blog/post/3-things-business-owners-get-wrong-about-ai-automation/" target="_blank" rel="noopener" aria-label="Share on Facebook"><i class="fab fa-facebook-f"></i></a>
+              <a class="post-share-btn" href="https://twitter.com/intent/tweet?url=https://a2b.services/blog/post/3-things-business-owners-get-wrong-about-ai-automation/&text=3%20Things%20Business%20Owners%20Get%20Wrong%20About%20AI%20Automation" target="_blank" rel="noopener" aria-label="Share on X"><i class="fa-brands fa-x-twitter"></i></a>
+              <a class="post-share-btn" href="https://www.linkedin.com/sharing/share-offsite/?url=https://a2b.services/blog/post/3-things-business-owners-get-wrong-about-ai-automation/" target="_blank" rel="noopener" aria-label="Share on LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+            </div>
+          </div>
+        </div>
+      </aside>
+
+      <!-- ── Right: article content ── -->
+      <div>
+        <a href="/blog" style="display:inline-flex;align-items:center;gap:6px;font-size:0.85rem;color:rgba(0,0,0,0.4);text-decoration:none;margin-bottom:28px;letter-spacing:0.1px;transition:color 0.2s;" onmouseover="this.style.color='#0a0a0a'" onmouseout="this.style.color='rgba(0,0,0,0.4)'">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+          Back to Blog
+        </a>
+
+        <img src="/assets/blogpost/myth/3myth.webp" alt="3 Things Business Owners Get Wrong About AI Automation" style="width:100%;max-height:420px;height:auto;object-fit:cover;object-position:center;border-radius:10px;margin-bottom:32px;background:#f5f5f3;">
+
+        <p style="font-size:0.72rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#0a7d4f;margin-bottom:16px;">Field Notes</p>
+        <h1 style="font-family:Inter,sans-serif;font-size:clamp(1.9rem,4vw,2.7rem);font-weight:800;line-height:1.15;color:#0a0a0a;letter-spacing:-0.6px;margin-bottom:20px;">3 Things Business Owners Get Wrong About AI Automation</h1>
+
+        <div style="display:flex;align-items:center;gap:14px;font-size:0.85rem;color:rgba(0,0,0,0.5);flex-wrap:wrap;padding-bottom:22px;margin-bottom:8px;border-bottom:1px solid rgba(0,0,0,0.08);">
+          <span style="display:inline-flex;align-items:center;gap:7px;">
+            <span style="width:26px;height:26px;border-radius:50%;background:#0a0a0a;color:#fff;display:inline-flex;align-items:center;justify-content:center;font-size:0.75rem;font-weight:700;">A</span>
+            Posted by: <strong style="color:#0a0a0a;font-weight:600;">Akhil</strong>
+          </span>
+          <span style="width:3px;height:3px;border-radius:50%;background:rgba(0,0,0,0.3);"></span>
+          <span>July 17, 2026 / 4 min read</span>
+        </div>
+
+        <article id="post-article">
+        
+        <div class="blog-post-body"><p>Most of what business owners believe about AI automation comes from demos, LinkedIn posts, or a vendor trying to close a deal. Not from actually running a system in production.</p>
+<p>That gap shows up on almost every strategy call we run. Someone has a workflow that's clearly costing them time or money, and they're ready to fix it — but they're stuck on an assumption that isn't actually true. The assumption, not the workflow, is what's holding things up.</p>
+<p>We hear the same three misconceptions constantly. Here's what's actually true about each one.</p>
+<h2>Myth #1: "Our data isn't clean enough to start."</h2>
+<p>This is the number one reason business owners delay. They picture months of data cleanup, a full CRM overhaul, or a spreadsheet audit before any AI system can even touch their workflow — so the project gets pushed to "next quarter" indefinitely.</p>
+<p><strong>What's actually true:</strong> you don't need clean data to start. You need a clear workflow.</p>
+<p>We begin every project by looking at the tools, records, and processes you already have — not by demanding everything get tidied up first. If the data needs cleaning, that becomes part of the plan, not a blocker before the plan. Most of the mess business owners worry about — old fields, inconsistent naming, half-filled records from three years ago — turns out to be irrelevant to the one workflow that actually matters right now.</p>
+<p>A useful way to think about it: if a new hire could follow the process using what's currently in your system, an AI system usually can too, once it's mapped correctly. You don't onboard a new employee by rebuilding your entire database first. The same logic applies here.</p>
+<p>Waiting for perfect data is usually just a way of delaying a decision that feels bigger than it is. The system gets built around what you have, and gets cleaner over time as it runs — not before it starts.</p>
+<h2>Myth #2: "AI will replace our team."</h2>
+<p>This one keeps a lot of good automation projects from ever starting, because someone in the room assumes the end goal is headcount reduction — and that assumption is enough to make a team quietly resist the whole project before it even launches.</p>
+<p><strong>What's actually true:</strong> the systems that work well don't replace judgment — they remove the repetitive work that sits in front of it.</p>
+<p>Take a monthly reporting workflow. Someone on the team spends two to three days a month pulling data from five different tools, formatting it, and writing up the summary. An automated version doesn't decide what the report <i>means</i> or what to tell the client — it assembles the raw material in minutes so a person can review it, adjust the framing, and send it with their judgment intact. The person's role shifts from "manual assembler" to "final reviewer," not out of the picture.</p>
+<p>That distinction matters even more in regulated or client-facing work. AI without a human checkpoint isn't a shortcut — in legal, healthcare, or financial workflows, it's a liability waiting to happen. The systems worth building are the ones your team actually trusts enough to use daily, and trust comes from knowing they still have the final say.</p>
+<p>The honest version of this myth isn't "AI replaces people." It's "AI removes the part of the job nobody wanted to do anyway."</p>
+<h2>Myth #3: "We need AI everywhere, or we're falling behind."</h2>
+<p>The opposite problem: business owners who feel pressure to bolt AI onto every part of the business at once, because it feels like every competitor and every LinkedIn post is moving faster than they are.</p>
+<p><strong>What's actually true:</strong> you don't need AI everywhere. You need one workflow where it creates measurable movement.</p>
+<p>We've seen this play out the same way more than once: a business tries to automate customer support, lead qualification, and internal reporting all in the same quarter. Six months later, none of the three are fully working, because attention and budget got split three ways instead of finishing one thing properly.</p>
+<p>The better path is picking the workflow that repeats the most, costs the most time, or loses the most revenue when it's handled manually — and building that one properly before touching anything else. That's usually the follow-up sequence nobody has time for, the lead response that's too slow, or the report that eats a full day every month. Fix that first, measure the result, and let the next workflow earn its place on the roadmap. Expansion should follow proof, not the other way around.</p>
+<h2>The pattern behind all three</h2>
+<p>Each of these myths comes from the same place: treating AI automation like a product you install, instead of a system you build around how the business actually runs. Once you strip that away, the questions get a lot simpler — what's repeating, what's slowing down handoffs, and where would getting an hour back actually matter.</p>
+<p>If you're not sure which workflow that is for your business, that's normal — it's usually the first thing we figure out together on a <a href="https://a2b.services/contact">free strategy call</a>.</p>
+<hr class="post-hr">
+<p><strong>A2B AI Technologies</strong> builds custom AI automation, AI agents, and RAG-based systems for businesses that want measurable results, not demos. <a href="https://a2b.services/services">Explore our services &rarr;</a></p>
+<p>Follow along: Instagram <a href="https://www.instagram.com/a2bai.tech" target="_blank" rel="noopener">@a2bai.tech</a> &middot; <a href="https://a2b.services">a2b.services</a> &middot; info@a2b.services</p></div>
+        </article>
+      </div>
+
+    </div>
+  </section>
+
+  
+
+  <section class="cs-ai-native-cta">
+    <div class="cs-under-the-hood-container">
+      <div class="cs-ai-native-box">
+        <img aria-hidden="true" src="/assets/logos/newlogo-white.png" style="position:absolute;top:50%;right:80px;transform:translateY(-50%);width:300px;height:300px;object-fit:contain;opacity:0.95;pointer-events:none;user-select:none;z-index:0;" alt="" />
+        <h2>Enjoyed<br>this post?</h2>
+        <p>Explore more field notes and breakdowns from the A2B engineering team.</p>
+        <div style="display:flex;gap:16px;flex-wrap:wrap;margin-top:8px;">
+          <a href="/blog" class="btn-arrow"><span class="btn-label">Back to Blog</span><span class="btn-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span></a>
+          <a href="/contact" class="btn-arrow"><span class="btn-label">Contact Us</span><span class="btn-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer" id="footer">
+  <div class="footer-container"><div class="footer-inner">
+    <div class="footer-top-right"><div class="footer-socials">
+      <a href="https://www.linkedin.com/company/a2bai" target="_blank" rel="noopener" class="social-link"><i class="fab fa-linkedin-in"></i></a>
+      <a href="https://www.instagram.com/a2bai.tech" target="_blank" rel="noopener" class="social-link"><i class="fab fa-instagram"></i></a>
+      <a href="https://www.youtube.com/channel/UCOr8E2dKBEP6wZI3j19tlaw" target="_blank" rel="noopener" class="social-link"><i class="fab fa-youtube"></i></a>
+    </div></div>
+    <div class="footer-content">
+      <div class="footer-cta">
+        <div class="footer-logo-hex"><img src="/assets/logos/primarylogo-white.png" alt="A2B Logo" /></div>
+        <h2 class="footer-title">A2B AI Technologies&trade;</h2>
+        <p class="footer-desc">An elite AI agency helping you build a smarter future through Agentic Coding, AI Workflows, and Enterprise Automation.</p>
+        <a href="/contact" class="btn-arrow footer-btn"><span class="btn-label">Free consultancy</span><div class="btn-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div></a>
+      </div>
+      <div class="footer-right">
+        <div class="footer-links-wrapper">
+          <div class="footer-link-col"><h4 class="footer-col-title">Resources</h4><a href="/case-studies">Case Studies</a><a href="/blog">Blog</a><a href="/faq">FAQ</a></div>
+          <div class="footer-link-col"><h4 class="footer-col-title">Pages</h4><a href="/">Home</a><a href="/labs">Labs</a><a href="/services">Services</a></div>
+          <div class="footer-link-col"><h4 class="footer-col-title">Company</h4><a href="/about">About</a><a href="/contact">Contact Us</a><a href="/legal/privacy">Privacy Policy</a><a href="/legal/terms">Terms of Service</a><a href="/legal/cookies">Cookie Policy</a></div>
+        </div>
+        <div class="footer-contact-info">
+          <a href="mailto:info@a2b.services" class="footer-email">info@a2b.services</a>
+          <p class="footer-location">Trivandrum &middot; Kerala &middot; India</p>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom"><div class="footer-copyright">&copy;2026 A2B AI Technologies</div></div>
+  </div></div>
+</footer>
+
+</div>
+<script type="module" src="/src/main.js"></script>
+<script>
+  (function () {
+    var bar = document.getElementById('readProgress');
+    var article = document.getElementById('post-article');
+    var tocList = document.getElementById('tocList');
+    var body = document.querySelector('.blog-post-body');
+    var heads = body ? Array.prototype.slice.call(body.querySelectorAll('h2')) : [];
+    var items = [];
+    heads.forEach(function (h, i) {
+      if (!h.id) h.id = 'sec-' + (i + 1);
+      var a = document.createElement('a');
+      a.href = '#' + h.id;
+      a.textContent = h.textContent;
+      var li = document.createElement('li');
+      li.appendChild(a);
+      if (tocList) tocList.appendChild(li);
+      items.push({ el: h, link: a });
+    });
+    function update() {
+      if (bar && article) {
+        var top = article.offsetTop;
+        var total = article.offsetHeight - window.innerHeight + 200;
+        var scrolled = window.scrollY - top + 200;
+        bar.style.width = Math.min(Math.max(scrolled / total, 0), 1) * 100 + '%';
+      }
+      if (items.length) {
+        var cur = items[0];
+        items.forEach(function (it) { if (it.el.getBoundingClientRect().top <= 120) cur = it; });
+        items.forEach(function (it) { it.link.classList.toggle('active', it === cur); });
+      }
+    }
+    window.addEventListener('scroll', update, { passive: true });
+    window.addEventListener('resize', update);
+    update();
+  })();
+</script>
+</body>
+</html>
