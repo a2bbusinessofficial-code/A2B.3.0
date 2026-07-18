@@ -77,6 +77,9 @@ function generatePage(post) {
   const avatar = (String(post.author).trim()[0] || 'A').toUpperCase();
   const postUrl = `https://a2b.services/blog/post/${post.slug}/`;
   const shareText = encodeURIComponent(post.title);
+  const absImage = post.image
+    ? (post.image.startsWith('http') ? post.image : `https://a2b.services${post.image}`)
+    : 'https://a2b.services/assets/logos/previewlogo-black.jpg';
 
   const imgTag = post.image
     ? `<img src="${post.image}" alt="${esc(post.title)}" style="width:100%;max-height:500px;height:auto;object-fit:contain;object-position:center;border-radius:4px;margin-bottom:24px;background:#f5f5f3;">`
@@ -129,11 +132,36 @@ function generatePage(post) {
   <meta name="description" content="${esc(descText)}" />${keywordsTag}
   <meta property="og:title" content="${esc(titleText)} | A2B Blog" />
   <meta property="og:description" content="${esc(descText)}" />
-  <meta property="og:image" content="${post.image}" />
+  <meta property="og:image" content="${absImage}" />
+  <meta property="og:image:alt" content="${esc(post.title)}" />
+  <meta property="og:url" content="${postUrl}" />
+  <meta property="og:site_name" content="A2B AI Technologies" />
   <meta property="og:type" content="article" />
   <meta property="article:published_time" content="${post.date}" />
   <meta property="article:author" content="${esc(post.author)}" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="${esc(titleText)} | A2B Blog" />
+  <meta name="twitter:description" content="${esc(descText)}" />
+  <meta name="twitter:image" content="${absImage}" />
   <title>${esc(titleText)} | A2B Blog</title>
+  <script type="application/ld+json">
+  ${JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "mainEntityOfPage": { "@type": "WebPage", "@id": postUrl },
+    "headline": post.title,
+    "description": descText,
+    "image": absImage,
+    "datePublished": post.date,
+    "dateModified": post.date,
+    "author": { "@type": "Person", "name": post.author },
+    "publisher": {
+      "@type": "Organization",
+      "name": "A2B AI Technologies",
+      "logo": { "@type": "ImageObject", "url": "https://a2b.services/assets/logos/primarylogo-black.png" }
+    }
+  })}
+  </script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -397,6 +425,124 @@ function generatePage(post) {
 }
 
 const posts = [
+  {
+    slug: 'ai-automation-agency-vs-freelance-builder',
+    title: "AI Automation Agency vs Freelance Automation Builder: What Actually Changes",
+    seoTitle: "AI Automation Agency vs Freelance Builder",
+    description: "Hiring a freelancer to build your AI automation is cheaper upfront. Here's what actually changes when you go with an agency instead — and when the freelancer is the right call.",
+    seoDescription: "Hiring a freelancer is cheaper upfront. Here's what changes with an AI automation agency instead, and when a freelancer is genuinely the right call.",
+    keywords: "AI automation agency vs freelancer, hire AI automation agency, freelance automation builder, AI automation agency, automation maintenance and support",
+    author: 'Akhil',
+    date: '2026-07-19',
+    image: '/assets/blogpost/blog_preview/1builder.webp',
+    content: `Most business owners comparing an agency against a freelancer default to comparing price. That's the wrong starting point. The real differences show up after the workflow goes live — in what happens when it breaks, when your business changes, or when you want to build on top of what you already have.
+
+Here's what actually changes, not what sounds good on a sales page.
+
+## What stays the same
+
+Both a good freelancer and a good agency can build a working automation. Neither one is inherently more "technical" or more capable of connecting your tools. A skilled freelancer can absolutely ship something that works on day one — sometimes faster and cheaper than an agency would.
+
+If your need is narrow, one-off, and unlikely to need ongoing support — a single Zapier-style connection, a one-time data migration — a freelancer is often the right call, and we'd tell you that on a strategy call rather than pretend otherwise.
+
+## What changes: continuity
+
+A freelancer is one person. When they take on their next project, get busy, or move on entirely, your automation is running on knowledge that lives in one person's head — not documented, not backed up by anyone else who understands the build.
+
+An agency spreads that knowledge across a team. If the person who originally built your workflow isn't available, someone else can pick up the documentation and keep it running. This matters most six months after launch, when the workflow has been running quietly and something changes upstream — an API updates, a tool you rely on shifts its pricing tier, a field gets renamed in your CRM.
+
+## What changes: scope of responsibility
+
+A freelancer typically owns the build. An agency typically owns the outcome.
+
+That's a real distinction. When something breaks at 11pm before a client deadline, "who do I call" is a very different question depending on which one you hired. A freelancer's contract usually ends at delivery. An agency's relationship usually includes what happens after — monitoring, fixes, and adjustments as your workflow runs into edge cases nobody predicted in the planning phase.
+
+## What changes: how the system grows with you
+
+The first automation you build is rarely the last one you need. Once the follow-up sequence works, you'll want the lead-scoring workflow. Once that works, you'll want it feeding into your reporting.
+
+A freelancer builds what's scoped. An agency, ideally, builds with the next three workflows in mind — architecture that doesn't need to be torn down and rebuilt every time you add something new. That's not freelancers being short-sighted; it's just harder to justify architectural planning on a fixed one-off project versus an ongoing relationship where the agency has visibility into where you're headed.
+
+## What changes: accountability when things go wrong
+
+If a freelancer's automation silently fails and your business loses two weeks of leads before anyone notices, the risk sits mostly with you — there's no team behind them monitoring uptime or catching failures early. An agency with a real process builds in monitoring and alerting as part of the deliverable, because the relationship doesn't end at launch.
+
+This is the piece that's easy to underweight when comparing quotes, because it's invisible until the day it matters.
+
+## So which one is actually right for you
+
+If you need one thing built, fast, cheap, and you're comfortable being the backstop if it breaks — a freelancer is a reasonable, often smart choice.
+
+If the automation is going to sit in the middle of how your business actually runs — lead routing, client reporting, anything touching revenue or client-facing communication — the continuity, accountability, and growth path an agency provides usually pays for the price difference within the first few months of avoided downtime alone.
+
+The honest answer isn't "always hire an agency." It's knowing which category your workflow actually falls into before you pick either one.
+
+Not sure which side of that line your project sits on? That's exactly the kind of question we sort out on a <a href="https://a2b.services/contact">free strategy call</a> — no pressure to hire us if a freelancer is genuinely the better fit for what you need.
+
+---------------
+
+<strong>A2B AI Technologies</strong> builds custom AI automation, AI agents, and RAG-based systems designed to keep running long after launch. <a href="https://a2b.services/services">Explore our services &rarr;</a>
+
+Follow along: Instagram <a href="https://www.instagram.com/a2bai.tech" target="_blank" rel="noopener">@a2bai.tech</a> &middot; <a href="https://a2b.services">a2b.services</a> &middot; info@a2b.services`
+  },
+
+  {
+    slug: 'ai-automation-company-vs-in-house',
+    title: "Top Reasons to Use an AI Automation Company Instead of Building In-House",
+    seoTitle: "AI Automation Agency vs Building In-House",
+    description: "Thinking about building AI automation with your own team? Here's what actually determines whether that's the right call, and when an automation company is the faster path.",
+    seoDescription: "Weighing an AI automation agency against building in-house? Here's what changes after launch: continuity, maintenance, and who's accountable when it breaks.",
+    keywords: "AI automation company vs in-house, build AI automation in-house, hire AI automation agency, in-house automation team, AI automation maintenance",
+    author: 'Akhil',
+    date: '2026-07-18',
+    image: '/assets/blogpost/blog_preview/build-in%20house.webp',
+    content: `"Can't we just build this ourselves?" comes up on nearly every strategy call. It's a fair question — most businesses have someone technical on staff, or know someone who could probably figure it out. Here's the honest breakdown of when that instinct is right, and where it usually goes wrong.
+
+## Reason #1: Speed to a working system
+
+An in-house build usually means someone learns the tools while building the workflow — evaluating platforms, figuring out API quirks, hitting the same beginner mistakes an experienced team already worked through years ago. That learning curve isn't wasted time exactly, but it is time your business doesn't get the workflow's benefit.
+
+An automation company has already made those mistakes on someone else's project. The first version they hand you skips the trial-and-error phase entirely.
+
+## Reason #2: It's not your team's core job
+
+The person who ends up owning an in-house automation project is usually someone whose actual role is something else — ops manager, marketing lead, a developer pulled off product work. The automation becomes a side project competing with their real responsibilities, which means it either takes far longer than planned or gets a fraction of the attention it needs to actually work well.
+
+An automation company's only job on your account is the automation. Nothing competes for that attention.
+
+## Reason #3: Maintenance doesn't stop at launch
+
+This is the piece that in-house estimates usually miss. A workflow that works perfectly at launch will eventually break — a connected tool changes its API, a field gets renamed, an edge case nobody tested shows up in month three. Someone needs to notice, diagnose, and fix it.
+
+In-house, that responsibility usually falls back on whoever built it, on top of their regular job. With an agency, ongoing monitoring and fixes are typically part of the relationship, not an emergency interruption to someone's week.
+
+## Reason #4: Broader pattern recognition
+
+An in-house builder has seen exactly one business's data and workflows: yours. An automation company that works across multiple clients has seen dozens of variations of the same underlying problem — different CRMs, different team sizes, different failure modes. That cross-client pattern recognition is hard to replicate with a single internal hire, no matter how skilled they are.
+
+This shows up in small but important ways: knowing which integration is reliable versus which one silently drops data under load, or which approach to a workflow tends to get adopted by a team versus quietly ignored.
+
+## Reason #5: You get a system, not a person-dependent process
+
+When one person builds and owns your automation in-house, that person becomes a single point of failure. If they leave, get pulled onto another project, or are simply out sick during a critical week, the system's reliability goes with them.
+
+A properly built external engagement documents the system, not just the code — so the workflow doesn't live only in one person's head.
+
+## When in-house is actually the better call
+
+To be fair to the other side: if you have a technical team with bandwidth to spare, a genuinely simple integration need, and no urgency, building in-house can work fine. The math changes when the workflow is complex, time-sensitive, or sits close to revenue — that's where the cost of getting it wrong outweighs the cost of getting outside help.
+
+The real question isn't "can we build this ourselves" — most technical teams probably can, eventually. It's "is this the best use of that team's time compared to what an outside team could deliver faster, with less risk."
+
+If you're weighing that trade-off for a specific workflow, that's exactly what we help sort out on a <a href="https://a2b.services/contact">free strategy call</a> — including an honest answer if in-house is genuinely the better path for your situation.
+
+---------------
+
+<strong>A2B AI Technologies</strong> builds custom AI automation, AI agents, and RAG-based systems for businesses that want results without the learning curve. <a href="https://a2b.services/services">Explore our services &rarr;</a>
+
+Follow along: Instagram <a href="https://www.instagram.com/a2bai.tech" target="_blank" rel="noopener">@a2bai.tech</a> &middot; <a href="https://a2b.services">a2b.services</a> &middot; info@a2b.services`
+  },
+
   {
     slug: '3-things-business-owners-get-wrong-about-ai-automation',
     title: "3 Things Business Owners Get Wrong About AI Automation",

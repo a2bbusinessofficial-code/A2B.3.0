@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
 
   <!-- Core Pages -->
   <url>
@@ -34,7 +35,7 @@
   </url>
   <url>
     <loc>https://a2b.services/blog/</loc>
-    <lastmod>2026-06-23</lastmod>
+    <lastmod>2026-07-19</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -109,36 +110,90 @@
     <lastmod>2025-12-07</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://bfmoirwycojttdbitvir.supabase.co/storage/v1/object/public/blog-images/0.24177335967231017.webp</image:loc>
+      <image:title>Just upgraded to n8n v2.0 pre-release. Here's what actually changed.</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://a2b.services/blog/post/built-50-automations-that-clients-never-used/</loc>
     <lastmod>2025-12-09</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://bfmoirwycojttdbitvir.supabase.co/storage/v1/object/public/blog-images/0.5106112479765623.webp</image:loc>
+      <image:title>I built 50+ automations that clients never used</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://a2b.services/blog/post/learn-n8n-in-2026/</loc>
     <lastmod>2025-12-11</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://bfmoirwycojttdbitvir.supabase.co/storage/v1/object/public/blog-images/0.33297743176819616.webp</image:loc>
+      <image:title>So you want to learn n8n... Read this first</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://a2b.services/blog/post/i-wasted-6-months-building-automations-that-kept-breaking-here-s-what-actually-fixed-them/</loc>
     <lastmod>2025-12-04</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://bfmoirwycojttdbitvir.supabase.co/storage/v1/object/public/blog-images/0.4632813759598703.webp</image:loc>
+      <image:title>I wasted 6 months building automations that kept breaking</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://a2b.services/blog/post/debugging-a-workflow-that-had-zero-error-logs-and-lost-1200/</loc>
     <lastmod>2026-01-02</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://bfmoirwycojttdbitvir.supabase.co/storage/v1/object/public/blog-images/0.423747097128918.webp</image:loc>
+      <image:title>Spent 6 hours debugging a workflow that had zero error logs</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://a2b.services/blog/post/built-a-system-that-does-500-in-the-time-i-used-to-do-5/</loc>
     <lastmod>2026-01-04</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://bfmoirwycojttdbitvir.supabase.co/storage/v1/object/public/blog-images/0.9740702812356797.webp</image:loc>
+      <image:title>Built a system that does 500 leads in the time I used to do 5</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://a2b.services/blog/post/3-things-business-owners-get-wrong-about-ai-automation/</loc>
+    <lastmod>2026-07-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://a2b.services/assets/blogpost/myth/3myth.webp</image:loc>
+      <image:title>3 Things Business Owners Get Wrong About AI Automation</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://a2b.services/blog/post/ai-automation-company-vs-in-house/</loc>
+    <lastmod>2026-07-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://a2b.services/assets/blogpost/blog_preview/build-in%20house.webp</image:loc>
+      <image:title>Top Reasons to Use an AI Automation Company Instead of Building In-House</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://a2b.services/blog/post/ai-automation-agency-vs-freelance-builder/</loc>
+    <lastmod>2026-07-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://a2b.services/assets/blogpost/blog_preview/1builder.webp</image:loc>
+      <image:title>AI Automation Agency vs Freelance Automation Builder: What Actually Changes</image:title>
+    </image:image>
   </url>
 
   <!-- Case Studies -->
@@ -216,11 +271,19 @@
     <lastmod>2026-06-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://a2b.services/assets/blogpost/database-reactivation/db_rat.webp</image:loc>
+      <image:title>Your Old Customer List Is Worth More Than You Think</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://a2b.services/blog/post/complete-guide-to-ai-agents-2026/</loc>
     <lastmod>2026-07-04</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://a2b.services/assets/blogpost/guid2026/aiguide.jpg</image:loc>
+      <image:title>The Complete Guide to AI Agents for Businesses in 2026</image:title>
+    </image:image>
   </url>
 </urlset>
